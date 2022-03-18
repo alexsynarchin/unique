@@ -4,36 +4,17 @@
             :router="true"
             class="sidebar-nav"
         >
-            <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
+            <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link"
+            :class="{
+                'sidebar-nav__link--border':item.border
+            }">
             <span class="sidebar-nav__link-text">
                  {{item.title}}
             </span>
             </el-menu-item>
         </el-menu>
-        <hr>
-        <el-menu
-            :router="true"
-            class="sidebar-nav"
 
-        >
-            <el-menu-item  v-for="item in menu_2"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
-            <span class="sidebar-nav__link-text">
-                 {{item.title}}
-            </span>
-            </el-menu-item>
-        </el-menu>
-        <hr>
-        <el-menu
-            :router="true"
-            class="sidebar-nav"
 
-        >
-            <el-menu-item  v-for="item in settings"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
-            <span class="sidebar-nav__link-text">
-                 {{item.title}}
-            </span>
-            </el-menu-item>
-        </el-menu>
     </div>
 
 </template>
@@ -77,9 +58,8 @@ export default {
                 {
                     id:"/admin/requests",
                     title:"Заявки",
+                    border:true,
                 },
-            ],
-            menu_2 : [
                 {
                     id:"/admin/price",
                     title:"Стоимость",
@@ -99,9 +79,8 @@ export default {
                 {
                     id:"/admin/articles",
                     title:"Статьи",
+                    border:true,
                 },
-            ],
-            settings: [
                 {
                     id:"/admin/settings",
                     title:"Настройки",

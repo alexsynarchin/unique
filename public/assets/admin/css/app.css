@@ -11362,3 +11362,7 @@ a {
 .sidebar-nav {
   border-right: none !important;
 }
+.sidebar-nav__link--border {
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e6e6e6;
+}
