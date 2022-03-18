@@ -1,10 +1,11 @@
 <template>
     <section>
         <moderator-form
+            :save-msg="'Пользователь обновлен'"
             v-if="loaded"
             :form="form"
             :formAction="formAction"
-            @closeModal="closeModal"
+            @close="closeModal"
         ></moderator-form>
     </section>
 
@@ -30,7 +31,7 @@ export default {
     },
     methods:{
         closeModal(data) {
-            this.$emit('closeModal',data)
+            this.$emit('close',data)
         },
         getFormData() {
             this.$root.isLoading = true;

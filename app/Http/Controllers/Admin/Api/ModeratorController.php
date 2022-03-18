@@ -20,7 +20,7 @@ class ModeratorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email',
             'name'=>'required',
             'password' => 'required|confirmed'
         ]);
@@ -36,9 +36,16 @@ class ModeratorController extends Controller
         return $user;
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name'=>'required',
+        ]);
 
+        $user -> update($request->all());
+        return $user;
     }
 
     public function delete()

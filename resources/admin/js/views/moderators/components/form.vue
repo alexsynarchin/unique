@@ -26,7 +26,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex" :gutter="10">
+                <el-row type="flex" :gutter="10" v-if="formAction.method === 'post'">
                     <el-col :span="12">
                         <el-form-item prop="password" label="Пароль" :error="errors.get('password')">
                             <el-input v-model="form.password" placeholder="Введите пароль" show-password></el-input>

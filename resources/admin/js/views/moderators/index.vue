@@ -64,7 +64,10 @@
         <create
             @close="closeModal"
             v-if="moderatorModal && moderatorModalStatus === 'create'"></create>
-            <edit  :id="id" v-if="moderatorModal && moderatorModalStatus === 'edit'"></edit>
+            <edit
+                :id="id"
+                @close="closeModal"
+                v-if="moderatorModal && moderatorModalStatus === 'edit'"></edit>
         </el-dialog>
     </section>
 
@@ -116,6 +119,7 @@ export default {
         },
         closeModal(data) {
             this.moderatorModal= false;
+            this.id = null;
             this.getModerators();
         },
         handleEdit(row) {
