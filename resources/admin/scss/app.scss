@@ -1,4 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
 //components
+@import "components/scaffolding";
 @import "components/auth";
+@import "components/page-header";
+
+//sidebar
+@import "components/sidebar/sidebar";
+@import "components/sidebar/sidebar-nav";

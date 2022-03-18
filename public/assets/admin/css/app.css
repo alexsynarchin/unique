@@ -11281,6 +11281,53 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body, html {
+  height: 100%;
+  min-height: 100%;
+  background-color: #F0F1F6;
+  font-family: "Roboto", sans-serif;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.open-modal {
+  overflow-y: hidden;
+}
+
+.divider {
+  border-bottom: 1px dashed #000;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
 .auth {
   background-color: #F0F1F6;
   min-height: 100vh;
@@ -11293,4 +11340,25 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0;
+}
+
+.page-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #366AF3;
+  color: #fff;
+}
+.page-header__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.el-aside--sidebar {
+  min-height: 100%;
+  background-color: #fff;
+  border-right: solid 1px #e6e6e6;
+}
+
+.sidebar-nav {
+  border-right: none !important;
 }

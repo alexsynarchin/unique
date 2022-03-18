@@ -1,0 +1,10 @@
+.page-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+background-color: #366AF3;
+    color: #fff;
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

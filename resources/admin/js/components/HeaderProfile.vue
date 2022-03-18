@@ -1,6 +1,6 @@
 <template>
     <el-dropdown class="page-header-profile">
-            <span class="el-dropdown-link">
+            <span class="el-dropdown-link" style="color: #fff">
              {{user.name}} <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
         <el-dropdown-menu slot="dropdown" class="page-header-profile__nav">

@@ -1,15 +1,41 @@
 <template>
-    <el-menu
-        :router="true"
-        class="el-menu-vertical-demo"
-    >
-    <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
-            <i class="sidebar-nav__icon" :class="item.icon"></i>
+    <div>
+        <el-menu
+            :router="true"
+            class="sidebar-nav"
+        >
+            <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
             <span class="sidebar-nav__link-text">
                  {{item.title}}
             </span>
-    </el-menu-item>
-    </el-menu>
+            </el-menu-item>
+        </el-menu>
+        <hr>
+        <el-menu
+            :router="true"
+            class="sidebar-nav"
+
+        >
+            <el-menu-item  v-for="item in menu_2"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
+            <span class="sidebar-nav__link-text">
+                 {{item.title}}
+            </span>
+            </el-menu-item>
+        </el-menu>
+        <hr>
+        <el-menu
+            :router="true"
+            class="sidebar-nav"
+
+        >
+            <el-menu-item  v-for="item in settings"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link">
+            <span class="sidebar-nav__link-text">
+                 {{item.title}}
+            </span>
+            </el-menu-item>
+        </el-menu>
+    </div>
+
 </template>
 <script>
 export default {
@@ -25,62 +51,63 @@ export default {
 
             menu:[
                 {
-
                     id:"/admin",
-                    title:"Курсы",
-                    icon:"educate-icon educate-course"
-
+                    title:"Главная",
                 },
                 {
-
-                    id:"/admin/categories",
-                    title:"Категории контента",
-                    icon:"educate-icon educate-library"
-                },
-
-                {
-
-                    id:"/admin/students",
-                    title:"Студенты",
-                    icon:"educate-icon educate-student icon-wrap"
+                    id:"/admin/systems",
+                    title:"Системы проверки",
                 },
                 {
-
-                    id:"/admin/teachers",
-                    title:"Преподаватели",
-                    icon:"educate-icon educate-professor icon-wrap"
+                    id:"/admin/systems",
+                    title:"Запросы на проверку",
                 },
                 {
-                    id:"/admin/withdraws",
-                    title:"Запросы на вывод средств",
-                    icon:"el-icon-coin"
+                    id:"/admin/systems",
+                    title:"Заявки на рерайт",
                 },
                 {
-                    id:"/admin/moderators",
+                    id:"/admin/systems",
                     title:"Модераторы",
-                    icon:"el-icon-user"
                 },
                 {
-                    id:"/admin/promo-codes",
+                    id:"/admin/systems",
                     title:"Промокоды",
-                    icon:"el-icon-magic-stick"
                 },
                 {
-                    id:"/admin/static-pages",
-                    title:"Статические страницы",
-                    icon:"educate-icon educate-library"
+                    id:"/admin/systems",
+                    title:"Заявки",
+                    border:true,
+                },
+            ],
+            menu_2 : [
+                {
+                    id:"/admin/systems",
+                    title:"Стоимость",
                 },
                 {
-                    id:"/admin/articles",
-                    title:"Блог",
-                    icon:"educate-icon educate-library"
+                    id:"/admin/systems",
+                    title:"Вопросы и ответы",
                 },
                 {
-                    id:"/admin/settings",
+                    id:"/admin/systems",
+                    title:"Отзывы",
+                },
+                {
+                    id:"/admin/systems",
+                    title:"О проекте",
+                },
+                {
+                    id:"/admin/systems",
+                    title:"Статьи",
+                },
+            ],
+            settings: [
+                {
+                    id:"/admin/systems",
                     title:"Настройки",
-                    icon:"el-icon-setting"
                 },
-            ]
+            ],
         }
     }
 }
