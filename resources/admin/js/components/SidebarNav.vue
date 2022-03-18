@@ -55,56 +55,55 @@ export default {
                     title:"Главная",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/check-systems",
                     title:"Системы проверки",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/check-requests",
                     title:"Запросы на проверку",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/rewrite-check",
                     title:"Заявки на рерайт",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/moderators",
                     title:"Модераторы",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/promo-codes",
                     title:"Промокоды",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/requests",
                     title:"Заявки",
-                    border:true,
                 },
             ],
             menu_2 : [
                 {
-                    id:"/admin/systems",
+                    id:"/admin/price",
                     title:"Стоимость",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/faq",
                     title:"Вопросы и ответы",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/reviews",
                     title:"Отзывы",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/about",
                     title:"О проекте",
                 },
                 {
-                    id:"/admin/systems",
+                    id:"/admin/articles",
                     title:"Статьи",
                 },
             ],
             settings: [
                 {
-                    id:"/admin/systems",
+                    id:"/admin/settings",
                     title:"Настройки",
                 },
             ],
