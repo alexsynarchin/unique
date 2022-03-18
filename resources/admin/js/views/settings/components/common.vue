@@ -24,7 +24,7 @@
                     <el-input v-model="form.instagram_link"></el-input>
                 </el-form-item>
                 <el-form-item class="col-lg-6" prop="facebook_link" label="Ссылка facebook">
-                    <el-input v-model="form.facebook_link"></el-input>
+                    <el-input v-model="form.whatsup_link"></el-input>
                 </el-form-item>
                 <el-form-item class="col-lg-6" prop="vk_link" label="Ссылка vkontakte">
                     <el-input v-model="form.vk_link"></el-input>
@@ -44,7 +44,7 @@
                   copyright:"",
                   email:"",
                   instagram_link:"",
-                  facebook_link:"",
+                  whatsup_link:"",
                   vk_link:"",
               }
           }
