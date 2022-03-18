@@ -11366,3 +11366,13 @@ a {
   margin-bottom: 20px;
   border-bottom: solid 1px #e6e6e6;
 }
+
+.mp-card__sum {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.mp-card-today__value {
+  color: #366AF3;
+}
