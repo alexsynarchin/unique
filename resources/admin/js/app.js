@@ -6,6 +6,7 @@ Vue.use(ElementUI);
 import lang from 'element-ui/lib/locale/lang/ru-RU'
 import locale from 'element-ui/lib/locale'
 locale.use(lang);
+Vue.component('AdminLogin', require('./components/admin-login/index').default);
 import router from './router';
 Vue.component('AdminApp',require('./Admin').default);
 const app = new Vue({

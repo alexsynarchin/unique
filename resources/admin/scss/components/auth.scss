@@ -1,0 +1,14 @@
+.auth {
+    background-color: #F0F1F6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+}
+
