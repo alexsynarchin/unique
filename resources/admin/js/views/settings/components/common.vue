@@ -23,8 +23,8 @@
                 <el-form-item class="col-lg-6" prop="instagram_link" label="Ссылка instagram">
                     <el-input v-model="form.instagram_link"></el-input>
                 </el-form-item>
-                <el-form-item class="col-lg-6" prop="facebook_link" label="Ссылка facebook">
-                    <el-input v-model="form.whatsup_link"></el-input>
+                <el-form-item class="col-lg-6" prop="facebook_link" label="Ссылка whatsapp">
+                    <el-input v-model="form.whatsapp_link"></el-input>
                 </el-form-item>
                 <el-form-item class="col-lg-6" prop="vk_link" label="Ссылка vkontakte">
                     <el-input v-model="form.vk_link"></el-input>
@@ -44,7 +44,7 @@
                   copyright:"",
                   email:"",
                   instagram_link:"",
-                  whatsup_link:"",
+                  whatsapp_link:"",
                   vk_link:"",
               }
           }
