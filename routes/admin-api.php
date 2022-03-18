@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 Route::post('/logout',[LoginController::class, 'logout']) -> name('logout');
+
+use App\Http\Controllers\Admin\Api\ModeratorController;
+
+Route::apiResource('/moderators', ModeratorController::class);

@@ -36,6 +36,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.1.3",
-        "element-ui": "^2.15.6"
+        "element-ui": "^2.15.6",
+        "vue-data-tables": "^3.4.5"
     }
 }
