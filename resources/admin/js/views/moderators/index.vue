@@ -51,7 +51,7 @@
                     <el-button
                         size="mini"
                         type="primary"
-                        @click="handleEdit(scope.$index, scope.row)">Редактировать</el-button>
+                        @click="handleEdit(scope.row)">Редактировать</el-button>
 
                 </template>
             </el-table-column>
@@ -64,6 +64,7 @@
         <create
             @close="closeModal"
             v-if="moderatorModal && moderatorModalStatus === 'create'"></create>
+            <edit  :id="id" v-if="moderatorModal && moderatorModalStatus === 'edit'"></edit>
         </el-dialog>
     </section>
 
@@ -80,7 +81,7 @@ export default {
             if(this.moderatorModalStatus === 'create') {
                 return 'Новый модератор';
             }
-            if(this.moderatorModalStatus === 'update') {
+            if(this.moderatorModalStatus === 'edit') {
                 return 'Обновление данных модератора';
             }
         },
@@ -88,7 +89,7 @@ export default {
     },
     data() {
         return {
-
+            id:null,
             moderatorModal:false,
             moderatorModalStatus:"",
             moderators: [],
@@ -117,8 +118,10 @@ export default {
             this.moderatorModal= false;
             this.getModerators();
         },
-        handleEdit(index, row) {
-
+        handleEdit(row) {
+            this.id = row.id;
+            this.moderatorModalStatus = 'edit';
+            this.moderatorModal = true;
         },
         updateModerator(formName) {
 

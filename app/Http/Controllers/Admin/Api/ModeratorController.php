@@ -30,6 +30,11 @@ class ModeratorController extends Controller
         return $user;
     }
 
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return $user;
+    }
 
     public function update()
     {
