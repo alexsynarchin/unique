@@ -11377,3 +11377,44 @@ a {
 .mp-card-today__value {
   color: #366AF3;
 }
+
+.building-option-item {
+  height: 100%;
+}
+.building-option-item__heading .el-form-item__label {
+  font-weight: bold;
+}
+.building-option-item__values-list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.building-option-value-item {
+  margin-bottom: 0.45rem;
+}
+.building-option-value-item__name {
+  flex: 1;
+  font-size: 1rem;
+  background-color: #ecf5ff;
+  border-color: #d9ecff;
+  color: #409EFF;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0.45rem 1rem;
+  margin-bottom: 0;
+}
+.building-option-value-item__actions {
+  padding-left: 0.45rem;
+}
+.building-option-value-item__show, .building-option-value-item__edit {
+  display: flex;
+  align-items: center;
+}
+.building-option-value-item__handle {
+  color: #dc3545;
+  margin-right: 0.4rem;
+  cursor: pointer;
+}

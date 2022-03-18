@@ -1,0 +1,28 @@
+.building-option-value-item {
+    margin-bottom: 0.45rem;
+    &__name {
+        flex:1;
+        font-size: 1rem;
+        background-color: #ecf5ff;
+        border-color: #d9ecff;
+        color: #409EFF;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 0.45rem 1rem;
+        margin-bottom: 0;
+    }
+    &__actions{
+        padding-left: 0.45rem;
+    }
+    &__show, &__edit {
+        display: flex;
+        align-items: center;
+    }
+    &__handle {
+        color: $red;
+        margin-right: 0.4rem;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,14 @@
+.building-option-item {
+    height: 100%;
+    &__heading {
+
+        .el-form-item__label {
+            font-weight: bold;
+        }
+    }
+    &__values-list {
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
