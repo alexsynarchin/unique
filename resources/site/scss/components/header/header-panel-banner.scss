@@ -1,0 +1,18 @@
+.header-panel-banner {
+    height: 144px;
+    background-color: #E3E5ED;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right top;
+
+    &__title {
+        width: 48%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 40px;
+        font-weight: 700;
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,25 @@
+.main-nav {
+
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    @include media-breakpoint-up(lg) {
+        column-count:2;
+        column-gap: 30px;
+    }
+    &__item {
+        margin-bottom: 17px;
+    }
+    &__link {
+        color: #222222;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 20px;
+        @include media-breakpoint-up(lg) {
+            font-size: 17px;
+        }
+        &:hover {
+            color: $blue-color;
+        }
+    }
+}

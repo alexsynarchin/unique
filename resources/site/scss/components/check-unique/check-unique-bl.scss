@@ -1,0 +1,20 @@
+.check-unique-bl {
+   padding: 50px 15px;
+    background: #F0F1F6;
+    border-radius: 30px;
+    @include media-breakpoint-down(lg) {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    &__title {
+        margin-bottom: 15px;
+    }
+    &__text {
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+    @include media-breakpoint-up(lg) {
+        padding: 65px;
+    }
+}

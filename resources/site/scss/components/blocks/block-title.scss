@@ -1,0 +1,38 @@
+.block-title {
+    line-height: 1;
+    padding: 0;
+    display: inline-block;
+    font-size: 26px;
+    margin-right: 5px;
+    @include media-breakpoint-up(lg) {
+        font-size: 36px;
+    }
+    &--animate {
+
+        margin: 0;
+        white-space: nowrap; /* не переносить текст на другую строку */
+        overflow: hidden; /* скрываем переполнение контентом */
+        animation:  printed_text 2s steps(12);
+    }
+    &__cursor {
+
+        display: inline-block;
+        width: 4px;
+        height: 24px;
+        background: $blue-color;
+        animation: cursor 3s infinite step-end;
+        @include media-breakpoint-up(lg) {
+            height: 30px;
+        }
+    }
+
+}
+@keyframes cursor {
+    50% { background: transparent; }
+}
+
+@keyframes printed_text {
+    from {
+        width: 0;
+    }
+}

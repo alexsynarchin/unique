@@ -1,0 +1,9 @@
+.upload-button {
+    display: flex;
+    align-items: center;
+    &__icon {
+        width: 20px;
+        height: 22px;
+        margin-right: 10px;
+    }
+}

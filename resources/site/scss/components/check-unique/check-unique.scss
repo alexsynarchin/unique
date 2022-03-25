@@ -1,0 +1,47 @@
+.check-unique {
+    &__textarea {
+        margin-bottom: 25px;
+        position: relative;
+        padding: 20px;
+        height: 290px;
+        @include media-breakpoint-up(lg) {
+            height: 240px;
+        }
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        &::placeholder {
+            font-size: 17px;
+            color: #ABAFC3;
+        }
+
+
+        &-wrap {
+            position: relative;
+            &:after {
+                bottom: 18px;
+                right: 20px;
+                position: absolute;
+                content: "Максимум 300 000 символов";
+                color: #ABAFC3;
+            }
+        }
+    }
+    &__actions {
+        margin-bottom: 35px;
+        @include media-breakpoint-up(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &__indicators {
+        margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

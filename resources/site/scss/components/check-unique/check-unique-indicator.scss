@@ -1,0 +1,26 @@
+.check-unique-indicator {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    @include media-breakpoint-down(lg) {
+        margin-bottom: 5px;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+    &__label {
+        font-weight: 400;
+        font-size: 17px;
+        color: #161616;
+        margin-right: 5px;
+    }
+    &__value {
+        padding: 5px 9px;
+        background: #FFFFFF;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 17px;
+        color: $blue-color;
+        line-height: 1;
+    }
+}

@@ -1,1 +1,21 @@
 require('./bootstrap');
+import Vue from 'vue';
+Vue.component('HeaderPanelBtn', require('./components/header-panel/HeaderPanelBtn').default);
+Vue.component('HeaderPanel', require('./components/header-panel/HeaderPanel').default)
+Vue.component('CheckUnique', require('./components/check-unique').default)
+const app = new Vue({
+    el: '#app',
+    created(){
+        this.loadedApp();
+    },
+    data: {
+        isLoading: true,
+
+    },
+    methods:{
+        async loadedApp(){
+            this.isLoading = false;
+        },
+
+    }
+});

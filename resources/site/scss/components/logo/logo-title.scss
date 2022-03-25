@@ -1,0 +1,37 @@
+.logo-title {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    &__title {
+        text-transform: uppercase;
+        line-height: 1;
+        padding: 0;
+        display: inline-block;
+        font-size: 26px;
+        width: 12.5ch;
+        margin: 0;
+        white-space: nowrap; /* не переносить текст на другую строку */
+        overflow: hidden; /* скрываем переполнение контентом */
+        animation:  printed_text 2s steps(12);
+        @include media-breakpoint-only(lg) {
+            font-size: 23px;
+        }
+    }
+    &__cursor {
+        display: inline-block;
+        width: 4px;
+        height: 26px;
+        background: $blue-color;
+        animation: cursor 3s infinite step-end;
+    }
+
+}
+@keyframes cursor {
+    50% { background: transparent; }
+ }
+
+@keyframes printed_text {
+    from {
+        width: 0;
+    }
+}

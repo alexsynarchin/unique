@@ -1,0 +1,41 @@
+.mp-advantages {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 80px;
+    &__icon {
+        border-radius: 100%;
+        width: 64px;
+        height: 64px;
+        background-color: $blue-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-wrap {
+            width: 150px;
+            height: 80px;
+            background: #F0F1F6;
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 25px;
+        }
+        svg {
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 17px;
+    }
+    &__item {
+        @include media-breakpoint-up(xl) {
+            padding-right: 45px;
+        }
+    }
+}

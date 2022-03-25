@@ -17,5 +17,5 @@ Route::get('/admin-login', [AdminLogin::class, 'login']) -> middleware('admin-gu
 Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('admin.handle-login');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.home.index');
 });
