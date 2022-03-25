@@ -19,26 +19,42 @@
            margin-left: auto;
            margin-right: auto;
        }
+
     }
     &__content {
-        display: flex;
-        align-items: center;
         flex: 1;
         background: #E3E5ED;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        margin-left: -49px;
-        padding-left: 70px;
-        font-weight: 500;
-        font-size: 22px;
         @include media-breakpoint-down(lg) {
             margin-top: -50px;
             padding-top: 65px;
             padding-bottom: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        @include media-breakpoint-up(lg) {
+            display: flex;
+            align-items: center;
+            margin-left: -49px;
+            padding-left: 70px;
+            padding-right: 20px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
     }
     &__text {
-
+        font-weight: 500;
+        font-size: 22px;
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 15px;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 18px;
+            padding-top:10px;
+            padding-bottom: 10px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 22px;
+        }
     }
     &__link {
         font-weight: 700;
@@ -46,14 +62,39 @@
         color: $blue-color;
         text-decoration: none;
         display: flex;
+        align-items: center;
+        padding: 0;
         &:hover, &:focus {
+            outline: none;
+            box-shadow: none;
             color: $blue-color;
             text-decoration: none;
         }
+        @include media-breakpoint-down(lg) {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 17px;
+        }
         @include media-breakpoint-up(lg) {
+            justify-content: flex-end;
+            width: 30%;
+            min-width: 30%;
+            flex: 1 30%;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 28%;
+            min-width: 28%;
+            flex: 1 28%;
+        }
+        @include media-breakpoint-up(xxl) {
             width: 25%;
             min-width: 25%;
             flex: 1 25%;
+        }
+        &-icon {
+            width: 10px;
+            height: 10px;
+            margin-left: 6px;
         }
     }
 }

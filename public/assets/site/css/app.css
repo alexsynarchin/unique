@@ -12125,22 +12125,48 @@ img {
   }
 }
 .check-unique-descr__content {
-  display: flex;
-  align-items: center;
   flex: 1;
   background: #E3E5ED;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  margin-left: -49px;
-  padding-left: 70px;
-  font-weight: 500;
-  font-size: 22px;
 }
 @media (max-width: 1023.98px) {
   .check-unique-descr__content {
     margin-top: -50px;
     padding-top: 65px;
     padding-bottom: 25px;
+    border-radius: 10px;
+    text-align: center;
+  }
+}
+@media (min-width: 1024px) {
+  .check-unique-descr__content {
+    display: flex;
+    align-items: center;
+    margin-left: -49px;
+    padding-left: 70px;
+    padding-right: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+.check-unique-descr__text {
+  font-weight: 500;
+  font-size: 22px;
+}
+@media (max-width: 1023.98px) {
+  .check-unique-descr__text {
+    margin-bottom: 15px;
+  }
+}
+@media (min-width: 1024px) {
+  .check-unique-descr__text {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media (min-width: 1440px) {
+  .check-unique-descr__text {
+    font-size: 22px;
   }
 }
 .check-unique-descr__link {
@@ -12149,15 +12175,46 @@ img {
   color: #366AF3;
   text-decoration: none;
   display: flex;
+  align-items: center;
+  padding: 0;
 }
 .check-unique-descr__link:hover, .check-unique-descr__link:focus {
+  outline: none;
+  box-shadow: none;
   color: #366AF3;
   text-decoration: none;
 }
+@media (max-width: 1023.98px) {
+  .check-unique-descr__link {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+  }
+}
 @media (min-width: 1024px) {
+  .check-unique-descr__link {
+    justify-content: flex-end;
+    width: 30%;
+    min-width: 30%;
+    flex: 1 30%;
+  }
+}
+@media (min-width: 1200px) {
+  .check-unique-descr__link {
+    width: 28%;
+    min-width: 28%;
+    flex: 1 28%;
+  }
+}
+@media (min-width: 1440px) {
   .check-unique-descr__link {
     width: 25%;
     min-width: 25%;
     flex: 1 25%;
   }
+}
+.check-unique-descr__link-icon {
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
 }

@@ -76,7 +76,7 @@
                         <span>
                             Какую систему выбрать
                         </span>
-                        <svg viewBox="0 0 10 10" class="button__icon">
+                        <svg viewBox="0 0 10 10" class="check-unique-descr__link-icon">
                             <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
                         </svg>
                     </button>
