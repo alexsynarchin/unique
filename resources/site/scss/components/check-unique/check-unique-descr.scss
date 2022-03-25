@@ -1,14 +1,59 @@
 .check-unique-descr {
-    background: #E3E5ED;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
+    @include media-breakpoint-up(lg) {
+        display: flex;
+    }
     &__icon {
+        position: relative;
+        z-index: 1;
+        background-color: #E3E5ED;
+        border-radius: 100%;
+        border: 5px solid #F0F1F6;
         width: 98px;
         height: 98px;
+        min-width: 98px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 0;
+       @include media-breakpoint-down(lg) {
+           margin-left: auto;
+           margin-right: auto;
+       }
+    }
+    &__content {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        background: #E3E5ED;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-left: -49px;
+        padding-left: 70px;
+        font-weight: 500;
+        font-size: 22px;
+        @include media-breakpoint-down(lg) {
+            margin-top: -50px;
+            padding-top: 65px;
+            padding-bottom: 25px;
+        }
+    }
+    &__text {
 
+    }
+    &__link {
+        font-weight: 700;
+        font-size: 17px;
+        color: $blue-color;
+        text-decoration: none;
+        display: flex;
+        &:hover, &:focus {
+            color: $blue-color;
+            text-decoration: none;
+        }
+        @include media-breakpoint-up(lg) {
+            width: 25%;
+            min-width: 25%;
+            flex: 1 25%;
+        }
     }
 }
