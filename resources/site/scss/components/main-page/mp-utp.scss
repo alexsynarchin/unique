@@ -91,10 +91,15 @@
             height: 240px;
         }
         @include media-breakpoint-up(xl) {
+            min-width: 280px;
+            width: 280px;
+            height: 280px;
+
+        }
+        @include media-breakpoint-up(xxl) {
             min-width: 320px;
             width: 320px;
             height: 320px;
-
         }
         &--img {
             position: relative;

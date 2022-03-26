@@ -1,10 +1,22 @@
-.mp-systems {
-
+.check-systems {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+        padding-left: 10px;
+        padding-right: 10px;
+        @include media-breakpoint-up(xxl) {
+            width: 25%;
+            flex: 1 25%;
+            max-width: 25%;
+        }
+    }
 }
-.mp-system-item {
-
+.check-system-item {
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
 }
-.mp-system-item-checkbox {
+.check-system-item-checkbox {
     height: 16px;
     $form-checkbox: &;
     position: relative;

@@ -63,30 +63,35 @@
                     </span>
                 </button>
             </div>
-            <div class="check-unique-descr">
-                <figure class="check-unique-descr__icon">
-                    <img src="/assets/site/images/chat.png">
-                </figure>
-                <div class="check-unique-descr__content">
-                    <div class="check-unique-descr__text">
-                        8 текстов в очереди, вы можете проверить текст без ожидания,
-                        выбрав одну или несколько платных систем
-                    </div>
-                    <button  class="btn btn-link check-unique-descr__link">
+
+        </section>
+        <div class="check-unique-descr">
+            <figure class="check-unique-descr__icon">
+                <img src="/assets/site/images/chat.png">
+            </figure>
+            <div class="check-unique-descr__content">
+                <div class="check-unique-descr__text">
+                    8 текстов в очереди, вы можете проверить текст без ожидания,
+                    выбрав одну или несколько платных систем
+                </div>
+                <button  class="btn btn-link check-unique-descr__link">
                         <span>
                             Какую систему выбрать
                         </span>
-                        <svg viewBox="0 0 10 10" class="check-unique-descr__link-icon">
-                            <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
-                        </svg>
-                    </button>
-                </div>
+                    <svg viewBox="0 0 10 10" class="check-unique-descr__link-icon">
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
+                    </svg>
+                </button>
             </div>
-        </section>
+        </div>
+        <systems-list></systems-list>
     </section>
 </template>
 <script>
+    import SystemsList from './components/system-list'
     export default {
-
+        components: {
+            SystemsList,
+        }
     }
 </script>

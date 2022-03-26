@@ -11871,6 +11871,13 @@ img {
 }
 @media (min-width: 1200px) {
   .mp-utp__fig {
+    min-width: 280px;
+    width: 280px;
+    height: 280px;
+  }
+}
+@media (min-width: 1440px) {
+  .mp-utp__fig {
     min-width: 320px;
     width: 320px;
     height: 320px;
@@ -11946,45 +11953,6 @@ img {
   .mp-advantages__item {
     padding-right: 45px;
   }
-}
-
-.mp-system-item-checkbox {
-  height: 16px;
-  position: relative;
-  font-weight: 400;
-  padding-left: 36px;
-}
-.mp-system-item-checkbox__input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.mp-system-item-checkbox__input:checked ~ .mp-system-item-checkbox__checkmark:after {
-  display: block;
-}
-.mp-system-item-checkbox__checkmark {
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  background-color: rgba(171, 175, 195, 0.5);
-  border-radius: 2px;
-}
-.mp-system-item-checkbox__checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 4px;
-  top: 0;
-  width: 7px;
-  height: 15px;
-  border: solid #366AF3;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
 }
 
 .check-unique-bl {
@@ -12099,6 +12067,9 @@ img {
   line-height: 1;
 }
 
+.check-unique-descr {
+  margin-bottom: 35px;
+}
 @media (min-width: 1024px) {
   .check-unique-descr {
     display: flex;
@@ -12217,4 +12188,65 @@ img {
   width: 10px;
   height: 10px;
   margin-left: 6px;
+}
+
+.check-systems {
+  display: flex;
+  flex-wrap: wrap;
+}
+.check-systems__item {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 1440px) {
+  .check-systems__item {
+    width: 25%;
+    flex: 1 25%;
+    max-width: 25%;
+  }
+}
+
+.check-system-item {
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.check-system-item-checkbox {
+  height: 16px;
+  position: relative;
+  font-weight: 400;
+  padding-left: 36px;
+}
+.check-system-item-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.check-system-item-checkbox__input:checked ~ .check-system-item-checkbox__checkmark:after {
+  display: block;
+}
+.check-system-item-checkbox__checkmark {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: rgba(171, 175, 195, 0.5);
+  border-radius: 2px;
+}
+.check-system-item-checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 0;
+  width: 7px;
+  height: 15px;
+  border: solid #366AF3;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }

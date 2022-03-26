@@ -37,10 +37,11 @@ $container-max-widths: (
 //Main page
 @import "components/main-page/mp-utp";
 @import "components/main-page/mp-advantages";
-@import "components/main-page/mp-systems";
+
 
 //Check-unique
 @import "components/check-unique/check-unique-bl";
 @import "components/check-unique/check-unique";
 @import "components/check-unique/check-unique-indicator";
 @import "components/check-unique/check-unique-descr";
+@import "components/check-unique/check-systems";
