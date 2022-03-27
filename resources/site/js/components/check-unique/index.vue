@@ -85,6 +85,9 @@
             </div>
         </div>
         <systems-list></systems-list>
+        <button class="btn button">
+            Проверить уникальность полного текста
+        </button>
     </section>
 </template>
 <script>

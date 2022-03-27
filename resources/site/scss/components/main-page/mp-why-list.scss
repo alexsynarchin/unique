@@ -1,0 +1,73 @@
+.mp-why-list {
+
+    padding-left: 0;
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -25px;
+        margin-left: -25px;
+    }
+    &__heading {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    &__item {
+        @include media-breakpoint-up(lg) {
+            padding-right: 25px;
+            padding-left: 25px;
+            max-width: 50%;
+            width: 50%;
+            flex: 1 50%;
+        }
+    }
+    &__per-value {
+        color: $blue-color;
+        font-weight: 700;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    &__per-line {
+        height: 15px;
+        background: #F0F1F6;
+        border-radius: 30px;
+        margin-bottom: 15px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        &:after {
+            position: absolute;
+            content: "";
+            height: 100%;
+            background-color: $blue-color;
+            border-radius: 30px;
+        }
+        &--100 {
+            &:after {
+                width: 100%;
+            }
+        }
+        &--85 {
+            &:after {
+                width: 85%;
+            }
+        }
+        &--70 {
+            &:after {
+                width: 70%;
+            }
+        }
+        &--50 {
+            &:after {
+                width: 50%;
+            }
+        }
+    }
+    &__title {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-size: 14px;
+        color: rgba(19, 19, 19, 0.75);
+    }
+}

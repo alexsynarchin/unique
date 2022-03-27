@@ -1,0 +1,36 @@
+.mp-process {
+    &__heading {
+        margin-bottom: 70px;
+    }
+}
+.mp-process-item {
+
+    padding: 70px 30px 30px 30px;
+    position: relative;
+    background: #F0F1F6;
+    border-radius: 20px;
+    &__title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__img {
+        margin-bottom: 25px;
+    }
+    &__num {
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        width: 70px;
+        height: 70px;
+        background-color: $blue-color;
+        color: #fff;
+        font-size: 34px;
+        font-weight: 700;
+        position: absolute;
+        top:-35px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

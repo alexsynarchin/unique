@@ -5,5 +5,6 @@
     <div class="container">
         <check-unique></check-unique>
     </div>
-
+    @include('site.home._partials.why')
+    @include('site.home._partials.mp-process')
 @endsection

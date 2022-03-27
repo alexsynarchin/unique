@@ -2,6 +2,10 @@
    padding: 50px 15px;
     background: #F0F1F6;
     border-radius: 30px;
+    margin-bottom: 80px;
+    @include media-breakpoint-up(xl) {
+        margin-bottom: 100px;
+    }
     @include media-breakpoint-down(lg) {
         margin-right: -10px;
         margin-left: -10px;

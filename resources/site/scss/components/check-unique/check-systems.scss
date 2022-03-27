@@ -1,13 +1,30 @@
 .check-systems {
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 35px;
+    @include media-breakpoint-up(xl) {
+        margin-bottom: 45px;
+    }
+    @include media-breakpoint-up(md) {
+        display: flex;
+        flex-wrap: wrap;
+    }
     &__item {
         padding-left: 10px;
         padding-right: 10px;
-        @include media-breakpoint-up(xxl) {
+        margin-bottom: 40px;
+        @include media-breakpoint-up(md) {
+            width: 33.3333%;
+            flex: 1 33.3333%;
+            max-width: 33.3333%;
+        }
+        @include media-breakpoint-up(lg) {
             width: 25%;
             flex: 1 25%;
             max-width: 25%;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 20%;
+            flex: 1 20%;
+            max-width: 20%;
         }
     }
 }
@@ -15,13 +32,85 @@
     height: 100%;
     background: #FFFFFF;
     border-radius: 10px;
+    padding: 8px 8px 0 8px;
+    text-align: center;
+    @include media-breakpoint-down(md) {
+        padding-bottom: 15px;
+    }
+    &__checkbox {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__title {
+        font-size: 17px;
+        margin-bottom: 3px;
+    }
+    &__link {
+        font-weight: 400;
+        font-size: 14px;
+        color: $blue-color;
+        text-decoration: none;
+        &:hover, &:focus {
+            text-decoration: none;
+            color: $blue-color;
+        }
+    }
+    &__logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        @include media-breakpoint-down(md) {
+            padding-right: 25px;
+        }
+        @include media-breakpoint-up(md) {
+            margin-top: 33px;
+            margin-bottom: 40px;
+        }
+    }
+    &__price {
+        background-color: $orange-color;
+        display: block;
+        padding: 10px;
+        line-height: 1;
+        text-align: center;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+        @include media-breakpoint-down(md) {
+            margin-top: 12px;
+        }
+        @include media-breakpoint-up(md) {
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            margin-bottom: -20px;
+        }
+        &--desc {
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
+        }
+        &--mobile {
+            @include media-breakpoint-up(md) {
+                display: none;
+            }
+        }
+    }
+    &__content {
+        @include media-breakpoint-down(md) {
+            display: flex;
+            align-items: center;
+
+        }
+    }
 }
 .check-system-item-checkbox {
     height: 16px;
     $form-checkbox: &;
     position: relative;
     font-weight: 400;
-    padding-left: 36px;
+    width: 16px;
+    overflow: hidden;
 
     &__input {
         position: absolute;
