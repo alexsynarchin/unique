@@ -1,0 +1,26 @@
+.mp-banner {
+    background-color: $blue-color;
+    display: flex;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
+    border-radius: 20px;
+    align-items: center;
+    margin-bottom: 100px;
+    @include media-breakpoint-up(lg) {
+        padding: 45px 0 45px 80px;
+    }
+    &__title {
+        color: #fff;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-weight: 700;
+        font-size: 22px;
+    }
+    &__content {
+        margin-right: 60px;
+    }
+}

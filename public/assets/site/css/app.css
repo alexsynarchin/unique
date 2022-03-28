@@ -11434,6 +11434,13 @@ img {
   justify-content: center;
   align-items: center;
 }
+.button--white {
+  color: #fff;
+  border-color: #fff;
+}
+.button--white:hover, .button--white:focus {
+  color: #fff;
+}
 .button__icon {
   margin-left: 6px;
   width: 10px;
@@ -12294,6 +12301,35 @@ img {
   top: -35px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.mp-banner {
+  background-color: #366AF3;
+  display: flex;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  border-radius: 20px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+@media (min-width: 1024px) {
+  .mp-banner {
+    padding: 45px 0 45px 80px;
+  }
+}
+.mp-banner__title {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.mp-banner__text {
+  font-weight: 700;
+  font-size: 22px;
+}
+.mp-banner__content {
+  margin-right: 60px;
 }
 
 .check-unique-bl {
