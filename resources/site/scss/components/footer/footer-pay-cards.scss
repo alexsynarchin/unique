@@ -1,0 +1,11 @@
+.footer-pay-cards {
+    margin-top: 25px;
+    display: flex;
+    @include media-breakpoint-down(lg) {
+        margin-bottom: 30px;
+    }
+    &__img {
+        display: inline-block;
+        margin-right: 15px;
+    }
+}

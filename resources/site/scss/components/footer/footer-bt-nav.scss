@@ -1,0 +1,29 @@
+.footer-bt-nav {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    @include media-breakpoint-down(lg) {
+        margin-top: 15px;
+    }
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 15px;
+        }
+    }
+    &__link {
+        color: #F0F1F6;
+        font-weight: 500;
+        font-size: 17px;
+        @include media-breakpoint-up(lg) {
+            text-decoration: none;
+        }
+        &:hover, &:focus {
+            text-decoration: none;
+            color: #F0F1F6;
+        }
+    }
+}

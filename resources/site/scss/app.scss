@@ -32,6 +32,10 @@ $container-max-widths: (
 @import "components/header/page-header";
 @import "components/header/header-panel";
 @import "components/header/header-panel-banner";
+//footer
+@import "components/footer/page-footer";
+@import "components/footer/footer-bt-nav";
+@import "components/footer/footer-pay-cards";
 //blocks
 @import "components/blocks/block-title";
 //Main page

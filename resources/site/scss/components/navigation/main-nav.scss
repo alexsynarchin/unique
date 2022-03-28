@@ -7,6 +7,10 @@
         column-count:2;
         column-gap: 30px;
     }
+    &--footer {
+        column-count:2;
+        column-gap: 30px;
+    }
     &__item {
         margin-bottom: 17px;
     }
@@ -20,6 +24,11 @@
         }
         &:hover {
             color: $blue-color;
+        }
+        &--footer {
+            @include media-breakpoint-down(lg) {
+                font-size: 14px;
+            }
         }
     }
 }
