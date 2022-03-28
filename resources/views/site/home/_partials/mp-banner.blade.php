@@ -1,5 +1,8 @@
 <div class="container">
-   <section class="mp-banner" style="background-image: url('/assets/site/images/mp/mp-banner-img.png')">
+   <section class="mp-banner">
+       <figure class="mp-banner__mobile-img">
+           <img src="/assets/site/images/mp/mp-banner-mobile.png">
+       </figure>
        <div class="mp-banner__content">
            <h3 class="mp-banner__title">
                Получить консультацию

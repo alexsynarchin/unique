@@ -1,24 +1,48 @@
 .mp-banner {
     background-color: $blue-color;
-    display: flex;
+
     color: #fff;
     background-repeat: no-repeat;
-    background-position: top right;
+
     background-size: contain;
     border-radius: 20px;
-    align-items: center;
+
     margin-bottom: 100px;
+
+    background-position: center center;
+    @include media-breakpoint-down(lg) {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 35px;
+    }
     @include media-breakpoint-up(lg) {
         padding: 45px 0 45px 80px;
+        display: flex;
+        background-position: top right;
+        align-items: center;
+        background-image: url('../images/mp/mp-banner-img.png');
+    }
+    &__mobile-img {
+        text-align: center;
+
+        @include media-breakpoint-up(lg) {
+            display: none;
+        }
     }
     &__title {
         color: #fff;
-        font-size: 36px;
+        font-size: 26px;
         margin-bottom: 10px;
+        @include media-breakpoint-up(lg) {
+            font-size: 36px;
+        }
     }
     &__text {
         font-weight: 700;
-        font-size: 22px;
+        font-size: 18px;
+        @include media-breakpoint-up(lg) {
+            font-size: 22px;
+        }
     }
     &__content {
         margin-right: 60px;

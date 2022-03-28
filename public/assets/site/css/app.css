@@ -12306,28 +12306,55 @@ img {
 
 .mp-banner {
   background-color: #366AF3;
-  display: flex;
   color: #fff;
   background-repeat: no-repeat;
-  background-position: top right;
   background-size: contain;
   border-radius: 20px;
-  align-items: center;
   margin-bottom: 100px;
+  background-position: center center;
+}
+@media (max-width: 1023.98px) {
+  .mp-banner {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 35px;
+  }
 }
 @media (min-width: 1024px) {
   .mp-banner {
     padding: 45px 0 45px 80px;
+    display: flex;
+    background-position: top right;
+    align-items: center;
+    background-image: url("../images/mp/mp-banner-img.png");
+  }
+}
+.mp-banner__mobile-img {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .mp-banner__mobile-img {
+    display: none;
   }
 }
 .mp-banner__title {
   color: #fff;
-  font-size: 36px;
+  font-size: 26px;
   margin-bottom: 10px;
+}
+@media (min-width: 1024px) {
+  .mp-banner__title {
+    font-size: 36px;
+  }
 }
 .mp-banner__text {
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
+}
+@media (min-width: 1024px) {
+  .mp-banner__text {
+    font-size: 22px;
+  }
 }
 .mp-banner__content {
   margin-right: 60px;
