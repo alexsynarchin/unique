@@ -11793,6 +11793,7 @@ img {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
+  margin-bottom: 0;
 }
 @media (max-width: 1023.98px) {
   .footer-bt-nav {
