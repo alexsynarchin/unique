@@ -1,0 +1,63 @@
+.mp-about {
+
+    background-color: #F0F1F6;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 80px;
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 65px 70px;
+        margin-bottom: 100px;
+    }
+    &__title {
+        margin-bottom: 15px;
+    }
+    &__text {
+        font-size: 17px;
+        margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 35px;
+        }
+    }
+    &__content {
+        @include media-breakpoint-up(lg) {
+            max-width: 50%;
+            flex: 1 50%;
+            width: 50%;
+        }
+    }
+    &__gallery {
+
+        display: flex;
+        flex-wrap: wrap;
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 35px;
+        }
+        @include media-breakpoint-up(lg){
+            max-width: 50%;
+            flex: 1 50%;
+            width: 50%;
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+        &-item {
+            max-width: 50%;
+            flex: 1 50%;
+            width: 50%;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+    }
+    &__btns {
+        @include media-breakpoint-down(lg) {
+            text-align: center;
+        }
+    }
+    &__btn-first {
+        @include media-breakpoint-down(md) {
+            margin-bottom: 15px;
+        }
+    }
+}

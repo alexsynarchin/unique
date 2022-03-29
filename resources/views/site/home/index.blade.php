@@ -8,4 +8,5 @@
     @include('site.home._partials.why')
     @include('site.home._partials.mp-process')
     @include('site.home._partials.mp-banner')
+    @include('site.home._partials.mp-about')
 @endsection

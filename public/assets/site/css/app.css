@@ -11447,6 +11447,16 @@ img {
   height: 10px;
 }
 
+.btn-link {
+  color: #366AF3;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+}
+.btn-link:hover, .btn-link:focus {
+  color: #366AF3;
+}
+
 .upload-button {
   display: flex;
   align-items: center;
@@ -12358,6 +12368,110 @@ img {
 }
 .mp-banner__content {
   margin-right: 60px;
+}
+
+.mp-about {
+  background-color: #F0F1F6;
+  border-radius: 30px;
+  padding: 15px;
+  margin-bottom: 80px;
+}
+@media (min-width: 1024px) {
+  .mp-about {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 65px 70px;
+    margin-bottom: 100px;
+  }
+}
+.mp-about__title {
+  margin-bottom: 15px;
+}
+.mp-about__text {
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+@media (min-width: 1024px) {
+  .mp-about__text {
+    margin-bottom: 35px;
+  }
+}
+@media (min-width: 1024px) {
+  .mp-about__content {
+    max-width: 50%;
+    flex: 1 50%;
+    width: 50%;
+  }
+}
+.mp-about__gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 1023.98px) {
+  .mp-about__gallery {
+    margin-bottom: 35px;
+  }
+}
+@media (min-width: 1024px) {
+  .mp-about__gallery {
+    max-width: 50%;
+    flex: 1 50%;
+    width: 50%;
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+.mp-about__gallery-item {
+  max-width: 50%;
+  flex: 1 50%;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+@media (max-width: 1023.98px) {
+  .mp-about__btns {
+    text-align: center;
+  }
+}
+@media (max-width: 767.98px) {
+  .mp-about__btn-first {
+    margin-bottom: 15px;
+  }
+}
+
+.mp-about-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .mp-about-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.mp-about-list__item {
+  align-items: flex-start;
+  display: flex;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .mp-about-list__item {
+    width: 50%;
+    flex: 1 50%;
+    max-width: 50%;
+  }
+}
+.mp-about-list__icon {
+  width: 35px;
+  min-width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+.mp-about-list__text {
+  font-weight: 700;
+  font-size: 17px;
 }
 
 .check-unique-bl {

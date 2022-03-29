@@ -1,0 +1,31 @@
+.mp-about-list {
+
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    @include media-breakpoint-up(md) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__item {
+
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 20px;
+        @include media-breakpoint-up(md) {
+            width: 50%;
+            flex: 1 50%;
+            max-width: 50%;
+        }
+    }
+    &__icon {
+        width: 35px;
+        min-width: 35px;
+        height: 35px;
+        margin-right: 10px;
+    }
+    &__text {
+        font-weight: 700;
+        font-size: 17px;
+    }
+}
