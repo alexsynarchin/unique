@@ -1,5 +1,5 @@
 <div class="container">
-    <ul class="mp-advantages row">
+    <ul class="mp-advantages">
         <li class="mp-advantages__item col-md-3">
             <section class="mp-advantages__icon-wrap">
                 <figure class="mp-advantages__icon">

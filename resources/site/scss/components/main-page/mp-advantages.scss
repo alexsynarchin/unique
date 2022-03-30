@@ -2,6 +2,9 @@
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 80px;
+    .owl-stage {
+        padding-left: 0 !important;
+    }
     &__icon {
         border-radius: 100%;
         width: 64px;

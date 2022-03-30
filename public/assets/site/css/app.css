@@ -12059,6 +12059,9 @@ img {
   padding-left: 0;
   margin-bottom: 80px;
 }
+.mp-advantages .owl-stage {
+  padding-left: 0 !important;
+}
 .mp-advantages__icon {
   border-radius: 100%;
   width: 64px;
@@ -12280,7 +12283,20 @@ img {
   margin-bottom: 100px;
 }
 .mp-process__heading {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
+}
+@media (min-width: 1024px) {
+  .mp-process__heading {
+    margin-bottom: 70px;
+  }
+}
+@media (max-width: 1023.98px) {
+  .mp-process__item {
+    padding-top: 35px;
+  }
+}
+.mp-process__list .owl-stage {
+  padding-left: 0px !important;
 }
 
 .mp-process-item {

@@ -1,7 +1,21 @@
 .mp-process {
     margin-bottom: 100px;
     &__heading {
-        margin-bottom: 70px;
+        margin-bottom: 40px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 70px;
+        }
+    }
+    &__item {
+        @include media-breakpoint-down(lg) {
+            padding-top: 35px;
+        }
+    }
+    &__list {
+        .owl-stage {
+            padding-left: 0px !important;
+        }
+
     }
 }
 .mp-process-item {

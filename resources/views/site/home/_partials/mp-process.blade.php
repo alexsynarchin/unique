@@ -4,8 +4,8 @@
             Процесс проверки уникальности текста
             <span class="block-title__cursor"></span>
         </h3>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="mp-process__list">
+            <div class="mp-process__item col-lg-4">
                 <section class="mp-process-item">
                     <span class="mp-process-item__num">
                         01
@@ -23,7 +23,7 @@
                     </p>
                 </section>
             </div>
-            <div class="col-md-4">
+            <div class="mp-process__item col-lg-4">
                 <section class="mp-process-item">
                     <span class="mp-process-item__num">
                         02
@@ -41,7 +41,7 @@
                     </p>
                 </section>
             </div>
-            <div class="col-md-4">
+            <div class="mp-process__item col-lg-4">
                 <section class="mp-process-item">
                     <span class="mp-process-item__num">
                         03

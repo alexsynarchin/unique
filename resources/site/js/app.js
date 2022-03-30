@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('owl.carousel/dist/owl.carousel');
 import Vue from 'vue';
 Vue.component('HeaderPanelBtn', require('./components/header-panel/HeaderPanelBtn').default);
 Vue.component('HeaderPanel', require('./components/header-panel/HeaderPanel').default)
