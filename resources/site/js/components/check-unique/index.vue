@@ -8,7 +8,9 @@
         </p>
         <section class="check-unique">
             <section class="check-unique__textarea-wrap">
-                <textarea class="check-unique__textarea form-control" placeholder="Вставьте ваш текст"></textarea>
+                <textarea class="check-unique__textarea form-control"
+                          v-model="text"
+                          placeholder="Вставьте ваш текст"></textarea>
             </section>
             <div class="check-unique__actions">
 
@@ -18,7 +20,7 @@
                             Размер:
                         </label>
                         <span class="check-unique-indicator__value">
-                            0
+                            {{textParams.size}}
                         </span>
                     </div>
                     <div class="check-unique-indicator">
@@ -26,7 +28,7 @@
                             Cтраниц:
                         </label>
                         <span class="check-unique-indicator__value">
-                            0
+                            {{textParams.pages}}
                         </span>
                     </div>
                     <div class="check-unique-indicator">
@@ -34,7 +36,7 @@
                             Предложений:
                         </label>
                         <span class="check-unique-indicator__value">
-                            0
+                            {{ textParams.sentenceCount }}
                         </span>
                     </div>
                     <div class="check-unique-indicator">
@@ -42,7 +44,7 @@
                             Слов:
                         </label>
                         <span class="check-unique-indicator__value">
-                            0
+                            {{textParams.wordsCount}}
                         </span>
                     </div>
                     <div class="check-unique-indicator">
@@ -50,18 +52,28 @@
                             Символов:
                         </label>
                         <span class="check-unique-indicator__value">
-                            0
+                            {{textParams.symbolsCount}}
                         </span>
                     </div>
                 </div>
-                <button class="btn button upload-button">
-                    <svg class="upload-button__icon" viewBox="0 0 20 22">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
-                    </svg>
-                    <span class="upload-button__text">
+                <div class="upload-button__wrap">
+
+                    <label for="file" class="btn button upload-button">
+                        <input type="file" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
+                        <svg class="upload-button__icon" viewBox="0 0 20 22">
+                            <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
+                        </svg>
+                        <span class="upload-button__text">
                     Загрузить документ
                     </span>
-                </button>
+                    </label>
+                    <div class="upload-button__actions" v-if="fileName">
+                        <span class="upload-button__file-name">{{fileName}}</span>
+                        <button class="btn-link btn upload-button__delete" @click="handleFileDelete">Удалить</button>
+                    </div>
+
+                </div>
+
             </div>
 
         </section>
@@ -95,6 +107,47 @@
     export default {
         components: {
             SystemsList,
-        }
+        },
+        data() {
+            return {
+                index: 0,
+                text: "",
+                file:"",
+                fileName: "",
+                textParams: {
+                    symbolsCount: 0,
+                    wordsCount:0,
+                    sentenceCount:0,
+                    size:0,
+                    pages:0,
+
+                }
+            }
+        },
+        watch: {
+            text: function(val, oldVal) {
+               this.checkUniqueText(val);
+            }
+        },
+        methods: {
+            handleFileDelete() {
+                this.file = null;
+                this.fileName= '';
+            },
+            handleFileUpload() {
+                this.file = this.$refs.file.files[0];
+                this.fileName = this.file.name;
+                console.log(this.file.name);
+            },
+            checkUniqueText(text) {
+                if(text) {
+                    axios.post('/api/check-unique', {text: this.text})
+                        .then((response) => {
+                          this.textParams = response.data;
+                        })
+                }
+
+            },
+        },
     }
 </script>

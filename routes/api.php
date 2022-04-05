@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+use App\Http\Controllers\Site\Api\CheckUniqueController;
+Route::post('/check-unique', [CheckUniqueController::class, 'check'])->name('check-unique');

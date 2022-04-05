@@ -11460,11 +11460,33 @@ img {
 .upload-button {
   display: flex;
   align-items: center;
+  margin-right: 25px;
 }
 .upload-button__icon {
   width: 20px;
   height: 22px;
   margin-right: 10px;
+}
+.upload-button__input {
+  display: none;
+}
+.upload-button__wrap {
+  align-items: center;
+  display: flex;
+}
+.upload-button__file-name {
+  line-height: 1;
+  display: block;
+  margin-bottom: 1px;
+  font-size: 17px;
+  font-weight: 500;
+}
+.upload-button__delete {
+  padding: 0;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 17px;
+  color: #ABAFC3;
 }
 
 .logo-title {
