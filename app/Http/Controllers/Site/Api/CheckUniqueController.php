@@ -31,22 +31,21 @@ class CheckUniqueController extends Controller
 
         $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
 // read source
+
         $sections = $phpWord->getSections();
         $text = '';
-        foreach ($sections as $key => $value) {
-            $sectionElement = $value->getElements();
-            foreach ($sectionElement as $elementKey => $elementValue) {
-                if ($elementValue instanceof \PhpOffice\PhpWord\Element\TextRun) {
-                    $secondSectionElement = $elementValue->getElements();
-                    foreach ($secondSectionElement as $secondSectionElementKey => $secondSectionElementValue) {
-                        if ($secondSectionElementValue instanceof \PhpOffice\PhpWord\Element\Text) {
-                            $text .= $secondSectionElementValue->getText();
-
-                        }
-                    }
+        foreach ($sections as $s) {
+            $els = $s->getElements();
+            foreach ($els as $e) {
+                if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
+                    continue;
                 }
+                $text .= $e->getText();
+                $styles = $e->getParagraphStyle(); //do somethign witth the style
+                $styles = $e->getFontStyle(); //do somethign witth the style
             }
         }
+
         $symbols_count = strip_tags($text);
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
