@@ -51,12 +51,16 @@ class CheckUniqueController extends Controller
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
         $words_count = str_word_count($text);
+        $pages = (int) ($words_count/200);
+        if ($pages === 0) {
+            $pages = 1;
+        }
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
             'sentenceCount' => 0,
             'size' => $size,
-            'pages' => $words_count%600,
+            'pages' => $pages,
         ];
         return $textParams;
     }
