@@ -12513,6 +12513,46 @@ img {
   font-size: 17px;
 }
 
+.mp-reviews__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+@media (min-width: 1024px) {
+  .mp-reviews__heading {
+    margin-bottom: 56px;
+  }
+}
+.mp-reviews__title {
+  margin-bottom: 0;
+}
+.mp-reviews__controls {
+  background-color: #366AF3;
+  display: flex;
+  border-radius: 500px;
+  padding: 8px;
+}
+
+.mp-reviews-control {
+  width: 41px;
+  height: 41px;
+  border-radius: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.mp-reviews-control:first-child {
+  margin-right: 15px;
+}
+.mp-reviews-control__icon {
+  width: 13px;
+  height: 13px;
+}
+
 .check-unique-bl {
   padding: 50px 15px;
   background: #F0F1F6;

@@ -1,3 +1,21 @@
 .mp-reviews {
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 56px;
+        }
+    }
+    &__title {
+        margin-bottom: 0;
 
+    }
+    &__controls {
+       background-color: $blue-color;
+        display: flex;
+        border-radius: 500px;
+        padding: 8px;
+    }
 }
