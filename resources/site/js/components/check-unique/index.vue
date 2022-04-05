@@ -133,6 +133,14 @@
             handleFileDelete() {
                 this.file = null;
                 this.fileName= '';
+                this.textParams = {
+                    symbolsCount: 0,
+                    wordsCount:0,
+                    sentenceCount:0,
+                    size:0,
+                    pages:0,
+
+                };
             },
             handleFileUpload() {
                 this.file = this.$refs.file.files[0];
