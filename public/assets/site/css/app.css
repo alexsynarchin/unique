@@ -11464,6 +11464,7 @@ img {
 }
 .upload-button__icon {
   width: 20px;
+  min-width: 20px;
   height: 22px;
   margin-right: 10px;
 }
