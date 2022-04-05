@@ -11593,6 +11593,7 @@ img {
   margin-bottom: 80px;
 }
 .page-header:before {
+  top: 0;
   z-index: 4;
   content: "";
   position: absolute;

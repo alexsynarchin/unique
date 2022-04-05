@@ -4,6 +4,7 @@
     margin-bottom: 80px;
 
     &:before {
+        top:0;
         z-index: 4;
         content: "";
         position: absolute;
