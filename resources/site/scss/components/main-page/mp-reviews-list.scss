@@ -1,3 +1,37 @@
 .mp-reviews-list {
-
+    margin-bottom: 70px;
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 100px;
+    }
+    &__item {
+        border: 3px solid #E3E5ED;
+        box-sizing: border-box;
+        border-radius: 30px;
+        padding: 35px;
+    }
+    &__title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__text {
+        font-size: 17px;
+        margin-bottom: 45px;
+    }
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__name {
+        border-radius: 500px;
+        font-size: 17px;
+        font-weight: 500;
+        padding: 8px;
+        color: #fff;
+        background-color:  #FF9902;
+    }
+    &__date {
+        font-size: 17px;
+        font-weight: bold;
+    }
 }

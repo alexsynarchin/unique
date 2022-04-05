@@ -12534,6 +12534,46 @@ img {
   padding: 8px;
 }
 
+.mp-reviews-list {
+  margin-bottom: 70px;
+}
+@media (min-width: 1024px) {
+  .mp-reviews-list {
+    margin-bottom: 100px;
+  }
+}
+.mp-reviews-list__item {
+  border: 3px solid #E3E5ED;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 35px;
+}
+.mp-reviews-list__title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.mp-reviews-list__text {
+  font-size: 17px;
+  margin-bottom: 45px;
+}
+.mp-reviews-list__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mp-reviews-list__name {
+  border-radius: 500px;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 8px;
+  color: #fff;
+  background-color: #FF9902;
+}
+.mp-reviews-list__date {
+  font-size: 17px;
+  font-weight: bold;
+}
+
 .mp-reviews-control {
   width: 41px;
   height: 41px;
