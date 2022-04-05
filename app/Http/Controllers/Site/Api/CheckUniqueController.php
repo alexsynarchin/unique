@@ -47,6 +47,9 @@ class CheckUniqueController extends Controller
                 }
             }
         }
+        if($text="") {
+            $text = file_get_contents($file);
+        }
         $symbols_count = strip_tags($text);
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
