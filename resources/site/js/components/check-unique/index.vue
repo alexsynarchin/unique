@@ -137,7 +137,16 @@
             handleFileUpload() {
                 this.file = this.$refs.file.files[0];
                 this.fileName = this.file.name;
-                console.log(this.file.name);
+                const formData = new FormData();
+                formData.append('file', this.file);
+
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                axios.post('/api/check-unique-file', formData, config)
+                    .then((response) => {
+                        this.textParams = response.data;
+                    })
             },
             checkUniqueText(text) {
                 if(text) {

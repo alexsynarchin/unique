@@ -22,4 +22,42 @@ class CheckUniqueController extends Controller
         ];
         return $textParams;
     }
+
+    public function checkFile(Request $request)
+    {
+        $file = $request->file('file');
+        $size = $file->getSize();
+        $source = $file;
+// create your reader object
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load($file);
+// read source
+        $sections = $phpWord->getSections();
+        $text = '';
+        foreach ($sections as $key => $value) {
+            $sectionElement = $value->getElements();
+            foreach ($sectionElement as $elementKey => $elementValue) {
+                if ($elementValue instanceof \PhpOffice\PhpWord\Element\TextRun) {
+                    $secondSectionElement = $elementValue->getElements();
+                    foreach ($secondSectionElement as $secondSectionElementKey => $secondSectionElementValue) {
+                        if ($secondSectionElementValue instanceof \PhpOffice\PhpWord\Element\Text) {
+                            $text .= $secondSectionElementValue->getText();
+
+                        }
+                    }
+                }
+            }
+        }
+        $symbols_count = strip_tags($text);
+        $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
+        $symbols_count = iconv_strlen($symbols_count);
+        $words_count = str_word_count($text);
+        $textParams = [
+            'symbolsCount' => $symbols_count,
+            'wordsCount' => $words_count,
+            'sentenceCount' => 0,
+            'size' => $size,
+            'pages' => $words_count%600,
+        ];
+        return $textParams;
+    }
 }
