@@ -28,8 +28,8 @@ class CheckUniqueController extends Controller
         $file = $request->file('file');
         $size = $file->getSize();
         $source = $file;
-// create your reader object
-        $phpWord = \PhpOffice\PhpWord\IOFactory::load($file);
+
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
 // read source
         $sections = $phpWord->getSections();
         $text = '';
@@ -46,9 +46,6 @@ class CheckUniqueController extends Controller
                     }
                 }
             }
-        }
-        if($text="") {
-            $text = file_get_contents($file);
         }
         $symbols_count = strip_tags($text);
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
