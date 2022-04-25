@@ -1,6 +1,6 @@
 <section class="mp-faq">
     <div class="container">
-        <h3 class="block-title check-unique-bl__title">
+        <h3 class="mp-faq__title block-title check-unique-bl__title">
             Часто задаваемые вопросы
         </h3>
         <div class="row">

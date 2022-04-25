@@ -13037,6 +13037,9 @@ img {
   border-bottom: 1px solid #CDD3E4;
 }
 
+.faq-item__title {
+  margin-bottom: 50px;
+}
 .faq-item__question {
   display: flex;
   align-items: center;
