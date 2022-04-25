@@ -1,5 +1,8 @@
 .mp-faq {
     margin-bottom: 160px;
+    &__title {
+        margin-bottom: 50px;
+    }
     &__img {
         position: relative;
         background: #EDEFF7;
