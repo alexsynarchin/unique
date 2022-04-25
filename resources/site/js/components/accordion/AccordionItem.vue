@@ -32,7 +32,13 @@ export default {
      methods: {
         handleAnswer() {
           this.AnswerVisible = !this.AnswerVisible;
+          this.$emit('handleClick')
         },
+         closeItem(key) {
+            if(key !== this.$vnode.key) {
+              this.AnswerVisible = false;
+            }
+         },
      }
 }
 </script>

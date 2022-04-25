@@ -13005,6 +13005,9 @@ img {
 .mp-faq {
   margin-bottom: 160px;
 }
+.mp-faq__title {
+  margin-bottom: 50px;
+}
 .mp-faq__img {
   position: relative;
   background: #EDEFF7;
@@ -13037,9 +13040,6 @@ img {
   border-bottom: 1px solid #CDD3E4;
 }
 
-.faq-item__title {
-  margin-bottom: 50px;
-}
 .faq-item__question {
   cursor: pointer;
   display: flex;
