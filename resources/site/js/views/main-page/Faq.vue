@@ -1,27 +1,11 @@
 <template>
-    <section class="faq-list">
-        <accordion-item ref="AccordionItem" v-for="(item, index) in faqList" :key="index" @handleClick="handleClick(index)">
-            <template v-slot:question>
-                {{item.question}}
-            </template>
-            <template v-slot:answer>
-                {{item.answer}}
-            </template>
-        </accordion-item>
-    </section>
+  <accordion-list :faq-list="faqList"></accordion-list>
 </template>
 <script>
-    import AccordionItem from "../../components/accordion/AccordionItem";
+    import AccordionList from "../../components/accordion/index";
     export default {
         components: {
-            AccordionItem,
-        },
-        methods: {
-            handleClick(index) {
-                this.$refs.AccordionItem.forEach(function (item, i) {
-                    item.closeItem(index)
-                });
-            },
+            AccordionList,
         },
         data() {
             return {
