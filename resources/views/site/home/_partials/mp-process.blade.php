@@ -1,6 +1,6 @@
 <section class="mp-process">
     <div class="container">
-        <h3 class="block-title mp-process__heading">
+        <h3 class="block-title mp-process__heading check-unique-bl__title">
             Процесс проверки уникальности текста
             <span class="block-title__cursor"></span>
         </h3>

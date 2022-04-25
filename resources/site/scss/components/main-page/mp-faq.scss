@@ -1,0 +1,10 @@
+.mp-faq {
+    &__img {
+        background: #EDEFF7;
+        border-radius: 15px;
+        text-align: right;
+        @include media-breakpoint-up(xl) {
+            margin-left: 15px;
+        }
+    }
+}

@@ -13,7 +13,7 @@
         </div>
 
         <div class="mp-why__content">
-            <h3 class="block-title">
+            <h3 class="block-title check-unique-bl__title">
                 Для чего нужна проверка уникальности текста
                 <span class="block-title__cursor"></span>
             </h3>

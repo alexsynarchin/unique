@@ -45,7 +45,8 @@ class CheckUniqueController extends Controller
                 $styles = $e->getFontStyle(); //do somethign witth the style
             }
         }
-
+        echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
+       // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);

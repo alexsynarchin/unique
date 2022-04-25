@@ -37,6 +37,14 @@ $container-max-widths: (
 @import "components/footer/footer-pay-cards";
 //blocks
 @import "components/blocks/block-title";
+
+//Check-unique
+@import "components/check-unique/check-unique-bl";
+@import "components/check-unique/check-unique";
+@import "components/check-unique/check-unique-indicator";
+@import "components/check-unique/check-unique-descr";
+@import "components/check-unique/check-systems";
+
 //Main page
 @import "components/main-page/mp-utp";
 @import "components/main-page/mp-advantages";
@@ -49,10 +57,7 @@ $container-max-widths: (
 @import "components/main-page/mp-reviews";
 @import "components/main-page/mp-reviews-list";
 @import "components/main-page/mp-reviews-control";
+@import "components/main-page/mp-faq";
+@import "components/faq";
 
-//Check-unique
-@import "components/check-unique/check-unique-bl";
-@import "components/check-unique/check-unique";
-@import "components/check-unique/check-unique-indicator";
-@import "components/check-unique/check-unique-descr";
-@import "components/check-unique/check-systems";
+

@@ -14,6 +14,7 @@
     @include('site.home._partials.mp-banner')
     @include('site.home._partials.mp-about')
     @include('site.home._partials.reviews')
+    @include('site.home._partials.faq')
 @endsection
 @section('scripts')
     <script src="{{asset('assets/site/js/main-page.js?ver=33')}}"></script>

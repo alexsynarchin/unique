@@ -1,7 +1,7 @@
 <section class="mp-reviews">
     <div class="container">
         <div class="mp-reviews__heading">
-            <h3 class="mp-reviews__title block-title">
+            <h3 class="mp-reviews__title block-title check-unique-bl__title">
                 Что говорят наши клиенты
             </h3>
             <div class="mp-reviews__controls">
