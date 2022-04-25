@@ -13041,6 +13041,7 @@ img {
   margin-bottom: 50px;
 }
 .faq-item__question {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13057,7 +13058,6 @@ img {
 }
 .faq-item__question-icon {
   margin-bottom: 0;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13077,4 +13077,9 @@ img {
   padding-bottom: 0;
   font-size: 17px;
   color: #262626;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+.faq-item__answer--open {
+  max-height: 10000px;
+  transition: max-height 1s ease-in-out;
 }

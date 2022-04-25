@@ -6,6 +6,7 @@
         margin-bottom: 50px;
     }
     &__question {
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -22,7 +23,7 @@
         }
         &-icon {
             margin-bottom: 0;
-            cursor: pointer;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -43,5 +44,10 @@
         padding-bottom: 0;
         font-size: 17px;
         color: #262626;
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        &--open {
+            max-height: 10000px;
+            transition: max-height 1s ease-in-out;
+        }
     }
 }
