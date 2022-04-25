@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="faq-list">
         <accordion-item v-for="(item, index) in faqList" :key="index">
             <template v-slot:question>
                 {{item.question}}

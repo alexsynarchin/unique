@@ -11,10 +11,10 @@
                 <figure class="mp-faq__img">
                     <img src="/assets/site/images/mp/mp-faq.png">
                     <div class="mp-faq__smile-1">
-                        <img src="/assets/site/images/mp/mp-faq-smile-1">
+                        <img src="/assets/site/images/mp/mp-faq-smile-1.png">
                     </div>
                     <div class="mp-faq__smile-2">
-                        <img src="/assets/site/images/mp/mp-faq-smile-2">
+                        <img src="/assets/site/images/mp/mp-faq-smile-2.png">
                     </div>
                 </figure>
             </div>

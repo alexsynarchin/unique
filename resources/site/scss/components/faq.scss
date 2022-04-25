@@ -1,3 +1,6 @@
+.faq-list {
+    border-bottom: 1px solid #CDD3E4;
+}
 .faq-item {
     &__question {
         display: flex;
@@ -6,7 +9,7 @@
         padding-top: 25px;
         padding-bottom: 25px;
         border-top: 1px solid #CDD3E4;
-        border-bottom: 1px solid #CDD3E4;
+
         &-text {
             font-weight: 700;
             font-size: 20px;
@@ -31,8 +34,10 @@
         }
     }
     &__answer {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        overflow: hidden;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
         font-size: 17px;
         color: #262626;
     }
