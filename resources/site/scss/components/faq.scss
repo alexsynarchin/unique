@@ -46,6 +46,8 @@
         color: #262626;
         transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
         &--open {
+            padding-top: 20px;
+            padding-bottom: 20px;
             max-height: 10000px;
             transition: max-height 1s ease-in-out;
         }
