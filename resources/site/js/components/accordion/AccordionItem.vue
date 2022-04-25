@@ -16,7 +16,9 @@
             'faq-item__answer--open':AnswerVisible
             }"
         >
-            <slot name="answer"></slot>
+            <div class="faq-item__answer-inner">
+                <slot name="answer"></slot>
+            </div>
         </div>
     </section>
 </template>

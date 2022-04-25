@@ -13079,9 +13079,11 @@ img {
   color: #262626;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 }
-.faq-item__answer--open {
+.faq-item__answer-inner {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+.faq-item__answer--open {
   max-height: 10000px;
   transition: max-height 1s ease-in-out;
 }
