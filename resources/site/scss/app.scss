@@ -38,6 +38,16 @@ $container-max-widths: (
 //blocks
 @import "components/blocks/block-title";
 
+//modals
+@import "components/modals/unique-modal";
+@import "components/modals/consultation-modal";
+
+//Form
+@import "components/form/unique-input";
+@import "components/form/u-form-group";
+@import "components/form/u-input-group";
+
+
 //Check-unique
 @import "components/check-unique/check-unique-bl";
 @import "components/check-unique/check-unique";

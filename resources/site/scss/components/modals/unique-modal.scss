@@ -1,0 +1,30 @@
+.unique-modal {
+    &__title {
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+    &__descr {
+        color: #131313;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    &__dialog {
+        max-width: 952px;
+    }
+    &__content {
+        border-radius: 30px;
+        position: relative;
+        border: none;
+        padding: 60px 70px;
+    }
+ &__close {
+     position: absolute;
+     padding: 0;
+     background: none;
+     border: 0;
+     border-radius:0;
+     svg {
+         width: 38px;
+     }
+ }
+}

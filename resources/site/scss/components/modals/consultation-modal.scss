@@ -1,0 +1,21 @@
+.consultation-modal {
+    &__close {
+        right:21px;
+        top:21px;
+    }
+    &__content {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 580px;
+
+        background-image: url("../images/unique-modal-cons-bg.png");
+        background-repeat: no-repeat;
+        background-position: right center;
+    }
+    &__form {
+        margin-top: 35px;
+        @include media-breakpoint-up(xl) {
+            width: 60%;
+        }
+    }
+}

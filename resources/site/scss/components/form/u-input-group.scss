@@ -1,0 +1,38 @@
+.u-input-group {
+    border-radius: 5px;
+    background-color: #F0F1F6;
+    display: flex;
+    &__input {
+        flex: 1;
+        padding: 11px 14px;
+        border: 0;
+        background-color: transparent;
+        display: block;
+        font-size: 17px;
+        color: #ABAFC3;
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            font-size: 17px;
+            color: #ABAFC3;
+        }
+    }
+    &__icon {
+        width: 49px;
+        height: 49px;
+        min-width: 49px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: $blue-color;
+    }
+    &__svg {
+        &--user {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+}
