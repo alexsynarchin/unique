@@ -11955,10 +11955,10 @@ img {
 .consultation-modal__content {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  height: 580px;
   background-image: url("../images/unique-modal-cons-bg.png");
   background-repeat: no-repeat;
   background-position: right center;
+  background-size: contain;
 }
 .consultation-modal__form {
   margin-top: 35px;
@@ -11972,6 +11972,9 @@ img {
   margin-top: 35px;
 }
 
+.u-form-group {
+  margin-bottom: 25px;
+}
 .u-form-group__label {
   font-weight: 500;
   font-size: 17px;
@@ -11982,16 +11985,18 @@ img {
   border-radius: 5px;
   background-color: #F0F1F6;
   display: flex;
-  margin-bottom: 25px;
 }
 .u-input-group__input {
   flex: 1;
   padding: 11px 14px;
-  border: 0;
   background-color: transparent;
   display: block;
   font-size: 17px;
   color: #ABAFC3;
+  border: 1px solid #F0F1F6;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left-width: 0;
 }
 .u-input-group__input:focus {
   outline: none;
@@ -12007,6 +12012,9 @@ img {
 .u-input-group__input::placeholder {
   font-size: 17px;
   color: #ABAFC3;
+}
+.u-input-group__input.is-invalid {
+  border-color: red;
 }
 .u-input-group__icon {
   width: 49px;

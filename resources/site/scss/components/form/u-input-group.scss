@@ -2,21 +2,28 @@
     border-radius: 5px;
     background-color: #F0F1F6;
     display: flex;
-    margin-bottom: 25px;
+
     &__input {
         flex: 1;
         padding: 11px 14px;
-        border: 0;
         background-color: transparent;
         display: block;
         font-size: 17px;
         color: #ABAFC3;
+        border: 1px solid  #F0F1F6;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-left-width:0;
+
         &:focus {
             outline: none;
         }
         &::placeholder {
             font-size: 17px;
             color: #ABAFC3;
+        }
+        &.is-invalid {
+            border-color: red;
         }
     }
     &__icon {
