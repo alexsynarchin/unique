@@ -2,6 +2,7 @@
     border-radius: 5px;
     background-color: #F0F1F6;
     display: flex;
+    margin-bottom: 25px;
     &__input {
         flex: 1;
         padding: 11px 14px;
@@ -29,9 +30,14 @@
         background-color: $blue-color;
     }
     &__svg {
+        width: 24px;
+        height: 24px;
         &--user {
             width: 24px;
             height: 24px;
+        }
+        &--phone {
+
         }
     }
 

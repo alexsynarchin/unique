@@ -1,5 +1,5 @@
 <template>
-   <!--- <div class="modal fade unique-modal" id="order-call"  tabindex="-1" role="dialog"  aria-hidden="true">-->
+    <div class="modal fade unique-modal" id="order-call"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content consultation-modal__content modal-content">
                 <button  class="unique-modal__close consultation-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -25,15 +25,35 @@
                                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-user"></use>
                                     </svg>
                                 </i>
-                                <input class="u-input-group__input"  >
+                                <input class="u-input-group__input" >
                             </div>
-
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-form-group__label">
+                                Телефон
+                            </label>
+                            <div class="u-input-group">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input" >
+                            </div>
+                        </div>
+                        <div class="consultation-modal__footer">
+                            <button class="btn button consultation-form__btn">
+                                Получить консультацию
+                            </button>
+                            <p class="consultation-form__descr">
+                                Нажимая кнопку «Получить консультацию» вы соглашаетесь на обработку персональных данных
+                            </p>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    <!--- </div>-->
+    </div>
 </template>
 <script>
    export default {

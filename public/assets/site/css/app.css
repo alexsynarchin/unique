@@ -11968,6 +11968,9 @@ img {
     width: 60%;
   }
 }
+.consultation-modal__footer {
+  margin-top: 35px;
+}
 
 .u-form-group__label {
   font-weight: 500;
@@ -11979,6 +11982,7 @@ img {
   border-radius: 5px;
   background-color: #F0F1F6;
   display: flex;
+  margin-bottom: 25px;
 }
 .u-input-group__input {
   flex: 1;
@@ -12014,9 +12018,32 @@ img {
   border-radius: 5px;
   background-color: #366AF3;
 }
+.u-input-group__svg {
+  width: 24px;
+  height: 24px;
+}
 .u-input-group__svg--user {
   width: 24px;
   height: 24px;
+}
+@media (min-width: 1200px) {
+  .consultation-form {
+    width: 90%;
+  }
+}
+@media (min-width: 1440px) {
+  .consultation-form {
+    width: 80%;
+  }
+}
+.consultation-form__btn {
+  width: 100%;
+}
+.consultation-form__descr {
+  margin-bottom: 0;
+  color: rgba(19, 19, 19, 0.75);
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 .check-unique-bl {
