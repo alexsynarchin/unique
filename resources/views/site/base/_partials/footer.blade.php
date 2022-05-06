@@ -64,7 +64,7 @@
                     <span class="contact-bl__phone">
                     8 800 555 65 65
                 </span>
-                    <a href="" class="contact-bl__btn">
+                    <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
                     </a>
                 </section>

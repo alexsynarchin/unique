@@ -7,7 +7,7 @@
         <div class="header-panel__inner container">
             <div class="row">
                 <div class="header-panel__left col-md-3">
-                    <button class="btn button button--width-100 mb-4">
+                    <button class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
                         Проверить уникальность
                     </button>
                     <button class="btn button button--width-100 button--transparent">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="header-panel__mobile">
-                <button class="btn button button--width-100 header-panel__mobile-btn">
+                <button class="btn button button--width-100 header-panel__mobile-btn" v-scroll-to="'#check_unique'">
                     Проверить уникальность
                 </button>
 

@@ -5,7 +5,7 @@
         </section>
        <header-panel-btn></header-panel-btn>
         <section class="page-header__right">
-            <a href="" class="btn button">
+            <a href="" class="btn button" v-scroll-to="'#check_unique'">
                 Проверить уникальность
             </a>
             <ul class="social-list social-list--header">

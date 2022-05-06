@@ -1,5 +1,5 @@
 <template>
-    <section class="check-unique-bl">
+    <section class="check-unique-bl" id="check_unique">
         <h3 class="block-title  check-unique-bl__title">
             Проверьте текст на уникальность <span class="block-title__cursor"></span>
         </h3>
