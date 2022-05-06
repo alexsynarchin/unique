@@ -1,0 +1,37 @@
+.about-utp {
+    padding: 70px;
+    background: #F0F1F6;
+    border-radius: 30px;
+    display: flex;
+    margin-bottom: 80px;
+    &__content {
+        width: 60%;
+        @include media-breakpoint-up(lg) {
+            padding-right: 50px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding-right: 70px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-right: 100px;
+        }
+    }
+    &__title {
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+    &__text {
+        font-weight: 700;
+        font-size: 17px;
+    }
+    &__img-wrap {
+        width: 40%;
+        background: #FF9902;
+        border-radius: 500px;
+    }
+    &__img {
+        overflow: hidden;
+        margin-bottom: 0;
+
+    }
+}

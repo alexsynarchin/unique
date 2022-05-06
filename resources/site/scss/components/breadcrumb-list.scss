@@ -1,0 +1,43 @@
+.breadcrumb-list {
+    margin-top: 56px;
+    margin-bottom: 20px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #262626;
+    &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &:after {
+            position: relative;
+            content: "";
+            height: 2px;
+            background-color: #366AF3;
+            width: 10px;
+            margin-left: 8px;
+            margin-right: 8px;
+
+        }
+        &:last-child {
+            &:after {
+                content: none;
+            }
+        }
+    }
+    &__link {
+        display: inline-block;
+        color: #262626;
+        text-decoration: none;
+        &:hover {
+            color: #366AF3;
+            text-decoration: none;
+        }
+
+    }
+}

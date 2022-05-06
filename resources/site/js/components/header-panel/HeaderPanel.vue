@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/about" class="main-nav__link">
                                 О компании
                             </a>
                         </li>

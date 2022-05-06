@@ -23,6 +23,8 @@ $container-max-widths: (
 //button
 @import "components/button/button";
 @import "components/button/upload-button";
+//breadcrumbs
+@import "components/breadcrumb-list";
 //logo
 @import "components/logo/logo-title";
 //navigation
@@ -73,5 +75,8 @@ $container-max-widths: (
 @import "components/main-page/mp-reviews-control";
 @import "components/main-page/mp-faq";
 @import "components/faq";
+
+//About page
+@import "components/about/about-utp";
 
 

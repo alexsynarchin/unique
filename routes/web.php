@@ -19,3 +19,6 @@ Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('a
 Route::get('/', function () {
     return view('site.home.index');
 });
+Route::get('/about', function () {
+    return view('site.about.index');
+});
