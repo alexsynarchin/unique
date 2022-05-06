@@ -10,7 +10,7 @@
                     <button class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
                         Проверить уникальность
                     </button>
-                    <button class="btn button button--width-100 button--transparent">
+                    <button class="btn button button--width-100 button--transparent" data-bs-toggle="modal" data-bs-target="#video_modal">
                         <span class="button__text">
                             Смотреть видео о сервисе
                         </span>
@@ -70,7 +70,7 @@
                 <span class="contact-bl__phone">
                     8 800 555 65 65
                 </span>
-                    <a href="" class="contact-bl__btn">
+                    <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
                     </a>
                 </div>
