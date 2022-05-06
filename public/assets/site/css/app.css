@@ -12028,6 +12028,10 @@ img {
   font-size: 17px;
 }
 
+.video-modal__content {
+  background-color: transparent;
+}
+
 .u-form-group {
   margin-bottom: 25px;
 }

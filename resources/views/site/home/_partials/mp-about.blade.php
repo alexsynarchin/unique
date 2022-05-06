@@ -61,7 +61,7 @@
             <button class="btn button mp-about__btn-first">
                 Узнать подробнее о гарантиях
             </button>
-            <button class="btn btn-link">
+            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#video_modal">
                 <span>
                     Смотреть видео о сервисе
                 </span>

@@ -5,7 +5,7 @@
                 <figure class="mp-utp__fig mp-utp__fig--img">
                     <img src="/assets/site/images/mp/mp-slider-img.png">
                 </figure>
-                <figure class="mp-utp__fig mp-utp__link">
+                <figure class="mp-utp__fig mp-utp__link" data-bs-toggle="modal" data-bs-target="#video_modal">
                     Cмотреть видео
                 </figure>
             </div>
@@ -16,7 +16,7 @@
                 <p class="mp-utp__text">
                     Все системы проверки в одном месте
                 </p>
-                <button class="button btn">
+                <button class="button btn" v-scroll-to="'#check_unique'">
                     Проверить уникальность текста
                 </button>
             </div>

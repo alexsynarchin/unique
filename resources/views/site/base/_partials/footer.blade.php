@@ -16,7 +16,7 @@
                 <a href="" class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
                     Проверить уникальность
                 </a>
-                <button class="btn button button--width-100 button--transparent">
+                <button class="btn button button--width-100 button--transparent" data-bs-toggle="modal" data-bs-target="#video_modal">
                         <span class="button__text">
                             Смотреть видео о сервисе
                         </span>
