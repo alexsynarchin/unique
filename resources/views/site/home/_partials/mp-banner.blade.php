@@ -12,7 +12,7 @@
            </p>
        </div>
        <div class="mp-banner__action">
-           <button class="btn button button--white">
+           <button class="btn button button--white" data-bs-toggle="modal" data-bs-target="#order-call">
                Получить консультацию
            </button>
        </div>

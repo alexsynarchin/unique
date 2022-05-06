@@ -11943,6 +11943,8 @@ img {
   background: none;
   border: 0;
   border-radius: 0;
+  top: 13px;
+  right: 13px;
 }
 .unique-modal__close svg {
   width: 38px;
@@ -11970,6 +11972,60 @@ img {
 }
 .consultation-modal__footer {
   margin-top: 35px;
+}
+
+.what-system-check-modal__content {
+  padding-right: 28px;
+}
+.what-system-check-modal__inner {
+  padding-right: 30px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.what-system-check-modal__inner::-webkit-scrollbar-thumb {
+  background: #366AF3;
+  border-radius: 30px;
+}
+.what-system-check-modal__inner::-webkit-scrollbar {
+  width: 5px;
+  background: #F0F1F6;
+  border-radius: 30px;
+}
+
+.what-system-check-list {
+  margin-top: 45px;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.what-system-check-list__item {
+  display: flex;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #D3D7E4;
+}
+.what-system-check-list__content {
+  margin-left: 25px;
+}
+.what-system-check-list__title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.what-system-check-list__logo {
+  background: #F0F1F6;
+  border-radius: 6.11702px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 115px;
+  min-width: 115px;
+  height: 115px;
+}
+.what-system-check-list__description {
+  margin-bottom: 0;
+  font-size: 17px;
 }
 
 .u-form-group {

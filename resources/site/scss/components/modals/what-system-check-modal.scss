@@ -1,0 +1,19 @@
+.what-system-check-modal {
+    &__content {
+        padding-right: 28px;
+    }
+    &__inner {
+        padding-right: 30px;
+        max-height: 600px;
+        overflow-y: auto;
+        &::-webkit-scrollbar-thumb {
+            background: #366AF3;
+            border-radius: 30px;
+        }
+        &::-webkit-scrollbar {
+            width: 5px;
+            background: #F0F1F6;
+            border-radius: 30px;
+        }
+    }
+}

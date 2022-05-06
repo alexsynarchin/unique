@@ -86,7 +86,7 @@
                     8 текстов в очереди, вы можете проверить текст без ожидания,
                     выбрав одну или несколько платных систем
                 </div>
-                <button  class="btn btn-link check-unique-descr__link">
+                <button  class="btn btn-link check-unique-descr__link" data-bs-toggle="modal" data-bs-target="#what_system_check">
                         <span>
                             Какую систему выбрать
                         </span>

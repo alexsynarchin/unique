@@ -1,0 +1,35 @@
+.what-system-check-list {
+    margin-top: 45px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+    &__item {
+        display: flex;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #D3D7E4;
+    }
+    &__content {
+        margin-left: 25px;
+    }
+    &__title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__logo {
+        background: #F0F1F6;
+        border-radius: 6.11702px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 115px;
+        min-width: 115px;
+        height: 115px;
+    }
+    &__description {
+        margin-bottom: 0;
+        font-size: 17px;
+    }
+}

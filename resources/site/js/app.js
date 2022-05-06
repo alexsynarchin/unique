@@ -27,6 +27,7 @@ Vue.directive('phone', {
 Vue.component('HeaderPanelBtn', require('./components/header-panel/HeaderPanelBtn').default);
 Vue.component('HeaderPanel', require('./components/header-panel/HeaderPanel').default);
 Vue.component('ConsultationModal',require('./components/modals/consultation/ConsultationModal').default)
+Vue.component('WhatSystemCheckModal', require('./components/modals/what-system-check/modal').default)
 Vue.component('CheckUnique', require('./components/check-unique').default);
 Vue.component('MpFaq',require('./views/main-page/Faq').default);
 const app = new Vue({

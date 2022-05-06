@@ -13,7 +13,7 @@
 
             </div>
             <div class="col-lg-3 page-footer__col-2">
-                <a href="" class="btn button button--width-100 mb-4">
+                <a href="" class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
                     Проверить уникальность
                 </a>
                 <button class="btn button button--width-100 button--transparent">
