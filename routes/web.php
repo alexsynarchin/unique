@@ -22,3 +22,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('site.about.index');
 });
+Route::get('/price', function () {
+    return view('site.price.index');
+});

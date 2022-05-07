@@ -60,6 +60,9 @@ $container-max-widths: (
 @import "components/check-unique/check-unique-indicator";
 @import "components/check-unique/check-unique-descr";
 @import "components/check-unique/check-systems";
+//Banners
+
+@import "components/banners/sidebar-banner";
 
 //Main page
 @import "components/main-page/mp-utp";
@@ -83,5 +86,11 @@ $container-max-widths: (
 @import "components/about/about-video";
 @import "components/about/about-result";
 @import "components/about/about-result-numbers";
+
+//Price page
+@import "components/price/price-page";
+@import "components/price/price-block";
+@import "components/price/price-list";
+@import "components/price/price-list-item";
 
 

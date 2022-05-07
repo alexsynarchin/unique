@@ -1,0 +1,28 @@
+.price-block {
+    margin-bottom: 65px;
+    &--last {
+        margin-bottom: 0;
+    }
+    &__title {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    &__label {
+        color: #ABAFC3;
+        font-weight: 500;
+        font-size: 17px;
+    }
+    &__heading {
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__description {
+        font-weight: 500;
+        font-size: 20px;
+        padding: 20px;
+        background: #E3E5ED;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+}
