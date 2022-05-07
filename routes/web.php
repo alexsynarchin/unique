@@ -35,5 +35,5 @@ Route::get('/contact', function () {
     return view('site.contact.index');
 });
 Route::get('/articles', function () {
-    return view('site.aricles.index');
+    return view('site.articles.index');
 });
