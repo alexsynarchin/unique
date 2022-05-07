@@ -25,3 +25,15 @@ Route::get('/about', function () {
 Route::get('/price', function () {
     return view('site.price.index');
 });
+Route::get('/reviews', function () {
+    return view('site.reviews.index');
+});
+Route::get('/faq', function () {
+    return view('site.faq.index');
+});
+Route::get('/contact', function () {
+    return view('site.contact.index');
+});
+Route::get('/articles', function () {
+    return view('site.aricles.index');
+});

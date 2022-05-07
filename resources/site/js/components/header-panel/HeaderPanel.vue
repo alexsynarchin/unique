@@ -22,12 +22,12 @@
                 <div class="header-panel__nav col-lg-4">
                     <ul class="main-nav">
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/price" class="main-nav__link">
                                 Стоимость
                             </a>
                         </li>
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/reviews" class="main-nav__link">
                                 Отзывы
                             </a>
                         </li>
@@ -37,17 +37,17 @@
                             </a>
                         </li>
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/faq" class="main-nav__link">
                                 Вопросы и ответы
                             </a>
                         </li>
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/articles" class="main-nav__link">
                                 Статьи
                             </a>
                         </li>
                         <li class="main-nav__item">
-                            <a href="" class="main-nav__link">
+                            <a href="/contact" class="main-nav__link">
                                 Контакты
                             </a>
                         </li>

@@ -28,12 +28,12 @@
             <div class="col-lg-4 page-footer__col-3">
                 <ul class="main-nav main-nav--footer">
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/price" class="main-nav__link main-nav__link--footer">
                             Стоимость
                         </a>
                     </li>
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/reviews" class="main-nav__link main-nav__link--footer">
                             Отзывы
                         </a>
                     </li>
@@ -43,17 +43,17 @@
                         </a>
                     </li>
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/faq" class="main-nav__link main-nav__link--footer">
                             Вопросы и ответы
                         </a>
                     </li>
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/articles" class="main-nav__link main-nav__link--footer">
                             Статьи
                         </a>
                     </li>
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/contact" class="main-nav__link main-nav__link--footer">
                             Контакты
                         </a>
                     </li>
