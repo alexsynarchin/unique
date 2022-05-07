@@ -21,6 +21,8 @@
         @include('site.about._partials.utp')
         @include('site.about._partials.advantages')
         @include('site.about._partials.warranty')
+        @include('site.about._partials.result')
+        @include('site.home._partials.mp-banner')
     </div>
 @endsection
 @section('scripts')

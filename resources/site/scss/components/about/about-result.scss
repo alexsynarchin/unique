@@ -1,0 +1,29 @@
+.about-result {
+    background: #F0F1F6;
+    border-radius: 30px;
+    padding: 60px;
+    margin-bottom: 100px;
+    @include media-breakpoint-up(lg) {
+        display: flex;
+    }
+    &__main {
+        @include media-breakpoint-up(lg) {
+            width: 70%;
+            padding-right: 15px;
+        }
+    }
+    &__list {
+        display: flex;
+        justify-content: center;
+        @include media-breakpoint-up(lg) {
+            width: 30%;
+        }
+    }
+    &__title {
+        margin-bottom: 15px;
+    }
+    &__text {
+        font-size: 17px;
+        font-weight: 500;
+    }
+}

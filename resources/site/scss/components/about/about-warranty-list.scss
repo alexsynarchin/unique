@@ -1,0 +1,22 @@
+.about-warranty-list {
+    margin-top: 35px;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    &__item {
+        display: flex;
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 25px;
+        &:before {
+            margin-top: 5px;
+            content: "";
+            margin-right: 10px;
+            width: 10px;
+            min-width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: #366AF3;
+        }
+    }
+}

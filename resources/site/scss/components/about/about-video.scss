@@ -1,0 +1,31 @@
+.about-video {
+    position: relative;
+    height: 515px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    &:before {
+        position: absolute;
+        content: "";
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(7,8,22,0.65);
+    }
+    &--video-start {
+        &:before {
+            content: none;
+        }
+    }
+    &__btn {
+        width: 48px;
+        cursor: pointer;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

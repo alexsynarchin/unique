@@ -31,6 +31,10 @@ Vue.component('WhatSystemCheckModal', require('./components/modals/what-system-c
 Vue.component('VideoModal', require('./components/modals/video-modal/modal').default);
 Vue.component('CheckUnique', require('./components/check-unique').default);
 Vue.component('MpFaq',require('./views/main-page/Faq').default);
+
+//About page
+Vue.component('AboutVideo', require('./views/about/about-video/index').default);
+
 const app = new Vue({
     el: '#app',
     created(){

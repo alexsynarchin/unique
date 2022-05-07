@@ -1,0 +1,22 @@
+.about-result-numbers {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    &__item {
+        margin-bottom: 30px;
+    }
+    &__label {
+        display: block;
+        color: #ABAFC3;
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    &__value {
+        line-height: 1;
+        display: block;
+        font-weight: 700;
+        font-size: 54px;
+        color: #366AF3;
+    }
+ }

@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="main-nav__item">
-                        <a href="" class="main-nav__link main-nav__link--footer">
+                        <a href="/about" class="main-nav__link main-nav__link--footer">
                             О компании
                         </a>
                     </li>
