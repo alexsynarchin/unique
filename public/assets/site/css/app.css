@@ -13310,6 +13310,11 @@ img {
 .faq-list--dark .faq-item:first-child .faq-item__question {
   border-top: none;
 }
+.faq-list--dark .faq-item__answer-inner {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
 
 .faq-item__question {
   cursor: pointer;
