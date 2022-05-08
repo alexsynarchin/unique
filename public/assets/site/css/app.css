@@ -13301,6 +13301,15 @@ img {
 .faq-list {
   border-bottom: 1px solid #CDD3E4;
 }
+.faq-list--dark {
+  background: #F0F1F6;
+  border-radius: 30px;
+  padding: 65px;
+  margin-bottom: 100px;
+}
+.faq-list--dark .faq-item__question:first-child {
+  border-top: none;
+}
 
 .faq-item__question {
   cursor: pointer;

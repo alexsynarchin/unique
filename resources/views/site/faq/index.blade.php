@@ -14,7 +14,15 @@
         <h1 class="page-title">
             Вопросы и ответы
         </h1>
-
+        <div class="row">
+            <div class="col-lg-9">
+                <faq-page></faq-page>
+            </div>
+            <div class="col-lg-3">
+                <sidebar-banner></sidebar-banner>
+            </div>
+        </div>
+        @include('site.home._partials.mp-banner')
     </div>
 @endsection
 

@@ -39,14 +39,14 @@ Vue.component('AboutVideo', require('./views/about/about-video/index').default);
 Vue.component('PricePage',require('./views/price/index').default);
 
 //Reviews page
-
 Vue.component('ReviewsPage', require('./views/reviews/index').default);
 Vue.component('ReviewsFilters', require('./views/reviews/components/filters').default);
 
 //Contact Page
+Vue.component('ContactBlock', require('./views/contact/ContactBlock').default);
 
-Vue.component('ContactBlock', require('./views/contact/ContactBlock').default)
-
+//Faq Page
+Vue.component('FaqPage', require('./views/faq-page/index').default);
 const app = new Vue({
     el: '#app',
     created(){
