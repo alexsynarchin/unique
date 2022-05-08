@@ -1,0 +1,13 @@
+.contact-block-content {
+    display: flex;
+    margin-bottom: 65px;
+    &__left {
+        display: flex;
+        width: 70%;
+    }
+    &__right {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+    }
+}

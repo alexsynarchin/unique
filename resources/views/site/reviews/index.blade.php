@@ -11,10 +11,13 @@
                 Отзывы
             </li>
         </ul>
-        <h1 class="page-title">
-            Отзывы
-        </h1>
-
+        <div class="page-heading">
+            <h1 class="page-title page-heading__title">
+                Отзывы
+            </h1>
+            <reviews-filters></reviews-filters>
+        </div>
+        <reviews-page></reviews-page>
     </div>
 @endsection
 

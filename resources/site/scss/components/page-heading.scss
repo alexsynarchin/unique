@@ -1,0 +1,9 @@
+.page-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    &__title {
+        margin-bottom: 0;
+    }
+}

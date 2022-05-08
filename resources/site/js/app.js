@@ -38,6 +38,15 @@ Vue.component('AboutVideo', require('./views/about/about-video/index').default);
 //Price page
 Vue.component('PricePage',require('./views/price/index').default);
 
+//Reviews page
+
+Vue.component('ReviewsPage', require('./views/reviews/index').default);
+Vue.component('ReviewsFilters', require('./views/reviews/components/filters').default);
+
+//Contact Page
+
+Vue.component('ContactBlock', require('./views/contact/ContactBlock').default)
+
 const app = new Vue({
     el: '#app',
     created(){

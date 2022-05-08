@@ -1,0 +1,9 @@
+.reviews-filters {
+    display: flex;
+    &__item {
+        width:264px;
+        &--last {
+            margin-left: 15px;
+        }
+    }
+}

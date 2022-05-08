@@ -20,6 +20,7 @@ $container-max-widths: (
 @import "components/scaffoldings";
 @import "components/contact-bl";
 @import "components/social-list";
+@import "components/page-heading";
 //button
 @import "components/button/button";
 @import "components/button/upload-button";
@@ -92,5 +93,17 @@ $container-max-widths: (
 @import "components/price/price-block";
 @import "components/price/price-list";
 @import "components/price/price-list-item";
+
+//Reviews Page
+@import "components/reviews/reviews-filters";
+@import "components/reviews/review-item";
+@import "components/reviews/reviews-list";
+
+//Contact page
+@import "components/contact/contact-block";
+@import "components/contact/contact-block-content";
+@import "components/contact/contact-item";
+@import "components/contact/contact-social";
+@import "components/contact/contact-form";
 
 

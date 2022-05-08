@@ -2,9 +2,14 @@
     border-radius: 5px;
     background-color: #F0F1F6;
     display: flex;
+    position: relative;
 
+    &--dark {
+        background: #E3E5ED;
+    }
     &__input {
         flex: 1;
+
         padding: 11px 14px;
         background-color: transparent;
         display: block;
@@ -22,11 +27,16 @@
             font-size: 17px;
             color: #ABAFC3;
         }
+        &--textarea {
+            height: 140px;
+        }
         &.is-invalid {
             border-color: red;
         }
     }
     &__icon {
+        flex-direction: column;
+        position: relative;
         width: 49px;
         height: 49px;
         min-width: 49px;
@@ -35,6 +45,11 @@
         justify-content: center;
         border-radius: 5px;
         background-color: $blue-color;
+        &--textarea {
+
+
+            height: 140px;
+        }
     }
     &__svg {
         width: 24px;

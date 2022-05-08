@@ -1,0 +1,28 @@
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: 45px;
+    &:last-child {
+        margin-right: 0;
+    }
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        width: 49px;
+        height: 49px;
+        min-width: 49px;
+        border-radius: 5px;
+        background-color: $blue-color;
+        margin-right: 15px;
+        svg {
+            width: 24px;
+        }
+    }
+    &__val {
+        font-weight: 700;
+        font-size: 22px;
+    }
+}
