@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5c62ea99533f6b49caaa198a9fda9c7",
+    "content-hash": "6641ef3c3448aab107474b4c0f005493",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -956,6 +956,50 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "krylov123/textru-api",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krylov123/textru-api.git",
+                "reference": "97c0a22a43b32861429f8329af53363cec9cb247"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krylov123/textru-api/zipball/97c0a22a43b32861429f8329af53363cec9cb247",
+                "reference": "97c0a22a43b32861429f8329af53363cec9cb247",
+                "shasum": ""
+            },
+            "require": {
+                "php": "5.6.* || >=7.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.0 || ^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TextRuApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Krylov",
+                    "email": "krylov123@gmail.com"
+                }
+            ],
+            "description": "Text.ru API's php connector",
+            "support": {
+                "issues": "https://github.com/krylov123/textru-api/issues",
+                "source": "https://github.com/krylov123/textru-api/tree/v1.0.2"
+            },
+            "time": "2020-09-11T10:31:56+00:00"
         },
         {
             "name": "laminas/laminas-escaper",

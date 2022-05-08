@@ -6,7 +6,7 @@ use TextRuApi\Exception\WrongParameterException;
 use TextRuApi\Exception\CurlRequestException;
 use TextRuApi\Exception\UnknownMethodException;
 
-class TextRuApiService
+class TextRuApi
 {
     const TEXT_URL = 'http://api.text.ru/post';
 
