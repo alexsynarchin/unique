@@ -13315,6 +13315,9 @@ img {
   border-radius: 10px;
   padding: 20px;
 }
+.faq-list--dark .faq-item__answer--open {
+  padding-bottom: 25px;
+}
 
 .faq-item__question {
   cursor: pointer;
