@@ -5,11 +5,14 @@
         border-radius: 30px;
         padding: 65px;
         margin-bottom: 100px;
-        .faq-item__question {
+        .faq-item {
             &:first-child {
-                border-top:none;
+                .faq-item__question {
+                    border-top:none;
+                }
             }
         }
+
     }
 }
 .faq-item {

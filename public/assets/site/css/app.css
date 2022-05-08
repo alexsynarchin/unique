@@ -13307,7 +13307,7 @@ img {
   padding: 65px;
   margin-bottom: 100px;
 }
-.faq-list--dark .faq-item__question:first-child {
+.faq-list--dark .faq-item:first-child .faq-item__question {
   border-top: none;
 }
 
