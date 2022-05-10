@@ -1,0 +1,12 @@
+.report-progress-bar {
+    margin-top: 80px;
+    &__text {
+        margin-top: 20px;
+        color: #366AF3;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    &__precent {
+        font-size: 28px;
+    }
+}

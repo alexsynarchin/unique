@@ -3,4 +3,14 @@
         font-size: 22px;
         margin-bottom: 30px;
     }
+    &__content {
+        display: flex;
+    }
+    &__center {
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 55%;
+        flex: 1 55%;
+        max-width: 55%;
+    }
 }
