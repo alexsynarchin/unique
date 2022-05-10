@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\LoginController as AdminLogin;
 Route::get('/admin-login', [AdminLogin::class, 'login']) -> middleware('admin-guest') -> name('admin.login');
 Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('admin.handle-login');
-
+use App\Http\Controllers\Site\CheckReportController;
+Route::get('/report-{id}', [CheckReportController::class, 'show'])->name('report');
 Route::get('/', function () {
     return view('site.home.index');
 });

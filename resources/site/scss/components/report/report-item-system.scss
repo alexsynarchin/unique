@@ -1,0 +1,15 @@
+.report-item-system {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 25px;
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+    &__title {
+        font-size: 17px;
+    }
+    &__logo {
+        padding: 25px;
+        margin-bottom: 0;
+    }
+}

@@ -47,6 +47,9 @@ Vue.component('ContactBlock', require('./views/contact/ContactBlock').default);
 
 //Faq Page
 Vue.component('FaqPage', require('./views/faq-page/index').default);
+
+//Report
+Vue.component('ReportPage', require('./views/report/index').default);
 const app = new Vue({
     el: '#app',
     created(){

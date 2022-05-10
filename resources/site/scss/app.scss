@@ -18,6 +18,7 @@ $container-max-widths: (
 @import "variables";
 //Components
 @import "components/scaffoldings";
+@import "components/preloader";
 @import "components/contact-bl";
 @import "components/social-list";
 @import "components/page-heading";
@@ -108,4 +109,11 @@ $container-max-widths: (
 @import "components/contact/contact-social";
 @import "components/contact/contact-form";
 
+//Report
+@import "components/report/report-link";
+@import "components/report/report-block";
+@import "components/report/report-systems-list";
+@import "components/report/report-item";
+@import "components/report/report-item-system";
+@import "components/report/report-item-descr";
 

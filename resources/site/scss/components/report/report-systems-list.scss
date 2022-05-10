@@ -1,0 +1,37 @@
+.report-systems-list {
+    &__title {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    &__list {
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        padding-left: 0;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
+    &__item {
+        width: 20%;
+        flex: 1 20%;
+        max-width: 20%;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        margin-bottom: 15px;
+    }
+}
+.report-systems-list-item {
+    cursor: pointer;
+    text-align: center;
+    background: #E3E5ED;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ABAFC3;
+    font-size: 17px;
+    font-weight: 500;
+    &--active {
+        background: $blue-color;
+        color: #fff;
+    }
+}

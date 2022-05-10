@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CheckUnique;
 use Illuminate\Http\Request;
 
 
@@ -18,6 +19,7 @@ class CheckUniqueController extends Controller
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
+            'plainText' => $request->get('text'),
             'sentenceCount' => $sentenceCount,
             'size' => 0,
             'pages' => 0,
@@ -46,8 +48,7 @@ class CheckUniqueController extends Controller
                     continue;
                 }
                 $text .= $e->getText();
-                $styles = $e->getParagraphStyle(); //do somethign witth the style
-                $styles = $e->getFontStyle(); //do somethign witth the style
+
             }
         }
         echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
@@ -80,5 +81,12 @@ class CheckUniqueController extends Controller
         $jsonvisible = 'detail';
         $return = $TextRuApi->get($uid, $jsonvisible);
         return $return;
+    }
+
+    public function makeReport(Request $request)
+    {
+        $report = CheckUnique::create($request->all());
+        $url = route('report', $report->id);
+        return $url;
     }
 }

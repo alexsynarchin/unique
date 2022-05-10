@@ -101,8 +101,8 @@
                 this.$refs.select_system_modal.showSelectSystem(index);
             },
             handleSelected(index) {
-                console.log(index);
                 this.systemIndex = index;
+                this.$emit('selectSystem');
             }
         }
     }

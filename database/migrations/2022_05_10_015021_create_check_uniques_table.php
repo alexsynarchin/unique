@@ -22,6 +22,8 @@ class CreateCheckUniquesTable extends Migration
             $table->string('sentenceCount')->nullable();
             $table->string('type')->nullable();
             $table->json('data')->nullable();
+            $table->longText('plainText')->nullable();
+            $table->boolean('result')->default(false);
             $table->timestamps();
         });
     }

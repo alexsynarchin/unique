@@ -96,7 +96,7 @@
                 </button>
             </div>
         </div>
-        <systems-list></systems-list>
+        <systems-list @selectSystem="handleSelected"></systems-list>
         <button class="btn button">
             Проверить уникальность полного текста
         </button>
@@ -114,6 +114,7 @@
                 text: "",
                 file:"",
                 fileName: "",
+                plainText: "",
                 textParams: {
                     symbolsCount: 0,
                     wordsCount:0,
@@ -164,6 +165,12 @@
                         })
                 }
 
+            },
+            handleSelected() {
+                axios.post('/api/check-unique-make-report', this.textParams)
+                    .then((response) => {
+                        window.location.href = response.data;
+                    })
             },
         },
     }
