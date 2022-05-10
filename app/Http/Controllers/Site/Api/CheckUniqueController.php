@@ -14,10 +14,11 @@ class CheckUniqueController extends Controller
         $symbols_count = strip_tags($request->get('text'));
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
+        $sentenceCount = substr_count($request->get('text'),'.') + substr_count($request->get('text'),'!')+ substr_count($request->get('text'),'?');
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
-            'sentenceCount' => 0,
+            'sentenceCount' => $sentenceCount,
             'size' => 0,
             'pages' => 0,
         ];
