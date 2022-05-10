@@ -47,7 +47,9 @@ $container-max-widths: (
 @import "components/modals/what-system-check-modal";
 @import "components/modals/what-system-check-list";
 @import "components/modals/video-modal";
-
+@import "components/modals/free-check-modal";
+@import "components/modals/free-check-modal-list";
+@import "components/modals/select-system-modal-content";
 //Form
 @import "components/form/unique-input";
 @import "components/form/u-form-group";

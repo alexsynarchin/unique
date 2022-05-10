@@ -1,0 +1,13 @@
+.free-check-modal-list {
+    background-color: #F0F1F6;
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 22px 35px;
+    display: flex;
+    justify-content: center;
+    &__item {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}

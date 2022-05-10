@@ -12087,6 +12087,51 @@ img {
   background-color: transparent;
 }
 
+.free-check-modal {
+  margin-bottom: 60px;
+}
+.free-check-modal__content {
+  padding: 60px 0 0 0;
+}
+.free-check-modal__form {
+  padding: 0 70px;
+}
+
+.free-check-modal-list {
+  background-color: #F0F1F6;
+  list-style-type: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 22px 35px;
+  display: flex;
+  justify-content: center;
+}
+.free-check-modal-list__item {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.select-system-modal-content {
+  display: flex;
+}
+.select-system-modal-content__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  width: 220px;
+  min-width: 220px;
+  padding: 40px;
+  background: #F0F1F6;
+  border-radius: 10px;
+}
+.select-system-modal-content__right {
+  padding-left: 25px;
+}
+.select-system-modal-content__text {
+  margin-bottom: 40px;
+}
+
 .u-form-group {
   margin-bottom: 25px;
 }
@@ -12094,6 +12139,12 @@ img {
   font-weight: 500;
   font-size: 17px;
   margin-bottom: 10px;
+}
+.u-form-group__btn-wrap {
+  display: flex;
+}
+.u-form-group__btn {
+  padding: 14px 40px;
 }
 
 .u-input-group {
@@ -12161,6 +12212,11 @@ img {
   width: 24px;
   height: 24px;
 }
+.u-input-group__btn-wrap {
+  flex: 1;
+  padding-right: 20px;
+}
+
 @media (min-width: 1200px) {
   .consultation-form {
     width: 90%;
@@ -12464,6 +12520,7 @@ img {
 }
 
 .check-system-item {
+  cursor: pointer;
   height: 100%;
   background: #FFFFFF;
   border-radius: 10px;
