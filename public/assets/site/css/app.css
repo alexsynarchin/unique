@@ -14000,6 +14000,7 @@ img {
   margin-top: 80px;
 }
 .report-progress-bar__text {
+  margin-bottom: 5px;
   margin-top: 20px;
   color: #366AF3;
   font-weight: 700;
@@ -14007,6 +14008,10 @@ img {
 }
 .report-progress-bar__precent {
   font-size: 28px;
+}
+.report-progress-bar__descr {
+  font-size: 15px;
+  color: rgba(19, 19, 19, 0.75);
 }
 
 .report-text-params {

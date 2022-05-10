@@ -18,6 +18,10 @@ class CheckUnique extends Model
     protected $appends = [
         'formatted_date'
     ];
+    protected $casts = [
+        'result' => 'boolean',
+        'data' => 'array'
+    ];
     public function getFormattedDateAttribute()
     {
         $date = $this->attributes['created_at'];

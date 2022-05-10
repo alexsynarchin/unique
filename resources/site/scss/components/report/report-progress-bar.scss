@@ -1,6 +1,7 @@
 .report-progress-bar {
     margin-top: 80px;
     &__text {
+        margin-bottom: 5px;
         margin-top: 20px;
         color: #366AF3;
         font-weight: 700;
@@ -8,5 +9,9 @@
     }
     &__precent {
         font-size: 28px;
+    }
+    &__descr {
+        font-size: 15px;
+        color: rgba(19, 19, 19, 0.75);
     }
 }

@@ -13,12 +13,30 @@
                 </figure>
             </div>
             <section class="report-item__center">
-                <div class="report-progress-bar">
+                <div class="report-progress-bar" v-if="!report.result">
                     <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15" :val="increasing_pct"></progress-bar>
                     <div class="report-progress-bar__text">
                         <span class="report-progress-bar__precent">{{increasing_pct + '%'}}</span>
                         Идет формирование отчета
                     </div>
+                </div>
+                <div v-else>
+                    <div class="report-progress-bar">
+                        <progress-bar
+                            bg-color="#E3E5ED"
+                            bar-color="#366AF3"
+                            :bar-border-radius="30"
+                            size="15"
+                            :val="report.data.unique"></progress-bar>
+                        <div class="report-progress-bar__text">
+                            <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
+                            Текст неуникальный
+                        </div>
+                        <p class="report-progress-bar__descr">
+                            У вашего текста низкий процент уникальности, мы рекомендуем вам проверить его в платных системах или воспользоваться услугой рерайта
+                        </p>
+                    </div>
+
                 </div>
             </section>
             <section class="report-item__right">
@@ -89,13 +107,16 @@ import ProgressBar from 'vue-simple-progress'
 
         },
         mounted() {
+        if(!this.report.result) {
             setInterval(() => {
                 if (this.is_paused)
                     return
                 this.random_pct = Math.ceil(Math.random() * 100)
                 this.increasing_pct = Math.min(this.increasing_pct + 2, 100)
                 this.decreasing_pct = Math.max(this.decreasing_pct - 2, 0)
-            }, 2000)
+                }, 2000)
+            }
+
         }
     }
 </script>

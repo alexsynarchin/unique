@@ -12,6 +12,7 @@ class ReportController extends Controller
     public function show($id)
     {
         $report = CheckUnique::findOrFail($id);
+
         return $report;
     }
 
@@ -22,5 +23,16 @@ class ReportController extends Controller
         $uid = $service->getUid($report->plainText);
         $report->uid = $uid;
         $report->save();
+    }
+
+    public function getResult(Request $request, $id)
+    {
+        $report = CheckUnique::findOrFail($id);
+        $service = new CheckUniqueService();
+        $result = $service->getResult($report->uid);
+        $report -> data = json_decode($result['result_json']);
+        $report->result = true;
+        $report->save();
+        return $report;
     }
 }

@@ -1,7 +1,7 @@
 <template>
-    <section class="report-block">
+    <section class="report-block" v-if="loaded">
         <systems-list></systems-list>
-        <report-item :report="report"></report-item>
+        <report-item v-if="loaded" :report="report"></report-item>
         <div class="report-item-descr check-unique-descr">
             <figure class="report-item-descr__icon check-unique-descr__icon">
                 <img src="/assets/site/images/union.png">
@@ -26,6 +26,7 @@ import ReportItem from "./components/report-item";
         },
         data() {
             return {
+                loaded:false,
                 report: {},
 
             }
@@ -38,7 +39,18 @@ import ReportItem from "./components/report-item";
                         this.report = response.data;
                         if(!this.report.uid) {
                             this.getUid();
-                        } else {
+                            this.loaded = true;
+                        }
+                        else if(!this.report.result) {
+                            this.$root.isLoading = false;
+                            axios.post('/api/report/'+ this.id + '/result')
+                                .then((response) => {
+                                    this.report = response.data;
+                                    this.loaded = true;
+                                })
+                        }
+                        else {
+                            this.loaded = true;
                             this.$root.isLoading = false;
                         }
 
