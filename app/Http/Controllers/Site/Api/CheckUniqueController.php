@@ -11,18 +11,10 @@ class CheckUniqueController extends Controller
     public function check(Request $request)
     {
 
-        $userkey = '66607d4fbd0b0c47af9a02ed3045fff2';
-
-        $TextRuApi= new \TextRuApi\TextRuApi($userkey);
-        $result = $TextRuApi->add($request->get('text'));
-        $uid = $result["text_uid"];
-        dd($result);
-
-
+        $words_count = count(preg_split('/\s+/', $request->get('text')));
         $symbols_count = strip_tags($request->get('text'));
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
-        $words_count = str_word_count($request->get('text'));
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
@@ -35,7 +27,10 @@ class CheckUniqueController extends Controller
 
     public function checkFile(Request $request)
     {
+        //application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        //application/msword
         $file = $request->file('file');
+
         $size = $file->getSize();
         $source = $file;
 
