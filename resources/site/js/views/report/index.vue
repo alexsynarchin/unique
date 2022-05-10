@@ -2,6 +2,10 @@
     <section class="report-block" v-if="loaded">
         <systems-list></systems-list>
         <report-item v-if="loaded" :report="report"></report-item>
+        <report-detail
+            v-if="report.result"
+            :report="report"
+        ></report-detail>
         <div class="report-item-descr check-unique-descr">
             <figure class="report-item-descr__icon check-unique-descr__icon">
                 <img src="/assets/site/images/union.png">
@@ -15,9 +19,10 @@
 <script>
 import SystemsList from "./components/systems-list";
 import ReportItem from "./components/report-item";
+import ReportDetail from "./components/report-detail";
     export default {
         components: {
-            SystemsList, ReportItem,
+            SystemsList, ReportItem, ReportDetail
         },
         props: {
             id: {
@@ -32,6 +37,13 @@ import ReportItem from "./components/report-item";
             }
         },
         methods: {
+            getReportData() {
+                axios.post('/api/report/'+ this.id + '/result')
+                    .then((response) => {
+                        this.report = response.data;
+                        this.loaded = true;
+                    })
+            },
             getReport() {
                 axios.get('/api/report/'+ this.id + '/show')
                     .then((response) => {
@@ -40,14 +52,11 @@ import ReportItem from "./components/report-item";
                         if(!this.report.uid) {
                             this.getUid();
                             this.loaded = true;
+                            this.getReportData()
                         }
                         else if(!this.report.result) {
                             this.$root.isLoading = false;
-                            axios.post('/api/report/'+ this.id + '/result')
-                                .then((response) => {
-                                    this.report = response.data;
-                                    this.loaded = true;
-                                })
+                            this.getReportData()
                         }
                         else {
                             this.loaded = true;

@@ -17,8 +17,8 @@ class CheckUniqueService
     public function getResult($uid)
     {
         $userkey = '7a7b404004f32189cd5dd70c4eb23d70';
-        //sleep(65);
-//Получаете результат проверки
+        sleep(95);
+        //Получаете результат проверки
         $jsonvisible = 'detail'; //Необязательный параметр. Укажите "detail" чтобы получить расширенные данные по тексту
         $TextRuApi= new \TextRuApi\TextRuApi($userkey);
         $result = $TextRuApi->get($uid, $jsonvisible);

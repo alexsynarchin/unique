@@ -1,0 +1,23 @@
+.report-item-detail {
+    &__title {
+        font-size: 22px;
+        margin-right: 15px;
+        line-height: 1;
+        margin-bottom: 0;
+    }
+    &__heading {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 10px;
+    }
+    &__control {
+        line-height: 1;
+        font-weight: 700;
+        cursor: pointer;
+        color: $blue-color;
+        font-size: 17px;
+    }
+    &__icon {
+        width: 10px;
+    }
+}
