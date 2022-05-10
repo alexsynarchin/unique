@@ -13966,6 +13966,11 @@ img {
   flex: 1 55%;
   max-width: 55%;
 }
+.report-item__right {
+  width: 25%;
+  flex: 1 25%;
+  max-width: 25%;
+}
 
 .report-item-system {
   background: #FFFFFF;
@@ -14002,4 +14007,21 @@ img {
 }
 .report-progress-bar__precent {
   font-size: 28px;
+}
+
+.report-text-params {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.report-text-params__item {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.report-text-params__label {
+  color: rgba(19, 19, 19, 0.75);
+}
+.report-text-params__value {
+  font-weight: 700;
+  color: #FF9902;
 }

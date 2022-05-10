@@ -22,7 +22,48 @@
                 </div>
             </section>
             <section class="report-item__right">
-
+                <ul class="report-text-params">
+                    <li class="report-text-params__item">
+                        <label class="report-text-params__label">
+                            Номер отчета:
+                        </label>
+                        <span class="report-text-params__value">
+                            {{report.id}}
+                        </span>
+                    </li>
+                    <li class="report-text-params__item">
+                        <label class="report-text-params__label">
+                            Страниц:
+                        </label>
+                        <span class="report-text-params__value">
+                            {{report.pages}}
+                        </span>
+                    </li>
+                    <li class="report-text-params__item">
+                        <label class="report-text-params__label">
+                            Слов:
+                        </label>
+                        <span class="report-text-params__value">
+                             {{report.wordsCount}}
+                        </span>
+                    </li>
+                    <li class="report-text-params__item">
+                        <label class="report-text-params__label">
+                            Символов:
+                        </label>
+                        <span class="report-text-params__value">
+                            {{report.symbolsCount}}
+                        </span>
+                    </li>
+                    <li class="report-text-params__item">
+                        <label class="report-text-params__label">
+                            Тип документа:
+                        </label>
+                        <span class="report-text-params__value">
+                                {{report.type}}
+                        </span>
+                    </li>
+                </ul>
             </section>
         </div>
     </section>
