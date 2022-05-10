@@ -14066,6 +14066,7 @@ img {
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
+  margin-bottom: 35px;
 }
 .report-item-links__item {
   display: flex;
@@ -14103,4 +14104,10 @@ img {
 }
 .report-item-links__icon svg {
   width: 18px;
+}
+
+.report--item-detail-text {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
 }

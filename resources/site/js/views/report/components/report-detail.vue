@@ -41,6 +41,9 @@
 
                 </li>
             </ul>
+            <section class="report--item-detail-text">
+                {{report.data.clear_text}}
+            </section>
         </section>
     </section>
 </template>
