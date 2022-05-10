@@ -14056,6 +14056,16 @@ img {
   width: 10px;
 }
 
+.report-item-detail-content {
+  max-height: 0;
+  position: relative;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+.report-item-detail-content--open {
+  max-height: 10000px;
+  transition: max-height 1s ease-in-out;
+}
 .report-item-detail-content__descr {
   font-size: 15px;
   color: rgba(19, 19, 19, 0.75);
@@ -14080,6 +14090,7 @@ img {
   margin-right: 15px;
 }
 .report-item-links__text {
+  cursor: pointer;
   line-height: 1;
   padding: 3px 35px 3px 14px;
   font-weight: 500;
@@ -14092,6 +14103,7 @@ img {
   align-items: center;
 }
 .report-item-links__icon {
+  cursor: pointer;
   margin-bottom: 0;
   border: 5px solid #F0F1F6;
   background: #E3E5ED;

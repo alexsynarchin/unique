@@ -17,7 +17,8 @@
                 </svg>
             </span>
         </div>
-        <section class="report-item-detail__content report-item-detail-content">
+        <section class="report-item-detail__content report-item-detail-content"
+                 :class="{'report-item-detail-content--open': showDetail}">
             <p class="report-item-detail-content__descr">
                 Нажмите на ссылку для подсвечивания заимствованного текста
             </p>
@@ -30,10 +31,11 @@
                         </span>
                         <span class="report-item-links__url">
                             {{item.url}}
+                            <input type="hidden" :value="item.url" :id="'report_item_link_' + index"></input>
                         </span>
 
                     </section>
-                    <figure class="report-item-links__icon">
+                    <figure class="report-item-links__icon" @click.prevent="copyUrl(index, item.url)" v-title="'Скопировать ссылку'">
                         <svg viewBox="0 0 18 22" >
                             <use xlink:href="assets/site/images/sprites.svg?ver=17#sprite-copy"></use>
                         </svg>
@@ -62,6 +64,17 @@
         methods: {
             handleDetail() {
                 this.showDetail = !this.showDetail;
+            },
+            selectUrl() {
+
+            },
+            copyUrl(index, url) {
+               // url.select();
+                let urlToCopy = document.querySelector('#report_item_link_' + index);
+                urlToCopy.setAttribute('type', 'text');
+                urlToCopy.select();
+                document.execCommand('copy');
+                urlToCopy.setAttribute('type', 'hidden');
             },
         }
     }

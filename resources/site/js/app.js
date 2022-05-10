@@ -2,7 +2,8 @@ require('./bootstrap');
 require('owl.carousel/dist/owl.carousel');
 import Vue from 'vue';
 var VueScrollTo = require('vue-scrollto');
-
+import vTitle from 'vuejs-title'
+Vue.use(vTitle)
 Vue.use(VueScrollTo);
 Vue.directive('phone', {
     bind(el) {
