@@ -10,7 +10,6 @@ class CheckUniqueController extends Controller
 {
     public function check(Request $request)
     {
-
         $words_count = count(preg_split('/\s+/', $request->get('text')));
         $symbols_count = strip_tags($request->get('text'));
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
