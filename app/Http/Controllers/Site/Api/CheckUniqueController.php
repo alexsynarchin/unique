@@ -60,12 +60,13 @@ class CheckUniqueController extends Controller
             foreach ($sections as $s) {
                 $els = $s->getElements();
                 foreach ($els as $e) {
-                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
+                    if (!$e instanceof \PhpOffice\PhpWord\Element\Text) {
                         continue;
                     }
                     $text .= $e->getText();
 
                 }
+            }
         }
 
 
