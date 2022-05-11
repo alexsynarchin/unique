@@ -35,23 +35,42 @@ class CheckUniqueController extends Controller
 
         $size = $file->getSize();
         $source = $file;
-
-        $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
+        $text = '';
+        if($request->file('file')->getClientMimeType() === 'application/msword') {
+            $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
 // read source
 
-        $sections = $phpWord->getSections();
-        $text = '';
-        foreach ($sections as $s) {
-            $els = $s->getElements();
-            foreach ($els as $e) {
-                if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
-                    continue;
-                }
-                $text .= $e->getText();
+            $sections = $phpWord->getSections();
+            foreach ($sections as $s) {
+                $els = $s->getElements();
+                foreach ($els as $e) {
+                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
+                        continue;
+                    }
+                    $text .= $e->getText();
 
+                }
             }
+        }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+            $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
+
+            $phpWord = $objReader->load($source);
+            $sections = $phpWord->getSections();
+
+            foreach ($sections as $s) {
+                $els = $s->getElements();
+                foreach ($els as $e) {
+                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
+                        continue;
+                    }
+                    $text .= $e->getText();
+
+                }
         }
-        echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
+
+
+
+       // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
        // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
@@ -65,6 +84,7 @@ class CheckUniqueController extends Controller
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
             'sentenceCount' => 0,
+            'plainText' => $text,
             'size' => $size,
             'pages' => $pages,
         ];
