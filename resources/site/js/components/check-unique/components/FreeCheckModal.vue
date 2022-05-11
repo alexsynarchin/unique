@@ -11,7 +11,6 @@
                     <h3 class="unique-modal__title">
                         Бесплатная проверка уникальности текста
                     </h3>
-                    {{textParams}}
                     <div class="u-form-group">
                         <label class="u-form-group__label">
                             Укажите E-mail для получения отчета
