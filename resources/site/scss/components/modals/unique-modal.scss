@@ -18,7 +18,16 @@
         border-radius: 30px;
         position: relative;
         border: none;
-        padding: 60px 70px;
+        padding: 50px 20px;
+        @include media-breakpoint-up(md) {
+            padding: 50px 40px;
+        }
+        @include media-breakpoint-up(lg) {
+            padding: 50px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding: 60px 70px;
+        }
     }
  &__close {
      position: absolute;

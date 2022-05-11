@@ -1,5 +1,10 @@
 .select-system-modal-content {
-    display: flex;
+    @include media-breakpoint-down(md) {
+        text-align: center;
+    }
+    @include media-breakpoint-up(md) {
+        display: flex;
+    }
     &__img {
         display: flex;
         align-items: center;
@@ -10,9 +15,17 @@
         padding: 40px;
         background: #F0F1F6;
         border-radius: 10px;
+        @include media-breakpoint-down(md) {
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     &__right {
-        padding-left: 25px;
+
+        @include media-breakpoint-up(md) {
+            padding-left: 25px;
+        }
     }
     &__text {
         margin-bottom: 40px;
