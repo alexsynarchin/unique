@@ -12330,6 +12330,7 @@ img {
   margin-bottom: 10px;
 }
 .u-form-group__btn-wrap {
+  align-items: flex-start;
   display: flex;
 }
 .u-form-group__btn {

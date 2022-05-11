@@ -13,7 +13,7 @@ class CheckUnique extends Model
     protected $fillable= [
         'uid', 'pages', 'wordsCount',
         'symbolsCount', 'sentenceCount', 'type',
-        'data', 'plainText'
+        'data', 'plainText', 'email'
     ];
     protected $appends = [
         'formatted_date'

@@ -100,13 +100,15 @@
         <button class="btn button">
             Проверить уникальность полного текста
         </button>
+        <free-check-modal ref="free_check_modal"></free-check-modal>
     </section>
 </template>
 <script>
-    import SystemsList from './components/system-list'
+    import SystemsList from './components/system-list';
+    import FreeCheckModal from "./components/FreeCheckModal";
     export default {
         components: {
-            SystemsList,
+            SystemsList, FreeCheckModal,
         },
         data() {
             return {
@@ -114,14 +116,14 @@
                 text: "",
                 file:"",
                 fileName: "",
-                plainText: "",
+
                 textParams: {
                     symbolsCount: 0,
                     wordsCount:0,
                     sentenceCount:0,
                     size:0,
                     pages:0,
-
+                    plainText: "",
                 }
             }
         },
@@ -135,6 +137,7 @@
                 this.file = null;
                 this.fileName= '';
                 this.textParams = {
+                    plainText: "",
                     symbolsCount: 0,
                     wordsCount:0,
                     sentenceCount:0,
@@ -167,10 +170,7 @@
 
             },
             handleSelected() {
-                axios.post('/api/check-unique-make-report', this.textParams)
-                    .then((response) => {
-                        window.location.href = response.data;
-                    })
+                this.$refs.free_check_modal.showModal(this.textParams);
             },
         },
     }

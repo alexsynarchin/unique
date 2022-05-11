@@ -17,7 +17,7 @@ class CheckUniqueController extends Controller
         $symbols_count = iconv_strlen($symbols_count);
         $sentenceCount = substr_count($request->get('text'),'.') + substr_count($request->get('text'),'!')+ substr_count($request->get('text'),'?');
         $textParams = [
-            'symbolsCount' => $symbols_count,
+            'symbolsCount' => (int) $symbols_count,
             'wordsCount' => $words_count,
             'plainText' => $request->get('text'),
             'sentenceCount' => $sentenceCount,
@@ -106,6 +106,18 @@ class CheckUniqueController extends Controller
 
     public function makeReport(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'plainText' => 'required',
+            'symbolsCount' => 'numeric|min:100|max:150000'
+        ],
+            [
+                'symbolsCount.min' => 'Количество символов должно быть больше 100',
+                'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
+                'email.required' => 'Введите ваш e-mail',
+                'plainText.required' => 'Введите текст для проверки уникальности'
+            ]
+        );
         $report = CheckUnique::create($request->all());
         $url = route('report', $report->id);
         return $url;
