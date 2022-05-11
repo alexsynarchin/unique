@@ -27,9 +27,13 @@ class ReportController extends Controller
 
     public function getResult(Request $request, $id)
     {
+
         $report = CheckUnique::findOrFail($id);
         $service = new CheckUniqueService();
         $result = $service->getResult($report->uid);
+        if($result['error']['code']){
+            return $report;
+        }
         $report -> data = json_decode($result['result_json']);
         $report->result = true;
         $report->save();

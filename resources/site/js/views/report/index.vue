@@ -37,41 +37,47 @@ import ReportDetail from "./components/report-detail";
             }
         },
         methods: {
-            getReportData() {
-                axios.post('/api/report/'+ this.id + '/result')
-                    .then((response) => {
-                        this.report = response.data;
-                        this.loaded = true;
-                    })
+            async  getReportData() {
+
+                do {
+                    await axios.post('/api/report/'+ this.id + '/result')
+                        .then((response) => {
+                            this.report = response.data;
+                        })
+                } while (!this.report.result)
             },
-            getReport() {
-                axios.get('/api/report/'+ this.id + '/show')
+            async getReport() {
+
+                await axios.get('/api/report/'+ this.id + '/show')
                     .then((response) => {
                         //console.log(response.data)
                         this.report = response.data;
+                        this.loaded = true;
                         if(!this.report.uid) {
                             this.getUid();
-                            this.loaded = true;
-                            this.getReportData()
+                            this.$root.isLoading = false;
+
                         }
                         else if(!this.report.result) {
                             this.$root.isLoading = false;
-                            this.getReportData()
+                            console.log('error');
+                            this.getReportData();
+
                         }
                         else {
-                            this.loaded = true;
                             this.$root.isLoading = false;
                         }
 
                     })
             },
-            getUid() {
-                axios.post('/api/report/'+ this.id + '/uid')
+            async getUid() {
+                await axios.post('/api/report/'+ this.id + '/uid')
                     .then((response) => {
                         //console.log(response.data)
                         console.log('uid');
                         this.report.uid = response.data;
                         this.$root.isLoading = false;
+                        this.getReportData();
                     })
             },
         },
