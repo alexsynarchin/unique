@@ -14268,15 +14268,35 @@ img {
 
 .report-block {
   margin-top: 40px;
-  padding: 70px;
+  padding: 25px;
   background: #F0F1F6;
   border-radius: 30px;
   margin-bottom: 100px;
 }
+@media (min-width: 768px) {
+  .report-block {
+    padding: 40px;
+  }
+}
+@media (min-width: 1024px) {
+  .report-block {
+    padding: 50px;
+  }
+}
+@media (min-width: 1440px) {
+  .report-block {
+    padding: 70px;
+  }
+}
 
 .report-systems-list__title {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 30px;
+}
+@media (min-width: 1200px) {
+  .report-systems-list__title {
+    font-size: 22px;
+  }
 }
 .report-systems-list__list {
   margin-left: -7.5px;
@@ -14288,12 +14308,30 @@ img {
   margin-bottom: 60px;
 }
 .report-systems-list__item {
-  width: 20%;
-  flex: 1 20%;
-  max-width: 20%;
+  margin-bottom: 15px;
   padding-left: 7.5px;
   padding-right: 7.5px;
-  margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .report-systems-list__item {
+    width: 33.33333%;
+    flex: 1 33.33333%;
+    max-width: 33.33333%;
+  }
+}
+@media (min-width: 1024px) {
+  .report-systems-list__item {
+    width: 25%;
+    flex: 1 25%;
+    max-width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .report-systems-list__item {
+    width: 20%;
+    flex: 1 20%;
+    max-width: 20%;
+  }
 }
 
 .report-systems-list-item {
@@ -14303,8 +14341,18 @@ img {
   border-radius: 5px;
   padding: 10px;
   color: #ABAFC3;
-  font-size: 17px;
   font-weight: 500;
+  font-size: 14px;
+}
+@media (min-width: 1024px) {
+  .report-systems-list-item {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1440px) {
+  .report-systems-list-item {
+    font-size: 17px;
+  }
 }
 .report-systems-list-item--active {
   background: #366AF3;
@@ -14318,29 +14366,49 @@ img {
   font-size: 22px;
   margin-bottom: 30px;
 }
-.report-item__content {
-  display: flex;
+@media (min-width: 1024px) {
+  .report-item__content {
+    display: flex;
+  }
 }
-.report-item__center {
-  padding-left: 40px;
-  padding-right: 40px;
-  width: 55%;
-  flex: 1 55%;
-  max-width: 55%;
+@media (min-width: 1024px) {
+  .report-item__center {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
-.report-item__right {
-  width: 25%;
-  flex: 1 25%;
-  max-width: 25%;
+@media (min-width: 1200px) {
+  .report-item__center {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (min-width: 1024px) {
+  .report-item__center {
+    width: 55%;
+    flex: 1 55%;
+    max-width: 55%;
+  }
+}
+@media (min-width: 1024px) {
+  .report-item__right {
+    width: 25%;
+    flex: 1 25%;
+    max-width: 25%;
+  }
 }
 
 .report-item-system {
   background: #FFFFFF;
   border-radius: 10px;
   padding: 25px;
-  width: 20%;
-  max-width: 20%;
   text-align: center;
+}
+@media (min-width: 1024px) {
+  .report-item-system {
+    width: 20%;
+    max-width: 20%;
+  }
 }
 .report-item-system__title {
   font-size: 17px;
@@ -14359,7 +14427,17 @@ img {
 }
 
 .report-progress-bar {
-  margin-top: 80px;
+  margin-top: 40px;
+}
+@media (min-width: 1024px) {
+  .report-progress-bar {
+    margin-top: 60px;
+  }
+}
+@media (min-width: 1440px) {
+  .report-progress-bar {
+    margin-top: 80px;
+  }
 }
 .report-progress-bar__text {
   margin-bottom: 5px;
@@ -14374,6 +14452,11 @@ img {
 .report-progress-bar__descr {
   font-size: 15px;
   color: rgba(19, 19, 19, 0.75);
+}
+@media (max-width: 767.98px) {
+  .report-progress-bar__descr {
+    margin-bottom: 25px;
+  }
 }
 
 .report-text-params {
@@ -14469,6 +14552,7 @@ img {
   border-radius: 100%;
   width: 44px;
   height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;

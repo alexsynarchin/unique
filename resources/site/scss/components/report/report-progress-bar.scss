@@ -1,5 +1,11 @@
 .report-progress-bar {
-    margin-top: 80px;
+    margin-top: 40px;
+    @include media-breakpoint-up(lg) {
+        margin-top: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 80px;
+    }
     &__text {
         margin-bottom: 5px;
         margin-top: 20px;
@@ -13,5 +19,8 @@
     &__descr {
         font-size: 15px;
         color: rgba(19, 19, 19, 0.75);
+        @include media-breakpoint-down(md) {
+            margin-bottom: 25px;
+        }
     }
 }
