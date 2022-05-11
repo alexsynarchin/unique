@@ -10,6 +10,7 @@ class CheckUniqueService
 
         $TextRuApi= new \TextRuApi\TextRuApi($userkey);
         $result = $TextRuApi->add($text);
+        dd($result);
         $uid = $result["text_uid"];
         return $uid;
     }
