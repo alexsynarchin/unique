@@ -114,7 +114,7 @@ import ProgressBar from 'vue-simple-progress'
                 this.random_pct = Math.ceil(Math.random() * 100)
                 this.increasing_pct = Math.min(this.increasing_pct + 2, 100)
                 this.decreasing_pct = Math.max(this.decreasing_pct - 2, 0)
-                }, 2000)
+                }, 3500)
             }
 
         }
