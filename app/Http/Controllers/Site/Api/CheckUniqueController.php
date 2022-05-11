@@ -108,7 +108,6 @@ class CheckUniqueController extends Controller
     {
         $report = CheckUnique::create($request->all());
         $url = route('report', $report->id);
-        dd($url);
         return $url;
     }
 }
