@@ -36,6 +36,10 @@ img {
     max-width: 100%;
 }
 .page-title {
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 26px;
+    margin-bottom: 30px;
+    @include media-breakpoint-up(lg) {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
 }

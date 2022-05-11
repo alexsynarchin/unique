@@ -1,9 +1,20 @@
 .reviews-filters {
-    display: flex;
+
+    @include media-breakpoint-up(md) {
+        display: flex;
+        flex-wrap: wrap;
+    }
     &__item {
-        width:264px;
+        min-width: 280px;
+        width:280px;
+        margin-bottom: 15px;
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+        }
         &--last {
-            margin-left: 15px;
+            @include media-breakpoint-up(md) {
+                margin-left: 15px;
+            }
         }
     }
 }
