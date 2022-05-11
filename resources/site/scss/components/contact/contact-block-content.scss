@@ -1,13 +1,32 @@
 .contact-block-content {
-    display: flex;
+
     margin-bottom: 65px;
+    @include media-breakpoint-up(md) {
+        display: flex;
+    }
     &__left {
         display: flex;
-        width: 70%;
+        @include media-breakpoint-down(md) {
+            flex-wrap: wrap;
+        }
+        @include media-breakpoint-up(md) {
+            width: 70%;
+        }
+        @include media-breakpoint-up(xxl) {
+            width: 75%;
+        }
     }
     &__right {
-        width: 30%;
+
         display: flex;
-        justify-content: center;
+        @include media-breakpoint-down(md) {
+            margin-top: 20px;
+        }
+        @include media-breakpoint-up(md) {
+            width: 25%;
+        }
+        @include media-breakpoint-up(xxl) {
+            width: 30%;
+        }
     }
 }

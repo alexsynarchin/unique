@@ -1,7 +1,7 @@
 <footer class="page-footer">
     <div class="container">
         <div class="page-footer__main row">
-            <div class="col-lg-3 page-footer__col-1">
+            <div class="col-lg-4 col-xl-3 page-footer__col-1">
                 <div class="logo-title">
                     <h1 class="logo-title__title">УНИКАЛЬНОСТЬ</h1> <span class="logo-title__cursor"></span>
                 </div>
@@ -12,7 +12,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-3 page-footer__col-2">
+            <div class="col-xl-3 page-footer__col-2">
                 <a href="" class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
                     Проверить уникальность
                 </a>
@@ -25,7 +25,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="col-lg-4 page-footer__col-3">
+            <div class="col-lg-5 col-xl-4 page-footer__col-3">
                 <ul class="main-nav main-nav--footer">
                     <li class="main-nav__item">
                         <a href="/price" class="main-nav__link main-nav__link--footer">
@@ -59,12 +59,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-2 page-footer__col-4 ">
+            <div class="col-lg-3 col-xl-2 page-footer__col-4 ">
                 <section class="contact-bl page-footer__contact-bl">
-                    <span class="contact-bl__phone">
+                    <span class="contact-bl__phone contact-bl__phone--footer">
                     8 800 555 65 65
                 </span>
-                    <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
+                    <a href="" class="contact-bl__btn contact-bl__btn--footer" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
                     </a>
                 </section>

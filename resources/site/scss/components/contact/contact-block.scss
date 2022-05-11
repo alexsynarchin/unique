@@ -1,6 +1,12 @@
 .contact-block {
-    padding: 65px;
+    padding: 35px 10px;
     background: #F0F1F6;
     border-radius: 30px;
     margin-bottom: 100px;
+    @include media-breakpoint-up(lg) {
+        padding: 35px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding: 65px;
+    }
 }

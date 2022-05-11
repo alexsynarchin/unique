@@ -17,6 +17,9 @@
         @include media-breakpoint-down(lg) {
             margin-bottom: 45px;
         }
+        @include media-breakpoint-between(lg, xl) {
+            display: none;
+        }
     }
     &__col-3 {
         @include media-breakpoint-down(lg) {
@@ -29,9 +32,15 @@
     }
     &__col-4 {
 
+        @include media-breakpoint-up(lg) {
+            text-align: right;
+        }
     }
     &__contact-bl {
         margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            text-align: right;
+        }
     }
     &__e-mail {
         margin-bottom: 20px;
@@ -46,7 +55,7 @@
     &__social-list {
 
         @include media-breakpoint-up(lg) {
-            justify-content: center;
+            justify-content: flex-end;
         }
     }
     &__bottom {

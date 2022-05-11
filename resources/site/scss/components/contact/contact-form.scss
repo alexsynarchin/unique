@@ -4,25 +4,41 @@
         margin-bottom: 30px;
     }
     &__row {
-        display: flex;
-        margin-right: -12.5px;
-        margin-left: -12.5px;
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+            margin-right: -12.5px;
+            margin-left: -12.5px;
+        }
     }
     &__group {
-        width: 50%;
-        padding-left: 12.5px;
-        padding-right: 12.5px;
+
+        @include media-breakpoint-up(md) {
+            width: 50%;
+            padding-left: 12.5px;
+            padding-right: 12.5px;
+        }
     }
     &__footer {
-        display: flex;
-        align-items: center;
-        margin-top: 35px;
+        margin-top: 25px;
+        @include media-breakpoint-up(md) {
+            display: flex;
+            align-items: center;
+            margin-top: 35px;
+        }
     }
     &__descr {
+
         margin-bottom: 0;
-        margin-left: 15px;
+        @include media-breakpoint-up(md) {
+            margin-left: 15px;
+        }
     }
     &__btn {
+        margin-bottom: 20px;
         white-space:nowrap;
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+        }
     }
 }
