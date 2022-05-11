@@ -12078,8 +12078,13 @@ img {
   }
 }
 .unique-modal__title {
-  font-size: 36px;
+  font-size: 26px;
   margin-bottom: 25px;
+}
+@media (min-width: 1024px) {
+  .unique-modal__title {
+    font-size: 36px;
+  }
 }
 .unique-modal__descr {
   color: #131313;
@@ -12175,13 +12180,24 @@ img {
   margin-bottom: 0;
 }
 .what-system-check-list__item {
-  display: flex;
   padding-bottom: 30px;
   margin-bottom: 30px;
   border-bottom: 1px solid #D3D7E4;
 }
-.what-system-check-list__content {
-  margin-left: 25px;
+@media (min-width: 768px) {
+  .what-system-check-list__item {
+    display: flex;
+  }
+}
+@media (max-width: 767.98px) {
+  .what-system-check-list__content {
+    text-align: center;
+  }
+}
+@media (min-width: 768px) {
+  .what-system-check-list__content {
+    margin-left: 25px;
+  }
 }
 .what-system-check-list__title {
   font-size: 22px;
@@ -12197,6 +12213,12 @@ img {
   width: 115px;
   min-width: 115px;
   height: 115px;
+}
+@media (max-width: 767.98px) {
+  .what-system-check-list__logo {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .what-system-check-list__description {
   margin-bottom: 0;

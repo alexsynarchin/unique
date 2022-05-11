@@ -1,7 +1,10 @@
 .unique-modal {
     &__title {
-        font-size: 36px;
+        font-size: 26px;
         margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            font-size: 36px;
+        }
     }
     &__descr {
         color: #131313;

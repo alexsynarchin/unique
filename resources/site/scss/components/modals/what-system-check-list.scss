@@ -5,13 +5,21 @@
     padding-left: 0;
     margin-bottom: 0;
     &__item {
-        display: flex;
+
         padding-bottom: 30px;
         margin-bottom: 30px;
         border-bottom: 1px solid #D3D7E4;
+        @include media-breakpoint-up(md) {
+            display: flex;
+        }
     }
     &__content {
-        margin-left: 25px;
+        @include media-breakpoint-down(md) {
+            text-align: center;
+        }
+        @include media-breakpoint-up(md) {
+            margin-left: 25px;
+        }
     }
     &__title {
         font-size: 22px;
@@ -27,6 +35,10 @@
         width: 115px;
         min-width: 115px;
         height: 115px;
+        @include media-breakpoint-down(md) {
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
     &__description {
         margin-bottom: 0;
