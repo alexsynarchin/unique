@@ -14,24 +14,41 @@
         margin-bottom: 10px;
     }
     &__text {
-        font-size: 17px;
-        margin-bottom: 45px;
+        margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 45px;
+        }
     }
     &__bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
     &__name {
         border-radius: 500px;
-        font-size: 17px;
+        font-size: 14px;
         font-weight: 500;
         padding: 8px;
         color: #fff;
         background-color:  #FF9902;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 17px;
+        }
     }
     &__date {
-        font-size: 17px;
+        font-size: 14px;
         font-weight: bold;
+        display: block;
+        @include media-breakpoint-down(md) {
+            margin-top: 10px;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 17px;
+            margin-bottom: 0px;
+        }
     }
 }

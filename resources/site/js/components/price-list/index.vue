@@ -20,7 +20,7 @@
         <div class="price-block__description" v-if="data.description">
             {{data.description}}
         </div>
-            <a href="" v-if="data.button" class="button">Проверить уникальность текста</a>
+            <a href="" v-if="data.button" class="btn button">Проверить уникальность текста</a>
     </section>
 </template>
 <script>

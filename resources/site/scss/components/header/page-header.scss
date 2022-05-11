@@ -1,8 +1,10 @@
 .page-header {
     position: relative;
     padding: 22px 0;
-    margin-bottom: 80px;
-
+    margin-bottom: 40px;
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 80px;
+    }
     &:before {
         top:0;
         z-index: 4;

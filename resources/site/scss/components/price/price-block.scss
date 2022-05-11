@@ -16,6 +16,9 @@
         margin-bottom: 25px;
         display: flex;
         justify-content: space-between;
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
     }
     &__description {
         font-weight: 500;

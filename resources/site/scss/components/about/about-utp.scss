@@ -1,11 +1,20 @@
 .about-utp {
-    padding: 70px;
+    padding: 40px;
     background: #F0F1F6;
     border-radius: 30px;
-    display: flex;
     margin-bottom: 80px;
+    @include media-breakpoint-up(md) {
+        display: flex;
+    }
+    @include media-breakpoint-up(lg) {
+        padding: 70px;
+    }
     &__content {
-        width: 60%;
+
+        @include media-breakpoint-up(md) {
+            width: 60%;
+            padding-right: 40px;
+        }
         @include media-breakpoint-up(lg) {
             padding-right: 50px;
         }
@@ -17,17 +26,27 @@
         }
     }
     &__title {
-        font-size: 36px;
+        font-size: 26px;
         margin-bottom: 25px;
+        @include media-breakpoint-up(lg) {
+            font-size: 36px;
+        }
     }
     &__text {
         font-weight: 700;
-        font-size: 17px;
     }
     &__img-wrap {
-        width: 40%;
+
         background: #FF9902;
         border-radius: 500px;
+        @include media-breakpoint-down(md) {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        @include media-breakpoint-up(md) {
+            width: 40%;
+            order: 1;
+        }
     }
     &__img {
         overflow: hidden;

@@ -1,9 +1,12 @@
 <template>
-    <div class="modal fade unique-modal" id="order-call"  tabindex="-1" role="dialog"  aria-hidden="true">
+   <div class="modal fade unique-modal" id="order-call"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content consultation-modal__content modal-content">
                 <button  class="unique-modal__close consultation-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
-                    <svg viewBox="0 0 41 40">
+                    <svg viewBox="0 0 41 40" class="consultation-modal__close-icon--mobile">
+                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
+                    </svg>
+                    <svg viewBox="0 0 41 40" class="consultation-modal__close-icon--desctop">
                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-white"></use>
                     </svg>
                 </button>
@@ -62,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+   </div>
 </template>
 <script>
 import { Errors } from  '@/common/js/services/errors.js';

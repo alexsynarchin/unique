@@ -6,19 +6,32 @@
     &:last-child {
         border-bottom: none;
     }
-    &__left {
-        display: flex;
-        align-items: center;
-        width: 80%;
-    }
     &__right {
-        width: 20%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
+        flex: 1;
+        padding-left: 20px;
+        @include media-breakpoint-up(md) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        @include media-breakpoint-up(lg) {
+            padding-left: 40px;
+        }
     }
     &__icon {
         width: 39px;
+    }
+    &__price-wrap {
+
+        @include media-breakpoint-up(md) {
+            width: 25%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        @include media-breakpoint-up(xxl) {
+            width: 20%;
+        }
     }
     &__price {
         display: inline-block;
@@ -40,8 +53,9 @@
         justify-content: center;
     }
     &__content {
-        flex: 1;
-        padding-left: 40px;
+        @include media-breakpoint-up(md) {
+            flex: 1;
+        }
     }
     &__title {
         font-size: 17px;

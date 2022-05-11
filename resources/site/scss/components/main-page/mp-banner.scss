@@ -1,14 +1,10 @@
 .mp-banner {
     background-color: $blue-color;
-
     color: #fff;
     background-repeat: no-repeat;
-
     background-size: contain;
     border-radius: 20px;
-
-    margin-bottom: 100px;
-
+    margin-bottom: 80px;
     background-position: center center;
     @include media-breakpoint-down(lg) {
         padding-left: 15px;
@@ -16,6 +12,7 @@
         padding-bottom: 35px;
     }
     @include media-breakpoint-up(lg) {
+        margin-bottom: 100px;
         padding: 45px 0 45px 80px;
         display: flex;
         background-position: top right;

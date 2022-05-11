@@ -1,6 +1,13 @@
 .price-page {
-    margin-bottom: 100px;
-    padding: 65px;
+    margin-bottom: 80px;
+    padding: 45px 10px;
     background: #F0F1F6;
     border-radius: 30px;
+    @include media-breakpoint-up(md) {
+        padding: 45px;
+    }
+    @include media-breakpoint-up(lg) {
+        padding: 65px;
+        margin-bottom: 100px;
+    }
 }

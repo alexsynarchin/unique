@@ -1,10 +1,12 @@
 .about-result {
     background: #F0F1F6;
     border-radius: 30px;
-    padding: 60px;
-    margin-bottom: 100px;
+    padding: 35px;
+    margin-bottom: 80px;
     @include media-breakpoint-up(lg) {
+        padding: 60px;
         display: flex;
+        margin-bottom: 100px;
     }
     &__main {
         @include media-breakpoint-up(lg) {
@@ -25,5 +27,8 @@
     &__text {
         font-size: 17px;
         font-weight: 500;
+        @include media-breakpoint-down(md) {
+            margin-bottom: 20px;
+        }
     }
 }

@@ -45,20 +45,23 @@ $(document).ready(function(){
         mpReviewsOptions = {
             dots:false,
             margin:10,
-            stagePadding:30,
+            stagePadding:10,
             autoplay:false,
             responsiveClass:true,
             nav:false,
 
             responsive:{
                 0:{
-
+                    stagePadding:10,
                     items:1,
                 },
                 768:{
                     margin:20,
                     items:2,
                 },
+                1024: {
+                    stagePadding:30,
+                }
             },
             autoplayTimeout:10000,
         }
