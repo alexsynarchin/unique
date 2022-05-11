@@ -31,15 +31,13 @@
 
 </template>
 <script>
-import { Errors } from  '@/common/js/services/errors.js';
+
     export default {
         data() {
             return {
                 index:null,
-                form: {
-                    email: "",
-                },
-                errors: new Errors(),
+
+
             }
         },
         methods: {

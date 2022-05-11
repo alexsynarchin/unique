@@ -79,6 +79,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 this.textParams.email = this.form.email;
                 axios.post('/api/check-unique-make-report', this.textParams)
                     .then((response) => {
+                        this.$root.isLoading = false;
                         window.location.href = response.data;
                     })
                     .catch((error) => {

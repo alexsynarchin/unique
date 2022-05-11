@@ -2,7 +2,14 @@
     position: relative;
     display: flex;
     align-items: flex-start;
+    text-decoration: none;
+    color: #131313;
+    &:hover {
+        color: #131313;
+        text-decoration: none;
+    }
     &__title {
+        color: #131313;
         text-transform: uppercase;
         line-height: 1;
         padding: 0;

@@ -1,8 +1,8 @@
 <header class="page-header">
     <div class="container page-header__inner">
-        <section class="logo-title page-header__logo">
+        <a href="/" class="logo-title page-header__logo">
             <h1 class="logo-title__title">УНИКАЛЬНОСТЬ</h1> <span class="logo-title__cursor"></span>
-        </section>
+        </a>
        <header-panel-btn></header-panel-btn>
         <section class="page-header__right">
             <a href="" class="btn button" v-scroll-to="'#check_unique'">
