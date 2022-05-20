@@ -1,4 +1,5 @@
 <template>
+    <section>
     <div class="check-systems">
         <div class="check-systems__item" v-for="(item, index) in CheckSystems" @click.prevent="selectSystem(index, item)">
             <section class="check-system-item">
@@ -32,8 +33,12 @@
                 </span>
             </section>
         </div>
-        <select-system-modal ref="select_system_modal" @selectSystem="handleSelected"></select-system-modal>
     </div>
+        <button class="btn button" @click.prevent = "checkTextUnique">
+            Проверить уникальность полного текста
+        </button>
+        <select-system-modal ref="select_system_modal" @selectSystem="handleSelected"></select-system-modal>
+    </section>
 </template>
 <script>
     import selectSystemModal from "./SelectSystemModal";
@@ -43,6 +48,8 @@
         },
         data() {
             return {
+                free:false,
+                selectedSystemsList:[],
                 systemIndex: [],
                 CheckSystems: [],
             }
@@ -57,9 +64,9 @@
                 }
             },
             handleSelected(index) {
-
                 if(this.CheckSystems[index].price === 0) {
                     this.systemIndex = [];
+                    this.free = true;
                 } else {
                    this.systemIndex.forEach((element, i) =>  {
                        if(this.CheckSystems[element].price === 0) {
@@ -68,7 +75,13 @@
                    })
                 }
                 this.systemIndex.push(index);
-                //this.$emit('selectSystem');
+                this.selectedSystemsList = [];
+                this.systemIndex.forEach((element) => {
+                    this.selectedSystemsList.push({id:this.CheckSystems[element].id, title:this.CheckSystems[element].title});
+                })
+            },
+            checkTextUnique() {
+                this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
             },
             getSystemsList() {
                 axios.get('/api/check-systems')

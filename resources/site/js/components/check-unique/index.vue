@@ -97,10 +97,8 @@
             </div>
         </div>
         <systems-list @selectSystem="handleSelected"></systems-list>
-        <button class="btn button">
-            Проверить уникальность полного текста
-        </button>
         <free-check-modal ref="free_check_modal"></free-check-modal>
+        <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
     </section>
 </template>
 <script>
@@ -113,11 +111,10 @@
         },
         data() {
             return {
-                index: 0,
+                systems: [],
                 text: "",
                 file:"",
                 fileName: "",
-
                 textParams: {
                     symbolsCount: 0,
                     wordsCount:0,
@@ -170,9 +167,18 @@
                 }
 
             },
-            handleSelected() {
-                this.$refs.free_check_modal.showModal(this.textParams);
+            handleSelected(systems, free) {
+                if(free) {
+                    this.$refs.free_check_modal.showModal(this.textParams);
+                } else {
+                    this.$refs.pay_check_nodal.showModal(this.textParams);
+                }
+
             },
+
         },
+        mounted() {
+
+        }
     }
 </script>
