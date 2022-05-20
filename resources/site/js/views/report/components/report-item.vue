@@ -6,10 +6,10 @@
         <div class="report-item__content">
             <div class="report-item-system">
                 <h4 class="report-item-system__title">
-                    NASH Antiplagiat
+                    {{report.check_system.title}}
                 </h4>
                 <figure class="report-item-system__logo">
-                    <img src="/assets/site/images/mp/system-logo-1.png">
+                    <img :src="report.check_system.logo">
                 </figure>
             </div>
             <section class="report-item__center">

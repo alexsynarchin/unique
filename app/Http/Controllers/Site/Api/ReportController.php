@@ -11,7 +11,7 @@ class ReportController extends Controller
 {
     public function show($id)
     {
-        $report = Report::findOrFail($id);
+        $report = Report::with('checkSystem')->findOrFail($id);
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();

@@ -27,4 +27,9 @@ class Report extends Model
         $date = DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y H:i');
         return $date;
     }
+
+    public function checkSystem()
+    {
+        return $this->belongsTo(CheckSystem::class, 'system_id');
+    }
 }
