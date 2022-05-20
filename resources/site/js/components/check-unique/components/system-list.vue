@@ -60,6 +60,12 @@
 
                 if(this.CheckSystems[index].price === 0) {
                     this.systemIndex = [];
+                } else {
+                   this.systemIndex.forEach((element, i) =>  {
+                       if(this.CheckSystems[element].price === 0) {
+                          this.systemIndex.splice(i, 1);
+                       }
+                   })
                 }
                 this.systemIndex.push(index);
                 //this.$emit('selectSystem');
