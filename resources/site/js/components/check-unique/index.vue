@@ -168,9 +168,9 @@
 
             },
             handleSelected(systems, free) {
-                if(free) {
+                if(free && systems.length > 0) {
                     this.$refs.free_check_modal.showModal(this.textParams);
-                } else {
+                } else if(systems.length > 0) {
                     this.$refs.pay_check_nodal.showModal(this.textParams);
                 }
 
