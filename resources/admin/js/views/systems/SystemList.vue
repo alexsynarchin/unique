@@ -26,6 +26,13 @@
                 >
                 </el-table-column>
                 <el-table-column
+                    label="Стоимость, руб"
+                    prop="price"
+                    width="200"
+                    sortable
+                >
+                </el-table-column>
+                <el-table-column
                     label="Сервис Api"
                     sortable
                 >
@@ -51,9 +58,10 @@
             :title="modalTitle"
             :visible.sync="modalVisible"
             width="50%"
+            :before-close="handleClose"
         >
             <edit
-                v-if="modalState === 'edit'"
+                v-if="modalState === 'edit' && systemEditId"
                 :id="systemEditId"
                 @closeModal="closeModal"
             ></edit>
@@ -102,11 +110,17 @@ import Edit from "./systems-list/edit";
                         this.tableData = response.data;
                     })
             },
+            handleClose() {
+                this.modalState="";
+                this.modalVisible = false;
+                this.systemEditId = null;
+            },
             closeModal(type){
                 if(type === 'save') {
                     this.getList();
                 }
                 this.modalState="";
+                this.systemEditId = null;
                 this.modalVisible = false;
             },
             openModal(type ,id) {
