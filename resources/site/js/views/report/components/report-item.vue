@@ -6,10 +6,10 @@
         <div class="report-item__content"  >
             <div class="report-item-system">
                 <h4 class="report-item-system__title">
-                    {{report.check_system.title}}
+                    {{check_system.title}}
                 </h4>
                 <figure class="report-item-system__logo">
-                    <img :src="report.check_system.logo">
+                    <img :src="check_system.logo">
                 </figure>
             </div>
             <section class="report-item__center">
@@ -99,6 +99,7 @@ import ProgressBar from 'vue-simple-progress'
     },
         data() {
         return {
+            check_system: {},
             increasing_pct: 0,
             decreasing_pct: 100,
         }
@@ -115,6 +116,7 @@ import ProgressBar from 'vue-simple-progress'
 
         },
         mounted() {
+        this.check_system = this.report.check_system;
         if(!this.report.result) {
             setInterval(() => {
                 if (this.is_paused)
