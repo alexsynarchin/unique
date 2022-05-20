@@ -18,6 +18,8 @@ class CreateReportsTable extends Migration
             $table->string('uid')->nullable();
             $table->BigInteger('check_unique_id')->unsigned();
             $table->foreign('check_unique_id')->references('id')->on('check_uniques')->onDelete('cascade');
+            $table->BigInteger('system_id')->unsigned();
+            $table->foreign('system_id')->references('id')->on('check_systems')->onDelete('cascade');
             $table->json('data')->nullable();
             $table->boolean('result')->default(false);
             $table->timestamps();

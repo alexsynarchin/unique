@@ -65,18 +65,21 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email: "",
                 },
                 textParams: {},
+                systems:[],
                 errors: new Errors(),
             }
         },
         methods: {
-            showModal(data) {
+            showModal(data, list) {
                 this.textParams = data;
+                this.systems = list;
                 $('#free_check').modal('show');
             },
             uniqueCheck() {
                 $('#free_check').modal('show');
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
+                this.textParams.systems = this.systems;
                 axios.post('/api/check-unique-make-report', this.textParams)
                     .then((response) => {
                         this.$root.isLoading = false;

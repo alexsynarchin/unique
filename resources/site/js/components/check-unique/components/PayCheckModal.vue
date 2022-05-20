@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade unique-modal" id="free_check"  tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade unique-modal" id="pay_check"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="free-check-modal__content unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -69,14 +69,16 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         methods: {
-            showModal(data) {
+            showModal(data, list) {
                 this.textParams = data;
-                $('#free_check').modal('show');
+                this.systems = list;
+                $('#pay_check').modal('show');
             },
             uniqueCheck() {
                 $('#free_check').modal('show');
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
+                this.textParams.systems = this.systems;
                 axios.post('/api/check-unique-make-report', this.textParams)
                     .then((response) => {
                         this.$root.isLoading = false;
@@ -89,9 +91,9 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         mounted() {
-            var freeCheckModal = document.getElementById('free_check');
+            var payCheckModal = document.getElementById('pay_check');
             let vm = this;
-            freeCheckModal.addEventListener('hidden.bs.modal', function (event) {
+            payCheckModal.addEventListener('hidden.bs.modal', function (event) {
                 vm.errors.clear();
             });
         }
