@@ -66,9 +66,29 @@
                             <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('promocode')"></div>
                         </div>
                     </div>
-
-                    <button class="btn button u-form-group__btn" @click.prevent="uniqueCheck">Проверить текст</button>
                 </form>
+                <div class="pay-check-modal__sum">
+                    Итого к оплате: 0 руб
+                </div>
+                <ul class="pay-check-modal-list">
+                    <li class="pay-check-modal-list__item">
+                        <label class="pay-check-modal-list__label">
+                            Проверка по системе:
+                        </label>
+                        <span class="pay-check-modal-list__value">
+                            <template v-for="(system, index) in systems">
+                                {{system.title}}
+                                <template v-if="index !== (systems.length - 1)">,</template>
+                            </template>
+                        </span>
+                    </li>
+                </ul>
+                <div class="pay-check-modal__footer">
+                    <button class="btn button pay-check-modal__btn" @click.prevent="uniqueCheck">Рассчитать стоимость</button>
+                    <div class="pay-check-modal__footer-text">
+                        Нажимая кнопку «Рассчитать стоимость» вы соглашаетесь на обработку персональных данных
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -83,6 +103,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email: "",
                     promocode:","
                 },
+                systems:[],
                 textParams: {},
                 errors: new Errors(),
             }

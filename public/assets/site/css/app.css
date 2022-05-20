@@ -12347,6 +12347,40 @@ img {
 .pay-check-modal__form {
   margin-bottom: 65px;
 }
+.pay-check-modal__sum {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.pay-check-modal__footer {
+  display: flex;
+  align-items: center;
+}
+.pay-check-modal__footer-text {
+  color: rgba(19, 19, 19, 0.75);
+  font-size: 14px;
+  padding-left: 20px;
+}
+.pay-check-modal__btn {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.pay-check-modal-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-bottom: 35px;
+}
+.pay-check-modal-list__label {
+  color: rgba(19, 19, 19, 0.75);
+}
+.pay-check-modal-list__item {
+  font-size: 17px;
+}
+.pay-check-modal-list__value {
+  color: #FF9902;
+}
 
 .u-form-group {
   margin-bottom: 25px;

@@ -18,4 +18,22 @@
     &__form {
         margin-bottom: 65px;
     }
+    &__sum {
+        font-weight: 700;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    &__footer {
+        display: flex;
+        align-items: center;
+        &-text {
+            color: rgba(19, 19, 19, 0.75);
+            font-size: 14px;
+            padding-left: 20px;
+        }
+    }
+    &__btn {
+        flex: 1;
+        white-space:nowrap;
+    }
 }

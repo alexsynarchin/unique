@@ -1,0 +1,15 @@
+.pay-check-modal-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    margin-bottom: 35px;
+    &__label {
+        color: rgba(19, 19, 19, 0.75);;
+    }
+    &__item {
+        font-size: 17px;
+    }
+    &__value {
+        color: $orange-color;
+    }
+}
