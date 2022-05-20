@@ -11376,7 +11376,10 @@ a {
 .avatar {
   width: 178px;
   height: 178px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .el-aside--sidebar {

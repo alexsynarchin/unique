@@ -9,7 +9,9 @@
                 :show-file-list="false"
                 :on-change="uploadImage"
             >
-                <img v-if="form.logo" :src="form.logo" class="avatar">
+                <figure class="avatar" v-if="form.logo">
+                    <img  :src="form.logo" >
+                </figure>
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
         </el-form-item>
