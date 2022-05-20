@@ -1,18 +1,7 @@
 <template>
     <section>
         <div class="col-md-10">
-            <el-row type="flex" class="mb-3">
-                <el-col :span="12">
-                    <el-button type="success" icon="el-icon-plus" @click.prevent="openModal">Добавить систему проверки</el-button>
-                </el-col>
-                <el-col :span="12">
-                    <el-input
-                        v-model="filters[0].value"
-                        size="large"
-                        width="100%"
-                        placeholder="Название Системы"/>
-                </el-col>
-            </el-row>
+
             <data-tables :data="tableData">
                 <el-table-column
                     type="index"
