@@ -67,7 +67,7 @@
             ></edit>
             <create
                 @closeModal="closeModal"
-                v-else></create>
+                v-if="modalState === 'create'"></create>
         </el-dialog>
 
     </section>

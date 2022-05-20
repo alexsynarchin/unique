@@ -15,6 +15,13 @@ class CreateCheckUniquesTable extends Migration
     {
         Schema::create('check_uniques', function (Blueprint $table) {
             $table->id();
+            $table->string('pages')->nullable();
+            $table->string('wordsCount')->nullable();
+            $table->string('symbolsCount')->nullable();
+            $table->string('sentenceCount')->nullable();
+            $table->string('type')->nullable();
+            $table->string('email')->nullable();
+            $table->longText('plainText')->nullable();
             $table->timestamps();
         });
     }
