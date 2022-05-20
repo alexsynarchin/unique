@@ -9,18 +9,18 @@
                         </svg>
                     </button>
                     <h3 class="unique-modal__title">
-                        Бесплатная проверка уникальности текста
+                        {{item.title}}
                     </h3>
                     <div class="select-system-modal-content">
                         <figure class="select-system-modal-content__img">
-                            <img src="/assets/site/images/mp/system-logo-1.png">
+                            <img :src="item.logo">
                         </figure>
                         <div class="select-system-modal-content__right">
                             <div class="select-system-modal-content__text">
-                                Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю такую работу. Часто студенты проверяют свои курсовые, дипломные работы
+                                {{item.description}}
                             </div>
                             <button class="btn button" @click="selectSystem(index)">
-                                Выбрать NASH Antiplagiat
+                                Выбрать  {{item.title}}
                             </button>
                         </div>
                     </div>
@@ -36,13 +36,14 @@
         data() {
             return {
                 index:null,
-
+                item: {},
 
             }
         },
         methods: {
-            showSelectSystem(index) {
+            showSelectSystem(index, item) {
                 this.index = index;
+                this.item = item;
                 $('#select_system').modal('show');
             },
             selectSystem(index) {

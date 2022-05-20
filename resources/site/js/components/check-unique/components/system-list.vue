@@ -1,6 +1,6 @@
 <template>
     <div class="check-systems">
-        <div class="check-systems__item" v-for="(item, index) in CheckSystems" @click.prevent="selectSystem(index)">
+        <div class="check-systems__item" v-for="(item, index) in CheckSystems" @click.prevent="selectSystem(index, item)">
             <section class="check-system-item">
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
@@ -47,8 +47,8 @@
             }
         },
         methods: {
-            selectSystem(index) {
-                this.$refs.select_system_modal.showSelectSystem(index);
+            selectSystem(index, item) {
+                this.$refs.select_system_modal.showSelectSystem(index, item);
             },
             handleSelected(index) {
                 this.systemIndex = index;
