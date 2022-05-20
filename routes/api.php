@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 use App\Http\Controllers\Site\Api\CheckUniqueController;
+Route::get('/check-unique/{id}/show', [CheckUniqueController::class, 'show'])->name('check-unique.show');
 Route::post('/check-unique', [CheckUniqueController::class, 'check'])->name('check-unique');
 Route::post('/check-unique-file', [CheckUniqueController::class, 'checkFile'])->name('check-unique-file');
 Route::post('/check-unique-make-report', [CheckUniqueController::class, 'makeReport'])->name('check-unique-report');

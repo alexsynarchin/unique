@@ -4,11 +4,18 @@ namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 
 class CheckUniqueController extends Controller
 {
+    public function show($id)
+    {
+        $check_unique = CheckUnique::with('reports')->findOrFail($id);
+        return $check_unique;
+    }
+
     public function check(Request $request)
     {
         $words_count = count(preg_split('/\s+/', $request->get('text')));
@@ -118,8 +125,14 @@ class CheckUniqueController extends Controller
                 'plainText.required' => 'Введите текст для проверки уникальности'
             ]
         );
-        $report = CheckUnique::create($request->all());
-        $url = route('report', $report->id);
+        $check_unique = CheckUnique::create($request->all());
+        foreach ($request->get('systems') as $system) {
+           $report = Report::create([
+               'check_unique_id' => $check_unique -> id,
+               'system_id' => $system['id']
+           ]);
+        }
+        $url = route('report', $check_unique->id);
         return $url;
     }
 }

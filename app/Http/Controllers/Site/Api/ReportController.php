@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\CheckUnique;
+use App\Models\Report;
 use App\Services\CheckUnique\CheckUniqueService;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class ReportController extends Controller
 {
     public function show($id)
     {
-        $report = CheckUnique::findOrFail($id);
+        $report = Report::findOrFail($id);
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
@@ -21,7 +21,7 @@ class ReportController extends Controller
     public function getUid(Request $request, $id)
     {
         $service = new CheckUniqueService();
-        $report = CheckUnique::findOrFail($id);
+        $report = Report::findOrFail($id);
         $uid = $service->getUid($report->plainText);
         $report->uid = $uid;
         $report->save();
@@ -30,7 +30,7 @@ class ReportController extends Controller
     public function getResult(Request $request, $id)
     {
 
-        $report = CheckUnique::findOrFail($id);
+        $report = Report::findOrFail($id);
         $service = new CheckUniqueService();
         $result = $service->getResult($report->uid);
         if($result['error']['code']){

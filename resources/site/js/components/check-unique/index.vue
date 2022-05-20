@@ -167,11 +167,11 @@
                 }
 
             },
-            handleSelected(systems, free) {
-                if(free && systems.length > 0) {
-                    this.$refs.free_check_modal.showModal(this.textParams, systems);
-                } else if(systems.length > 0) {
-                    this.$refs.pay_check_nodal.showModal(this.textParams, systems);
+            handleSelected(data) {
+                if(data.free && data.list.length > 0) {
+                    this.$refs.free_check_modal.showModal(this.textParams, data.list);
+                } else if(data.list.length > 0) {
+                    this.$refs.pay_check_nodal.showModal(this.textParams, data.list);
                 }
 
             },

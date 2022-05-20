@@ -54,7 +54,7 @@
                             Страниц:
                         </label>
                         <span class="report-text-params__value">
-                            {{report.pages}}
+                            {{check_unique.pages}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
@@ -62,7 +62,7 @@
                             Слов:
                         </label>
                         <span class="report-text-params__value">
-                             {{report.wordsCount}}
+                             {{check_unique.wordsCount}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
@@ -70,7 +70,7 @@
                             Символов:
                         </label>
                         <span class="report-text-params__value">
-                            {{report.symbolsCount}}
+                            {{check_unique.symbolsCount}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
@@ -78,7 +78,7 @@
                             Тип документа:
                         </label>
                         <span class="report-text-params__value">
-                                {{report.type}}
+                                {{check_unique.type}}
                         </span>
                     </li>
                 </ul>
@@ -105,6 +105,9 @@ import ProgressBar from 'vue-simple-progress'
         },
         props: {
             report: {
+                type:Object,
+            },
+            check_unique: {
                 type:Object,
             },
         },
