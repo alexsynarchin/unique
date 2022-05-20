@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CheckUnique;
 use App\Models\Report;
 use App\Services\CheckUnique\CheckUniqueService;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class ReportController extends Controller
     {
         $service = new CheckUniqueService();
         $report = Report::findOrFail($id);
-        $uid = $service->getUid($report->plainText);
+        $check_unique = $report->checkUnique()->first();
+        $uid = $service->getUid($check_unique->plainText);
         $report->uid = $uid;
         $report->save();
     }
