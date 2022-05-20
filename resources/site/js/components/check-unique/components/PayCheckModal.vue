@@ -115,7 +115,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 $('#pay_check').modal('show');
             },
             uniqueCheck() {
-                $('#free_check').modal('show');
+                $('#pay_check').modal('show');
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
