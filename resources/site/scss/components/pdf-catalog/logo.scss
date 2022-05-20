@@ -1,0 +1,16 @@
+.logo {
+    position: relative;
+    font-weight: 700;
+    font-size: 15px;
+    padding-right: 3px;
+    margin-right: 10px;
+
+    &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 2.2px;
+        height: 15px;
+        background-color: $blue-color;
+    }
+}

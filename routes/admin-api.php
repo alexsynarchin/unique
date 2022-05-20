@@ -29,3 +29,15 @@ Route::post('/menu/store',[MenuController::class, 'store'])->name('menu.store');
 Route::post('/menu/{id}/update', [MenuController::class, 'update'])->name('menu.update');
 Route::post('/menu/{id}/remove',[MenuController::class, 'remove'])->name('menu.remove');
 Route::get('/menu/get/{position}',[MenuController::class, 'list'])->name('menu.list');
+
+use App\Http\Controllers\Admin\Api\CheckApiController;
+Route::get('/check-api/list',[CheckApiController::class, 'index'])->name('check-api.list');
+Route::post('/check-api/{id}/update', [CheckApiController::class, 'update'])->name('check-api.update');
+
+use App\Http\Controllers\Admin\Api\CheckSystemController;
+
+Route::get('/check-systems',[CheckSystemController::class, 'index'])->name('check-systems.index');
+Route::post('/check-system/show',[CheckSystemController::class, 'show'])->name('check-systems.show');
+Route::post('/check-system/store',[CheckSystemController::class, 'store'])->name('check-systems.store');
+Route::post('/check-system/{id}/update',[CheckSystemController::class, 'update'])->name('check-systems.update');
+Route::post('/check-system/{id}/delete',[CheckSystemController::class, 'destroy'])->name('check-systems.destroy');

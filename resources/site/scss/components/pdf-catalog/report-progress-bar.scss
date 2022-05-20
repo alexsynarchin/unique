@@ -1,0 +1,24 @@
+.report-progress-bar {
+    margin-bottom: 10px;
+    &__line {
+        position: relative;
+        background: #E3E5ED;
+        border-radius: 30.9901px;
+        width: 256.91px;
+        height: 9.92px;
+        margin-bottom: 7px;
+    }
+    &__line-percent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 9.92px;
+        background: #366AF3;
+        border-radius: 30.9901px;
+    }
+    &__text {
+        font-weight: 500;
+        font-size: 11.1564px;
+        color: $blue-color;
+    }
+}

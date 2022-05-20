@@ -1,0 +1,42 @@
+.report-item-descr {
+    margin-bottom: 31px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    &__icon {
+        position: relative;
+        z-index: 1;
+        background-color: #E3E5ED;
+        border-radius: 100%;
+        border: 5px solid #FFFFFF;
+        width: 51.75px;
+        height:51.75px;
+        min-width: 51.75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        img {
+            width:9px;
+        }
+
+    }
+    &__content {
+        flex: 1;
+        background: #E3E5ED;
+        height:100%;
+        margin-left: -29px;
+        padding-left: 40px;
+        padding-right: 20px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    &__text {
+        font-weight: 500;
+        font-size: 8.67722px;
+        padding-top:7.75px;
+        padding-bottom: 7.75px;
+        margin-bottom: 0;
+    }
+
+}

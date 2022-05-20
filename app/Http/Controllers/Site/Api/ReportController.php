@@ -12,7 +12,9 @@ class ReportController extends Controller
     public function show($id)
     {
         $report = CheckUnique::findOrFail($id);
-
+        //dd($report->data['urls'][0]);
+       // dd($this->getWordsFromString($report->data['clear_text']));
+        //$text_array = $this->getWordsFromString();
         return $report;
     }
 
@@ -38,5 +40,14 @@ class ReportController extends Controller
         $report->result = true;
         $report->save();
         return $report;
+    }
+
+    private function getWordsFromString($string)
+    {
+        if (preg_match_all("/\b(\w+)\b/ui", $string, $matches)) {
+            return $matches[1];
+        }
+
+        return array();
     }
 }

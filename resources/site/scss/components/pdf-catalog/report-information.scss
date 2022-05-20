@@ -1,0 +1,24 @@
+.report-information {
+    margin-bottom: 30px;
+    display: flex;
+    &__item {
+        &:first-child {
+            margin-right: 42px;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 12px;
+        margin-bottom: 12.5px;
+    }
+    &__link {
+        color: #ABAFC3;
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 8.67722px;
+        &:hover {
+            color: #ABAFC3;
+            text-decoration: underline;
+        }
+    }
+}

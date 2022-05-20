@@ -82,6 +82,11 @@
                         </span>
                     </li>
                 </ul>
+                <div class="report-item-bnts">
+                    <button class="btn button">
+                        Скачать отчет
+                    </button>
+                </div>
             </section>
         </div>
     </section>

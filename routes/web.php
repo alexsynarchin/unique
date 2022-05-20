@@ -38,3 +38,6 @@ Route::get('/contact', function () {
 Route::get('/articles', function () {
     return view('site.articles.index');
 });
+
+use App\Http\Controllers\Site\MainPageController;
+Route::get('/pdf/{id}', [MainPageController::class, 'reviewPdf']) ->name('main-page.pdf');

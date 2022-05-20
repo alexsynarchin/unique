@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'check-system' => [
+            'driver' =>'local',
+            'root' => storage_path('app/public/check-systems'),
+            'url'        => env('APP_URL') . '/storage/check-systems',
+            'visibility' => 'public'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

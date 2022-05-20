@@ -6,6 +6,7 @@ mix
     .js('resources/site/js/app.js', 'js')
     .vue({ version: 2 })
     .sass('resources/site/scss/app.scss', 'css')
+    .sass('resources/site/scss/pdf-catalog.scss', 'css')
     .options({
         processCssUrls: false,
         processJsUrls:false
