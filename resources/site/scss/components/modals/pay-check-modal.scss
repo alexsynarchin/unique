@@ -1,0 +1,21 @@
+.pay-check-modal {
+    &__heading {
+        display: flex;
+        margin-bottom: 45px;
+        &-icon {
+            width: 145px;
+            min-width: 145px;
+            margin-bottom: 0;
+        }
+        &-content {
+            padding-right: 45px;
+        }
+    }
+    &__descr {
+        font-weight: 500;
+        font-size: 17px;
+    }
+    &__form {
+        margin-bottom: 65px;
+    }
+}

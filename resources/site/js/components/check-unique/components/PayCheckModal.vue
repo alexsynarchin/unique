@@ -1,57 +1,75 @@
 <template>
     <div class="modal fade unique-modal" id="pay_check"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
-            <div class="free-check-modal__content unique-modal__content modal-content">
+            <div class="unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40">
                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                 </button>
-                <form class="free-check-modal__form">
-                    <h3 class="unique-modal__title">
-                        Бесплатная проверка уникальности текста
-                    </h3>
-                    <div class="u-form-group">
-                        <label class="u-form-group__label">
-                            Укажите E-mail для получения отчета
-                        </label>
-                        <div class="u-form-group__btn-wrap">
-                            <div class="u-input-group__btn-wrap">
-                                <div class="u-input-group"
-                                     :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
-                                    <i class="u-input-group__icon">
-                                        <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                            <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
-                                        </svg>
-                                    </i>
-                                    <input class="u-input-group__input"
-                                           placeholder="Ваш e-mail"
-                                           v-model="form.email"
-                                           :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
+                <form class="pay-check-modal__form">
+                    <div class="pay-check-modal__heading">
+                        <div class="pay-check-modal__heading-content">
+                            <h3 class="unique-modal__title">
+                                Мы уже приступили к проверке уникальности
+                            </h3>
+                            <p class="pay-check-modal__descr">
+                                При необходимости выберите дополнительные услугии.
+                                Скачать готовый отчет вы сможете после проведения оплаты
+                            </p>
+                        </div>
+                        <figure class="pay-check-modal__heading-icon">
+                            <img src="/assets/site/images/document.png">
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <div class="u-form-group col-md-6">
+                            <label class="u-form-group__label">
+                                Укажите E-mail для получения отчета
+                            </label>
+                            <div class="u-input-group"
+                                 :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       placeholder="Ваш e-mail"
+                                       v-model="form.email"
+                                       :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
 
-                                </div>
-                                <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
-                                <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
-                                <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
                             </div>
-                            <button class="btn button u-form-group__btn" @click.prevent="uniqueCheck">Проверить текст</button>
+                            <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
+                            <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
+                            <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
+
+
+                        </div>
+                        <div class="u-form-group col-md-6">
+                            <label class="u-form-group__label">
+                                Укажите промокод
+                            </label>
+                            <div class="u-input-group"
+                                 :class="{'is-invalid': errors.has('promocode')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=42#sprite-percent"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       placeholder="Ваш промокод"
+                                       v-model="form.promocode"
+                                       :class="{'is-invalid': errors.has('promocode')}">
+
+                            </div>
+                            <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('promocode')"></div>
                         </div>
                     </div>
+
+                    <button class="btn button u-form-group__btn" @click.prevent="uniqueCheck">Проверить текст</button>
                 </form>
-                <ul class="free-check-modal-list">
-                    <li class="free-check-modal-list__item">
-                        <img src="/assets/site/images/modals/free-check-1.png">
-                    </li>
-                    <li class="free-check-modal-list__item">
-                        <img src="/assets/site/images/modals/free-check-2.png">
-                    </li>
-                    <li class="free-check-modal-list__item">
-                        <img src="/assets/site/images/modals/free-check-3.png">
-                    </li>
-                    <li class="free-check-modal-list__item">
-                        <img src="/assets/site/images/modals/free-check-4.png">
-                    </li>
-                </ul>
+
             </div>
         </div>
     </div>
@@ -63,6 +81,7 @@ import { Errors } from  '@/common/js/services/errors.js';
             return {
                 form: {
                     email: "",
+                    promocode:","
                 },
                 textParams: {},
                 errors: new Errors(),

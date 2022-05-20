@@ -12328,6 +12328,26 @@ img {
   margin-bottom: 40px;
 }
 
+.pay-check-modal__heading {
+  display: flex;
+  margin-bottom: 45px;
+}
+.pay-check-modal__heading-icon {
+  width: 145px;
+  min-width: 145px;
+  margin-bottom: 0;
+}
+.pay-check-modal__heading-content {
+  padding-right: 45px;
+}
+.pay-check-modal__descr {
+  font-weight: 500;
+  font-size: 17px;
+}
+.pay-check-modal__form {
+  margin-bottom: 65px;
+}
+
 .u-form-group {
   margin-bottom: 25px;
 }
