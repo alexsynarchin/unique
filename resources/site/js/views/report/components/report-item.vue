@@ -46,7 +46,7 @@
                             Номер отчета:
                         </label>
                         <span class="report-text-params__value">
-                            {{report.id}}
+                            {{check_unique.id}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
