@@ -11,13 +11,13 @@
                 <div class="check-system-item__content">
                     <div class="check-system-item__mobile-right order-1">
                         <h4 class="check-system-item__title">
-                            {{item.name}}
+                            {{item.title}}
                         </h4>
-                        <a :href="item.link" class="check-system-item__link">
+                        <a href="" class="check-system-item__link">
                             Подробнее
                         </a>
                         <span class="check-system-item__price check-system-item__price--mobile">
-                            {{item.price}}
+                            {{item.price ? item.price + ' руб.' : 'бесплатно'}}
                         </span>
                     </div>
 
@@ -27,7 +27,7 @@
                 </div>
 
                 <span class="check-system-item__price check-system-item__price--desc">
-                    {{item.price}}
+                    {{item.price ? item.price + 'руб.' : 'бесплатно'}}
                 </span>
             </section>
         </div>
@@ -43,67 +43,26 @@
         data() {
             return {
                 systemIndex: null,
-                CheckSystems: [
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                    {
-                        name:"NASH Antiplagiat",
-                        link:"",
-                        logo:"/assets/site/images/mp/system-logo-1.png",
-                        price:"Бесплатно",
-                    },
-                ],
+                CheckSystems: [],
             }
         },
         methods: {
             selectSystem(index) {
-
                 this.$refs.select_system_modal.showSelectSystem(index);
             },
             handleSelected(index) {
                 this.systemIndex = index;
                 this.$emit('selectSystem');
-            }
+            },
+            getSystemsList() {
+                axios.get('/api/check-systems')
+                    .then((response) => {
+                        this.CheckSystems = response.data;
+                    })
+            },
+        },
+        mounted() {
+            this.getSystemsList();
         }
     }
 </script>

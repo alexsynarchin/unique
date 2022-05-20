@@ -26,7 +26,9 @@ use App\Http\Controllers\Site\Api\ContactController;
 Route::post('/contact/consultation', [ContactController::class,'consultation'])->name('contact.consultation');
 
 use App\Http\Controllers\Site\Api\ReportController;
-
 Route::get('/report/{id}/show', [ReportController::class, 'show'])->name('report.show');
 Route::post('/report/{id}/uid', [ReportController::class, 'getUid'])->name('report.get-uid');
 Route::post('/report/{id}/result', [ReportController::class, 'getResult'])->name('report.get-result');
+
+use App\Http\Controllers\Site\Api\CheckSystemController;
+Route::get('/check-systems', [CheckSystemController::class, 'index'])->name('check-systems.list');
