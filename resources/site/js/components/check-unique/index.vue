@@ -106,9 +106,10 @@
 <script>
     import SystemsList from './components/system-list';
     import FreeCheckModal from "./components/FreeCheckModal";
+    import PayCheckModal from "./components/PayCheckModal";
     export default {
         components: {
-            SystemsList, FreeCheckModal,
+            SystemsList, FreeCheckModal, PayCheckModal
         },
         data() {
             return {
