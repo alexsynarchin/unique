@@ -19,6 +19,7 @@ class CreateCheckSystemsTable extends Migration
             $table->bigInteger('api_id')->unsigned()->nullable();
             $table->longText('description')->nullable();
             $table->integer('price')->unsigned()->default(0);
+            $table->integer('symbols_count')->default(0);
             $table->timestamps();
         });
     }

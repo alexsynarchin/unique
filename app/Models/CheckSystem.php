@@ -13,7 +13,7 @@ class CheckSystem extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['title', 'description', 'price', 'api_id'];
+    protected $fillable = ['title', 'description', 'price', 'api_id', 'symbols_count'];
 
     protected $appends = ['logo'];
 

@@ -37,7 +37,7 @@ Route::post('/check-api/{id}/update', [CheckApiController::class, 'update'])->na
 use App\Http\Controllers\Admin\Api\CheckSystemController;
 
 Route::get('/check-systems',[CheckSystemController::class, 'index'])->name('check-systems.index');
-Route::post('/check-system/show',[CheckSystemController::class, 'show'])->name('check-systems.show');
+Route::get('/check-system/{id}/show',[CheckSystemController::class, 'show'])->name('check-systems.show');
 Route::post('/check-system/store',[CheckSystemController::class, 'store'])->name('check-systems.store');
 Route::post('/check-system/{id}/update',[CheckSystemController::class, 'update'])->name('check-systems.update');
-Route::post('/check-system/{id}/delete',[CheckSystemController::class, 'destroy'])->name('check-systems.destroy');
+Route::post('/check-system/{id}/destroy',[CheckSystemController::class, 'destroy'])->name('check-systems.destroy');
