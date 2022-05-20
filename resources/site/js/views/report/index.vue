@@ -1,6 +1,6 @@
 <template>
     <section class="report-block" v-if="loaded">
-        <systems-list></systems-list>
+        <systems-list :selected="selectedSystems"></systems-list>
         <report  v-for="(item, index) in check_unique.reports"
             :key="item.id"
              :id="item.id"
@@ -35,6 +35,7 @@ import Report from "./components/report";
         data() {
             return {
                 loaded:false,
+                selectedSystems: [],
                 check_unique: {},
 
             }
@@ -46,6 +47,9 @@ import Report from "./components/report";
                       this.check_unique = response.data;
                       this.loaded = true;
                         this.$root.isLoading = false;
+                       this.check_unique.reports.forEach((item)=> {
+                           this.selectedSystems.push(item.system_id);
+                       })
                     })
             },
 
@@ -53,6 +57,7 @@ import Report from "./components/report";
         mounted() {
             this.$root.isLoading = true;
             this.getCheckUnique();
+
         }
     }
 </script>

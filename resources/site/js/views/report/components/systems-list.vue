@@ -5,7 +5,7 @@
         </h3>
         <ul class="report-systems-list__list">
             <li class="report-systems-list__item" v-for="(item , index) in list">
-                <section class="report-systems-list-item" :class="{'report-systems-list-item--active':index === 0}">
+                <section class="report-systems-list-item" :class="{'report-systems-list-item--active': selected.indexOf(item.id) !==-1}">
                     {{item.title}}
                 </section>
             </li>
@@ -14,38 +14,26 @@
 </template>
 <script>
     export default {
+        props: {
+            selected:{
+                type:Array,
+            },
+        },
         data() {
           return {
-              list: [
-                  {
-                      title: "NASH Antiplagiat"
-                  },
-                  {
-                      title: "NASH «Без ожидания»"
-                  },
-                  {
-                      title: "Text.ru"
-                  },
-                  {
-                      title: "Текстовод"
-                  },
-                  {
-                      title: "ADVEGO"
-                  },
-                  {
-                      title: "Antiplagiat.ВУЗ"
-                  },
-                  {
-                      title: "Antiplagiat.ru"
-                  },
-                  {
-                      title: "РУКОНТЕКСТ"
-                  },
-                  {
-                      title: "ВКР ВУЗ"
-                  },
-              ],
+              list: [],
           }
         },
+        methods: {
+            getSystemsList() {
+                axios.get('/api/check-systems')
+                    .then((response) => {
+                        this.list = response.data;
+                    })
+            },
+        },
+        mounted() {
+            this.getSystemsList();
+        }
     }
 </script>
