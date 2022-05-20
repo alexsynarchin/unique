@@ -2,9 +2,10 @@
     <div class="check-systems">
         <div class="check-systems__item" v-for="(item, index) in CheckSystems" @click.prevent="selectSystem(index, item)">
             <section class="check-system-item">
+
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
-                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="index === systemIndex">
+                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) != -1">
                         <span class="check-system-item-checkbox__checkmark"></span>
                     </label>
                 </div>
@@ -42,17 +43,26 @@
         },
         data() {
             return {
-                systemIndex: null,
+                systemIndex: [],
                 CheckSystems: [],
             }
         },
         methods: {
             selectSystem(index, item) {
-                this.$refs.select_system_modal.showSelectSystem(index, item);
+                let checkIndex = this.systemIndex.indexOf(index);
+                if(checkIndex !== -1) {
+                    this.systemIndex.splice(checkIndex, 1);
+                } else {
+                    this.$refs.select_system_modal.showSelectSystem(index, item);
+                }
             },
             handleSelected(index) {
-                this.systemIndex = index;
-                this.$emit('selectSystem');
+
+                if(this.CheckSystems[index].price === 0) {
+                    this.systemIndex = [];
+                }
+                this.systemIndex.push(index);
+                //this.$emit('selectSystem');
             },
             getSystemsList() {
                 axios.get('/api/check-systems')
