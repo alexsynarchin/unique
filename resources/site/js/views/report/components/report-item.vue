@@ -83,7 +83,7 @@
                     </li>
                 </ul>
                 <div class="report-item-bnts">
-                    <button class="btn button">
+                    <button class="btn button" @click.prevent="downloadPdf">
                         Скачать отчет
                     </button>
                 </div>
@@ -113,7 +113,21 @@ import ProgressBar from 'vue-simple-progress'
             },
         },
         methods: {
-
+            downloadPdf() {
+                this.$root.isLoading = true;
+                axios.post('/api/report/' +this.report.id + '/download')
+                    .then((response) => {
+                        console.log(response.data);
+                        this.$root.isLoading = false;
+                        let link = document.createElement('a')
+                        link.href = response.data;
+                        link.download = 'catalog.pdf'
+                        link.click()
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            },
         },
         mounted() {
         this.check_system = this.report.check_system;

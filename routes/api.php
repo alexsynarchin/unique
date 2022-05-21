@@ -30,6 +30,7 @@ use App\Http\Controllers\Site\Api\ReportController;
 Route::get('/report/{id}/show', [ReportController::class, 'show'])->name('report.show');
 Route::post('/report/{id}/uid', [ReportController::class, 'getUid'])->name('report.get-uid');
 Route::post('/report/{id}/result', [ReportController::class, 'getResult'])->name('report.get-result');
+Route::post('/report/{id}/download', [ReportController::class, 'downloadPdf'])->name('report.download');
 
 use App\Http\Controllers\Site\Api\CheckSystemController;
 Route::get('/check-systems', [CheckSystemController::class, 'index'])->name('check-systems.list');

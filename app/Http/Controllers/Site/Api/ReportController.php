@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
 use App\Models\Report;
 use App\Services\CheckUnique\CheckUniqueService;
+use App\Services\GeneratePdfService;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -51,5 +52,12 @@ class ReportController extends Controller
         }
 
         return array();
+    }
+
+    public function downloadPdf($id)
+    {
+        $generatePdfService = new GeneratePdfService();
+        $link = $generatePdfService -> generate($id);
+        return $link;
     }
 }
