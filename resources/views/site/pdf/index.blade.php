@@ -29,7 +29,7 @@
     </header>
     <div class="report-item-descr">
         <figure class="report-item-descr__icon">
-            <img src="/assets/site/images/union.png">
+            <img src="http://unique.welcome-rb.ru/assets/site/images/union.png">
         </figure>
         <div class="report-item-descr__content">
             <p class="report-item-descr__text">
