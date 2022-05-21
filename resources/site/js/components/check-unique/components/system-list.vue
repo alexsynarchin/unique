@@ -68,6 +68,7 @@
                     this.systemIndex = [];
                     this.free = true;
                 } else {
+                    this.free = false;
                    this.systemIndex.forEach((element, i) =>  {
                        if(this.CheckSystems[element].price === 0) {
                           this.systemIndex.splice(i, 1);

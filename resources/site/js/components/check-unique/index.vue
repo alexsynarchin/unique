@@ -168,6 +168,7 @@
 
             },
             handleSelected(data) {
+                console.log(data);
                 if(data.free && data.list.length > 0) {
                     this.$refs.free_check_modal.showModal(this.textParams, data.list);
                 } else if(data.list.length > 0) {

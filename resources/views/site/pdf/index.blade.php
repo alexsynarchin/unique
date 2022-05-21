@@ -33,13 +33,18 @@
         </figure>
         <div class="report-item-descr__content">
             <p class="report-item-descr__text">
-                Обращаем ваше внимание, что система отвечает на вопрос, является тот или иной фрагмент текста заимствованным или нет. Ответ на вопрос, является ли фрагмент именно плагиатом, а не законной цитатой, система оставляет на ваше усмотрение.
+                Обращаем ваше внимание,
+                что система отвечает на вопрос,
+                является тот или иной фрагмент текста заимствованным или нет.
+                Ответ на вопрос, является ли фрагмент именно плагиатом,
+                а не законной цитатой, система оставляет на ваше усмотрение.
             </p>
 
         </div>
     </div>
     <h1 class="page-title">
-        Отчет о проверке № {{$report->id}}
+        Отчет о проверке № {{$report->check_unique_id}} <br>
+        ({{$report->checkSystem->title}})
     </h1>
     <div class="report-information">
         <div class="report-information__item">
@@ -95,7 +100,7 @@
                         Символов:
                     </label>
                     <span class="report-information-list__value">
-                        {{$report->symbolsCount}}
+                        {{$report->checkUnique->symbolsCount}}
                     </span>
                 </li>
                 <li class="report-information-list__item">
@@ -103,7 +108,7 @@
                         Слов:
                     </label>
                     <span class="report-information-list__value">
-                        {{$report->wordsCount}}
+                        {{$report->checkUnique->wordsCount}}
                     </span>
                 </li>
                 <li class="report-information-list__item">
@@ -111,7 +116,7 @@
                         Страниц:
                     </label>
                     <span class="report-information-list__value">
-                        {{$report->pages}}
+                        {{$report->checkUnique->pages}}
                     </span>
                 </li>
             </ul>
