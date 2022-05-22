@@ -32,6 +32,8 @@ class ReportMail extends Mailable
         $mail = $this->from('gwynbleid11@yandex.ru')
             -> subject('Заявка с сайта unique.ru');
         return $mail-> view('mails.contact')
-            ->attachFromStorage($this->link);
+            ->attach($this->link, [
+                'mime' => 'application/pdf',
+            ]);
     }
 }
