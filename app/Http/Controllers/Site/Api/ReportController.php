@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReportMail;
 use App\Models\CheckUnique;
 use App\Models\Report;
 use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReportController extends Controller
 {
@@ -43,6 +45,13 @@ class ReportController extends Controller
         $report->result = true;
         $report->save();
         return $report;
+    }
+
+    public function sendEmail(Request $request, $id)
+    {
+        $generatePdfService = new GeneratePdfService();
+        $link = $generatePdfService -> generate($id);
+        Mail::to($request->get('email'))->send(new ReportMail($link));
     }
 
     private function getWordsFromString($string)
