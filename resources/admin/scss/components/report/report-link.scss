@@ -1,0 +1,18 @@
+.report-link {
+    display: flex;
+    color: $blue-color;
+    text-decoration: none;
+    &:hover {
+        color: $blue-color;
+        text-decoration: none;
+    }
+    &__icon {
+        width: 10px;
+        min-width: 10px;
+        margin-left: 6px;
+    }
+    &__text {
+        font-size: 17px;
+        font-weight: 700;
+    }
+}

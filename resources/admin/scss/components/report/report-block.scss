@@ -1,0 +1,16 @@
+.report-block {
+    margin-top: 40px;
+    padding: 25px;
+    background: #F0F1F6;
+    border-radius: 30px;
+    margin-bottom: 100px;
+    @include media-breakpoint-up(md) {
+        padding: 40px;
+    }
+    @include media-breakpoint-up(lg) {
+        padding: 50px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding: 70px;
+    }
+}

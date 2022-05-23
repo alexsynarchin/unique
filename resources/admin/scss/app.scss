@@ -1,6 +1,6 @@
 @import '~element-ui/lib/theme-chalk/index.css';
 @import "~bootstrap/scss/bootstrap";
-
+@import "variables";
 //components
 @import "components/scaffolding";
 @import "components/auth";
@@ -17,3 +17,17 @@
 //building-option
 @import "components/building-option/building-option-item";
 @import "components/building-option/building-option-value-item";
+
+@import "components/report/report-link";
+@import "components/report/report-block";
+@import "components/report/report-systems-list";
+@import "components/report/report-item";
+@import "components/report/report-item-system";
+@import "components/report/report-item-descr";
+@import "components/report/report-progress-bar";
+@import "components/report/report-text-params";
+@import "components/report/report-item-detail";
+@import "components/report/report-item-detail-content";
+@import "components/report/report-item-links";
+@import "components/report/report--item-detail-text";
+@import "components/report/report-item-another-system";

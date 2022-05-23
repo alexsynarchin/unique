@@ -7,7 +7,8 @@ import locale from 'element-ui/lib/locale'
 locale.use(lang);
 import VueDataTables from 'vue-data-tables';
 Vue.use(VueDataTables);
-
+import vTitle from 'vuejs-title'
+Vue.use(vTitle)
 Vue.component('AdminLogin', require('./components/admin-login/index').default);
 import router from './router';
 Vue.component('AdminApp',require('./Admin').default);

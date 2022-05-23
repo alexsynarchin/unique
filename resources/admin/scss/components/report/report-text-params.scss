@@ -1,0 +1,16 @@
+.report-text-params {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    &__item {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    &__label {
+        color:  rgba(19, 19, 19, 0.75);
+    }
+    &__value {
+        font-weight: 700;
+        color: $orange-color;
+    }
+}

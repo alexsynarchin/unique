@@ -1,0 +1,15 @@
+.report-item-another-system {
+    &__title {
+        font-size: 22px;
+        margin-top: 65px;
+        margin-bottom: 30px;
+    }
+    &__link {
+        color: $blue-color;
+        text-decoration: underline;
+        &:hover {
+            color:$blue-color;
+            text-decoration: underline;
+        }
+    }
+}

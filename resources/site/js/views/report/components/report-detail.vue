@@ -25,7 +25,7 @@
 
             <ul class="report-item-links">
                 <li class="report-item-links__item" v-for="(item, index) in report.data.urls">
-                    <section class="report-item-links__text">
+                    <section class="report-item-links__text" @click.prevent="selectUrl(item)">
                         <span class="report-item-links__percent">
                             {{item.plagiat + '%'}}
                         </span>
@@ -65,7 +65,7 @@
             handleDetail() {
                 this.showDetail = !this.showDetail;
             },
-            selectUrl() {
+            selectUrl(url) {
 
             },
             copyUrl(index, url) {

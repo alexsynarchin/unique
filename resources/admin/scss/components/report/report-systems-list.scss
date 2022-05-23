@@ -1,0 +1,60 @@
+.report-systems-list {
+    &__title {
+        font-size: 20px;
+        margin-bottom: 30px;
+        @include media-breakpoint-up(xl) {
+            font-size: 22px;
+        }
+    }
+    &__list {
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        padding-left: 0;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
+    &__item {
+        margin-bottom: 15px;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        @include media-breakpoint-up(md) {
+            width: 33.33333%;
+            flex: 1 33.33333%;
+            max-width: 33.33333%;
+        }
+        @include media-breakpoint-up(lg) {
+            width: 25%;
+            flex: 1 25%;
+            max-width: 25%;
+
+        }
+        @include media-breakpoint-up(xl) {
+            width: 20%;
+            flex: 1 20%;
+            max-width: 20%;
+
+        }
+    }
+}
+.report-systems-list-item {
+    cursor: pointer;
+    text-align: center;
+    background: #E3E5ED;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ABAFC3;
+    font-weight: 500;
+    font-size: 14px;
+    @include media-breakpoint-up(lg) {
+        font-size: 15px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 17px;
+    }
+    &--active {
+        background: $blue-color;
+        color: #fff;
+    }
+}

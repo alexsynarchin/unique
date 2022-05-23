@@ -11446,3 +11446,337 @@ a {
   margin-right: 0.4rem;
   cursor: pointer;
 }
+
+.report-link {
+  display: flex;
+  color: #366AF3;
+  text-decoration: none;
+}
+.report-link:hover {
+  color: #366AF3;
+  text-decoration: none;
+}
+.report-link__icon {
+  width: 10px;
+  min-width: 10px;
+  margin-left: 6px;
+}
+.report-link__text {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.report-block {
+  margin-top: 40px;
+  padding: 25px;
+  background: #F0F1F6;
+  border-radius: 30px;
+  margin-bottom: 100px;
+}
+@media (min-width: 768px) {
+  .report-block {
+    padding: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .report-block {
+    padding: 50px;
+  }
+}
+@media (min-width: 1400px) {
+  .report-block {
+    padding: 70px;
+  }
+}
+
+.report-systems-list__title {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+@media (min-width: 1200px) {
+  .report-systems-list__title {
+    font-size: 22px;
+  }
+}
+.report-systems-list__list {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+  padding-left: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+.report-systems-list__item {
+  margin-bottom: 15px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+@media (min-width: 768px) {
+  .report-systems-list__item {
+    width: 33.33333%;
+    flex: 1 33.33333%;
+    max-width: 33.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .report-systems-list__item {
+    width: 25%;
+    flex: 1 25%;
+    max-width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .report-systems-list__item {
+    width: 20%;
+    flex: 1 20%;
+    max-width: 20%;
+  }
+}
+
+.report-systems-list-item {
+  cursor: pointer;
+  text-align: center;
+  background: #E3E5ED;
+  border-radius: 5px;
+  padding: 10px;
+  color: #ABAFC3;
+  font-weight: 500;
+  font-size: 14px;
+}
+@media (min-width: 992px) {
+  .report-systems-list-item {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1400px) {
+  .report-systems-list-item {
+    font-size: 17px;
+  }
+}
+.report-systems-list-item--active {
+  background: #366AF3;
+  color: #fff;
+}
+
+.report-item {
+  margin-bottom: 45px;
+}
+.report-item__title {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+@media (min-width: 992px) {
+  .report-item__content {
+    display: flex;
+  }
+}
+@media (min-width: 992px) {
+  .report-item__center {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .report-item__center {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .report-item__center {
+    width: 55%;
+    flex: 1 55%;
+    max-width: 55%;
+  }
+}
+@media (min-width: 992px) {
+  .report-item__right {
+    width: 25%;
+    flex: 1 25%;
+    max-width: 25%;
+  }
+}
+
+.report-item-system {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .report-item-system {
+    width: 20%;
+    max-width: 20%;
+  }
+}
+.report-item-system__title {
+  font-size: 17px;
+}
+.report-item-system__logo {
+  padding: 25px;
+  margin-bottom: 0;
+}
+
+.report-item-descr {
+  margin-top: 65px;
+}
+.report-item-descr__content {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.report-progress-bar {
+  margin-top: 40px;
+}
+@media (min-width: 992px) {
+  .report-progress-bar {
+    margin-top: 60px;
+  }
+}
+@media (min-width: 1400px) {
+  .report-progress-bar {
+    margin-top: 80px;
+  }
+}
+.report-progress-bar__text {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  color: #366AF3;
+  font-weight: 700;
+  font-size: 17px;
+}
+.report-progress-bar__precent {
+  font-size: 28px;
+}
+.report-progress-bar__descr {
+  font-size: 15px;
+  color: rgba(19, 19, 19, 0.75);
+}
+@media (max-width: 767.98px) {
+  .report-progress-bar__descr {
+    margin-bottom: 25px;
+  }
+}
+
+.report-text-params {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.report-text-params__item {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.report-text-params__label {
+  color: rgba(19, 19, 19, 0.75);
+}
+.report-text-params__value {
+  font-weight: 700;
+  color: #FF9902;
+}
+
+.report-item-detail__title {
+  font-size: 22px;
+  margin-right: 15px;
+  line-height: 1;
+  margin-bottom: 0;
+}
+.report-item-detail__heading {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+.report-item-detail__control {
+  line-height: 1;
+  font-weight: 700;
+  cursor: pointer;
+  color: #366AF3;
+  font-size: 17px;
+}
+.report-item-detail__icon {
+  width: 10px;
+}
+
+.report-item-detail-content {
+  max-height: 0;
+  position: relative;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+.report-item-detail-content--open {
+  max-height: 10000px;
+  transition: max-height 1s ease-in-out;
+}
+.report-item-detail-content__descr {
+  font-size: 15px;
+  color: rgba(19, 19, 19, 0.75);
+  margin-bottom: 25px;
+}
+
+.report-item-links {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 35px;
+}
+.report-item-links__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.report-item-links__percent {
+  color: #366AF3;
+  font-weight: 700;
+  font-size: 28px;
+  margin-right: 15px;
+}
+.report-item-links__text {
+  cursor: pointer;
+  line-height: 1;
+  padding: 3px 35px 3px 14px;
+  font-weight: 500;
+  font-size: 17px;
+  background: #E3E5ED;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: -21px;
+  display: flex;
+  align-items: center;
+}
+.report-item-links__icon {
+  cursor: pointer;
+  margin-bottom: 0;
+  border: 5px solid #F0F1F6;
+  background: #E3E5ED;
+  border-radius: 100%;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.report-item-links__icon svg {
+  width: 18px;
+}
+
+.report--item-detail-text {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.report-item-another-system__title {
+  font-size: 22px;
+  margin-top: 65px;
+  margin-bottom: 30px;
+}
+.report-item-another-system__link {
+  color: #366AF3;
+  text-decoration: underline;
+}
+.report-item-another-system__link:hover {
+  color: #366AF3;
+  text-decoration: underline;
+}

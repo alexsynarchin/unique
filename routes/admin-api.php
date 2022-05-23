@@ -41,3 +41,7 @@ Route::get('/check-system/{id}/show',[CheckSystemController::class, 'show'])->na
 Route::post('/check-system/store',[CheckSystemController::class, 'store'])->name('check-systems.store');
 Route::post('/check-system/{id}/update',[CheckSystemController::class, 'update'])->name('check-systems.update');
 Route::post('/check-system/{id}/destroy',[CheckSystemController::class, 'destroy'])->name('check-systems.destroy');
+
+use App\Http\Controllers\Admin\Api\CheckUniqueController;
+Route::get('/check-uniques', [CheckUniqueController::class, 'index'])->name('check-unique.index');
+

@@ -1,0 +1,18 @@
+.report-item-system {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 25px;
+
+    text-align: center;
+    @include media-breakpoint-up(lg) {
+        width: 20%;
+        max-width: 20%;
+    }
+    &__title {
+        font-size: 17px;
+    }
+    &__logo {
+        padding: 25px;
+        margin-bottom: 0;
+    }
+}

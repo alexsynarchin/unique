@@ -40,7 +40,7 @@ export default {
                     title:"Системы проверки",
                 },
                 {
-                    id:"/admin/check-requests",
+                    id:"/admin/check-uniques",
                     title:"Запросы на проверку",
                 },
                 {

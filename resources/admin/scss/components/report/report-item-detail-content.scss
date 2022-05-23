@@ -1,0 +1,15 @@
+.report-item-detail-content {
+    max-height: 0;
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    &--open {
+        max-height: 10000px;
+        transition: max-height 1s ease-in-out;
+    }
+    &__descr {
+        font-size: 15px;
+        color: rgba(19, 19, 19, 0.75);
+        margin-bottom: 25px;
+    }
+}
