@@ -14658,3 +14658,17 @@ img {
   border-radius: 10px;
   padding: 20px;
 }
+
+.report-item-another-system__title {
+  font-size: 22px;
+  margin-top: 65px;
+  margin-bottom: 30px;
+}
+.report-item-another-system__link {
+  color: #366AF3;
+  text-decoration: underline;
+}
+.report-item-another-system__link:hover {
+  color: #366AF3;
+  text-decoration: underline;
+}

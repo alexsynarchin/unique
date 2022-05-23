@@ -18,14 +18,19 @@
                 а не законной цитатой, система оставляет на ваше усмотрение.
             </div>
         </div>
+        <h3 class="report-item-another-system__title">Вы можете
+            <a href class="report-item-another-system__link">повысить уникальность</a>
+            текста или проверить текст в другой системе</h3>
+        <select-systems></select-systems>
     </section>
 </template>
 <script>
 import SystemsList from "./components/systems-list";
 import Report from "./components/report";
+import SelectSystems from "@/site/js/components/check-unique/components/system-list.vue"
     export default {
         components: {
-            SystemsList, Report
+            SystemsList, Report, SelectSystems
         },
         props: {
             id: {
