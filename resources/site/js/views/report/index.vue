@@ -21,7 +21,7 @@
         <h3 class="report-item-another-system__title">Вы можете
             <a href class="report-item-another-system__link">повысить уникальность</a>
             текста или проверить текст в другой системе</h3>
-        <select-systems></select-systems>
+        <select-systems :state-selected-systems="selectedSystems"></select-systems>
     </section>
 </template>
 <script>

@@ -43,6 +43,14 @@
 <script>
     import selectSystemModal from "./SelectSystemModal";
     export default {
+        props: {
+            stateSelectedSystems: {
+                type:Array,
+                default(){
+                    return []
+                } ,
+            }
+        },
         components: {
             selectSystemModal
         },
@@ -88,11 +96,26 @@
                 axios.get('/api/check-systems')
                     .then((response) => {
                         this.CheckSystems = response.data;
+                        if(this.stateSelectedSystems.length > 0) {
+                            this.preSelectSystems();
+                        }
                     })
+            },
+            preSelectSystems() {
+                this.stateSelectedSystems.forEach((item) => {
+                    let index = this.CheckSystems.findIndex(system => {
+                        return system.id === item
+                    })
+
+                    if(index !==-1) {
+                        this.CheckSystems.splice(index, 1);
+                    }
+                })
             },
         },
         mounted() {
             this.getSystemsList();
+
         }
     }
 </script>
