@@ -11,6 +11,7 @@
                     <h3 class="unique-modal__title">
                         Бесплатная проверка уникальности текста
                     </h3>
+
                     <div class="u-form-group">
                         <label class="u-form-group__label">
                             Укажите E-mail для получения отчета
@@ -71,8 +72,12 @@ import { Errors } from  '@/common/js/services/errors.js';
         },
         methods: {
             showModal(data, list) {
+                console.log(data)
                 this.textParams = data;
                 this.systems = list;
+                if(this.textParams.email) {
+                    this.form.email = this.textParams.email;
+                }
                 $('#free_check').modal('show');
             },
             uniqueCheck() {

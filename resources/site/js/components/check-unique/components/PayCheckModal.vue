@@ -112,6 +112,9 @@ import { Errors } from  '@/common/js/services/errors.js';
             showModal(data, list) {
                 this.textParams = data;
                 this.systems = list;
+                if(this.textParams.email) {
+                    this.form.email = this.textParams.email;
+                }
                 $('#pay_check').modal('show');
             },
             uniqueCheck() {

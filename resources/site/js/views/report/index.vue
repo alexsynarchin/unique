@@ -21,16 +21,20 @@
         <h3 class="report-item-another-system__title">Вы можете
             <a href class="report-item-another-system__link">повысить уникальность</a>
             текста или проверить текст в другой системе</h3>
-        <select-systems :state-selected-systems="selectedSystems"></select-systems>
+        <select-systems @selectSystem="handleSelectedSystem" :state-selected-systems="selectedSystems"></select-systems>
+        <free-check-modal ref="free_check_modal"></free-check-modal>
+        <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
     </section>
 </template>
 <script>
 import SystemsList from "./components/systems-list";
 import Report from "./components/report";
 import SelectSystems from "@/site/js/components/check-unique/components/system-list.vue"
+import FreeCheckModal from "@/site/js/components/check-unique/components/FreeCheckModal";
+import PayCheckModal from "@/site/js/components/check-unique/components/PayCheckModal";
     export default {
         components: {
-            SystemsList, Report, SelectSystems
+            SystemsList, Report, SelectSystems,FreeCheckModal,PayCheckModal
         },
         props: {
             id: {
@@ -56,6 +60,14 @@ import SelectSystems from "@/site/js/components/check-unique/components/system-l
                            this.selectedSystems.push(item.system_id);
                        })
                     })
+            },
+            handleSelectedSystem(data) {
+                console.log(data);
+                if(data.free && data.list.length > 0) {
+                    this.$refs.free_check_modal.showModal(this.check_unique, data.list);
+                } else if(data.list.length > 0) {
+                    this.$refs.pay_check_nodal.showModal(this.check_unique, data.list);
+                }
             },
 
         },

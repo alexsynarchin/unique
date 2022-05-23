@@ -125,7 +125,11 @@ class CheckUniqueController extends Controller
                 'plainText.required' => 'Введите текст для проверки уникальности'
             ]
         );
-        $check_unique = CheckUnique::create($request->all());
+        if($request->has('id')) {
+            $check_unique = CheckUnique::findOrFail($request->get('id'));
+        } else {
+            $check_unique = CheckUnique::create($request->all());
+        }
         foreach ($request->get('systems') as $system) {
            $report = Report::create([
                'check_unique_id' => $check_unique -> id,
