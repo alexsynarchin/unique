@@ -34,71 +34,19 @@ export default {
                 name: '',
                 phone:'',
             },
-            CheckSystems: [
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-                {
-                    name:"NASH Antiplagiat",
-                    link:"",
-                    logo:"/assets/site/images/mp/system-logo-1.png",
-                    price:"Бесплатно",
-                    description: "Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке."
-                },
-            ],
+            CheckSystems: [],
         }
     },
     methods: {
-
+        getSystemsList() {
+            axios.get('/api/check-systems')
+                .then((response) => {
+                    this.CheckSystems = response.data;
+                })
+        },
     },
     mounted() {
-
+        this.getSystemsList();
     }
 }
 </script>

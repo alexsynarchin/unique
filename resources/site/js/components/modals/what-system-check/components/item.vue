@@ -5,7 +5,7 @@
         </figure>
         <div class="what-system-check-list__content">
             <h4 class="what-system-check-list__title">
-                {{itemData.name}}
+                {{itemData.title}}
             </h4>
            <p class="what-system-check-list__descr">
                 {{itemData.description}}
