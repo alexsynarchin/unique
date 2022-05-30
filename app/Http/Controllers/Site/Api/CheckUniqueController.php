@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
+use App\Models\PromoCode;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -116,15 +117,23 @@ class CheckUniqueController extends Controller
         $request->validate([
             'email' => 'required|email',
             'plainText' => 'required',
-            'symbolsCount' => 'numeric|min:100|max:150000'
+            'symbolsCount' => 'numeric|min:100|max:150000',
+            'promocode' => 'nullable|exists:promo_codes,name'
         ],
             [
                 'symbolsCount.min' => 'Количество символов должно быть больше 100',
                 'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
                 'email.required' => 'Введите ваш e-mail',
-                'plainText.required' => 'Введите текст для проверки уникальности'
+                'plainText.required' => 'Введите текст для проверки уникальности',
+                'promocode.exists' => 'Промокод не найден'
             ]
         );
+
+        if($request->has('promocode')) {
+            $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
+            $promo_code -> max_count = $promo_code -> max_count-1;
+            $promo_code -> save();
+        }
         if($request->has('id')) {
             $check_unique = CheckUnique::findOrFail($request->get('id'));
         } else {

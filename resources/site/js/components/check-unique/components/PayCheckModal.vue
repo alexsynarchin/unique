@@ -101,7 +101,7 @@ import { Errors } from  '@/common/js/services/errors.js';
             return {
                 form: {
                     email: "",
-                    promocode:","
+                    promocode:""
                 },
                 systems:[],
                 textParams: {},
@@ -115,6 +115,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
                 }
+
                 $('#pay_check').modal('show');
             },
             uniqueCheck() {
@@ -122,6 +123,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
+                this.textParams.promocode = this.form.promocode;
                 axios.post('/api/check-unique-make-report', this.textParams)
                     .then((response) => {
                         this.$root.isLoading = false;

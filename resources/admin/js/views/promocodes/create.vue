@@ -15,7 +15,7 @@
         data() {
             return {
                 action_type:'post',
-                action_url: '/api/promo-codes',
+                action_url: '/api/admin/promo-codes',
                 form: {
                     discount_type:"",
                     range:"",

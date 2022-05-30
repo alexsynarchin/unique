@@ -82,7 +82,7 @@ import Create from "./create";
         },
         methods: {
             getTableData() {
-                axios.get('/api/promo-codes')
+                axios.get('/api/admin/promo-codes')
                     .then((response) => {
                         this.tableData = response.data;
                     })
