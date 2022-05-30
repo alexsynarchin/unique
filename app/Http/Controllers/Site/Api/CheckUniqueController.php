@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -118,16 +119,36 @@ class CheckUniqueController extends Controller
             'email' => 'required|email',
             'plainText' => 'required',
             'symbolsCount' => 'numeric|min:100|max:150000',
-            'promocode' => 'nullable|exists:promo_codes,name'
-        ],
+            'promocode' => ['nullable', 'exists:promo_codes,name',
+            function ($attribute, $value, $fail) use ($request) {
+                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
+                if($promo_code->max_count < 1) {
+                    $fail('Данный промокод не может больше  использоваться');
+                }
+    },
+            function ($attribute, $value, $fail) use ($request) {
+                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
+                $date1 = Carbon::parse(date('Y-m-d'));
+                $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->end_time)));
+                if($date1> $date2) {
+                    $fail('Данный промокод не может больше  использоваться');
+                }
+    },
+            function ($attribute, $value, $fail) use ($request) {
+                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
+                $date1 = Carbon::parse(date('Y-m-d'));
+                $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->start_time)));
+                if($date2 > $date1) {
+                    $fail('Данный промокод не может использоваться');
+                }
+    },],
             [
                 'symbolsCount.min' => 'Количество символов должно быть больше 100',
                 'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
                 'email.required' => 'Введите ваш e-mail',
                 'plainText.required' => 'Введите текст для проверки уникальности',
                 'promocode.exists' => 'Промокод не найден'
-            ]
-        );
+            ]]);
 
         if($request->has('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
