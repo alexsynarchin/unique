@@ -150,7 +150,7 @@ class CheckUniqueController extends Controller
                 'promocode.exists' => 'Промокод не найден'
             ]]);
 
-        if($request->has('promocode')) {
+        if($request->has('promocode') && $request->get('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
             $promo_code -> max_count = $promo_code -> max_count-1;
             $promo_code -> save();

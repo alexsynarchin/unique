@@ -48,3 +48,6 @@ Route::get('/check-uniques', [CheckUniqueController::class, 'index'])->name('che
 use App\Http\Controllers\Admin\Api\PromoCodeController;
 Route::apiResource('/promo-codes', PromoCodeController::class);
 
+use App\Http\Controllers\Admin\Api\BlockListController;
+Route::apiResource('block-lists', BlockListController::class);
+

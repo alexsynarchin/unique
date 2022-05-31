@@ -5,7 +5,8 @@ import AdminModerators from './views/moderators/index';
 import AdminSettings from './views/settings/index';
 import AdminCheckSystems from './views/systems/index';
 import AdminCheckUniques from './views/check-uniques/index';
-import PromoCodes from "./views/promocodes";
+import PromoCodes from "./views/promocodes/index";
+import Prices from "./views/prices/index";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -13,7 +14,8 @@ let routes = [
     { name: 'settings', path: '/admin/settings', component: AdminSettings},
     { name: 'check-systems', path: '/admin/check-systems', component: AdminCheckSystems},
     {name: 'check-uniques', path: '/admin/check-uniques', component: AdminCheckUniques},
-    {name: 'promo-codes', path: '/admin/promo-codes', component: PromoCodes}
+    {name: 'promo-codes', path: '/admin/promo-codes', component: PromoCodes},
+    {name: 'prices', path: '/admin/prices', component: Prices},
 
 ];
 export default new VueRouter({

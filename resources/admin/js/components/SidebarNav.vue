@@ -61,7 +61,7 @@ export default {
                     border:true,
                 },
                 {
-                    id:"/admin/price",
+                    id:"/admin/prices",
                     title:"Стоимость",
                 },
                 {

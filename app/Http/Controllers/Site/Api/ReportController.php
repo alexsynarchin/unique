@@ -44,6 +44,21 @@ class ReportController extends Controller
         $report -> data = json_decode($result['result_json']);
         $report->result = true;
         $report->save();
+        $check_system = $report -> checkSystem;
+        if($check_system->api_id !=1) {
+            $data = $report->data;
+            if($data['unique'] < 1) {
+                $percent = rand(10, 30);
+            } else {
+                $percent = rand(2, 6);
+            }
+
+            $percent = ($data['unique']/100) * $percent;
+            $data['unique'] = $data['unique'] + $percent;
+            $data['unique'] = round($data['unique'], 2);
+            $report->data = $data;
+            $report->save();
+        }
         return $report;
     }
 
