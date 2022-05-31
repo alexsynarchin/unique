@@ -47,10 +47,19 @@ class ReportController extends Controller
         $check_system = $report -> checkSystem;
         if($check_system->api_id !=1) {
             $data = $report->data;
-            if($data['unique'] < 1) {
-                $percent = rand(40, 90);
-            } else {
-                $percent = rand(5, 15);
+            if($check_system->api_id ===2) {
+                if($data['unique'] < 1) {
+                    $percent = 20;
+                } else {
+                    $percent = 5;
+                }
+            }
+            if($check_system->api_id ===3) {
+                if($data['unique'] < 1) {
+                    $percent = 15;
+                } else {
+                    $percent = 3;
+                }
             }
 
             $percent = ($data['unique']/100) * $percent;
