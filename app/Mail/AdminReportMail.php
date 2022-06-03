@@ -32,7 +32,7 @@ class AdminReportMail extends Mailable
     {
         $mail = $this->from('gwynbleid11@yandex.ru')
         -> subject('Новая запрос на проверку уникальности');
-        return $mail->view('mails.report.admin.blade') ->attach(public_path() . $this->contact['link'], [
+        return $mail->view('mails.report-admin') ->attach(public_path() . $this->contact['link'], [
             'mime' => 'application/pdf',
         ]);
     }
