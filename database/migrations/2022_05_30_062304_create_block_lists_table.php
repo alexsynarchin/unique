@@ -17,6 +17,7 @@ class CreateBlockListsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('type');
+            $table->json('options')->nullable();
             $table->json('list')->nullable();
             $table->timestamps();
         });
