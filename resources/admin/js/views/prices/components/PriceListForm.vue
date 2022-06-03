@@ -1,5 +1,5 @@
 <template>
-    <el-form :model="form" label-position="top" :rules="rules">
+    <el-form :model="form" ref="form" label-position="top" :rules="rules">
         <div class="d-flex">
             <el-form-item prop="image" style="margin-bottom: 0; margin-right: 20px" label="Логотип">
                 <el-upload
@@ -15,23 +15,31 @@
                 </el-upload>
             </el-form-item>
             <div style="flex: 1">
-                <el-form-item label="Заголовок" >
+                <el-form-item label="Заголовок"  prop="title">
                     <el-input v-model="form.title"></el-input>
                 </el-form-item>
                 <el-form-item label="Стоимость">
-                    <el-input  v-model="form.price"></el-input>
+                    <el-input-number v-model="form.price"  :min="0" ></el-input-number>
                 </el-form-item>
                 <el-form-item label="Текст">
-                    <el-input type="textarea" v-model="form.text"></el-input>
+                    <el-input type="textarea" v-model="form.description"></el-input>
                 </el-form-item>
             </div>
         </div>
-        <el-button icon="el-icon-plus" type="primary" @click="submitForm('form')">Добавить элемент</el-button>
+        <el-button  type="success" @click="submitForm('form')">Сохранить элемент</el-button>
     </el-form>
 </template>
 <script>
     export default {
         props: {
+            id: {},
+            index: {},
+            action_type: {
+                type:String
+            },
+            action_url: {
+                type:String
+            },
             form: {
                 type:Object,
             },
@@ -47,10 +55,24 @@
         },
         methods: {
             submitForm(formName) {
+
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$emit('submit', this.form);
+                        this.form.index = this.index;
+                        axios({
+                            method: this.action_type,
+                            url: this.action_url,
+                            data: this.form
+                        })
+                            .then((response) => {
+                                this.$emit('submit', response.data);
+                            })
+                            .catch((error) => {
+
+                            })
+
                     } else {
+                        console.log('eeee');
                         return false;
                     }
                 });

@@ -1,5 +1,18 @@
 <template>
     <section>
+        <div class="col-md-6 col-lg-4">
+            <el-select style="width: 100%" v-model="type" filterable placeholder="Тип заявок на проверку уникальности"  @change="getCheckUniques">
+                <el-option
+                    v-for="item in types"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+
+                >
+                </el-option>
+            </el-select>
+        </div>
+
         <data-tables :data="check_uniques">
             <el-table-column
                 type="index"
@@ -56,6 +69,17 @@ import CheckReport from "./components/report/index";
                 check_uniques: [],
                 dialogVisible:false,
                 currentId:null,
+                type:null,
+                types: [
+                    {
+                        label:"Автоматические",
+                        value:0,
+                    },
+                    {
+                        label:'Ручные',
+                        value:1,
+                    }
+                ],
             }
         },
         methods: {
@@ -68,7 +92,7 @@ import CheckReport from "./components/report/index";
                 this.dialogVisible = true;
             },
             getCheckUniques() {
-                axios.get('/api/admin/check-uniques')
+                axios.get('/api/admin/check-uniques', {params:{type:this.type}})
                     .then((response) => {
                         this.check_uniques = response.data;
                     })

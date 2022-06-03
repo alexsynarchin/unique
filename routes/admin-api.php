@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 Route::post('/logout',[LoginController::class, 'logout']) -> name('logout');
-
+use App\Http\Controllers\Admin\Api\HomeController;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 use App\Http\Controllers\Admin\Api\ModeratorController;
-
 Route::apiResource('/moderators', ModeratorController::class);
 
 use App\Http\Controllers\Admin\Api\SettingController;
@@ -49,5 +49,10 @@ use App\Http\Controllers\Admin\Api\PromoCodeController;
 Route::apiResource('/promo-codes', PromoCodeController::class);
 
 use App\Http\Controllers\Admin\Api\BlockListController;
-Route::apiResource('block-lists', BlockListController::class);
-
+Route::apiResource('block-lists', BlockListController::class)->except([
+     'update'
+]);
+Route::put('/block-lists/{block_list}', [BlockListController::class,'updateTitle'])->name('block-lists.update-title');
+Route::post('/block-lists/{block_list}/store-item', [BlockListController::class,'storeItem'])->name('block-lists.store-item');
+Route::put('/block-lists/{block_list}/edit-item', [BlockListController::class,'updateItem'])->name('block-lists.edit-item');
+Route::delete('/block-lists/{block_list}/delete-item', [BlockListController::class,'destroyItem'])->name('block-lists.destroy-item');

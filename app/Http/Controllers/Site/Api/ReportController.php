@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminReportMail;
 use App\Mail\ReportMail;
 use App\Models\CheckUnique;
 use App\Models\Report;
+use App\Models\Setting;
 use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
 use Illuminate\Http\Request;
@@ -76,6 +78,21 @@ class ReportController extends Controller
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($id);
         Mail::to($request->get('email'))->send(new ReportMail($link));
+        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
+
+        if($exists) {
+            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
+            $email = $setting -> value;
+            $email = explode(',', $email);
+        } else {
+            $email = ['alexsynarchin@gmail.com'];
+        }
+        $form = [
+            'link' => $link
+        ];
+        foreach ($email as $recipient) {
+            Mail::to($recipient)->send(new AdminReportMail($form));
+        }
     }
 
     private function getWordsFromString($string)

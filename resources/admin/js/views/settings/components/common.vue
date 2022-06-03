@@ -14,6 +14,9 @@
                 <el-form-item class="col-lg-6" prop="email" label="E-mail">
                     <el-input v-model="form.email"></el-input>
                 </el-form-item>
+                <el-form-item class="col-lg-6" prop="email_admin" label="E-mail для оповещений">
+                    <el-input v-model="form.email_admin"></el-input>
+                </el-form-item>
                 <el-form-item class="col-lg-6" prop="faq_link" label="Копирайт в подвале сайта">
                     <el-input v-model="form.copyright"></el-input>
                 </el-form-item>
@@ -43,6 +46,7 @@
                   phone_footer:"",
                   copyright:"",
                   email:"",
+                  email_admin:"",
                   instagram_link:"",
                   whatsapp_link:"",
                   vk_link:"",

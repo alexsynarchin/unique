@@ -18,6 +18,7 @@ class CheckUnique extends Model
     protected $appends = [
         'formatted_date'
     ];
+
     public function reports()
     {
         return $this->hasMany(Report::class, 'check_unique_id');

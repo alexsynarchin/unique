@@ -15,6 +15,7 @@
             :key="list.id"
             :block_list="list"
             :index="index"
+            @editListItem="editListItem"
             @create="createItem"
             @delete="deleteBlockList"
         ></price-list>
@@ -26,7 +27,14 @@
             <price-list-create
                 v-if="dialogVisible && state === 'create'"
                 @create="addItem"
+                :id="currentId"
             ></price-list-create>
+            <price-list-edit
+                v-if="dialogVisible && state === 'edit'"
+                :id="currentId"
+                :item="currentListItemData"
+                @edit="updateItem"
+            ></price-list-edit>
         </el-dialog>
     </section>
 </template>
@@ -34,6 +42,7 @@
 import { Errors } from  '@/common/js/services/errors.js';
 import PriceList from "./PriceList";
 import PriceListCreate from './PriceListCreate';
+import PriceListEdit from "./PriceListEdit";
     export default {
         computed: {
             ModalTitle: function (){
@@ -49,11 +58,12 @@ import PriceListCreate from './PriceListCreate';
             }
         },
         components: {
-        PriceList, PriceListCreate,
+        PriceList, PriceListCreate, PriceListEdit,
         },
         data() {
             return {
-                currentIndex: null,
+                currentListItemData: null,
+                currentId: null,
                 state:"",
                 dialogVisible:false,
                 block_lists:[],
@@ -66,19 +76,37 @@ import PriceListCreate from './PriceListCreate';
             }
         },
         methods: {
+            editListItem(data) {
+                this.currentId = data.id;
+                this.currentListItemData = data.item;
+                this.state = 'edit';
+                this.dialogVisible = true;
+            },
             addItem(data) {
-                this.block_lists[this.currentIndex].list.push(data);
+                console.log(data);
+               let index =  this.block_lists.findIndex(object => {
+                    return object.id === this.currentId
+                })
+                this.block_lists[index].list.push(data);
                 this.closeModal();
             },
-            createItem(index) {
-                this.currentIndex = index;
+            updateItem(item) {
+                let index =  this.block_lists.findIndex(object => {
+                    return object.id === this.currentId
+                })
+                this.block_lists[index].list[item.index] = item.data;
+                this.closeModal();
+            },
+            createItem(id) {
+                this.currentId = id;
                 this.state = 'create';
                 this.dialogVisible = true;
             },
             closeModal() {
                 this.dialogVisible = false;
-                this.currentIndex = null;
+                this.currenId = null;
                 this.state = '';
+                this.currentListItemData=null;
             },
             handleClose() {
                 this.closeModal();

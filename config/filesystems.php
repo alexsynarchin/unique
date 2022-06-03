@@ -48,6 +48,12 @@ return [
             'url'        => env('APP_URL') . '/storage/check-systems',
             'visibility' => 'public'
         ],
+        'block-list' => [
+            'driver' =>'local',
+            'root' => storage_path('app/public/block-lists'),
+            'url'  => env('APP_URL') . '/storage/block-lists',
+            'visibility' => 'public'
+        ],
 
         's3' => [
             'driver' => 's3',

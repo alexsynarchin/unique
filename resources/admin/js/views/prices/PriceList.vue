@@ -17,13 +17,32 @@
             </section>
         </div>
         <div class="mb-3">
-            <el-button type="primary" icon="el-icon-plus" @click.prevent="createItem">Добавить элемент</el-button>
+            <div class="mb-3">
+                <el-button type="primary" icon="el-icon-plus" @click.prevent="createItem">Добавить элемент</el-button>
+            </div>
+            <draggable v-model="block_list.list"
+                       @end="endSort"
+                       handle=".building-option-value-item__handle"
+            >
+                <price-list-item
+                    :key="index"
+                    :data="item"
+                    v-for="(item, index) in block_list.list"
+                    @editListItem="editListItem"
+                    @deleteListItem="deleteListItem"
+                ></price-list-item>
+            </draggable>
         </div>
     </el-card>
 
 </template>
 <script>
+import PriceListItem from "./PriceListItem";
+import draggable from 'vuedraggable'
     export default {
+        components: {
+            PriceListItem, draggable
+        },
         props: {
             index: {
                 type:Number,
@@ -42,8 +61,20 @@
             }
         },
         methods: {
+            endSort() {
+
+            },
             createItem() {
-                this.$emit('create', this.index)
+                this.$emit('create', this.block_list.id);
+            },
+            editListItem(item) {
+                this.$emit('editListItem', {id: this.block_list.id, item: item})
+            },
+            deleteListItem(index) {
+                axios.delete('/api/admin/block-lists/' + this.block_list.id + '/delete-item', {params: {index:index}})
+                    .then((response) => {
+                        this.block_list.list.splice(response.data, 1);
+                    })
             },
             deleteList() {
                 axios.delete('/api/admin/block-lists/' + this.block_list.id)
@@ -56,8 +87,12 @@
                 this.form.title = this.block_list.title;
             },
             saveTitle() {
-                this.editing = false;
-                this.block_list.title = this.form.title;
+                axios.put('/api/admin/block-lists/' + this.block_list.id, this.form)
+                    .then((response) => {
+                        this.editing = false;
+                        this.block_list.title = this.form.title;
+                    })
+
             },
             cancelEditTitle() {
               this.editing = false;

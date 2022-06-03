@@ -21,6 +21,61 @@ class BlockListController extends Controller
         return $block_list;
     }
 
+    public function updateTitle(Request $request, $id)
+    {
+        $block_list = BlockList::findOrFail($id);
+        $block_list->title = $request->get('title');
+        $block_list->save();
+        return $block_list->title;
+    }
+
+    public function storeItem(Request $request, $id)
+    {
+        $block_list = BlockList::findOrFail($id);
+        $list = $block_list->list;
+        $blocks = $request->all();
+        if(array_key_exists('imageName', $blocks['image'])) {
+            $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
+                ->toMediaCollection('pages');
+            $blocks['image']['link'] = $image->getUrl();
+            $blocks['image']['id'] = $image -> id;
+            unset($blocks['image']['imageName']);
+        }
+       array_push($list, $blocks);
+        $block_list->list = $list;
+        $block_list->save();
+        return $blocks;
+
+    }
+
+    public function updateItem(Request $request, $id)
+    {
+        $block_list = BlockList::findOrFail($id);
+        $list = $block_list->list;
+        $blocks = $request->except('index');
+        if(array_key_exists('imageName', $blocks['image'])) {
+            $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
+                ->toMediaCollection('pages');
+            $blocks['image']['link'] = $image->getUrl();
+            $blocks['image']['id'] = $image -> id;
+            unset($blocks['image']['imageName']);
+        }
+        $list[$request->get('index')] = $blocks;
+        $block_list->list = $list;
+        $block_list->save();
+        return ['data' => $blocks, 'index' => $request->get('index')];
+    }
+
+    public function destroyItem(Request $request, $id)
+    {
+        $block_list = BlockList::findOrFail($id);
+        $list = $block_list->list;
+        array_splice($list, $request->get('index'), 1);
+        $block_list->list = $list;
+        $block_list->save();
+        return $request->get('index');
+    }
+
     public function destroy($id)
     {
         $block_list = BlockList::findOrFail($id);
