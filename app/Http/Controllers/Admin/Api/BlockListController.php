@@ -36,13 +36,16 @@ class BlockListController extends Controller
         $block_list = BlockList::findOrFail($id);
         $list = $block_list->list;
         $blocks = $request->all();
-        if(array_key_exists('imageName', $blocks['image'])) {
-            $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
-                ->toMediaCollection('pages');
-            $blocks['image']['link'] = $image->getUrl();
-            $blocks['image']['id'] = $image -> id;
-            unset($blocks['image']['imageName']);
+        if(array_key_exists('image', $blocks)) {
+            if(array_key_exists('imageName', $blocks['image'])) {
+                $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
+                    ->toMediaCollection('pages');
+                $blocks['image']['link'] = $image->getUrl();
+                $blocks['image']['id'] = $image -> id;
+                unset($blocks['image']['imageName']);
+            }
         }
+
        array_push($list, $blocks);
         $block_list->list = $list;
         $block_list->save();
