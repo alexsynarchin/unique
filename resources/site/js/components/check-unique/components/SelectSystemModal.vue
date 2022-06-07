@@ -48,7 +48,7 @@
             },
             selectSystem(index) {
                 $('#select_system').modal('hide');
-                this.$emit('selectSystem', index);
+                this.$emit('selectSystem', {index:index, item:this.item});
             }
         },
     }

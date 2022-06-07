@@ -14672,3 +14672,42 @@ img {
   color: #366AF3;
   text-decoration: underline;
 }
+
+.repost {
+  margin-top: 65px;
+  margin-bottom: 65px;
+}
+.repost__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.repost__title {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.repost__item {
+  margin-right: 15px;
+  padding: 5px 15px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  border-radius: 5px;
+}
+.repost__item:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.repost__item--twitter {
+  background-color: #1da1f2;
+}
+.repost__item--odnoklassniki {
+  background-color: #ed812b;
+}
+.repost__item--vk {
+  background-color: #4a76a8;
+}
+.repost__icon {
+  width: 22px;
+  fill: #ffffff;
+}

@@ -22,6 +22,7 @@
                             <img src="/assets/site/images/document.png">
                         </figure>
                     </div>
+                    <repost></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
@@ -63,12 +64,12 @@
                                        :class="{'is-invalid': errors.has('promocode')}">
 
                             </div>
-                            <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('promocode')"></div>
+                            <div class="invalid-feedback" v-if="errors.has('promocode')" v-text="errors.get('promocode')"></div>
                         </div>
                     </div>
                 </form>
                 <div class="pay-check-modal__sum">
-                    Итого к оплате: 0 руб
+                    Итого к оплате: {{sum}} руб
                 </div>
                 <ul class="pay-check-modal-list">
                     <li class="pay-check-modal-list__item">
@@ -84,9 +85,9 @@
                     </li>
                 </ul>
                 <div class="pay-check-modal__footer">
-                    <button class="btn button pay-check-modal__btn" @click.prevent="uniqueCheck">Рассчитать стоимость</button>
+                    <button class="btn button pay-check-modal__btn" @click.prevent="uniqueCheck">Проверить уникальность</button>
                     <div class="pay-check-modal__footer-text">
-                        Нажимая кнопку «Рассчитать стоимость» вы соглашаетесь на обработку персональных данных
+                        Нажимая кнопку «Проверить уникальность» вы соглашаетесь на обработку персональных данных
                     </div>
                 </div>
 
@@ -103,6 +104,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email: "",
                     promocode:""
                 },
+                sum: 0,
                 systems:[],
                 textParams: {},
                 errors: new Errors(),
@@ -115,7 +117,10 @@ import { Errors } from  '@/common/js/services/errors.js';
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
                 }
-
+                this.systems.forEach((system) => {
+                    console.log(system)
+                    this.sum = this.sum + system.price;
+                })
                 $('#pay_check').modal('show');
             },
             uniqueCheck() {
@@ -136,6 +141,7 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         mounted() {
+
             var payCheckModal = document.getElementById('pay_check');
             let vm = this;
             payCheckModal.addEventListener('hidden.bs.modal', function (event) {

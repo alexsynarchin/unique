@@ -121,26 +121,35 @@ class CheckUniqueController extends Controller
             'symbolsCount' => 'numeric|min:100|max:150000',
             'promocode' => ['nullable', 'exists:promo_codes,name',
             function ($attribute, $value, $fail) use ($request) {
-                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
+            if(PromoCode::where('name', $request->get('promocode'))->exists()){
+                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
                 if($promo_code->max_count < 1) {
                     $fail('Данный промокод не может больше  использоваться');
                 }
+            }
+
     },
             function ($attribute, $value, $fail) use ($request) {
-                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
-                $date1 = Carbon::parse(date('Y-m-d'));
-                $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->end_time)));
-                if($date1> $date2) {
-                    $fail('Данный промокод не может больше  использоваться');
+                if(PromoCode::where('name', $request->get('promocode'))->exists()){
+                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
+                    $date1 = Carbon::parse(date('Y-m-d'));
+                    $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->end_time)));
+                    if($date1> $date2) {
+                        $fail('Данный промокод не может больше  использоваться');
+                    }
                 }
+
     },
             function ($attribute, $value, $fail) use ($request) {
-                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->first();
-                $date1 = Carbon::parse(date('Y-m-d'));
-                $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->start_time)));
-                if($date2 > $date1) {
-                    $fail('Данный промокод не может использоваться');
+                if(PromoCode::where('name', $request->get('promocode'))->exists()){
+                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail;
+                    $date1 = Carbon::parse(date('Y-m-d'));
+                    $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->start_time)));
+                    if($date2 > $date1) {
+                        $fail('Данный промокод не может использоваться');
+                    }
                 }
+
     },],
             [
                 'symbolsCount.min' => 'Количество символов должно быть больше 100',

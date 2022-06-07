@@ -47,7 +47,8 @@ class ReportController extends Controller
         $report->result = true;
         $report->save();
         $check_system = $report -> checkSystem;
-        if($check_system->api_id !=1) {
+        $percent = 0;
+        if($check_system->api_id !=1 && $report->data['unique'] != 100) {
             $data = $report->data;
             if($check_system->api_id ===2) {
                 if($data['unique'] < 1) {
@@ -66,6 +67,9 @@ class ReportController extends Controller
 
             $percent = ($data['unique']/100) * $percent;
             $data['unique'] = $data['unique'] + $percent;
+            if($data['unique'] > 100) {
+                $data['unique'] = 100;
+            }
             $data['unique'] = round($data['unique'], 2);
             $report->data = $data;
             $report->save();

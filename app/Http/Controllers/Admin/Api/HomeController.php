@@ -22,7 +22,7 @@ class HomeController extends Controller
             $query->whereHas('checkSystem', function ($query) {
                 $query->where('manual', 0);
             });
-        })->get();
+        })->orderBy('id','desc')->get();
 
         $autoCount = $auto -> count();
         $autoCountToday = $auto-> where('created_at', Carbon::today())->count();
@@ -38,7 +38,7 @@ class HomeController extends Controller
                 $query->where('manual', 0);
                 $query->where('price', 0);
             });
-        })->get();
+        })->orderBy('id','desc')->get();
         $freeCount = $auto -> count();
         $freeCountToday = $auto-> where('created_at', Carbon::today())->count();
         $free = $free->take(5);

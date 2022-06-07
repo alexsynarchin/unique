@@ -5,6 +5,8 @@ var VueScrollTo = require('vue-scrollto');
 import vTitle from 'vuejs-title'
 Vue.use(vTitle)
 Vue.use(VueScrollTo);
+import VueSocialSharing from 'vue-social-sharing'
+Vue.use(VueSocialSharing);
 Vue.directive('phone', {
     bind(el) {
         el.oninput = function(e) {
@@ -51,6 +53,8 @@ Vue.component('FaqPage', require('./views/faq-page/index').default);
 
 //Report
 Vue.component('ReportPage', require('./views/report/index').default);
+
+Vue.component('Repost', require('./components/repost/index').default)
 const app = new Vue({
     el: '#app',
     created(){

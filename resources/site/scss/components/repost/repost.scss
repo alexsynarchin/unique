@@ -1,0 +1,38 @@
+.repost {
+    margin-top: 65px;
+    margin-bottom: 65px;
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    &__item {
+        margin-right: 15px;
+        padding: 5px 15px;
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        display: block;
+        border-radius: 5px;
+        &--twitter {
+            background-color: rgb(29, 161, 242);
+        }
+        &--odnoklassniki {
+            background-color: rgb(237, 129, 43);
+        }
+        &--vk {
+            background-color:rgb(74, 118, 168);
+        }
+    }
+    &__icon {
+        width: 22px;
+        fill: #ffffff;
+    }
+}

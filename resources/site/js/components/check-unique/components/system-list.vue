@@ -1,8 +1,8 @@
 <template>
     <section>
     <div class="check-systems">
-        <div class="check-systems__item" v-for="(item, index) in CheckSystems" @click.prevent="selectSystem(index, item)">
-            <section class="check-system-item">
+        <div class="check-systems__item" v-for="(item, index) in CheckSystems" >
+            <section class="check-system-item" @click.prevent="selectSystem(index, item)">
 
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
@@ -15,7 +15,7 @@
                         <h4 class="check-system-item__title">
                             {{item.title}}
                         </h4>
-                        <a href="" class="check-system-item__link">
+                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" @click.prevent="showSystemModal(index, item)">
                             Подробнее
                         </a>
                         <span class="check-system-item__price check-system-item__price--mobile">
@@ -65,29 +65,46 @@
         methods: {
             selectSystem(index, item) {
                 let checkIndex = this.systemIndex.indexOf(index);
+                let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
+                    return item.id === object.id
+                })
+                if(selectedSystemIndex !== -1) {
+                    this.selectedSystemsList.splice(selectedSystemIndex,1);
+                }
                 if(checkIndex !== -1) {
                     this.systemIndex.splice(checkIndex, 1);
                 } else {
-                    this.$refs.select_system_modal.showSelectSystem(index, item);
+                    this.handleSelected({index:index, item: item})
+
                 }
             },
-            handleSelected(index) {
-                if(this.CheckSystems[index].price === 0) {
-                    this.systemIndex = [];
-                    this.free = true;
-                } else {
-                    this.free = false;
-                   this.systemIndex.forEach((element, i) =>  {
-                       if(this.CheckSystems[element].price === 0) {
-                          this.systemIndex.splice(i, 1);
-                       }
-                   })
-                }
-                this.systemIndex.push(index);
-                this.selectedSystemsList = [];
-                this.systemIndex.forEach((element) => {
-                    this.selectedSystemsList.push({id:this.CheckSystems[element].id, title:this.CheckSystems[element].title});
+            showSystemModal(index, item) {
+                this.$refs.select_system_modal.showSelectSystem(index, item);
+            },
+            handleSelected(data) {
+                let checkIndex = this.systemIndex.indexOf(data.index);
+                let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
+                    return data.item.id === object.id
                 })
+                if(checkIndex === -1 && selectedSystemIndex === -1) {
+                    if(this.CheckSystems[data.index].price === 0) {
+                        this.systemIndex = [];
+                        this.free = true;
+                    } else {
+                        this.free = false;
+                        this.systemIndex.forEach((element, i) =>  {
+                            if(this.CheckSystems[element].price === 0) {
+                                this.systemIndex.splice(i, 1);
+                            }
+                        })
+                    }
+                    this.systemIndex.push(data.index);
+                    this.selectedSystemsList = [];
+                    this.systemIndex.forEach((element) => {
+                        this.selectedSystemsList.push({id:this.CheckSystems[element].id, price:this.CheckSystems[element].price, title:this.CheckSystems[element].title});
+                    })
+                }
+
             },
             checkTextUnique() {
                 this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
