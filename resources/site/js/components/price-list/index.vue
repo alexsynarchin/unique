@@ -1,11 +1,11 @@
 <template>
-    <section class="price-block" :class="{'price-block--last': data.last}">
+    <section class="price-block">
             <h3 class="price-block__title">
                 {{data.title}}
             </h3>
             <div class="price-block__heading">
                 <label class="price-block__label">
-                    {{data.label}}
+                    {{data.options.label}}
                 </label>
                 <label class="price-block__label">
                     Стоимость:
@@ -20,7 +20,7 @@
         <div class="price-block__description" v-if="data.description">
             {{data.description}}
         </div>
-            <a href="" v-if="data.button" class="btn button">Проверить уникальность текста</a>
+            <a href="" v-if="data.options.button" class="btn button">Проверить уникальность текста</a>
     </section>
 </template>
 <script>

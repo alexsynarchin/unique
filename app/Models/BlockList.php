@@ -13,11 +13,12 @@ class BlockList extends Model  implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
     protected $fillable =[
-        'title', 'type', 'list'
+        'title', 'type', 'list', 'options'
     ];
 
     protected $casts = [
-        'list' => 'array'
+        'list' => 'array',
+        'options' => 'array'
     ];
 
     public function registerMediaCollections(): void

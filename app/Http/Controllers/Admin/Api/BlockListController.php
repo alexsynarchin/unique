@@ -24,9 +24,11 @@ class BlockListController extends Controller
     public function updateTitle(Request $request, $id)
     {
         $block_list = BlockList::findOrFail($id);
-        $block_list->title = $request->get('title');
-        $block_list->save();
-        return $block_list->title;
+        $block_list->update($request->all());
+        return [
+            'title' => $block_list->title,
+            'options' => $block_list->options
+        ];
     }
 
     public function storeItem(Request $request, $id)

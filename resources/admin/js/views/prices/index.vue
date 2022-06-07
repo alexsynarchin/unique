@@ -3,12 +3,13 @@
         <h1>
             Стоимость
         </h1>
-        <el-form class="d-flex align-items-end mb-4" :model="form" label-position="top">
-            <el-form-item  style="margin-bottom: 0; width: 400px; margin-right: 15px" prop="title" label="Заголовок списка">
-                <el-input v-model="form.title"></el-input>
-            </el-form-item>
-            <el-button icon="el-icon-plus" type="primary" @click.prevent="storeList">Добавить список c ценами</el-button>
-        </el-form>
+        <price-list-form
+            :form="form"
+            button_text="Добавить список c ценами"
+            action_type="post"
+            action_url="/api/admin/block-lists"
+            @submit="storeList"
+        ></price-list-form>
         <el-divider></el-divider>
         <price-list
             v-for="(list, index) in block_lists"
@@ -24,25 +25,26 @@
             :visible.sync="dialogVisible"
             width="50%"
             :before-close="handleClose">
-            <price-list-create
+            <price-list-item-create
                 v-if="dialogVisible && state === 'create'"
                 @create="addItem"
                 :id="currentId"
-            ></price-list-create>
-            <price-list-edit
+            ></price-list-item-create>
+            <price-list-item-edit
                 v-if="dialogVisible && state === 'edit'"
                 :id="currentId"
                 :item="currentListItemData"
                 @edit="updateItem"
-            ></price-list-edit>
+            ></price-list-item-edit>
         </el-dialog>
     </section>
 </template>
 <script>
 import { Errors } from  '@/common/js/services/errors.js';
 import PriceList from "./PriceList";
-import PriceListCreate from './PriceListCreate';
-import PriceListEdit from "./PriceListEdit";
+import PriceListItemCreate from './PriceListItemCreate';
+import PriceListItemEdit from "./PriceListItemEdit";
+import PriceListForm from "./components/PriceListForm";
     export default {
         computed: {
             ModalTitle: function (){
@@ -58,7 +60,7 @@ import PriceListEdit from "./PriceListEdit";
             }
         },
         components: {
-        PriceList, PriceListCreate, PriceListEdit,
+        PriceList, PriceListItemCreate, PriceListItemEdit, PriceListForm
         },
         data() {
             return {
@@ -69,6 +71,10 @@ import PriceListEdit from "./PriceListEdit";
                 block_lists:[],
                 form: {
                     title: "",
+                    options: {
+                        button:false,
+                        label: "",
+                    },
                     type:"price",
                     list:[]
                 },
@@ -123,11 +129,8 @@ import PriceListEdit from "./PriceListEdit";
                             this.block_lists = response.data;
                         })
             },
-            storeList(){
-                axios.post('/api/admin/block-lists ', this.form)
-                    .then((response) => {
-                        this.block_lists.push(response.data);
-                    })
+            storeList(data){
+                this.block_lists.push(data);
             },
         },
         mounted() {

@@ -36,8 +36,8 @@ Route::post('/report/{id}/send-email', [ReportController::class, 'sendEmail'])->
 use App\Http\Controllers\Site\Api\CheckSystemController;
 Route::get('/check-systems', [CheckSystemController::class, 'index'])->name('check-systems.list');
 
-
-
 use App\Http\Controllers\Site\Api\PaymentController;
-
 Route::post('check-unique-payment', [PaymentController::class, 'payment'])->name('payment');
+
+use App\Http\Controllers\Site\Api\BlockListController;
+Route::get('/block-list/{type}',[BlockListController::class,'index'])->name('block-list');

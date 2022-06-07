@@ -1,13 +1,17 @@
 <template>
     <el-card class="box-card mb-3">
         <div slot="header" >
-            <el-form class="d-flex align-items-end mb-4" :model="form" label-position="top" v-if="editing">
-                <el-form-item  style="margin-bottom: 0; width: 400px; margin-right: 15px" prop="title" label="Заголовок списка">
-                    <el-input v-model="form.title"></el-input>
-                </el-form-item>
-                <el-button  type="success" @click.prevent="saveTitle">Сохранить заголовок</el-button>
-                <el-button type="default" @click.prevent="cancelEditTitle">Отмена</el-button>
-            </el-form>
+
+            <price-list-form
+                v-if="editing"
+                :form="form"
+                :cancel-btn="true"
+                @submit="saveTitle"
+                @cancel="cancelEditTitle"
+                button_text="Сохранить"
+                action_type="put"
+                :action_url="'/api/admin/block-lists/' + this.block_list.id"
+            ></price-list-form>
             <section class="d-flex justify-content-between" v-else>
                 <span>{{block_list.title}}</span>
                 <div class="">
@@ -38,10 +42,11 @@
 </template>
 <script>
 import PriceListItem from "./PriceListItem";
+import PriceListForm from "./components/PriceListForm";
 import draggable from 'vuedraggable'
     export default {
         components: {
-            PriceListItem, draggable
+            PriceListForm, PriceListItem, draggable
         },
         props: {
             index: {
@@ -56,7 +61,11 @@ import draggable from 'vuedraggable'
 
                 editing:false,
                 form: {
-                    title:"",
+                    title: "",
+                    options: {
+                        button:false,
+                        label: "",
+                    },
                 }
             }
         },
@@ -85,13 +94,12 @@ import draggable from 'vuedraggable'
             editTitle() {
                 this.editing = true;
                 this.form.title = this.block_list.title;
+                this.form.options = this.block_list.options;
             },
-            saveTitle() {
-                axios.put('/api/admin/block-lists/' + this.block_list.id, this.form)
-                    .then((response) => {
-                        this.editing = false;
-                        this.block_list.title = this.form.title;
-                    })
+            saveTitle(data) {
+                this.editing = false;
+                this.block_list.title = data.title;
+                this.block_list.options= data.options;
 
             },
             cancelEditTitle() {
