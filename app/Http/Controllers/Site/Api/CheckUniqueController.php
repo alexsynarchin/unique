@@ -119,7 +119,13 @@ class CheckUniqueController extends Controller
             'email' => 'required|email',
             'plainText' => 'required',
             'symbolsCount' => 'numeric|min:100|max:150000',
-            'promocode' => ['nullable', 'exists:promo_codes,name',
+            'promocode' => ['nullable',
+                function ($attribute, $value, $fail) use ($request) {
+                   $exists =  PromoCode::where('name', $request->get('promocode'))->exists();
+                   if (!$exists) {
+                       $fail('Данный промокод не сущетсвует');
+                   }
+                },
             function ($attribute, $value, $fail) use ($request) {
             if(PromoCode::where('name', $request->get('promocode'))->exists()){
                 $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
@@ -142,7 +148,7 @@ class CheckUniqueController extends Controller
     },
             function ($attribute, $value, $fail) use ($request) {
                 if(PromoCode::where('name', $request->get('promocode'))->exists()){
-                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail;
+                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
                     $date1 = Carbon::parse(date('Y-m-d'));
                     $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->start_time)));
                     if($date2 > $date1) {
@@ -156,7 +162,7 @@ class CheckUniqueController extends Controller
                 'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
                 'email.required' => 'Введите ваш e-mail',
                 'plainText.required' => 'Введите текст для проверки уникальности',
-                'promocode.exists' => 'Промокод не найден'
+                'promocode.exists,name' => 'Промокод не найден'
             ]]);
 
         if($request->has('promocode') && $request->get('promocode')) {
