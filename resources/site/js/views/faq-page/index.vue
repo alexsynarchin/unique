@@ -16,7 +16,7 @@ export default {
         getList() {
             axios.get('/api/block-list/faq')
                 .then((response) => {
-                    this.prices = response.data;
+                    this.faqList = response.data;
                 })
         }
     },

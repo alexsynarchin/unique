@@ -1,7 +1,7 @@
 {
-    "/js/spritemap.js": "/js/spritemap.js?id=d41d8cd98f00b204e9800998ecf8427e",
-    "/js/app.js": "/js/app.js?id=7dca26edb6b24897d7e69469115692bd",
-    "/css/pdf-catalog.css": "/css/pdf-catalog.css?id=ce2a258add08ae70c1d30e949ac50c25",
-    "/css/app.css": "/css/app.css?id=f4330bdb0139f5d47909ceafac64e9b5",
-    "/images/sprites.svg": "/images/sprites.svg?id=d1a4d83dd53ccd8c2eead70df0104fe6"
+    "/js/spritemap.js": "/js/spritemap.js",
+    "/js/app.js": "/js/app.js",
+    "/css/pdf-catalog.css": "/css/pdf-catalog.css",
+    "/css/app.css": "/css/app.css",
+    "/images/sprites.svg": "/images/sprites.svg"
 }
