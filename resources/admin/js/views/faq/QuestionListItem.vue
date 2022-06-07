@@ -6,14 +6,10 @@
 
             <div class="col-md-9 d-flex align-items-center">
                 <i style="font-size: 22px" class="el-icon-rank building-option-value-item__handle"></i>
-                <el-image
-                    style="width: 100px; margin-left: 10px; margin-right: 25px"
-                    :src="data.image.link"
-                    fit="contain"></el-image>
+
                 <div>
-                    <h4>{{data.title}}</h4>
-                    <p> {{data.description}}</p>
-                    <label>Стоимость:</label> <span>{{data.price ? data.price + ' руб.' : 'Бесплатно'}}</span>
+                    <h4>{{data.question}}</h4>
+                    <p> {{data.answer}}</p>
                 </div>
             </div>
             <div class="col-md-3">

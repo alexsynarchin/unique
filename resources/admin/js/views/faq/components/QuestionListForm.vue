@@ -1,11 +1,11 @@
 <template>
     <el-form :model="form" ref="form" label-position="top" :rules="rules">
             <div style="flex: 1">
-                <el-form-item label="Вопрос"  prop="title">
-                    <el-input v-model="form.title"></el-input>
+                <el-form-item label="Вопрос"  prop="question">
+                    <el-input v-model="form.question"></el-input>
                 </el-form-item>
-                <el-form-item label="Ответ">
-                    <el-input type="textarea" v-model="form.description"></el-input>
+                <el-form-item label="Ответ" prop="answer">
+                    <el-input type="textarea" v-model="form.answer"></el-input>
                 </el-form-item>
             </div>
         <el-button  type="success" @click="submitForm('form')">Сохранить элемент</el-button>
@@ -29,9 +29,12 @@
         data() {
             return {
                 rules: {
-                    title: [
-                        {required:true, message: "Заполните заголовок"}
-                    ]
+                    question: [
+                        {required:true, message: "Заполните вопрос"}
+                    ],
+                    answer: [
+                        {required:true, message: "Заполните ответ"}
+                    ],
                 },
             }
         },
