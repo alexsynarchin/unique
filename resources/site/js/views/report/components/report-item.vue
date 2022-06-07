@@ -30,7 +30,7 @@
                             :val="report.data.unique"></progress-bar>
                         <div class="report-progress-bar__text">
                             <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
-                            Текст неуникальный
+                           {{report.data.unique < 70 ? ' Текст неуникальный' : ' Текст уникальный'}}
                         </div>
                         <p class="report-progress-bar__descr">
                             У вашего текста низкий процент уникальности, мы рекомендуем вам проверить его в платных системах или воспользоваться услугой рерайта
