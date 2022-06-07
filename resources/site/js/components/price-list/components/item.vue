@@ -1,7 +1,7 @@
 <template>
     <li class="price-list-item price-list__item">
         <figure class="price-list-item__logo">
-            <img :src="data.logo" v-if="data.logo">
+            <img :src="data.image.link" v-if="data.image.link">
             <svg viewBox="0 0 39 39" class="price-list-item__icon" v-else>
                 <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-magnifying-glass"></use>
             </svg>
