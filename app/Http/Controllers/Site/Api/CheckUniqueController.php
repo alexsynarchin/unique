@@ -48,7 +48,8 @@ class CheckUniqueController extends Controller
         $text = '';
         //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
-            $output = str_replace('.doc', '.txt', $request->file('file')->getClientMimeType());
+            $output = str_replace('.doc', '.txt', $request->file('file')->getClientOriginalName());
+            //dd($output);
             shell_exec('/usr/bin/wvText ' . $source . ' ' . $output);
             $text = file_get_contents($output);
 # Convert to UTF-8 if needed
