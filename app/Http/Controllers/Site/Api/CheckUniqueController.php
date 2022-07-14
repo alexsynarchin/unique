@@ -8,7 +8,7 @@ use App\Models\PromoCode;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Jaybizzle\DocToText\Doc;
 
 class CheckUniqueController extends Controller
 {
@@ -48,21 +48,9 @@ class CheckUniqueController extends Controller
         $text = '';
         //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
-            $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
-// read source
-
-            $sections = $phpWord->getSections();
-           // dd($sections);
-            foreach ($sections as $s) {
-                $els = $s->getElements();
-                foreach ($els as $e) {
-                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
-                        continue;
-                    }
-                    $text .= $e->getText();
-
-                }
-            }
+            $text = (new Doc())
+                ->setDoc('book.doc')
+                ->text();
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 

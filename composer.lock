@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5271607c7a93aea2796b6ea02894ab9",
+    "content-hash": "08c995c3354965e0388ef72475d82dd0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1040,6 +1040,60 @@
                 }
             ],
             "time": "2021-12-16T16:49:26+00:00"
+        },
+        {
+            "name": "jaybizzle/doc-to-text",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JayBizzle/doc-to-text.git",
+                "reference": "10bfd4d01d710bec9b903c9886148240cf74f6a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JayBizzle/doc-to-text/zipball/10bfd4d01d710bec9b903c9886148240cf74f6a5",
+                "reference": "10bfd4d01d710bec9b903c9886148240cf74f6a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3",
+                "symfony/process": "^4.0|^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jaybizzle\\DocToText\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Beech",
+                    "email": "mbeech@mark-beech.co.uk",
+                    "homepage": "https://www.mark-beech.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extract text from a Word Doc",
+            "homepage": "https://github.com/jaybizzle/doc-to-text",
+            "keywords": [
+                "doc",
+                "doc-to-text",
+                "extract",
+                "text",
+                "word"
+            ],
+            "support": {
+                "issues": "https://github.com/JayBizzle/doc-to-text/issues",
+                "source": "https://github.com/JayBizzle/doc-to-text/tree/v2.0.0"
+            },
+            "time": "2020-10-12T09:59:59+00:00"
         },
         {
             "name": "krylov123/textru-api",
