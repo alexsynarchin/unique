@@ -49,8 +49,9 @@ class CheckUniqueController extends Controller
         //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
             //dd($request->file('file')->getRealPath());
-            $text = shell_exec('/usr/bin/antiword'.$request->file('file')->getRealPath());
-            dd($text);
+            $filename = $request->file('file')->getRealPath();
+            $text = shell_exec('/usr/bin/antiword -X UTF-8 '.$filename);
+
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 
