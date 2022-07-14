@@ -44,7 +44,7 @@ class CheckUniqueController extends Controller
 
         $size = $file->getSize();
         $source = $file;
-        dd($source->getClientOriginalName());
+       // dd($source->getClientOriginalName());
         $text = '';
         //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
