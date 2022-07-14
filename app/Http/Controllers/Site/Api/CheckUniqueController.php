@@ -52,6 +52,7 @@ class CheckUniqueController extends Controller
             $filename = $request->file('file')->getRealPath();
            shell_exec('/usr/bin/antiword -X UTF-8 '.$filename);
             $text = file_get_contents($filename);
+            dd($text);
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 
