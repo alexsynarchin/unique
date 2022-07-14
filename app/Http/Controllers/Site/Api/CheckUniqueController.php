@@ -48,16 +48,21 @@ class CheckUniqueController extends Controller
         $text = '';
         //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
-            $output = str_replace('.doc', '.txt', $request->file('file')->getClientOriginalName());
-            //dd($output);
-            shell_exec('/usr/bin/wvText ' . $request->file('file')->getClientOriginalName() . ' ' . $output);
-            $text = file_get_contents($output);
-# Convert to UTF-8 if needed
-            if(!mb_detect_encoding($text, 'UTF-8', true))
-            {
-                $text = utf8_encode($text);
+            $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
+// read source
+
+            $sections = $phpWord->getSections();
+           // dd($sections);
+            foreach ($sections as $s) {
+                $els = $s->getElements();
+                foreach ($els as $e) {
+                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
+                        continue;
+                    }
+                    $text .= $e->getText();
+
+                }
             }
-            unlink($output);
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 
