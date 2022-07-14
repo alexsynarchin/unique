@@ -61,6 +61,10 @@ export default {
                     border:true,
                 },
                 {
+                    id:"/admin/main-page",
+                    title:"Главная страница",
+                },
+                {
                     id:"/admin/prices",
                     title:"Стоимость",
                 },

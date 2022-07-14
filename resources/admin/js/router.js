@@ -7,7 +7,8 @@ import AdminCheckSystems from './views/systems/index';
 import AdminCheckUniques from './views/check-uniques/index';
 import PromoCodes from "./views/promocodes/index";
 import Prices from "./views/prices/index";
-import Faq from './views/faq/index'
+import Faq from './views/faq/index';
+import MainPage from "./views/main-page";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -17,7 +18,8 @@ let routes = [
     {name: 'check-uniques', path: '/admin/check-uniques', component: AdminCheckUniques},
     {name: 'promo-codes', path: '/admin/promo-codes', component: PromoCodes},
     {name: 'prices', path: '/admin/prices', component: Prices},
-    {name: 'faq', path: '/admin/faq', component: Faq}
+    {name: 'faq', path: '/admin/faq', component: Faq},
+    {name:'main-page', path:'/admin/main-page', component: MainPage},
 
 ];
 export default new VueRouter({

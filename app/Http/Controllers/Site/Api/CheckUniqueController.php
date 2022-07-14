@@ -44,36 +44,39 @@ class CheckUniqueController extends Controller
 
         $size = $file->getSize();
         $source = $file;
+        dd($source->getClientOriginalName());
         $text = '';
+        //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
-            $phpWord = \PhpOffice\PhpWord\IOFactory::load($file,'MsDoc');
-// read source
-
-            $sections = $phpWord->getSections();
-            foreach ($sections as $s) {
-                $els = $s->getElements();
-                foreach ($els as $e) {
-                    if(!$e instanceof \PhpOffice\PhpWord\Element\Text){
-                        continue;
-                    }
-                    $text .= $e->getText();
-
-                }
+            $output = str_replace('.doc', '.txt', $request->file('file')->getClientMimeType());
+            shell_exec('/usr/bin/wvText ' . $source . ' ' . $output);
+            $text = file_get_contents($output);
+# Convert to UTF-8 if needed
+            if(!mb_detect_encoding($text, 'UTF-8', true))
+            {
+                $text = utf8_encode($text);
             }
+            unlink($output);
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 
             $phpWord = $objReader->load($source);
             $sections = $phpWord->getSections();
-
-            foreach ($sections as $s) {
-                $els = $s->getElements();
-                foreach ($els as $e) {
-                    if (!$e instanceof \PhpOffice\PhpWord\Element\Text) {
-                        continue;
+            foreach($phpWord->getSections() as $section) {
+                foreach($section->getElements() as $element) {
+                    if (method_exists($element, 'getElements')) {
+                        foreach($element->getElements() as $childElement) {
+                            if (method_exists($childElement, 'getText')) {
+                                $text .= $childElement->getText() . ' ';
+                            }
+                            else if (method_exists($childElement, 'getContent')) {
+                                $text .= $childElement->getContent() . ' ';
+                            }
+                        }
                     }
-                    $text .= $e->getText();
-
+                    else if (method_exists($element, 'getText')) {
+                        $text .= $element->getText() . ' ';
+                    }
                 }
             }
         }
