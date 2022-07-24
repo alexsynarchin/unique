@@ -55,6 +55,13 @@ return [
             'visibility' => 'public'
         ],
 
+        'content-block' => [
+            'driver' =>'local',
+            'root' => storage_path('app/public/content-blocks'),
+            'url'  => env('APP_URL') . '/storage/content-blocks',
+            'visibility' => 'public'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

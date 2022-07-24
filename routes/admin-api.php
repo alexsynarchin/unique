@@ -52,7 +52,12 @@ use App\Http\Controllers\Admin\Api\BlockListController;
 Route::apiResource('block-lists', BlockListController::class)->except([
      'update'
 ]);
+
 Route::put('/block-lists/{block_list}', [BlockListController::class,'updateTitle'])->name('block-lists.update-title');
 Route::post('/block-lists/{block_list}/store-item', [BlockListController::class,'storeItem'])->name('block-lists.store-item');
 Route::put('/block-lists/{block_list}/edit-item', [BlockListController::class,'updateItem'])->name('block-lists.edit-item');
 Route::delete('/block-lists/{block_list}/delete-item', [BlockListController::class,'destroyItem'])->name('block-lists.destroy-item');
+
+use App\Http\Controllers\Admin\Api\ContentBlockController;
+Route::get('/content-block/{type}', [ContentBlockController::class, 'show'])->name('content-block.show');
+Route::post('/content-block/{id}/update', [ContentBlockController::class, 'update'])->name('content-block.update');

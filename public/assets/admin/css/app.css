@@ -11783,4 +11783,6 @@ a {
 
 .page-block {
   border: 1px dashed #0d6efd;
+  padding: 30px;
+  border-radius: 10px;
 }

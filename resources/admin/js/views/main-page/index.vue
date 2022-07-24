@@ -3,9 +3,7 @@
         <h1>
             Настройки главной
         </h1>
-        <el-form :model="form">
-
-        </el-form>
+        <utp></utp>
     </section>
 </template>
 <script>
@@ -18,8 +16,12 @@ export default {
      return {
         form: {
 
-        }
+        },
+         types: [],
      }
- }
+ },
+    methods: {
+
+    }
 }
 </script>
