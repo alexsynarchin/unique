@@ -15,13 +15,18 @@
 <script>
 
 export default {
+    props: {
+        link: {
+            type:String,
+            default: "https://www.youtube.com/embed/MheHw-rbMMg"
+        }
+    },
     components: {
 
     },
     data() {
         return {
             url: "",
-            link: "https://www.youtube.com/embed/MheHw-rbMMg",
         }
     },
     methods: {
