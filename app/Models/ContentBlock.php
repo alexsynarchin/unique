@@ -13,6 +13,11 @@ class ContentBlock extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
+    protected $fillable = ['type', 'content'];
+    protected $casts = [
+        'content' => 'array'
+    ];
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('content-blocks')

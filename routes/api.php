@@ -41,3 +41,4 @@ Route::post('check-unique-payment', [PaymentController::class, 'payment'])->name
 
 use App\Http\Controllers\Site\Api\BlockListController;
 Route::get('/block-list/{type}',[BlockListController::class,'index'])->name('block-list');
+

@@ -18,14 +18,14 @@ class ContentBlockController extends Controller
     public function update($id, Request $request)
     {
         $block = ContentBlock::findOrFail($id);
-        $block -> content = $request->except('image');
-        if(array_key_exists('imageName', $block['image'])) {
-            $image = $block ->addMediaFromBase64($block['image']['link'])
-                ->toMediaCollection('content-blocks');
-            $blocks['image']['link'] = $image->getUrl();
-            $blocks['image']['id'] = $image -> id;
-            unset($blocks['image']['imageName']);
+        $content = $request->all();
+        if(is_array($request->get('image')) && array_key_exists('imageName', $request->get('image'))) {
+            $image = $block -> addMediaFromBase64($request->get('image')['link'])->toMediaCollection('content-blocks');
+            $content['image']['link'] = $image->getUrl();
+            $content['image']['id'] = $image -> id;
+            unset($content['image']['imageName']);
         }
+        $block -> content = $content;
         $block->save();
         return $block;
     }

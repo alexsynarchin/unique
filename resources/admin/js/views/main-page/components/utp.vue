@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                <el-button type="success">Сохранить</el-button>
+                <el-button type="success" @click.prevent = "submitForm">Сохранить</el-button>
             </div>
         </el-form>
     </section>
@@ -48,14 +48,13 @@
                     youtube_link: "",
                     image: {
                         link: "",
-                        imageName: "",
                     }
                 }
             }
         },
         methods: {
             submitForm() {
-                axios.post('/api/admin/content-block/' + this.block.id + '/update')
+                axios.post('/api/admin/content-block/' + this.block.id + '/update', this.form)
                     .then((response) => {
                         this.$notify({
                             title: 'Блок сохранен',
@@ -101,7 +100,9 @@
             getBlock() {
                 axios.get('/api/admin/content-block/' + this.type)
                     .then((response) => {
+                        this.block = response.data;
                         for (var key in this.form) {
+                            console.log(key);
                             if(this.block.content[key]) {
                                 this.form[key] = this.block.content[key];
                             }

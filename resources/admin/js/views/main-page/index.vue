@@ -17,7 +17,6 @@ export default {
         form: {
 
         },
-         types: [],
      }
  },
     methods: {
