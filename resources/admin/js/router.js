@@ -9,6 +9,7 @@ import PromoCodes from "./views/promocodes/index";
 import Prices from "./views/prices/index";
 import Faq from './views/faq/index';
 import MainPage from "./views/main-page";
+import Reviews from "./views/reviews";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -20,6 +21,7 @@ let routes = [
     {name: 'prices', path: '/admin/prices', component: Prices},
     {name: 'faq', path: '/admin/faq', component: Faq},
     {name:'main-page', path:'/admin/main-page', component: MainPage},
+    {name:'reviews', path:'/admin/reviews', component: Reviews},
 
 ];
 export default new VueRouter({
