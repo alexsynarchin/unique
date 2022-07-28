@@ -2,7 +2,7 @@
     <div class="container">
         <div class="mp-reviews__heading">
             <h3 class="mp-reviews__title block-title check-unique-bl__title">
-                Что говорят наши клиенты
+                {{$blocks['mp-reviews']['title'] ?? null}}
             </h3>
             <div class="mp-reviews__controls">
                 <figure class="mp-reviews-control">
@@ -18,46 +18,28 @@
 
             </div>
         </div>
+        @if(($lists['mp-reviews-list'] ?? null) && count($lists['mp-reviews-list']) > 0)
+            <div class="mp-reviews-list owl-carousel owl-theme">
+                @foreach($lists['mp-reviews-list'] as $item)
+                    <div class="mp-reviews-list__item">
+                        <h3 class="mp-reviews-list__title">
+                            {{$item['title'] ?? null}}
+                        </h3>
+                        <div class="mp-reviews-list__text">
+                            {{$item['description'] ?? null}}
+                        </div>
+                        <div class="mp-reviews-list__bottom">
+                            <span class="mp-reviews-list__name">
+                                {{$item['name'] ?? null}}
+                            </span>
+                            <span class="mp-reviews-list__date">
+                                {{$item['date'] ?? null}}
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
-        <div class="mp-reviews-list owl-carousel owl-theme">
-            <div class="mp-reviews-list__item">
-                <h3 class="mp-reviews-list__title">
-                    Сдала на 5!!!
-                </h3>
-                <div class="mp-reviews-list__text">
-                    Очень часто студенты проверяют свои курсовые,
-                    дипломные работы или рефераты в бесплатной версии (общедоступной).
-                    Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю такую работу.
-                    После проверки преподаватель сообщает, что уникальность очень низкая и нужно переделать.
-                </div>
-                <div class="mp-reviews-list__bottom">
-                    <span class="mp-reviews-list__name">
-                        Коваленко Наталья
-                    </span>
-                    <span class="mp-reviews-list__date">
-                        12.02.2021
-                    </span>
-                </div>
-            </div>
-            <div class="mp-reviews-list__item">
-                <h3 class="mp-reviews-list__title">
-                    Сдала на 5!!!
-                </h3>
-                <div class="mp-reviews-list__text">
-                    Очень часто студенты проверяют свои курсовые,
-                    дипломные работы или рефераты в бесплатной версии (общедоступной).
-                    Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю такую работу.
-                    После проверки преподаватель сообщает, что уникальность очень низкая и нужно переделать.
-                </div>
-                <div class="mp-reviews-list__bottom">
-                    <span class="mp-reviews-list__name">
-                        Коваленко Наталья
-                    </span>
-                    <span class="mp-reviews-list__date">
-                        12.02.2021
-                    </span>
-                </div>
-            </div>
-        </div>
     </div>
 </section>

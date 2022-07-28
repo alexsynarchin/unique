@@ -19,8 +19,8 @@ class MainPageController extends Controller
 
     public function show()
     {
-        $types = ['mp-utp', 'mp-why', 'mp-process', 'mp-about'];
-        $lists = ['mp-ratings', 'mp-why-list', 'mp-process-list', 'mp-about-list', 'mp-about-gallery'];
+        $types = ['mp-utp', 'mp-why', 'mp-process', 'mp-about','mp-reviews'];
+        $lists = ['mp-ratings', 'mp-why-list', 'mp-process-list', 'mp-about-list', 'mp-about-gallery', 'mp-reviews-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
         return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists]);
