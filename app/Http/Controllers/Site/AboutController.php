@@ -17,8 +17,8 @@ class AboutController extends Controller
 
     public function show()
     {
-        $types = ['about-utp'];
-        $lists = ['about-ratings'];
+        $types = ['about-utp', 'about-guarantees'];
+        $lists = ['about-ratings', 'about-guarantees-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
         return view('site.about.index', ['blocks' => $blocks, 'lists' => $lists]);
