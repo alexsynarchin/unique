@@ -13,10 +13,10 @@
     </div>
     <div class="mp-about__content">
         <h3 class="mp-about__title block-title">
-            {{$blocks['about']['title'] ?? null}}
+            {{$blocks['mp-about']['title'] ?? null}}
         </h3>
         <div class="mp-about__text">
-            {{$blocks['about']['description'] ?? null}}
+            {{$blocks['mp-about']['description'] ?? null}}
         </div>
         @if($lists['mp-about-list'] ?? null)
         <ul class="mp-about-list">
