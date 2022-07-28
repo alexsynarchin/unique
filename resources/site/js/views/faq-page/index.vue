@@ -1,5 +1,5 @@
 <template>
-    <accordion-list class-name="faq-list--dark"  :faq-list="faqList"></accordion-list>
+    <accordion-list class-name="faq-list--dark"  :faq-list="faqList[0]['list']"></accordion-list>
 </template>
 <script>
 import AccordionList from "../../components/accordion/index";

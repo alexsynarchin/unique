@@ -9,6 +9,7 @@
         <process class="mb-5"></process>
         <about class="mb-5"></about>
         <reviews class="mb-5"></reviews>
+        <faq class="mb-5"></faq>
     </section>
 </template>
 <script>
@@ -18,9 +19,10 @@
     import process from "./components/process/process";
     import about from "./components/about/about";
     import reviews from "./components/reviews/reviews";
+    import faq from "./components/faq/faq"
 export default {
     components: {
-        utp, ratings, why, process, about, reviews
+        utp, ratings, why, process, about, reviews, faq
     },
     data() {
      return {

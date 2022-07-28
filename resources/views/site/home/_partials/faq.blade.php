@@ -1,11 +1,13 @@
 <section class="mp-faq">
     <div class="container">
         <h3 class="mp-faq__title block-title check-unique-bl__title">
-            Часто задаваемые вопросы
+            {{$blocks['mp-faq']['title'] ?? null}}
         </h3>
         <div class="row">
             <div class="col-lg-7">
-                <mp-faq></mp-faq>
+                @if($lists['mp-faq-list'] ?? null)
+                <mp-faq :list="{{json_encode($lists['mp-faq-list'])}} "></mp-faq>
+                @endif
             </div>
             <div class="col-lg-5">
                 <figure class="mp-faq__img">

@@ -1,6 +1,6 @@
 <template>
     <section class="faq-list" :class="{'faq-list--dark': className}">
-        <accordion-item ref="AccordionItem" v-for="(item, index) in faqList[0]['list']" :key="index" @handleClick="handleClick(index)">
+        <accordion-item ref="AccordionItem" v-for="(item, index) in faqList" :key="index" @handleClick="handleClick(index)">
             <template v-slot:question>
                 {{item.question}}
             </template>
