@@ -2,7 +2,7 @@
     <div class="container">
         @if($blocks['mp-process']['list_title'] ?? null)
         <h3 class="block-title mp-process__heading check-unique-bl__title">
-            {{$blocks['mp-process']['list_title']}}
+            {{$blocks['mp-process']['list_title'] ?? null}}
             <span class="block-title__cursor"></span>
         </h3>
         @endif
