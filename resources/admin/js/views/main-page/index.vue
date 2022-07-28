@@ -7,7 +7,7 @@
         <ratings class="mb-5"></ratings>
         <why class="mb-5"></why>
         <process class="mb-5"></process>
-
+        <about class="mb-5"></about>
     </section>
 </template>
 <script>
@@ -15,9 +15,10 @@
     import ratings from "./components/ratings/ratings";
     import why from "./components/why/why";
     import process from "./components/process/process";
+    import about from "./components/about/about";
 export default {
     components: {
-        utp, ratings, why, process
+        utp, ratings, why, process, about
     },
     data() {
      return {
