@@ -62,7 +62,7 @@
             <div class="col-lg-3 col-xl-2 page-footer__col-4 ">
                 <section class="contact-bl page-footer__contact-bl">
                     <span class="contact-bl__phone contact-bl__phone--footer">
-                    8 800 555 65 65
+                   {!! Config::get('settings.phone_footer') !!}
                 </span>
                     <a href="" class="contact-bl__btn contact-bl__btn--footer" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
@@ -72,25 +72,25 @@
                     <svg viewBox="0 0 15 12" class="page-footer__e-mail-icon">
                         <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-envelope"></use>
                     </svg>
-                    index@mail.com
+                    {!! Config::get('settings.email') !!}
                 </div>
                 <ul class="social-list page-footer__social-list">
                     <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                        <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-whatsapp-wh"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                        <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-instagram-wh"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                        <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk-wh"></use>
                             </svg>
@@ -104,7 +104,7 @@
         <div class="container">
             <div class="row">
                 <div class="page-footer__copyright col-lg-3">
-                    2018-2021 Все права защищены
+                    {!! Config::get('settings.copyright') !!}
                 </div>
                 <div class="col-lg-9">
                     <ul class="footer-bt-nav">

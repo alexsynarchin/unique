@@ -10,21 +10,21 @@
             </a>
             <ul class="social-list social-list--header">
                 <li class="social-list__item">
-                    <a href="" class="social-list__link">
+                    <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-whatsapp")}}></use>
                         </svg>
                     </a>
                 </li>
                 <li class="social-list__item">
-                    <a href="" class="social-list__link">
+                    <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-instagram")}}></use>
                         </svg>
                     </a>
                 </li>
                 <li class="social-list__item">
-                    <a href="" class="social-list__link">
+                    <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
                         </svg>
@@ -33,7 +33,8 @@
             </ul>
             <div class="page-header__contact contact-bl">
                 <span class="contact-bl__phone">
-                    8 800 555 65 65
+
+                     {!! Config::get('settings.phone_header') !!}
                 </span>
                 <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
                     Получить консультацию
