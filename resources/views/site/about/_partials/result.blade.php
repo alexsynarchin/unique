@@ -1,30 +1,26 @@
 <section class="about-result">
            <div class="about-result__main">
             <h3 class="block-title about-result__title">
-                Работаем на результат
+                {{$blocks['about-work-result']['title'] ?? null}}
             </h3>
             <div class="about-result__text">
-                Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю такую работу. После проверки преподаватель сообщает, что уникальность очень низкая и нужно переделать. Всему причиной то, что в бесплатной версии Антиплагиат.ру всего 1 модуль проверки текста: интернет. Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю.
+                {{$blocks['about-work-result']['description'] ?? null}}
             </div>
         </div>
         <div class="about-result__list">
-            <ul class="about-result-numbers">
-                <li class="about-result-numbers__item">
+            @if($lists['about-work-result-list'] ?? null)
+                <ul class="about-result-numbers">
+                    @foreach($lists['about-work-result-list'] as $item)
+                        <li class="about-result-numbers__item">
                     <span class="about-result-numbers__label">
-                        Проверено работ
+                        {{$item['title'] ?? null}}
                     </span>
                     <span class="about-result-numbers__value">
-                        12 200+
+                        {{$item['num'] ?? null}}
                     </span>
-                </li>
-                <li class="about-result-numbers__item">
-                    <span class="about-result-numbers__label">
-                        Повышена уникальность
-                    </span>
-                    <span class="about-result-numbers__value">
-                       4200+
-                    </span>
-                </li>
-            </ul>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
 </section>

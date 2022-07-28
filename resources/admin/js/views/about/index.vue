@@ -3,16 +3,18 @@
         <h1>Страница о компании</h1>
         <utp class="mb-5"></utp>
         <ratings class="mb-5"></ratings>
-        <guarantees></guarantees>
+        <guarantees class="mb-5"></guarantees>
+        <work-result></work-result>
     </section>
 </template>
 <script>
 import utp from './components/utp'
 import ratings from "./components/ratings/ratings";
 import guarantees from "./components/guarantees/guarantees";
+import WorkResult from "./components/work-result/WorkResult";
     export default {
         components: {
-            utp, ratings, guarantees
+            utp, ratings, guarantees, WorkResult
         }
     }
 </script>
