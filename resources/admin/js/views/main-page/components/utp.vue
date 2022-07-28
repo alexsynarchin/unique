@@ -54,7 +54,7 @@
         },
         methods: {
             submitForm() {
-                axios.post('/api/admin/content-block/' + this.block.id + '/update', this.form)
+                axios.put('/api/admin/content-block/' + this.block.id + '/update', this.form)
                     .then((response) => {
                         this.$notify({
                             title: 'Блок сохранен',

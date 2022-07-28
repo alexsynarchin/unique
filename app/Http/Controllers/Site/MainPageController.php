@@ -20,9 +20,10 @@ class MainPageController extends Controller
     public function show()
     {
         $types = ['mp-utp'];
+        $lists = ['mp-ratings'];
         $blocks = $this->getPageBlocksService->index($types);
-
-        return view('site.home.index', ['blocks' => $blocks]);
+        $lists = $this->getPageBlocksService->lists($lists);
+        return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists]);
     }
 
     public function reviewPdf($id)

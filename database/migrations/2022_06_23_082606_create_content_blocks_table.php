@@ -17,6 +17,7 @@ class CreateContentBlocksTable extends Migration
             $table->id();
             $table->string('type');
             $table->json('content')->nullable();
+            $table->integer('menuindex')->default(0);
             $table->timestamps();
         });
     }

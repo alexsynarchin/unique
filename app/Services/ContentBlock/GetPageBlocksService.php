@@ -18,4 +18,20 @@ class GetPageBlocksService
 
         return $blocks;
     }
+
+    public function lists($types)
+    {
+        $lists = [];
+
+        foreach ($types as $type) {
+            $list = ContentBlock::where('type', $type) -> get();
+            $list_arr = [];
+            foreach ($list as $item) {
+                $list_arr[] = $item->content;
+            }
+            $lists[$type] =  $list_arr;
+        }
+
+        return $lists;
+    }
 }
