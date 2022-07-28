@@ -1,18 +1,16 @@
 <section class="about-utp">
     <div class="about-utp__img-wrap">
         <figure class="about-utp__img">
-            <img src="/assets/site/images/about/about-utp.png">
+            <img src="{{$blocks['about-utp']['image']['link'] ?? null}}">
         </figure>
 
     </div>
     <div class="about-utp__content">
         <h3 class="about-utp__title">
-            Проверить уникальность — все системы проверки в одном месте
+            {{$blocks['about-utp']['title'] ?? null}}
         </h3>
         <p class="about-utp__text">
-            Очень часто студенты проверяют свои курсовые,
-            дипломные работы или рефераты в бесплатной версии (общедоступной).
-            Антиплагиат, получив высокий процент уникальности при проверке
+            {{$blocks['about-utp']['description'] ?? null}}
         </p>
     </div>
 

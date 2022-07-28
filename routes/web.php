@@ -25,9 +25,8 @@ Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('a
 use App\Http\Controllers\Site\CheckReportController;
 Route::get('/report-{id}', [CheckReportController::class, 'show'])->name('report');
 
-Route::get('/about', function () {
-    return view('site.about.index');
-});
+use App\Http\Controllers\Site\AboutController;
+Route::get('/about', [AboutController::class, 'show'])->name('about-page');
 Route::get('/price', function () {
     return view('site.price.index');
 });
