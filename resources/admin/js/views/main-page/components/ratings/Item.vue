@@ -5,7 +5,7 @@
             <div class="col-md-9 d-flex align-items-center">
                 <i style="font-size: 22px" class="el-icon-rank building-option-value-item__handle"></i>
                 <el-image
-                    style="width: 100px; margin-left: 10px; margin-right: 25px"
+                    style="width: 100px; margin-left: 10px; margin-right: 25px;background: blue; padding: 20px"
                     :src="data.content.image.link"
                     fit="contain"></el-image>
                 <div>

@@ -14,11 +14,11 @@
 
         <div class="mp-why__content">
             <h3 class="block-title check-unique-bl__title">
-                Для чего нужна проверка уникальности текста
+               {{$blocks['mp-why']['title'] ?? null}}
                 <span class="block-title__cursor"></span>
             </h3>
             <div class="mp-why__text">
-                Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю такую работу. После проверки преподаватель сообщает, что уникальность очень низкая и нужно переделать. Всему причиной то, что в бесплатной версии Антиплагиат.ру всего 1 модуль проверки текста: интернет. Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной) Антиплагиат, получив высокий процент уникальности при проверке - отправляют преподавателю.
+                {{$blocks['mp-why']['description'] ?? null}}
             </div>
             <div class="mp-why__image-wrap mp-why__image-wrap--mobile">
                 <figure class="mp-why__image ">
@@ -32,64 +32,28 @@
                 </figure>
             </div>
             <h3 class="mp-why-list__heading">
-                Какой должна быть уникальность текстов
+                {{$blocks['mp-why']['list_title'] ?? null}}
             </h3>
-            <ul class="mp-why-list">
-                <li class="mp-why-list__item">
-                <span class="mp-why-list__per-value">
-                    85-100%
-                </span>
-                    <figure class="mp-why-list__per-line mp-why-list__per-line--100"></figure>
-                    <h4 class="mp-why-list__title">
-                        Текст полностью уникальный
-                    </h4>
-                    <p class="mp-why-list__text">
-                        Низкая уникальность работы,
-                        возможно собранная из отдельных кусков разных работ.
-                        Рекомендуется поднять уникальность документа минимум до 60%
-                    </p>
-                </li>
-                <li class="mp-why-list__item">
-                <span class="mp-why-list__per-value">
-                    71-85%
-                </span>
-                    <figure class="mp-why-list__per-line mp-why-list__per-line--85"></figure>
-                    <h4 class="mp-why-list__title">
-                        Текст достаточно уникальный
-                    </h4>
-                    <p class="mp-why-list__text">
-                        Такой текст считается высокоуникальным,
-                        так как при написании работы обычно одалживаются фразы и предложения других авторов
-                    </p>
-                </li>
-                <li class="mp-why-list__item">
-                <span class="mp-why-list__per-value">
-                    50-70%
-                </span>
-                    <figure class="mp-why-list__per-line mp-why-list__per-line--70"></figure>
-                    <h4 class="mp-why-list__title">
-                        Текст допустимо уникальный
-                    </h4>
-                    <p class="mp-why-list__text">
-                        Низкая уникальность работы,
-                        возможно собранная из отдельных кусков разных работ.
-                        Рекомендуется поднять уникальность документа минимум до 60%
-                    </p>
-                </li>
-                <li class="mp-why-list__item">
-                <span class="mp-why-list__per-value">
-                    85-100%
-                </span>
-                    <figure class="mp-why-list__per-line mp-why-list__per-line--50"></figure>
-                    <h4 class="mp-why-list__title">
-                        Текст  неуникальный
-                    </h4>
-                    <p class="mp-why-list__text">
-                        Принято считать, что такая работа является общедоступной,
-                        написанной ранее другим автором, такую работу необходимо полностью переписать.
-                    </p>
-                </li>
-            </ul>
+            @if($lists['mp-why-list'] ?? null)
+                <ul class="mp-why-list">
+                    @foreach($lists['mp-why-list'] as $item)
+                        <li class="mp-why-list__item">
+                            <span class="mp-why-list__per-value">
+                                {{$item['unique_percent']['label'] ?? null}}
+                            </span>
+                            <figure class="mp-why-list__per-line mp-why-list__per-line--{{$item['unique_percent']['num'] ?? null}}"></figure>
+                            <h4 class="mp-why-list__title">
+                                {{$item['title']}}
+                            </h4>
+                            <p class="mp-why-list__text">
+                                {{$item['description']}}
+                            </p>
+                        </li>
+                    @endforeach
+                </ul>
+
+            @endif
+
         </div>
     </div>
 

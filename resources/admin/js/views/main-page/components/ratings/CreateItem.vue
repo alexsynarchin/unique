@@ -23,7 +23,6 @@ export default {
             form: {
                 title:"",
                 description: "",
-                price: 0,
                 image: {
                     id: "",
                     link: "",
