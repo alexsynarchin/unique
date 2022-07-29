@@ -19,6 +19,26 @@
                     <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
+                                Имя
+                            </label>
+                            <div class="u-input-group"
+                                 :class="{'is-invalid': errors.has('name')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-user"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       placeholder=""
+                                       v-model="form.name"
+                                       :class="{'is-invalid':  errors.has('name')}">
+
+                            </div>
+                            <div class="invalid-feedback" v-text="errors.get('name')"></div>
+                        </div>
+
+                        <div class="u-form-group col-md-6">
+                            <label class="u-form-group__label">
                                 Укажите E-mail для получения отчета
                             </label>
                             <div class="u-input-group"
@@ -32,14 +52,34 @@
                                        placeholder="Ваш e-mail"
                                        v-model="form.email"
                                        :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
-
                             </div>
                             <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
                             <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
                             <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
-
-
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="u-form-group col-md-6">
+                            <label class="u-form-group__label">
+                                Необходимые сроки
+                            </label>
+                            <div class="u-input-group"
+                                 :class="{'is-invalid': errors.has('date')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=42#sprite-calendar"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       type="date"
+                                       placeholder=""
+                                       v-model="form.date"
+                                       :class="{'is-invalid': errors.has('date')}">
+
+                            </div>
+                            <div class="invalid-feedback" v-if="errors.has('date')" v-text="errors.get('date')"></div>
+                        </div>
+
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
                                 Укажите промокод
@@ -60,46 +100,22 @@
                             <div class="invalid-feedback" v-if="errors.has('promocode')" v-text="errors.get('promocode')"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="u-form-group col-md-6">
-                            <label class="u-form-group__label">
-                                Укажите E-mail для получения отчета
-                            </label>
-                            <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
-                                <i class="u-input-group__icon">
-                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
-                                    </svg>
-                                </i>
-                                <input class="u-input-group__input"
-                                       placeholder="Ваш e-mail"
-                                       v-model="form.email"
-                                       :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
-                            </div>
-                            <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
+                    <div class="u-form-group">
+                        <label class="u-form-group__label">
+                            Комментарий
+                        </label>
+                        <div class="u-input-group "  :class="{'is-invalid': errors.has('name')}">
+                            <i class="u-input-group__icon u-input-group__icon--textarea">
+                                <svg viewBox="0 0 24 24" class="u-input-group__svg ">
+                                    <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
+                                </svg>
+                            </i>
+                            <textarea class="u-input-group__input u-input-group__input--textarea"
+                                      v-model="form.comment"
+                                      :class="{'is-invalid': errors.has('comment')}"
+                            ></textarea>
                         </div>
-                        <div class="u-form-group col-md-6">
-                            <label class="u-form-group__label">
-                                Укажите промокод
-                            </label>
-                            <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('promocode')}">
-                                <i class="u-input-group__icon">
-                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=42#sprite-percent"></use>
-                                    </svg>
-                                </i>
-                                <input class="u-input-group__input"
-                                       placeholder="Ваш промокод"
-                                       v-model="form.promocode"
-                                       :class="{'is-invalid': errors.has('promocode')}">
-
-                            </div>
-                            <div class="invalid-feedback" v-if="errors.has('promocode')" v-text="errors.get('promocode')"></div>
-                        </div>
+                        <div class="invalid-feedback" v-text="errors.get('comment')"></div>
                     </div>
                 </form>
                 <div class="pay-check-modal__footer">
@@ -123,7 +139,10 @@
         data() {
             return {
                 form: {
+                    name:"",
+                    date:"",
                     email: "",
+                    comment:"",
                     promocode:""
                 },
                 textParams: {},
