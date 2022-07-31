@@ -64,3 +64,6 @@ Route::get('/content-block/{type}', [ContentBlockController::class, 'show'])->na
 Route::post('/content-block/{type}/store', [ContentBlockController::class, 'store'])->name('content-block.store');
 Route::put('/content-block/{id}/update', [ContentBlockController::class, 'update'])->name('content-block.update');
 Route::delete('/content-block/{id}/delete', [ContentBlockController::class, 'destroy'])->name('content-block.destroy');
+
+use App\Http\Controllers\Admin\Api\RewriteController;
+Route::get('/rewrites', [RewriteController::class, 'index'])->name('rewrites');

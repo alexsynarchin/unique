@@ -44,7 +44,7 @@ export default {
                     title:"Запросы на проверку",
                 },
                 {
-                    id:"/admin/rewrite-check",
+                    id:"/admin/rewrites",
                     title:"Заявки на рерайт",
                 },
                 {

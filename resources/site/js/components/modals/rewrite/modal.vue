@@ -173,7 +173,9 @@
             },
             submitForm() {
                 this.$root.isLoading = true;
-                this.form.date = dayjs(this.form.date).format('DD.MM.YYYY')
+                if(this.form.date) {
+                    this.form.date = dayjs(this.form.date).format('DD.MM.YYYY')
+                }
                 const formData = new FormData();
                 for ( var key in this.form ) {
                     formData.append(key, this.form[key]);

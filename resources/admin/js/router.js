@@ -11,6 +11,7 @@ import Faq from './views/faq/index';
 import MainPage from "./views/main-page";
 import Reviews from "./views/reviews";
 import About from "./views/about";
+import Rewrites from "./views/rewrites";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -24,6 +25,7 @@ let routes = [
     {name:'main-page', path:'/admin/main-page', component: MainPage},
     {name:'reviews', path:'/admin/reviews', component: Reviews},
     {name:'about', path:'/admin/about', component: About},
+    {name:'rewrites', path:'/admin/rewrites', component: Rewrites},
 
 ];
 export default new VueRouter({
