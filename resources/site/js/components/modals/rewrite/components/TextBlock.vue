@@ -36,8 +36,8 @@
                 </div>
                 <div class="upload-button__wrap">
 
-                    <label for="file" class="btn button upload-button">
-                        <input type="file" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
+                    <label for="file_rewrite" class="btn button upload-button">
+                        <input type="file" id="file_rewrite" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
                         <svg class="upload-button__icon" viewBox="0 0 20 22">
                             <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
                         </svg>
@@ -49,28 +49,21 @@
                         <span class="upload-button__file-name">{{fileName}}</span>
                         <button class="btn-link btn upload-button__delete" @click="handleFileDelete">Удалить</button>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
     </section>
 </template>
 <script>
 export default {
-
     data() {
         return {
-            systems: [],
             text: "",
             file:"",
             fileName: "",
             textParams: {
                 symbolsCount: 0,
                 wordsCount:0,
-                sentenceCount:0,
-                size:0,
                 pages:0,
                 plainText: "",
             }
@@ -86,16 +79,16 @@ export default {
             this.file = null;
             this.fileName= '';
             this.textParams = {
-                plainText: "",
                 symbolsCount: 0,
                 wordsCount:0,
-                sentenceCount:0,
-                size:0,
                 pages:0,
-
+                plainText: "",
             };
+           Array.from(this.$refs.file.files).splice(0, 1);
+
         },
         handleFileUpload() {
+            console.log('test');
             this.file = this.$refs.file.files[0];
             this.fileName = this.file.name;
             const formData = new FormData();
@@ -107,6 +100,8 @@ export default {
             axios.post('/api/check-unique-file', formData, config)
                 .then((response) => {
                     this.textParams = response.data;
+                    this.$emit('inputText', response.data);
+                    this.$emit('inputFile', this.file);
                 })
         },
         checkUniqueText(text) {
@@ -114,16 +109,8 @@ export default {
                 axios.post('/api/check-unique', {text: this.text})
                     .then((response) => {
                         this.textParams = response.data;
+                        this.$emit('inputText', response.data);
                     })
-            }
-
-        },
-        handleSelected(data) {
-            console.log(data);
-            if(data.free && data.list.length > 0) {
-                this.$refs.free_check_modal.showModal(this.textParams, data.list);
-            } else if(data.list.length > 0) {
-                this.$refs.pay_check_nodal.showModal(this.textParams, data.list);
             }
 
         },

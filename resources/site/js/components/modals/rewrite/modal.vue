@@ -1,5 +1,5 @@
 <template>
-    <!--<div class="modal fade unique-modal" id="pay_check"  tabindex="-1" role="dialog"  aria-hidden="true">-->
+    <div class="modal fade unique-modal" id="rewrite_modal"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -14,7 +14,9 @@
                     <p class="pay-check-modal__descr">
                         Оставьте заявку на расчет стоимости рерайта текста
                     </p>
-                    <text-block></text-block>
+                    <text-block
+                        @inputFile="inputFile"
+                        @inputText="inputText"></text-block>
                     <repost></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
@@ -22,7 +24,7 @@
                                 Имя
                             </label>
                             <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('name')}">
+                                 :class="{'is-invalid': errors.has('name')|| errors.has('plain_text')  || errors.has('symbolsCount')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
                                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-user"></use>
@@ -31,10 +33,12 @@
                                 <input class="u-input-group__input"
                                        placeholder=""
                                        v-model="form.name"
-                                       :class="{'is-invalid':  errors.has('name')}">
+                                       :class="{'is-invalid':  errors.has('name') || errors.has('plain_text')  || errors.has('symbolsCount')}">
 
                             </div>
                             <div class="invalid-feedback" v-text="errors.get('name')"></div>
+                            <div class="invalid-feedback" v-if="errors.has('plain_text')" v-text="errors.get('plain_text')"></div>
+                            <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
                         </div>
 
                         <div class="u-form-group col-md-6">
@@ -42,7 +46,7 @@
                                 Укажите E-mail для получения отчета
                             </label>
                             <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
+                                 :class="{'is-invalid': errors.has('email') }">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
                                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
@@ -51,11 +55,10 @@
                                 <input class="u-input-group__input"
                                        placeholder="Ваш e-mail"
                                        v-model="form.email"
-                                       :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
+                                       :class="{'is-invalid': errors.has('email') }">
                             </div>
                             <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
+
                         </div>
                     </div>
                     <div class="row">
@@ -63,19 +66,21 @@
                             <label class="u-form-group__label">
                                 Необходимые сроки
                             </label>
-                            <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('date')}">
+                            <div class="u-input-group "  :class="{'is-invalid': errors.has('date')}">
                                 <i class="u-input-group__icon">
-                                    <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=42#sprite-calendar"></use>
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg ">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-calendar"></use>
                                     </svg>
                                 </i>
-                                <input class="u-input-group__input"
-                                       type="date"
-                                       placeholder=""
-                                       v-model="form.date"
-                                       :class="{'is-invalid': errors.has('date')}">
+                                <datepicker
 
+                                    v-model="form.date"
+                                    format="dd.MM.yyyy"
+                                    wrapper-class="u-datepicker__wrap"
+                                    :use-utc="true"
+                                    input-class="u-input-group__input u-datepicker"
+                                    :language="ru">
+                                </datepicker>
                             </div>
                             <div class="invalid-feedback" v-if="errors.has('date')" v-text="errors.get('date')"></div>
                         </div>
@@ -104,7 +109,7 @@
                         <label class="u-form-group__label">
                             Комментарий
                         </label>
-                        <div class="u-input-group "  :class="{'is-invalid': errors.has('name')}">
+                        <div class="u-input-group "  :class="{'is-invalid': errors.has('comment')}">
                             <i class="u-input-group__icon u-input-group__icon--textarea">
                                 <svg viewBox="0 0 24 24" class="u-input-group__svg ">
                                     <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
@@ -117,73 +122,90 @@
                         </div>
                         <div class="invalid-feedback" v-text="errors.get('comment')"></div>
                     </div>
+
                 </form>
                 <div class="pay-check-modal__footer">
-                    <button class="btn button pay-check-modal__btn" @click.prevent="uniqueCheck">Проверить уникальность</button>
+                    <button class="btn button pay-check-modal__btn" @click.prevent="submitForm">Рассчитать стоимость</button>
                     <div class="pay-check-modal__footer-text">
-                        Нажимая кнопку «Проверить уникальность» вы соглашаетесь на обработку персональных данных
+                        Нажимая кнопку «Рассчитать стоимость» вы соглашаетесь на обработку персональных данных
                     </div>
                 </div>
 
             </div>
         </div>
-    <!--</div>-->
+  </div>
 </template>
 <script>
+    import Datepicker from 'vuejs-datepicker';
+    import dayjs from "dayjs";
+    require('dayjs/locale/ru');
+    import {en, ru} from 'vuejs-datepicker/dist/locale'
     import { Errors } from  '@/common/js/services/errors.js';
     import TextBlock from "./components/TextBlock";
     export default {
         components: {
-            TextBlock,
+            TextBlock, Datepicker
         },
         data() {
             return {
+                en: en,
+                ru: ru,
                 form: {
+                    file:null,
                     name:"",
                     date:"",
                     email: "",
                     comment:"",
-                    promocode:""
+                    promocode:"",
+                    plain_text: "",
+                    text_params: {},
                 },
-                textParams: {},
                 errors: new Errors(),
             }
         },
         methods: {
-            showModal(data, list) {
-                this.textParams = data;
-                this.systems = list;
-                if(this.textParams.email) {
-                    this.form.email = this.textParams.email;
-                }
-                this.systems.forEach((system) => {
-                    console.log(system)
-                    this.sum = this.sum + system.price;
-                })
-                $('#pay_check').modal('show');
+            showModal() {
+                $('#rewrite_modal').modal('show');
             },
-            uniqueCheck() {
-                $('#pay_check').modal('show');
+            customFormatter(date) {
+
+                return  dayjs(date).format('DD/MM/YYYY')
+            },
+            submitForm() {
                 this.$root.isLoading = true;
-                this.textParams.email = this.form.email;
-                this.textParams.systems = this.systems;
-                this.textParams.promocode = this.form.promocode;
-                axios.post('/api/check-unique-make-report', this.textParams)
+                this.form.date = dayjs(this.form.date).format('DD.MM.YYYY')
+                const formData = new FormData();
+                for ( var key in this.form ) {
+                    formData.append(key, this.form[key]);
+                }
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                axios.post('/api/rewrite/order', formData, config)
                     .then((response) => {
                         this.$root.isLoading = false;
-                        window.location.href = response.data;
+                        $('#rewrite_modal').modal('hide');
+                        console.log(response.data)
                     })
                     .catch((error) => {
                         this.$root.isLoading = false;
                         this.errors.record(error.response.data.errors);
                     })
+            },
+            inputText(data) {
+                this.form.plain_text = data.plainText;
+                delete data['plainText'];
+                this.form.text_params = data;
+            },
+            inputFile(file) {
+                this.form.file = file;
             }
         },
         mounted() {
 
-            var payCheckModal = document.getElementById('pay_check');
+            var rewriteModal = document.getElementById('rewrite_modal');
             let vm = this;
-            payCheckModal.addEventListener('hidden.bs.modal', function (event) {
+            rewriteModal.addEventListener('hidden.bs.modal', function (event) {
                 vm.errors.clear();
             });
         }

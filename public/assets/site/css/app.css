@@ -12488,6 +12488,13 @@ img {
   font-size: 14px;
 }
 
+.u-datepicker {
+  width: 100%;
+}
+.u-datepicker__wrap {
+  flex: 1;
+}
+
 .check-unique-bl {
   padding: 50px 15px;
   background: #F0F1F6;

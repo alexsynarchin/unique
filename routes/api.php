@@ -45,3 +45,6 @@ Route::get('/block-list/{type}',[BlockListController::class,'index'])->name('blo
 use App\Http\Controllers\Site\Api\ReviewController;
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 
+use App\Http\Controllers\Site\Api\RewriteController;
+Route::post('/rewrite/order', [RewriteController::class, 'order']) -> name('rewrite.order');
+
