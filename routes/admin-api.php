@@ -67,3 +67,4 @@ Route::delete('/content-block/{id}/delete', [ContentBlockController::class, 'des
 
 use App\Http\Controllers\Admin\Api\RewriteController;
 Route::get('/rewrites', [RewriteController::class, 'index'])->name('rewrites');
+Route::get('/rewrite/{id}', [RewriteController::class, 'show'])->name('rewrite.show');

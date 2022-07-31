@@ -13,4 +13,10 @@ class RewriteController extends Controller
         $rewrites = Rewrite::orderBy('created_at', 'ASC') ->get();
         return $rewrites;
     }
+
+    public function show($id)
+    {
+        $rewrite = Rewrite::findOrFail($id);
+        return$rewrite;
+    }
 }
