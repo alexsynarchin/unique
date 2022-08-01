@@ -54,7 +54,6 @@
                 {{item.plain_text}}
             </div>
         </el-card>
-
         <el-form :model="form">
             <div class="row">
                 <el-form-item  class="col-md-4" label="Стоимость">
