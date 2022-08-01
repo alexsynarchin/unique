@@ -32,7 +32,7 @@ class Rewrite extends Model
     public function getStatusTitleAttribute()
     {
         $title = '';
-        $status = $this->attributes['status'];
+        $status = $this->status;
         switch ($status) {
             case 0:
                $title = 'Не просмотрена';
