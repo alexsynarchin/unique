@@ -74,6 +74,14 @@ class ReportController extends Controller
                 }
 
             }
+            if($check_system->api_id ===5) {
+                if($data['unique'] < 1) {
+                    $percent = 9;
+                } else {
+                    $percent = 3;
+                }
+
+            }
 
             $percent = ($data['unique']/100) * $percent;
             $data['unique'] = $data['unique'] + $percent;
