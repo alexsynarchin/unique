@@ -47,5 +47,6 @@ class Rewrite extends Model
                 $title = 'Завершена';
                 break;
         }
+        return $title;
     }
 }
