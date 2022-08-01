@@ -40,7 +40,7 @@
                     </span>
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <label>
                     Комментарий
                 </label>
@@ -48,8 +48,11 @@
                     {{item.comment}}
                 </div>
             </div>
-            <el-link icon="el-icon-document" v-if="item.filename" download>Скачать файл</el-link>
-
+            <label>Текст:</label>
+            <el-link :href="item.file_link" icon="el-icon-document" v-if="item.filename" download>Скачать файл</el-link>
+            <div class="page-block" v-else>
+                {{item.plain_text}}
+            </div>
         </el-card>
 
         <el-form :model="form">

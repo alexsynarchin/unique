@@ -21,7 +21,7 @@ class Rewrite extends Model
     ];
 
     protected $appends = [
-        'status_title'
+        'status_title', 'file_link'
     ];
 
     public function promoCode()
@@ -48,5 +48,14 @@ class Rewrite extends Model
                 break;
         }
         return $title;
+    }
+
+    public function getFileLinkAttribute()
+    {
+        $link = '';
+        if($this->filename) {
+            $link = '/storage/rewrites/' . $this->filename;
+        }
+        return $link;
     }
 }
