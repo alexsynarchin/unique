@@ -36,7 +36,7 @@
                         Статус:
                     </label>
                     <span>
-
+                        {{item.status_title}}
                     </span>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     </el-select>
                 </el-form-item>
                 <div class="col-md-4">
-                    <el-button type="success">
+                    <el-button type="success" @click.prevent="update">
                         Сохранить
                     </el-button>
                 </div>

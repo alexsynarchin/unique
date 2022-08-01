@@ -18,7 +18,12 @@
                 sortable
             >
             </el-table-column>
-
+            <el-table-column
+                label="Статус"
+                prop="status_title"
+                sortable
+            >
+            </el-table-column>
             <el-table-column
                 label="Дата"
                 prop="date"
