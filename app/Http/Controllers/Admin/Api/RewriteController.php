@@ -17,6 +17,19 @@ class RewriteController extends Controller
     public function show($id)
     {
         $rewrite = Rewrite::findOrFail($id);
+        $rewrite->status = 1;
+        $rewrite->save();
         return$rewrite;
+    }
+
+    public function update($id, Request $request)
+    {
+        $rewrite = Rewrite::findOrFail($id);
+
+        $rewrite->price = $request->get('price');
+        $rewrite->status = $request->get('status');
+        $rewrite->save();
+
+        return $rewrite;
     }
 }

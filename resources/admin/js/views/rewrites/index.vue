@@ -1,6 +1,6 @@
 <template>
     <section>
-        <data-tables :data="rewrites">
+        <data-tables :data="rewrites" :table-props="tableProps">
             <el-table-column
                 type="index"
                 label="№"
@@ -18,6 +18,7 @@
                 sortable
             >
             </el-table-column>
+
             <el-table-column
                 label="Дата"
                 prop="date"
@@ -56,6 +57,16 @@ export default {
             dialogVisible:false,
             currentId:null,
             type:null,
+            tableProps: {
+                "row-class-name": function (row) {
+
+                    if (row.row.status === 0) {
+                        return 'warning-row';
+                    }
+
+                    return ''
+                }
+            },
         }
     },
     methods: {
@@ -79,3 +90,12 @@ export default {
     }
 }
 </script>
+<style>
+.el-table .warning-row {
+    background: oldlace;
+}
+
+.el-table .success-row {
+    background: #f0f9eb;
+}
+</style>

@@ -1,14 +1,79 @@
 <template>
     <section>
-        <el-descriptions title="Основная информация" border :column="2">
-            <el-descriptions-item label="Имя">{{item.name}}</el-descriptions-item>
-            <el-descriptions-item label="E-mail">{{item.email}}</el-descriptions-item>
-            <el-descriptions-item label="Необходимые сроки">{{item.date}}</el-descriptions-item>
-            <el-descriptions-item label="Статус">
-                <el-tag size="small">School</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item label="Комментарий">{{item.comment}}</el-descriptions-item>
-        </el-descriptions>
+        <el-card class="box-card mb-4">
+            <div slot="header" class="clearfix">
+                <h5>Основная информация</h5>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>
+                        Имя:
+                    </label>
+                    <span>
+                            {{item.name}}
+                        </span>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        E-mail:
+                    </label>
+                    <span>
+                            {{item.email}}
+                        </span>
+                </div>
+            </div>
+            <div class="row  mb-3">
+                <div class="col-md-6">
+                    <label>
+                        Необходимые сроки:
+                    </label>
+                    <span>
+                            {{item.date}}
+                        </span>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        Статус:
+                    </label>
+                    <span>
+
+                    </span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>
+                    Комментарий
+                </label>
+                <div>
+                    {{item.comment}}
+                </div>
+            </div>
+            <el-link icon="el-icon-document" v-if="item.filename" download>Скачать файл</el-link>
+
+        </el-card>
+
+        <el-form :model="form">
+            <div class="row">
+                <el-form-item  class="col-md-4" label="Стоимость">
+                    <el-input-number v-model="form.price"/>
+                </el-form-item>
+                <el-form-item label="Статус" class="col-md-4">
+                    <el-select v-model="form.status" placeholder="Select">
+                        <el-option
+                            v-for="item in statuses"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <div class="col-md-4">
+                    <el-button type="success">
+                        Сохранить
+                    </el-button>
+                </div>
+            </div>
+        </el-form>
     </section>
 </template>
 <script>
@@ -20,7 +85,29 @@
         },
         data() {
             return {
-                item: {}
+                statuses: [
+                    {
+                        label: "Не просмотрена",
+                        value: 0,
+                    },
+                    {
+                        label: "Новая",
+                        value: 1,
+                    },
+                    {
+                        label: "В работе",
+                        value: 2,
+                    },
+                    {
+                        label: "Завершена",
+                        value: 3,
+                    },
+                ],
+                item: {},
+                form: {
+                    price: 0,
+                    status: 0,
+                },
             }
         },
         methods: {
@@ -28,11 +115,25 @@
                 axios.get('/api/admin/rewrite/' + this.id)
                     .then((response) => {
                         this.item = response.data;
+                        let keys = ['price', 'status'];
+                        keys.forEach(key => {
+                            this.form[key] = response.data[key];
+                        })
+                    })
+            },
+            update() {
+                axios.put('/api/admin/rewrite/' + this.id, this.form)
+                    .then((response) => {
+                        this.item = response.data;
+                        this.$notify({
+                            title: 'Информация обновлена',
+                            type: 'success'
+                        });
                     })
             },
         },
-        mounted() {
-            this.getData();
+        async mounted() {
+            await this.getData();
         }
     }
 </script>

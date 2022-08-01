@@ -19,6 +19,7 @@ class CreateRewritesTable extends Migration
             $table->string('name')->nullable();
             $table->unsignedSmallInteger('status')->default(0);
             $table->date('date')->nullable();
+            $table->longText('comment')->nullable();
             $table->integer('price')->default(0);
             $table->string('filename')->nullable();
             $table->longText('plain_text')->nullable();

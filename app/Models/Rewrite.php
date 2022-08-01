@@ -12,7 +12,7 @@ class Rewrite extends Model
     protected $fillable = [
         'name', 'email', 'text_params', 'filename',
         'price', 'date', 'status', 'plain_text',
-        'promo_id'
+        'comment', 'promo_id'
     ];
 
     protected $casts = [
@@ -20,8 +20,32 @@ class Rewrite extends Model
         'text_params' => 'array',
     ];
 
+    protected $appends = [
+        'status_title'
+    ];
+
     public function promoCode()
     {
         return $this->belongsTo(PromoCode::class, 'promo_id');
+    }
+
+    public function getStatusTitleAttribute()
+    {
+        $title = '';
+        $status = $this->attributes['status'];
+        switch ($status) {
+            case 0:
+               $title = 'Не просмотрена';
+                break;
+            case 1:
+                $title = 'Новая';
+                break;
+            case 2:
+                $title = 'В работе"';
+                break;
+            case 3:
+                $title = 'Завершена';
+                break;
+        }
     }
 }
