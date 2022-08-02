@@ -56,7 +56,7 @@ class CheckUnique extends Model
     {
         $link = '';
         if($this->filename) {
-            $link = '/public/storage/check_uniques/' . $this->id . '/' . $this->filename;
+            $link = '/storage/check_uniques/' . $this->id . '/' . $this->filename;
         }
         return $link;
     }
