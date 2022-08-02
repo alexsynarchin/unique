@@ -13,7 +13,7 @@
             </el-select>
         </div>
 
-        <data-tables :data="check_uniques" :table-props="tableProps">
+        <data-tables :data="check_uniques" >
             <el-table-column
                 type="index"
                 label="№"
