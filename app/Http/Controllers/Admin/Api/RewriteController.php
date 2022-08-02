@@ -19,7 +19,7 @@ class RewriteController extends Controller
         $rewrite = Rewrite::findOrFail($id);
         $rewrite->status = 1;
         $rewrite->save();
-        return$rewrite;
+        return $rewrite;
     }
 
     public function update($id, Request $request)
