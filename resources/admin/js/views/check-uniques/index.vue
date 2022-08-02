@@ -13,7 +13,7 @@
             </el-select>
         </div>
 
-        <data-tables :data="check_uniques">
+        <data-tables :data="check_uniques" :table-props="tableProps">
             <el-table-column
                 type="index"
                 label="№"
@@ -80,6 +80,15 @@ import CheckReport from "./components/report/index";
                         value:1,
                     }
                 ],
+                tableProps: {
+                    "row-class-name": function (row) {
+
+                        if (row.row.status === 0) {
+                            return 'warning-row';
+                        }
+                        return ''
+                    }
+                },
             }
         },
         methods: {
@@ -103,3 +112,12 @@ import CheckReport from "./components/report/index";
         }
     }
 </script>
+<style>
+.el-table .warning-row {
+    background: oldlace;
+}
+
+.el-table .success-row {
+    background: #f0f9eb;
+}
+</style>
