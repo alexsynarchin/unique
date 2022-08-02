@@ -96,7 +96,7 @@
                 </button>
             </div>
         </div>
-    
+
         <systems-list @selectSystem="handleSelected"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
@@ -171,9 +171,9 @@
             handleSelected(data) {
                 console.log(data);
                 if(data.free && data.list.length > 0) {
-                    this.$refs.free_check_modal.showModal(this.textParams, data.list);
+                    this.$refs.free_check_modal.showModal(this.textParams, data.list, this.file);
                 } else if(data.list.length > 0) {
-                    this.$refs.pay_check_nodal.showModal(this.textParams, data.list);
+                    this.$refs.pay_check_nodal.showModal(this.textParams, data.list, this.file);
                 }
 
             },

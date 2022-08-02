@@ -28,10 +28,16 @@ class CheckSystemController extends Controller
             'title.required' => 'Введите название системы проверки',
         ]);
 
+
         $system = CheckSystem::create($request->except(['logo', 'logoName']));
         if($request -> has('logoName')) {
             $system  ->addMediaFromBase64($request->get('logo'))
                 ->toMediaCollection('check-systems');
+        }
+
+        if(!$request->get('api_id')) {
+            $system->manual = 1;
+            $system->save();
         }
         return $system;
     }

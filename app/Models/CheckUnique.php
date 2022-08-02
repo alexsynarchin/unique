@@ -16,7 +16,7 @@ class CheckUnique extends Model
     ];
 
     protected $appends = [
-        'formatted_date'
+        'formatted_date', 'file_link', 'status_title'
     ];
 
     public function reports()
@@ -29,6 +29,36 @@ class CheckUnique extends Model
         $date = $this->attributes['created_at'];
         $date = DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y H:i');
         return $date;
+    }
+
+    public function getStatusTitleAttribute()
+    {
+        $title = '';
+        $status = $this->status;
+        switch ($status) {
+            case 0:
+                $title = 'Не просмотрена';
+                break;
+            case 1:
+                $title = 'Новая';
+                break;
+            case 2:
+                $title = 'В работе"';
+                break;
+            case 3:
+                $title = 'Завершена';
+                break;
+        }
+        return $title;
+    }
+
+    public function getFileLinkAttribute()
+    {
+        $link = '';
+        if($this->filename) {
+            $link = '/public/storage/check_uniques/' . $this->id . '/' . $this->filename;
+        }
+        return $link;
     }
 
 }

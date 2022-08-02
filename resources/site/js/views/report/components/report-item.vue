@@ -3,6 +3,7 @@
         <h3 class="report-item__title">
             Проверка {{report.formatted_date}}
         </h3>
+
         <div class="report-item__content"  >
             <div class="report-item-system">
                 <h4 class="report-item-system__title">
@@ -14,7 +15,7 @@
             </div>
             <section class="report-item__center">
                 <div class="report-progress-bar" v-if="!report.result">
-                    <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15" :val="increasing_pct"></progress-bar>
+                    <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15"  :val="increasing_pct"></progress-bar>
                     <div class="report-progress-bar__text">
                         <span class="report-progress-bar__precent">{{increasing_pct + '%'}}</span>
                         Идет формирование отчета
@@ -102,6 +103,7 @@ import ProgressBar from 'vue-simple-progress'
             check_system: {},
             increasing_pct: 0,
             decreasing_pct: 100,
+            maxPercent:100,
         }
         },
         props: {
@@ -131,12 +133,15 @@ import ProgressBar from 'vue-simple-progress'
         },
         mounted() {
         this.check_system = this.report.check_system;
+        if(this.report.check_system.manual) {
+            this.maxPercent = 99;
+        }
         if(!this.report.result) {
             setInterval(() => {
                 if (this.is_paused)
                     return
                 this.random_pct = Math.ceil(Math.random() * 100)
-                this.increasing_pct = Math.min(this.increasing_pct + 2, 100)
+                this.increasing_pct = Math.min(this.increasing_pct + 2, this.maxPercent)
                 this.decreasing_pct = Math.max(this.decreasing_pct - 2, 0)
                 }, 3500)
             }

@@ -69,7 +69,7 @@ class RewriteController extends Controller
 
         $filename = $request->file('file')->getClientOriginalName();
         $path = $request->file('file')->storeAs(
-            'rewrites/' . $rewrite->id, $filename
+            'public/rewrites/' . $rewrite->id, $filename
         );
         if($request->has('promocode') && $request->get('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();

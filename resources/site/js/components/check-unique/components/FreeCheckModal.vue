@@ -65,15 +65,17 @@ import { Errors } from  '@/common/js/services/errors.js';
                 form: {
                     email: "",
                 },
+                file:null,
                 textParams: {},
                 systems:[],
                 errors: new Errors(),
             }
         },
         methods: {
-            showModal(data, list) {
+            showModal(data, list, file) {
                 console.log(data)
                 this.textParams = data;
+                this.file = file;
                 this.systems = list;
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
@@ -85,7 +87,22 @@ import { Errors } from  '@/common/js/services/errors.js';
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
-                axios.post('/api/check-unique-make-report', this.textParams)
+                this.textParams.file = this.file;
+                const formData = new FormData();
+                for ( var key in this.textParams ) {
+                    let data;
+                    if(key === 'systems') {
+                        data = JSON.stringify(this.textParams[key])
+                    } else {
+                        data = this.textParams[key];
+                    }
+
+                    formData.append(key, data);
+                }
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
                         this.$root.isLoading = false;
                         window.location.href = response.data;

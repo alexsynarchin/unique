@@ -172,9 +172,20 @@ class CheckUniqueController extends Controller
         if($request->has('id')) {
             $check_unique = CheckUnique::findOrFail($request->get('id'));
         } else {
-            $check_unique = CheckUnique::create($request->all());
+            $check_unique = CheckUnique::create($request->except('file'));
         }
-        foreach ($request->get('systems') as $system) {
+        if($request->hasFile('file')) {
+            $filename = $request->file('file')->getClientOriginalName();
+            $path = $request->file('file')->storeAs(
+                'public/check_uniques/' . $check_unique->id, $filename
+            );
+            $check_unique->filename = $filename;
+            $check_unique->save();
+        }
+
+        $systems = json_decode($request->get('systems'), true);
+
+        foreach ($systems as $system) {
            $report = Report::create([
                'check_unique_id' => $check_unique -> id,
                'system_id' => $system['id']

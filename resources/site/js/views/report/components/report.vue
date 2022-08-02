@@ -55,20 +55,26 @@ import ReportDetail from "./report-detail";
                         //console.log(response.data)
                         this.report = response.data;
                         this.loaded = true;
-                        if(!this.report.uid) {
-                            this.getUid();
-                            this.$root.isLoading = false;
+                        if(!this.report.check_system.manual) {
+                            if(!this.report.uid) {
+                                this.getUid();
+                                this.$root.isLoading = false;
 
-                        }
-                        else if(!this.report.result) {
-                            this.$root.isLoading = false;
-                            console.log('error');
-                            this.getReportData();
+                            }
+                            else if(!this.report.result) {
+                                this.$root.isLoading = false;
+                                console.log('error');
+                                this.getReportData();
 
-                        }
-                        else {
+                            }
+                            else {
+                                this.$root.isLoading = false;
+                            }
+                        } else {
                             this.$root.isLoading = false;
                         }
+
+
 
                     })
             },

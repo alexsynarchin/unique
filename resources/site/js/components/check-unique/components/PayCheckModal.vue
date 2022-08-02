@@ -44,8 +44,6 @@
                             <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
                             <div class="invalid-feedback" v-if="errors.has('plainText')" v-text="errors.get('plainText')"></div>
                             <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
-
-
                         </div>
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
@@ -104,6 +102,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email: "",
                     promocode:""
                 },
+                file:null,
                 sum: 0,
                 systems:[],
                 textParams: {},
@@ -111,9 +110,10 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         methods: {
-            showModal(data, list) {
+            showModal(data, list, file) {
                 this.textParams = data;
                 this.systems = list;
+                this.file = file;
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
                 }
@@ -129,7 +129,22 @@ import { Errors } from  '@/common/js/services/errors.js';
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
                 this.textParams.promocode = this.form.promocode;
-                axios.post('/api/check-unique-make-report', this.textParams)
+                this.textParams.file = this.file;
+                const formData = new FormData();
+                for ( var key in this.textParams ) {
+                    let data;
+                    if(key === 'systems') {
+                        data = JSON.stringify(this.textParams[key])
+                    } else {
+                        data = this.textParams[key];
+                    }
+
+                    formData.append(key, data);
+                }
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
                         this.$root.isLoading = false;
                         window.location.href = response.data;

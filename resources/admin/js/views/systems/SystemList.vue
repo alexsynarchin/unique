@@ -36,8 +36,13 @@
                     label="Сервис Api"
                     sortable
                 >
-                    <template slot-scope="scope">
-                        {{scope.row.check_api.title}}
+                    <template slot-scope="scope" >
+                        <template v-if="scope.row.check_api">
+                                    {{scope.row.check_api.title}}
+                        </template>
+                        <template  v-else>
+                            Ручная проверка
+                        </template>
                     </template>
                 </el-table-column>
                 <el-table-column

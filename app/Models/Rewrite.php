@@ -54,7 +54,7 @@ class Rewrite extends Model
     {
         $link = '';
         if($this->filename) {
-            $link = '/storage/rewrites/' . $this->filename;
+            $link = '/public/storage/rewrites/' . $this->id .'/' . $this->filename;
         }
         return $link;
     }

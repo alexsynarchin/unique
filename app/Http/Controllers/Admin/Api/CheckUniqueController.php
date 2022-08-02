@@ -19,6 +19,7 @@ class CheckUniqueController extends Controller
                });
             });
         }
+
         $check_uniques = $check_uniques->with('reports') ->orderBy('created_at', 'desc')->get();
         return $check_uniques;
     }

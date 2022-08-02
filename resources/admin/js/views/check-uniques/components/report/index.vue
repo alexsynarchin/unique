@@ -1,5 +1,25 @@
 <template>
     <section class="report-block" v-if="loaded">
+        <el-card class="box-card mb-4">
+            <div slot="header" class="clearfix">
+                <h5>Основная информация</h5>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>
+                        E-mail:
+                    </label>
+                    <span>
+                            {{check_unique.email}}
+                        </span>
+                </div>
+            </div>
+            <label>Текст:</label>
+            <el-link :href="check_unique.file_link" icon="el-icon-document" v-if="check_unique.filename" download>Скачать файл</el-link>
+            <div class="page-block" v-else>
+                {{check_unique.plainText}}
+            </div>
+        </el-card>
         <systems-list :selected="selectedSystems"></systems-list>
         <report  v-for="(item, index) in check_unique.reports"
             :key="item.id"

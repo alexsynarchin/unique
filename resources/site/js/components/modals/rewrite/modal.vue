@@ -178,7 +178,7 @@
                 }
                 const formData = new FormData();
                 for ( var key in this.form ) {
-                    formData.append(key, this.form[key]);
+                    formData.append(key, JSON.stringify(this.form[key]));
                 }
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }

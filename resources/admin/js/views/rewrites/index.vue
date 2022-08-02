@@ -68,7 +68,6 @@ export default {
                     if (row.row.status === 0) {
                         return 'warning-row';
                     }
-
                     return ''
                 }
             },
