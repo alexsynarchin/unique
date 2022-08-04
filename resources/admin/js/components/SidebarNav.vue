@@ -44,6 +44,10 @@ export default {
                     title:"Запросы на проверку",
                 },
                 {
+                    id:"/admin/services",
+                    title:"Дополнительные услуги",
+                },
+                {
                     id:"/admin/rewrites",
                     title:"Заявки на рерайт",
                 },

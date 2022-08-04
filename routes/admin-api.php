@@ -68,5 +68,11 @@ Route::delete('/content-block/{id}/delete', [ContentBlockController::class, 'des
 use App\Http\Controllers\Admin\Api\RewriteController;
 Route::get('/rewrites', [RewriteController::class, 'index'])->name('rewrites');
 Route::get('/rewrite/{id}', [RewriteController::class, 'show'])->name('rewrite.show');
-
 Route::put('/rewrite/{id}', [RewriteController::class, 'update'])->name('rewrite.update');
+
+use App\Http\Controllers\Admin\Api\ServiceController;
+Route::get('/services', [ServiceController::class,'index'])->name('services');
+Route::get('/service/{id}', [ServiceController::class, 'show'])->name('service.show');
+Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+Route::put('/service/{id}', [ServiceController::class,'update'])->name('service.update');
+Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
