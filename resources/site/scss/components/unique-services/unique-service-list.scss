@@ -1,0 +1,40 @@
+.unique-service-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    &__item {
+        display: flex;
+        margin-bottom: 36px;
+    }
+    &__title {
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+    &__description {
+        font-weight: 400;
+        font-size: 15px;
+    }
+    &__content {
+        flex:1;
+        padding-left: 20px;
+        padding-right: 25px;
+    }
+    &__logo {
+
+        margin-bottom: 6px;
+        &-wrap {
+            min-width: 95px;
+            width: 95px;
+            background-color: #F0F1F6;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+    }
+    &__price {
+        display: block;
+        font-size: 17px;
+        font-weight: 500;
+    }
+}

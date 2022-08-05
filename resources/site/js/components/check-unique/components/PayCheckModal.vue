@@ -22,6 +22,8 @@
                             <img src="/assets/site/images/document.png">
                         </figure>
                     </div>
+
+                    <service-list></service-list>
                     <repost></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
@@ -95,7 +97,11 @@
 </template>
 <script>
 import { Errors } from  '@/common/js/services/errors.js';
+import ServiceList from "./ServiceList";
     export default {
+        components: {
+            ServiceList,
+        },
         data() {
             return {
                 form: {
@@ -105,6 +111,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 file:null,
                 sum: 0,
                 systems:[],
+                services:[],
                 textParams: {},
                 errors: new Errors(),
             }
@@ -133,7 +140,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 const formData = new FormData();
                 for ( var key in this.textParams ) {
                     let data;
-                    if(key === 'systems') {
+                    if(key === 'systems' || key === 'services') {
                         data = JSON.stringify(this.textParams[key])
                     } else {
                         data = this.textParams[key];

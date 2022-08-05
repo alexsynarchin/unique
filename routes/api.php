@@ -48,3 +48,6 @@ Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 use App\Http\Controllers\Site\Api\RewriteController;
 Route::post('/rewrite/order', [RewriteController::class, 'order']) -> name('rewrite.order');
 
+use App\Http\Controllers\Site\Api\ServiceController;
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
+
