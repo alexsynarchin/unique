@@ -22,8 +22,10 @@
                             <img src="/assets/site/images/document.png">
                         </figure>
                     </div>
-
-                    <service-list></service-list>
+                    <service-list
+                        :selected-services="services"
+                        @select-service="selectService"
+                    ></service-list>
                     <repost></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
@@ -135,6 +137,7 @@ import ServiceList from "./ServiceList";
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
+                this.textParams.services = this.services;
                 this.textParams.promocode = this.form.promocode;
                 this.textParams.file = this.file;
                 const formData = new FormData();
@@ -160,7 +163,16 @@ import ServiceList from "./ServiceList";
                         this.$root.isLoading = false;
                         this.errors.record(error.response.data.errors);
                     })
-            }
+            },
+             selectService(data) {
+                if(this.services.indexOf(data) === -1) {
+                    this.services.push(data);
+                } else {
+                    let index = this.services.indexOf(data);
+                    this.services.splice(index, 1);
+                }
+
+             }
         },
         mounted() {
 

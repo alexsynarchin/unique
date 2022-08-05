@@ -77,8 +77,6 @@ class CheckUniqueController extends Controller
             }
         }
 
-
-
        // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
        // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
@@ -191,6 +189,8 @@ class CheckUniqueController extends Controller
                'system_id' => $system['id']
            ]);
         }
+        $services  = json_decode($request->get('services'), true);
+        $check_unique->services()->attach($services);
         $url = route('report', $check_unique->id);
         return $url;
     }

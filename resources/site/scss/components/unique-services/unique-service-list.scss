@@ -3,6 +3,7 @@
     margin-left: 0;
     padding-left: 0;
     &__item {
+        cursor: pointer;
         display: flex;
         margin-bottom: 36px;
     }
@@ -14,11 +15,12 @@
     &__description {
         font-weight: 400;
         font-size: 15px;
+        padding-right: 25px;
     }
     &__content {
         flex:1;
         padding-left: 20px;
-        padding-right: 25px;
+
     }
     &__logo {
 

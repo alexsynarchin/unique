@@ -15,10 +15,9 @@ class CreateCheckUniqueServiceTable extends Migration
     {
         Schema::create('check_unique_service', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('check_system_id');
+            $table->unsignedBigInteger('check_unique_id');
             $table->unsignedBigInteger('service_id');
-            $table->timestamps();
-            $table->foreign('check_system_id')->references('id')->on('check_systems')->onDelete('cascade');
+            $table->foreign('check_unique_id')->references('id')->on('check_uniques')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }

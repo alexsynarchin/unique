@@ -2,6 +2,7 @@
     <ul class="unique-service-list">
         <li class="unique-service-list__item"
             v-for="(item, index) in serviceList"
+            @click.prevent="selectService(item.id)"
         >
             <figure class="unique-service-list__logo-wrap">
                 <img v-if="item.logo"
@@ -17,27 +18,42 @@
                 <h4 class="unique-service-list__title">
                     {{item.title}}
                 </h4>
-                <div class="unique-service-list__description">
-                    {{item.description}}
+                <div class="d-flex">
+                    <div class="unique-service-list__description">
+                        {{item.description}}
+                    </div>
+                    <div class="unique-service-list__checkbox">
+                        <label class="unique-service-checkbox" >
+                            <input name=""
+                                   type="checkbox"
+                                   class="unique-service-checkbox__input"
+                                   :checked="selectedServices.indexOf(item.id) !== -1">
+                            <span class="unique-service-checkbox__checkmark"></span>
+                        </label>
+                    </div>
                 </div>
+
             </div>
-            <div class="unique-service-list__checkbox">
-                <label class="unique-service-checkbox">
-                    <input name="" type="checkbox" class="unique-service-checkbox__input" :checked="true">
-                    <span class="unique-service-checkbox__checkmark"></span>
-                </label>
-            </div>
+
         </li>
     </ul>
 </template>
 <script>
     export default {
+        props: {
+            selectedServices: {
+                type:Array,
+            }
+        },
         data() {
             return {
                 serviceList: [],
             }
         },
         methods: {
+            selectService(id) {
+                this.$emit('select-service', id);
+            },
             getServiceList(){
                 axios.get('/api/services')
                     .then((response) => {

@@ -14731,6 +14731,7 @@ img {
   padding-left: 0;
 }
 .unique-service-list__item {
+  cursor: pointer;
   display: flex;
   margin-bottom: 36px;
 }
@@ -14742,11 +14743,11 @@ img {
 .unique-service-list__description {
   font-weight: 400;
   font-size: 15px;
+  padding-right: 25px;
 }
 .unique-service-list__content {
   flex: 1;
   padding-left: 20px;
-  padding-right: 25px;
 }
 .unique-service-list__logo {
   margin-bottom: 6px;
@@ -14792,6 +14793,7 @@ img {
   left: 0;
   height: 35px;
   width: 35px;
+  min-width: 35px;
   background-color: #F0F1F6;
   border-radius: 5px;
 }
