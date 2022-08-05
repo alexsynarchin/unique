@@ -1,13 +1,18 @@
 <template>
     <section>
+        <div class="row">
+
+        </div>
         <div class="col-md-6 col-lg-4">
-            <el-select style="width: 100%" v-model="type" filterable placeholder="Тип заявок на проверку уникальности"  @change="getCheckUniques">
+            <label>
+                Формат
+            </label>
+            <el-select style="width: 100%" v-model="type" filterable placeholder=""  @change="getCheckUniques">
                 <el-option
                     v-for="item in types"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value"
-
                 >
                 </el-option>
             </el-select>
