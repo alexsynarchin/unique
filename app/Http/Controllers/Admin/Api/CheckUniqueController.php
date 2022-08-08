@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use Illuminate\Http\Request;
 
@@ -19,13 +20,42 @@ class CheckUniqueController extends Controller
                });
             });
         }
+        if($request->get('price_type') !=='null') {
+            if($request->get('price_type')=== 0) {
+                $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
+                    $query->whereHas('checkSystem', function ($query) use ($request) {
+                        $query->where('price', '=', 0);
+                    });
+                });
+            } else {
+                $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
+                    $query->whereHas('checkSystem', function ($query) use ($request) {
+                        $query->where('price',  '>', 0);
+                    });
+                });
+            }
+        }
 
-        $check_uniques = $check_uniques->with('reports') ->orderBy('created_at', 'desc')->get();
+        if($request->get('system') !==null) {
+            $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
+                $query->whereHas('checkSystem', function ($query) use ($request) {
+                    $query->where('id', $request->get('system'));
+                });
+            });
+        }
+
+        $check_uniques = $check_uniques->with(['reports', 'services']) ->orderBy('created_at', 'desc')->get();
         return $check_uniques;
     }
 
     public function show($id)
     {
 
+    }
+
+    public function getSystems()
+    {
+        $systems = CheckSystem::all('id', 'title');
+        return $systems;
     }
 }

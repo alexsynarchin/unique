@@ -1,22 +1,50 @@
 <template>
     <section>
         <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <label>
+                    Система
+                </label>
+                <el-select style="width: 100%" v-model="system" filterable placeholder=""  @change="getCheckUniques">
+                    <el-option
+                        v-for="item in systems"
+                        :key="item.id"
+                        :label="item.title"
+                        :value="item.id"
+                    >
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <label>
+                    Статус
+                </label>
+                <el-select style="width: 100%" v-model="priceType" filterable placeholder=""  @change="getCheckUniques">
+                    <el-option
+                        v-for="item in priceTypes"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    >
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <label>
+                    Формат
+                </label>
+                <el-select style="width: 100%" v-model="type" filterable placeholder=""  @change="getCheckUniques">
+                    <el-option
+                        v-for="item in types"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    >
+                    </el-option>
+                </el-select>
+            </div>
+        </div>
 
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <label>
-                Формат
-            </label>
-            <el-select style="width: 100%" v-model="type" filterable placeholder=""  @change="getCheckUniques">
-                <el-option
-                    v-for="item in types"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                >
-                </el-option>
-            </el-select>
-        </div>
 
         <data-tables :data="check_uniques" >
             <el-table-column
@@ -31,16 +59,33 @@
             >
             </el-table-column>
             <el-table-column
-                label="Дата"
+                label="Дата время"
                 prop="formatted_date"
                 sortable
             >
+            </el-table-column>
+            <el-table-column
+                label="Сумма"
+                sortable
+            >
+                <template>
+                    0
+                </template>
             </el-table-column>
             <el-table-column
                 label="Кол-во систем проверки"
             >
                 <template slot-scope="scope">
                     {{scope.row.reports.length}}
+                </template>
+            </el-table-column>
+            <el-table-column
+                label="Услуги"
+            >
+                <template slot-scope="scope">
+                    <span v-for="(item, index) in scope.row.services">
+                        {{item.title + ', '}}
+                    </span>
                 </template>
             </el-table-column>
             <el-table-column
@@ -75,6 +120,19 @@ import CheckReport from "./components/report/index";
                 dialogVisible:false,
                 currentId:null,
                 type:null,
+                priceType:null,
+                system:null,
+                priceTypes: [
+                    {
+                        label:'Бесплатные',
+                        value:0
+                    },
+                    {
+                        label:'Платные',
+                        value:1
+                    },
+
+                ],
                 types: [
                     {
                         label:"Автоматические",
@@ -85,6 +143,7 @@ import CheckReport from "./components/report/index";
                         value:1,
                     }
                 ],
+                systems: [],
                 tableProps: {
                     "row-class-name": function (row) {
 
@@ -97,6 +156,12 @@ import CheckReport from "./components/report/index";
             }
         },
         methods: {
+            getSystems() {
+                axios.get('/api/admin/check-unique/systems')
+                    .then((response) => {
+                        this.systems = response.data;
+                    })
+            },
             handleClose() {
                 this.dialogVisible = false;
                 this.currentId = false;
@@ -106,7 +171,7 @@ import CheckReport from "./components/report/index";
                 this.dialogVisible = true;
             },
             getCheckUniques() {
-                axios.get('/api/admin/check-uniques', {params:{type:this.type}})
+                axios.get('/api/admin/check-uniques', {params:{type:this.type, system: this.system, price_type:this.priceType}})
                     .then((response) => {
                         this.check_uniques = response.data;
                     })
@@ -114,6 +179,7 @@ import CheckReport from "./components/report/index";
         },
         mounted() {
             this.getCheckUniques();
+            this.getSystems();
         }
     }
 </script>
