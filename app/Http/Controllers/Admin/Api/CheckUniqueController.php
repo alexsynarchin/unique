@@ -12,16 +12,16 @@ class CheckUniqueController extends Controller
     public function index(Request $request)
     {
         $check_uniques = (new CheckUnique) -> newQuery();
-
+        //dd($request->all());
         if($request->get('type') !==null) {
             $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
                $query->whereHas('checkSystem', function ($query) use ($request) {
-                    $query->where('manual', $request->get('type'));
+                    $query->where('manual', (int) $request->get('type'));
                });
             });
         }
-        if($request->get('price_type') !=='null') {
-            if($request->get('price_type')=== 0) {
+        if($request->get('price_type') !==null) {
+            if((int) $request->get('price_type')=== 0) {
                 $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
                     $query->whereHas('checkSystem', function ($query) use ($request) {
                         $query->where('price', '=', 0);
