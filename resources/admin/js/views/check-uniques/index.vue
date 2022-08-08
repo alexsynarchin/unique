@@ -81,7 +81,11 @@
                             {{item.check_system.title + ', '}}
                         </span>
                         </div>
-                        <el-button>{{scope.row.reports.length}}</el-button>
+                        <span>
+                            <span>{{scope.row.reports.length}}</span>
+                            <i class="el-icon-question"></i>
+                        </span>
+
                     </el-tooltip>
                 </template>
             </el-table-column>
@@ -94,7 +98,10 @@
                               {{item.title + ', '}}
                         </span>
                         </div>
-                        <el-button>{{scope.row.reports.length}}</el-button>
+                        <span>
+                            <span>{{scope.row.reports.length}}</span>
+                            <i class="el-icon-question"></i>
+                        </span>
                     </el-tooltip>
                     <div  v-else>0</div>
                 </template>
