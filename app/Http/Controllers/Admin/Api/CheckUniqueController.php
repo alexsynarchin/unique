@@ -44,7 +44,7 @@ class CheckUniqueController extends Controller
             });
         }
 
-        $check_uniques = $check_uniques->with(['reports', 'services']) ->orderBy('created_at', 'desc')->get();
+        $check_uniques = $check_uniques->with(['reports.checkSystem', 'services']) ->orderBy('created_at', 'desc')->get();
         return $check_uniques;
     }
 
