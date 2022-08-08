@@ -48,9 +48,11 @@
 
         <data-tables :data="check_uniques" >
             <el-table-column
-                type="index"
                 label="№"
             >
+                <template slot-scope="scope">
+                    Запрос № {{scope.row.id}}
+                </template>
             </el-table-column>
             <el-table-column
                 label="e-mail"
