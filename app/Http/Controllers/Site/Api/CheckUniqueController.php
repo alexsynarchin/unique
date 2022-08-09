@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
 use App\Models\Report;
@@ -182,13 +183,35 @@ class CheckUniqueController extends Controller
         }
 
         $systems = json_decode($request->get('systems'), true);
-
+        $check_unique_types = [
+            'manual' => false,
+            'auto' => false,
+        ];
         foreach ($systems as $system) {
            $report = Report::create([
                'check_unique_id' => $check_unique -> id,
                'system_id' => $system['id']
            ]);
+            $system = CheckSystem::findOrFail($system['id']);
+           if($system['manual'] === 1) {
+               if(!$check_unique_types['manual']) {
+                   $check_unique_types['manual'] = true;
+               }
+           } else {
+               if(!$check_unique_types['auto']) {
+                   $check_unique_types['auto'] = true;
+               }
+           }
         }
+        if($check_unique_types['auto'] && !$check_unique_types['manual']) {
+            $check_unique->type = 1;
+        } else if(!$check_unique_types['auto'] && $check_unique_types['manual']) {
+            $check_unique->type = 2;
+        } else if($check_unique_types['auto'] && $check_unique_types['manual']) {
+            $check_unique -> type = 3;
+        }
+        $check_unique->save();
+
         $services  = json_decode($request->get('services'), true);
         $check_unique->services()->attach($services);
         $url = route('report', $check_unique->id);

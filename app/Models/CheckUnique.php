@@ -66,4 +66,5 @@ class CheckUnique extends Model
         return $link;
     }
 
+
 }
