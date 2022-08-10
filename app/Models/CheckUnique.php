@@ -75,8 +75,10 @@ class CheckUnique extends Model
                 break;
             case 2:
                 $title = 'Ручная';
+                break;
             case 3:
                 $title = 'Ручная/Авто';
+                break;
         }
 
         return $title;
