@@ -210,6 +210,7 @@ class CheckUniqueController extends Controller
         } else if($check_unique_types['auto'] && $check_unique_types['manual']) {
             $check_unique -> type = 3;
         }
+
         $check_unique->save();
 
         $services  = json_decode($request->get('services'), true);

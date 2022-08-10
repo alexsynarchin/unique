@@ -16,7 +16,7 @@ class CheckUnique extends Model
     ];
 
     protected $appends = [
-        'formatted_date', 'file_link', 'status_title'
+        'formatted_date', 'file_link', 'status_title', 'type_title',
     ];
 
     public function reports()
@@ -66,5 +66,19 @@ class CheckUnique extends Model
         return $link;
     }
 
+    public function getTypeTitleAttribute()
+    {
+        $title = '';
+        switch($this->type) {
+            case 1:
+                $title = 'Авто';
+                break;
+            case 2:
+                $title = 'Ручная';
+            case 3:
+                $title = 'Ручная/Авто';
+        }
 
+        return $title;
+    }
 }

@@ -109,6 +109,10 @@
                 </template>
             </el-table-column>
             <el-table-column
+                label="Формат"
+                prop="type_title"
+                ></el-table-column>
+            <el-table-column
                 label="Действия"
             >
 
