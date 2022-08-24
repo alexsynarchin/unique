@@ -75,6 +75,7 @@
                     {!! Config::get('settings.email') !!}
                 </div>
                 <ul class="social-list page-footer__social-list">
+                    @if(Config::get('settings.whatsapp_link'))
                     <li class="social-list__item">
                         <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
@@ -82,6 +83,8 @@
                             </svg>
                         </a>
                     </li>
+                    @endif
+                    @if(Config::get('settings.instagram_link'))
                     <li class="social-list__item">
                         <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
@@ -89,6 +92,8 @@
                             </svg>
                         </a>
                     </li>
+                    @endif
+                    @if(Config::get('settings.vk_link'))
                     <li class="social-list__item">
                         <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
@@ -96,6 +101,7 @@
                             </svg>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>

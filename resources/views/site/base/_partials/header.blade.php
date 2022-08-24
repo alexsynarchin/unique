@@ -9,6 +9,7 @@
                 Проверить уникальность
             </a>
             <ul class="social-list social-list--header">
+                @if(Config::get('settings.whatsapp_link'))
                 <li class="social-list__item">
                     <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
@@ -16,6 +17,8 @@
                         </svg>
                     </a>
                 </li>
+                @endif
+                @if(Config::get('settings.instagram_link'))
                 <li class="social-list__item">
                     <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
@@ -23,6 +26,8 @@
                         </svg>
                     </a>
                 </li>
+                @endif
+                @if(Config::get('settings.vk_link'))
                 <li class="social-list__item">
                     <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link">
                         <svg viewBox="0 0 24 24">
@@ -30,6 +35,7 @@
                         </svg>
                     </a>
                 </li>
+                    @endif
             </ul>
             <div class="page-header__contact contact-bl">
                 <span class="contact-bl__phone">
