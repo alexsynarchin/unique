@@ -115,12 +115,12 @@
                 <div class="col-lg-9">
                     <ul class="footer-bt-nav">
                         <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link" href="/politika-konfidencialnosti">
+                            <a class="footer-bt-nav__link" href="/privacy">
                                 Политика конфиденциальности
                             </a>
                         </li>
                         <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link" href="/polzovatelskoe-soglasenie">
+                            <a class="footer-bt-nav__link" href="/terms">
                                 Пользовательское соглашение
                             </a>
                         </li>
