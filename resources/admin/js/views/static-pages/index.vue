@@ -88,7 +88,7 @@ export default {
 
         },
         handleDelete(index,row) {
-            axios.post('/admin/api/static-page/'+ row.id + '/remove')
+            axios.delete('/api/admin/static-page/'+ row.id)
                 .then((response) => {
                     this.pages.splice(index, 1);
                 })

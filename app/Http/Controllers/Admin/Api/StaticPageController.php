@@ -56,6 +56,8 @@ class StaticPageController extends Controller
 
     public function destroy($id)
     {
-
+        $page = StaticPage::findOrFail($id);
+        $page->delete();
+        return $id;
     }
 }
