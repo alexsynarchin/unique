@@ -40,7 +40,10 @@ class StaticPageController extends Controller
     {
         $page = StaticPage::findOrFail($id);
         $page -> update($request -> except('seo', 'content'));
-        $page ->seo() -> update($request->get('seo'));
+        $seo = $request->get('seo');
+        unset($seo['created_at']);
+        unset($seo['updated_at']);
+        $page ->seo() -> update($seo);
         if($request -> get('content')) {
             $richTextService = new RichTextService();
             $text = $richTextService -> store($request->input('content.text'),'static-pages', $page->id);
