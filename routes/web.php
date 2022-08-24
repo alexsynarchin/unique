@@ -42,5 +42,6 @@ Route::get('/contact', function () {
 Route::get('/articles', function () {
     return view('site.articles.index');
 });
-
+use App\Http\Controllers\Site\StaticPageController;
+Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 

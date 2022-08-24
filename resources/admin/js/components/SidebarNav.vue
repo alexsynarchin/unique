@@ -85,6 +85,10 @@ export default {
                     title:"О проекте",
                 },
                 {
+                    id:"/admin/static-pages",
+                    title:"Статические страницы",
+                },
+                {
                     id:"/admin/articles",
                     title:"Статьи",
                     border:true,

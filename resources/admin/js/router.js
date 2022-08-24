@@ -13,6 +13,8 @@ import Reviews from "./views/reviews";
 import About from "./views/about";
 import Rewrites from "./views/rewrites";
 import Services from "./views/services";
+import Articles from "./views/articles";
+import StaticPages from "./views/static-pages";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -28,6 +30,8 @@ let routes = [
     {name:'about', path:'/admin/about', component: About},
     {name:'rewrites', path:'/admin/rewrites', component: Rewrites},
     {name:'services', path:'/admin/services', component: Services},
+    {name: 'articles', path: '/admin/articles', component: Articles},
+    {name: 'static-pages', path: '/admin/static-pages', component: StaticPages},
 ];
 export default new VueRouter({
     mode: 'history',

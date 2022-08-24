@@ -109,12 +109,12 @@
                 <div class="col-lg-9">
                     <ul class="footer-bt-nav">
                         <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link">
+                            <a class="footer-bt-nav__link" href="/politika-konfidencialnosti">
                                 Политика конфиденциальности
                             </a>
                         </li>
                         <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link">
+                            <a class="footer-bt-nav__link" href="/polzovatelskoe-soglasenie">
                                 Пользовательское соглашение
                             </a>
                         </li>

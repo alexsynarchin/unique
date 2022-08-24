@@ -77,3 +77,16 @@ Route::get('/service/{id}', [ServiceController::class, 'show'])->name('service.s
 Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
 Route::put('/service/{id}', [ServiceController::class,'update'])->name('service.update');
 Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+
+use App\Http\Controllers\Admin\Api\ArticleController;
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::post('/article', [ArticleController::class,'store'])->name('article.store');
+Route::put('/article/{id}', [ArticleController::class, 'update'])->name('article.update');
+Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+use App\Http\Controllers\Admin\Api\StaticPageController;
+Route::get('/static-pages', [StaticPageController::class, 'index'])->name('static-page');
+Route::get('/static-page/{id}', [StaticPageController::class, 'show'])->name('static-page.show');
+Route::post('/static-page', [StaticPageController::class, 'store'])->name('static.page.store');
+Route::put('/static-page/{id}', [StaticPageController::class, 'update'])->name('static.page.update');
+Route::delete('/static-page/{id}', [StaticPageController::class, 'destroy'])->name('static.page.destroy');

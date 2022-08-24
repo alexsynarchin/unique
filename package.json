@@ -22,7 +22,9 @@
         "admin-production": "cross-env process.env.section=admin NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-vue": "^1.0.1",
         "axios": "^0.21",
+        "ckeditor5-karta-metrov-build": "^0.0.4",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
