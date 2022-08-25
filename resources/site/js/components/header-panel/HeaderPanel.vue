@@ -21,34 +21,9 @@
                 </div>
                 <div class="header-panel__nav col-lg-4">
                     <ul class="main-nav">
-                        <li class="main-nav__item">
-                            <a href="/price" class="main-nav__link">
-                                Стоимость
-                            </a>
-                        </li>
-                        <li class="main-nav__item">
-                            <a href="/reviews" class="main-nav__link">
-                                Отзывы
-                            </a>
-                        </li>
-                        <li class="main-nav__item">
-                            <a href="/about" class="main-nav__link">
-                                О компании
-                            </a>
-                        </li>
-                        <li class="main-nav__item">
-                            <a href="/faq" class="main-nav__link">
-                                Вопросы и ответы
-                            </a>
-                        </li>
-                        <li class="main-nav__item">
-                            <a href="/articles" class="main-nav__link">
-                                Статьи
-                            </a>
-                        </li>
-                        <li class="main-nav__item">
-                            <a href="/contact" class="main-nav__link">
-                                Контакты
+                        <li class="main-nav__item" v-for="(item, index) in menu">
+                            <a :href="item.link" class="main-nav__link">
+                                {{item.title}}
                             </a>
                         </li>
                     </ul>
@@ -108,12 +83,22 @@ import { bus } from '@/site/js/services/bus.js';
         data() {
             return {
                 PanelOpen:false,
+                menu:[],
             }
         },
         methods: {
             showPanel() {
                 this.PanelOpen = !this.PanelOpen;
             },
+            getMenu() {
+                axios.get('/api/navigation/header-top')
+                    .then((response) => {
+                        this.menu = response.data;
+                    })
+            },
+        },
+        mounted() {
+            this.getMenu();
         },
         created() {
            bus.$on('toggle-panel', this.showPanel)

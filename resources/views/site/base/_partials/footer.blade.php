@@ -26,38 +26,7 @@
                 </button>
             </div>
             <div class="col-lg-5 col-xl-4 page-footer__col-3">
-                <ul class="main-nav main-nav--footer">
-                    <li class="main-nav__item">
-                        <a href="/price" class="main-nav__link main-nav__link--footer">
-                            Стоимость
-                        </a>
-                    </li>
-                    <li class="main-nav__item">
-                        <a href="/reviews" class="main-nav__link main-nav__link--footer">
-                            Отзывы
-                        </a>
-                    </li>
-                    <li class="main-nav__item">
-                        <a href="/about" class="main-nav__link main-nav__link--footer">
-                            О компании
-                        </a>
-                    </li>
-                    <li class="main-nav__item">
-                        <a href="/faq" class="main-nav__link main-nav__link--footer">
-                            Вопросы и ответы
-                        </a>
-                    </li>
-                    <li class="main-nav__item">
-                        <a href="/articles" class="main-nav__link main-nav__link--footer">
-                            Статьи
-                        </a>
-                    </li>
-                    <li class="main-nav__item">
-                        <a href="/contact" class="main-nav__link main-nav__link--footer">
-                            Контакты
-                        </a>
-                    </li>
-                </ul>
+               <footer-nav-first></footer-nav-first>
             </div>
             <div class="col-lg-3 col-xl-2 page-footer__col-4 ">
                 <section class="contact-bl page-footer__contact-bl">
@@ -113,23 +82,7 @@
                     {!! Config::get('settings.copyright') !!}
                 </div>
                 <div class="col-lg-9">
-                    <ul class="footer-bt-nav">
-                        <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link" href="/privacy">
-                                Политика конфиденциальности
-                            </a>
-                        </li>
-                        <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link" href="/terms">
-                                Пользовательское соглашение
-                            </a>
-                        </li>
-                        <li class="footer-bt-nav__item">
-                            <a class="footer-bt-nav__link">
-                                Разработано в пандаворкс
-                            </a>
-                        </li>
-                    </ul>
+                    <footer-nav-second></footer-nav-second>
                 </div>
             </div>
         </div>

@@ -51,3 +51,6 @@ Route::post('/rewrite/order', [RewriteController::class, 'order']) -> name('rewr
 use App\Http\Controllers\Site\Api\ServiceController;
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
 
+use App\Http\Controllers\Site\Api\NavController;
+Route::get('/navigation/{position}', [NavController::class, 'getMenu'])->name('navigation');
+
