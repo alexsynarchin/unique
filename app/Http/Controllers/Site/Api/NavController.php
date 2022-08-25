@@ -10,7 +10,7 @@ class NavController extends Controller
 {
     public function getMenu($position)
     {
-        $menu = Menu::where('position', $position)->get();
+        $menu = Menu::where('position', $position)->orderBy('menuindex')->get();
         return $menu;
     }
 }
