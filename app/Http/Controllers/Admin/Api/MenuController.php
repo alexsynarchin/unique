@@ -10,7 +10,7 @@ class MenuController extends Controller
 {
     public function list($position){
 
-        $menu = Menu::where('position',$position)->get();
+        $menu = Menu::where('position',$position)->orderBy('menuindex')->get();
         return $menu;
     }
     public function store(Request $request)
