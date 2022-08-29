@@ -54,3 +54,5 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services');
 use App\Http\Controllers\Site\Api\NavController;
 Route::get('/navigation/{position}', [NavController::class, 'getMenu'])->name('navigation');
 
+use App\Http\Controllers\Site\Api\SettingController;
+Route::get('/setting/{group}/{name}', [SettingController::class, 'getSetting'])->name('setting.value');
