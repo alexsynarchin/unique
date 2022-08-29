@@ -15,7 +15,7 @@ export default {
         return {
             form: {
                 title:"",
-                image: null,
+                preview: null,
                 published:true,
                 text:"",
 

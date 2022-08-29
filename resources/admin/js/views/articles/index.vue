@@ -67,10 +67,10 @@
         computed: {
             articleModalTitle:function () {
                 if(this.articleModalStatus === 'create') {
-                    return 'Новая услуга';
+                    return 'Новая статья';
                 }
                 if(this.articleModalStatus === 'edit') {
-                    return 'Редактировать услугу';
+                    return 'Редактировать статью';
                 }
             },
         },

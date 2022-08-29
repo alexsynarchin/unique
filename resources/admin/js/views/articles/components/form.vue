@@ -1,15 +1,30 @@
 <template>
-    <el-form :model="form">
-        <el-form-item prop="title" label="Название" :error="errors.get('title')">
-            <el-input v-model="form.title"/>
+    <el-form :model="form" class="d-flex">
+        <el-form-item prop="logo" label="Превью" style="margin-right: 20px">
+            <el-upload
+                action=""
+                v-model="form.preview"
+                class="avatar-uploader"
+                :auto-upload="false"
+                :show-file-list="false"
+                :on-change="uploadImage"
+            >
+                <figure class="avatar" v-if="form.preview">
+                    <img  :src="form.preview" >
+                </figure>
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
         </el-form-item>
-        <el-form-item prop="price" label="Стоимость">
-            <el-input-number :min="0" v-model="form.price"/>
-        </el-form-item>
-        <el-form-item prop="description" label="Описание">
-            <el-input type="textarea" v-model="form.description" rows="6"></el-input>
-        </el-form-item>
-        <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
+        <div style="flex:1">
+            <el-form-item prop="title" label="Название" :error="errors.get('title')">
+                <el-input v-model="form.title"/>
+            </el-form-item>
+            <el-form-item prop="description" label="Описание">
+                <el-input type="textarea" v-model="form.description" rows="6"></el-input>
+            </el-form-item>
+            <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
+        </div>
+
     </el-form>
 </template>
 <script>
@@ -52,9 +67,8 @@ import { Errors } from  '@/common/js/services/errors.js';
             },
             uploadImage(file){
                 let cond = this.beforeImageUpload(file.raw);
-                this.form.logoName = file.raw.name;
+                this.form.imageName = file.raw.name;
                 console.log(cond);
-
                 if(cond){
                     this.createImage(file);
                 }
@@ -78,7 +92,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 let reader = new FileReader();
                 let vm = this;
                 reader.onload = (e) => {
-                    vm.form.logo = e.target.result;
+                    vm.form.preview = e.target.result;
                 };
                 reader.readAsDataURL(file.raw);
             },
