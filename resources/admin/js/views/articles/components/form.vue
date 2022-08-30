@@ -43,6 +43,9 @@
                     </div>
                 </div>
             </el-tab-pane>
+            <el-tab-pane label="Настройки и SEO" name="config">
+                <Seo :form = "form.seo" v-if="form.seo"></Seo>
+            </el-tab-pane>
         </el-tabs>
         <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
     </el-form>
