@@ -24,7 +24,7 @@ class Article extends Model implements HasMedia
 
     protected $casts = [
         'published' => 'boolean',
-        'date' => 'date:d-m-Y',
+        'date' => 'date:d.m.Y',
     ];
 
     public function registerMediaCollections(): void

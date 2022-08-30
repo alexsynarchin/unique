@@ -14872,3 +14872,8 @@ img {
   justify-content: space-between;
   padding: 0 35px 35px 35px;
 }
+.article-item__date {
+  color: #222222;
+  font-weight: 500;
+  font-size: 17px;
+}

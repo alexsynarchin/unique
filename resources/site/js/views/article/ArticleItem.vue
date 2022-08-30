@@ -15,7 +15,7 @@
                 {{article.date}}
             </span>
             <span class="article-item__views">
-                {{article.views}}
+
             </span>
         </div>
     </a>
