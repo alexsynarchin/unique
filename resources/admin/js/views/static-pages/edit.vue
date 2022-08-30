@@ -4,7 +4,7 @@
             v-if="loaded"
             :form="form"
             :formAction="formAction"
-            @closeModal="closeModal"
+            @submit="closeModal"
         ></page-form>
     </section>
 

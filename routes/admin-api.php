@@ -80,6 +80,7 @@ Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('ser
 
 use App\Http\Controllers\Admin\Api\ArticleController;
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article.show');
 Route::post('/article', [ArticleController::class,'store'])->name('article.store');
 Route::put('/article/{id}', [ArticleController::class, 'update'])->name('article.update');
 Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');

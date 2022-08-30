@@ -1,38 +1,64 @@
 <template>
-    <el-form :model="form" class="d-flex">
-        <el-form-item prop="logo" label="Превью" style="margin-right: 20px">
-            <el-upload
-                action=""
-                v-model="form.preview"
-                class="avatar-uploader"
-                :auto-upload="false"
-                :show-file-list="false"
-                :on-change="uploadImage"
-            >
-                <figure class="avatar" v-if="form.preview">
-                    <img  :src="form.preview" >
-                </figure>
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-        </el-form-item>
-        <div style="flex:1">
-            <el-form-item prop="title" label="Название" :error="errors.get('title')">
-                <el-input v-model="form.title"/>
-            </el-form-item>
-            <el-form-item prop="description" label="Описание">
-                <el-input type="textarea" v-model="form.description" rows="6"></el-input>
-            </el-form-item>
-            <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
-        </div>
+    <el-form :model="form" label-position="top">
+        <el-tabs type="card" v-model="activeTab">
+            <el-tab-pane label="Основная информация" name="main">
+                <div class="d-flex">
+                    <el-form-item prop="logo" label="Превью" style="margin-right: 20px">
+                        <el-upload
+                            action=""
+                            v-model="form.preview"
+                            class="avatar-uploader"
+                            :auto-upload="false"
+                            :show-file-list="false"
+                            :on-change="uploadImage"
+                        >
+                            <figure class="avatar" v-if="form.preview">
+                                <img  :src="form.preview" >
+                            </figure>
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-form-item>
+                    <div style="flex:1">
+                        <el-form-item prop="title" label="Название" :error="errors.get('title')">
+                            <el-input v-model="form.title"/>
+                        </el-form-item>
+                        <div class="row">
+                            <el-form-item class="col-md-6" prop="date" label="Дата" :error="errors.get('date')">
+                                <el-date-picker
+                                    v-model="form.date"
+                                    type="date"
+                                    format="dd-MM-yyyy"
+                                    value-format="yy-MM-dd"
+                                    placeholder="Выберите дату">
+                                </el-date-picker>
+                            </el-form-item>
+                            <el-form-item label="Опубликован" class="col-md-5"  prop="published">
+                                <el-checkbox v-model="form.published">Опубликован</el-checkbox>
+                            </el-form-item>
+                        </div>
+                        <el-form-item prop="text" label="Текст">
+                            <richtext :value.sync ="form.content.text" v-if="form.content"></richtext>
+                        </el-form-item>
 
+                    </div>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+        <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
     </el-form>
 </template>
 <script>
+import richtext from "../../../components/richtext/richtext";
 import { Errors } from  '@/common/js/services/errors.js';
+import Seo from '@/admin/js/components/seo/seo';
     export default {
+        components: {
+            'Seo':Seo,
+            'richtext':richtext,
+        },
         props: {
             saveMsg: {
-                default: 'Услуга добавлена'
+                default: 'Статья сохранена'
             },
             form: {
                 type:Object,
@@ -43,6 +69,7 @@ import { Errors } from  '@/common/js/services/errors.js';
         },
         data() {
             return {
+                activeTab:'main',
                 errors: new Errors(),
             }
         },

@@ -14,10 +14,13 @@ export default {
     data() {
         return {
             form: {
-                title:"",
-                preview: null,
+                title:'',
+                preview:"",
+                date:null,
+                slug:'',
                 published:true,
-                text:"",
+                content:{},
+                seo:{},
 
             },
             formAction: {

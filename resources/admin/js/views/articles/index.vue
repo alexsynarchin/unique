@@ -32,7 +32,7 @@
                         @click="handleEdit(scope.row)">Редактировать</el-button>
                     <el-button size="mini"
                                type="danger"
-                               @click="handleDelete(scope.row.id)"></el-button>
+                               @click="handleDelete(scope.row.id)">Удалить </el-button>
                 </template>
             </el-table-column>
         </data-tables>
@@ -55,7 +55,12 @@
     </section>
 </template>
 <script>
+    import create from "./create";
+    import edit from "./edit";
     export default {
+        components: {
+            create, edit,
+        },
         data() {
             return {
                 currentId: null,
@@ -90,17 +95,31 @@
                 this.articleModalStatus = 'edit';
                 this.showModal = true;
             },
-            updateArticle() {
-
+            updateArticle(data) {
+                let index = this.articles.findIndex(object => {
+                    return object.id === data.id;
+                });
+                this.articles[index].title = data.title;
+                this.articles[index].date = data.date;
+                this.closeModal();
             },
-            storeArticle() {
-
+            storeArticle(data) {
+                this.articles.push(data);
+                this.closeModal();
             },
             closeModal() {
-
+                this.showModal = false;
+                this.currentId = null;
+                this.articleModalStatus = '';
             },
             handleDelete(id) {
-
+                axios.delete('/api/admin/article/' + id)
+                    .then((response) => {
+                        let index = this.articles.findIndex(object => {
+                            return object.id === id;
+                        });
+                        this.articles.splice(index,1)
+                    })
             },
         },
         mounted() {
