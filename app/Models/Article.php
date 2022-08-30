@@ -20,7 +20,7 @@ class Article extends Model implements HasMedia
         'date', 'published'
     ];
 
-    protected $appends = ['preview'];
+    protected $appends = ['preview', 'description'];
 
     protected $casts = [
         'published' => 'boolean',
@@ -45,8 +45,20 @@ class Article extends Model implements HasMedia
 
     public function getPreviewAttribute()
     {
-        $image = $this ->getFirstMediaUrl('articles');
+        $image = $this ->getFirstMediaUrl('articles', 'thumb');
         return $image;
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $text = html_entity_decode($this->content->text);
+        $text = strip_tags($text);
+        $text = substr($text, 0, 300);
+        $text = rtrim($text, "!,.-");
+        $text = substr($text, 0, strrpos($text, ' '));
+        $text = $text . '...';
+
+        return $text;
     }
 
     public function getSlugOptions() : SlugOptions

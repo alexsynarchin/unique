@@ -58,6 +58,8 @@ Vue.component('ReportPage', require('./views/report/index').default);
 Vue.component('Repost', require('./components/repost/index').default);
 Vue.component('FooterNavFirst', require('./components/footer/FooterNavFirst').default);
 Vue.component('FooterNavSecond', require('./components/footer/FooterNavSecond').default);
+
+Vue.component('Articles', require('./views/article/index').default)
 const app = new Vue({
     el: '#app',
     created(){

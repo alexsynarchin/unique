@@ -56,3 +56,6 @@ Route::get('/navigation/{position}', [NavController::class, 'getMenu'])->name('n
 
 use App\Http\Controllers\Site\Api\SettingController;
 Route::get('/setting/{group}/{name}', [SettingController::class, 'getSetting'])->name('setting.value');
+
+use App\Http\Controllers\Site\Api\ArticleController;
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');

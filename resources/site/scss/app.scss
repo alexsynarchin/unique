@@ -135,3 +135,7 @@ $container-max-widths: (
 
 @import "components/unique-services/unique-service-list";
 @import "components/unique-services/unique-service-checkbox";
+
+//Article
+@import "components/article/article-list";
+@import "components/article/article-item";

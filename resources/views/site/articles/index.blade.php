@@ -14,7 +14,14 @@
         <h1 class="page-title">
             Cтатьи
         </h1>
-
+        <div class="row">
+            <div class="col-lg-9">
+                <articles></articles>
+            </div>
+            <div class="col-lg-3">
+                <sidebar-banner></sidebar-banner>
+            </div>
+        </div>
     </div>
 @endsection
 
