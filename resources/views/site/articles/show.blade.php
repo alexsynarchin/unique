@@ -27,7 +27,7 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-lg-9">
                 {!! $article->content->text !!}
             </div>
@@ -36,5 +36,6 @@
             </div>
         </div>
     </div>
+    @include('site.home._partials.mp-banner')
 @endsection
 
