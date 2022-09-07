@@ -11,7 +11,7 @@
             <ul class="social-list social-list--header">
                 @if(Config::get('settings.whatsapp_link'))
                 <li class="social-list__item">
-                    <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link">
+                    <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-whatsapp")}}></use>
                         </svg>
@@ -20,7 +20,7 @@
                 @endif
                 @if(Config::get('settings.instagram_link'))
                 <li class="social-list__item">
-                    <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link">
+                    <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-instagram")}}></use>
                         </svg>
@@ -29,7 +29,7 @@
                 @endif
                 @if(Config::get('settings.vk_link'))
                 <li class="social-list__item">
-                    <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link">
+                    <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
                         </svg>

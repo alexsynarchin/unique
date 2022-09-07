@@ -46,7 +46,7 @@
                 <ul class="social-list page-footer__social-list">
                     @if(Config::get('settings.whatsapp_link'))
                     <li class="social-list__item">
-                        <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link social-list__link--dark">
+                        <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-whatsapp-wh"></use>
                             </svg>
@@ -55,7 +55,7 @@
                     @endif
                     @if(Config::get('settings.instagram_link'))
                     <li class="social-list__item">
-                        <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link social-list__link--dark">
+                        <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-instagram-wh"></use>
                             </svg>
@@ -64,7 +64,7 @@
                     @endif
                     @if(Config::get('settings.vk_link'))
                     <li class="social-list__item">
-                        <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link social-list__link--dark">
+                        <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk-wh"></use>
                             </svg>

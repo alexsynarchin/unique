@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb1bdc31fc5a185deb7d01fe3f70cb66",
+    "content-hash": "80f58951953218d52946421e636870cd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2381,6 +2381,63 @@
                 }
             ],
             "time": "2022-05-18T15:52:06+00:00"
+        },
+        {
+            "name": "maksa988/laravel-unitpay",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maksa988/laravel-unitpay.git",
+                "reference": "b8267d080c5ae64908ea0fef62f1276199cf378b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maksa988/laravel-unitpay/zipball/b8267d080c5ae64908ea0fef62f1276199cf378b",
+                "reference": "b8267d080c5ae64908ea0fef62f1276199cf378b",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "7.*",
+                "laravel/framework": "8.*",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "6.*",
+                "phpunit/phpunit": "^8.4 || ^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maksa988\\UnitPay\\UnitPayServiceProvider"
+                    ],
+                    "aliases": {
+                        "UnitPay": "Maksa988\\UnitPay\\Facades\\UnitPay"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Maksa988\\UnitPay\\": "src",
+                    "Maksa988\\UnitPay\\Facades\\": "src/Facades"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "maksa988",
+                    "email": "maksa988ua@gmail.com"
+                }
+            ],
+            "description": "UnitPay payments for Laravel",
+            "support": {
+                "issues": "https://github.com/maksa988/laravel-unitpay/issues",
+                "source": "https://github.com/maksa988/laravel-unitpay/tree/v4.0.0"
+            },
+            "time": "2021-04-02T12:57:02+00:00"
         },
         {
             "name": "monolog/monolog",
