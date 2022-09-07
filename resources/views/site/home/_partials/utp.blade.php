@@ -22,5 +22,5 @@
             </div>
         </div>
     </section>
-    <video-modal link="{{$blocks['mp-utp']['youtube_link'] ?? ''}}"></video-modal>
+
 </div>
