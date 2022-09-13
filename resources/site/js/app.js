@@ -35,7 +35,7 @@ Vue.component('VideoModal', require('./components/modals/video-modal/modal').def
 Vue.component('RewriteModal',require('./components/modals/rewrite/modal').default);
 Vue.component('CheckUnique', require('./components/check-unique').default);
 Vue.component('MpFaq',require('./views/main-page/Faq').default);
-Vue.component('SidebarBanner', require('./components/sidebar-banner/index').default)
+Vue.component('SidebarBanner', require('./components/sidebar-banner/index').default);
 //About page
 Vue.component('AboutVideo', require('./views/about/about-video/index').default);
 

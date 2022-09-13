@@ -5,12 +5,12 @@ return [
     /*
      * Project`s public key
      */
-    'public_key' => env('UNITPAY_PUBLIC_KEY', ''),
+    'public_key' => env('UNITPAY_PUBLIC_KEY', '440055-c2bf8'),
 
     /*
      * Project`s secret key
      */
-    'secret_key' => env('UNITPAY_SECRET_KEY', ''),
+    'secret_key' => env('UNITPAY_SECRET_KEY', 'aff6455500ee0d0a83a003ad8f985883'),
 
     /*
      * Locale for payment form

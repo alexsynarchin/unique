@@ -99,6 +99,7 @@
 </template>
 <script>
 import { Errors } from  '@/common/js/services/errors.js';
+import { bus } from '@/site/js/services/bus.js';
 import ServiceList from "./ServiceList";
     export default {
         components: {
@@ -111,6 +112,7 @@ import ServiceList from "./ServiceList";
                     promocode:""
                 },
                 file:null,
+                url: '',
                 sum: 0,
                 systems:[],
                 services:[],
@@ -131,6 +133,9 @@ import ServiceList from "./ServiceList";
                     this.sum = this.sum + system.price;
                 })
                 $('#pay_check').modal('show');
+            },
+            selectPaymentCountry(data) {
+                bus.$emit('select-payment-country', data);
             },
             uniqueCheck() {
                 $('#pay_check').modal('show');
@@ -157,7 +162,10 @@ import ServiceList from "./ServiceList";
                 axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
                         this.$root.isLoading = false;
-                        window.location.href = response.data;
+                       // window.location.href = response.data;
+                        let data = response.data;
+                        data.sum = this.sum;
+                        this.selectPaymentCountry(data);
                     })
                     .catch((error) => {
                         this.$root.isLoading = false;

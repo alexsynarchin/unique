@@ -100,15 +100,17 @@
         <systems-list @selectSystem="handleSelected"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
+        <CountrySelectModal></CountrySelectModal>
     </section>
 </template>
 <script>
     import SystemsList from './components/system-list';
     import FreeCheckModal from "./components/FreeCheckModal";
     import PayCheckModal from "./components/PayCheckModal";
+    import CountrySelectModal from "./components/CountrySelectModal";
     export default {
         components: {
-            SystemsList, FreeCheckModal, PayCheckModal
+            SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal
         },
         data() {
             return {

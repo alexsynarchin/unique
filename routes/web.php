@@ -47,3 +47,5 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articl
 use App\Http\Controllers\Site\StaticPageController;
 Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 
+
+

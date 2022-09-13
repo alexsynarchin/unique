@@ -15,8 +15,12 @@ class CreateUniqueOrdersTable extends Migration
     {
         Schema::create('unique_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->nullable();
             $table->bigInteger('check_unique_id')->unsigned();
+            $table->boolean('russia')->nullable();
+            $table->string('url')->nullable();
+            $table->string('status');
+            $table->integer('sum')->unsigned()->default(0);
+            $table->string('paymentType')->nullable();
             $table->timestamps();
         });
     }
