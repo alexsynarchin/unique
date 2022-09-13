@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UniqueOrder extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'check_unique_id', 'russia', 'sum', 'paymentType', 'status', 'url'
+    ];
 }

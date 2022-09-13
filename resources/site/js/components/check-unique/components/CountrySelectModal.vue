@@ -28,7 +28,7 @@
                                             <span>{{paymentData.sum}} руб.</span>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn button">Оплатить</button>
+                                            <button class="btn button" >Оплатить</button>
                                         </div>
                                     </div>
                                 </div>
@@ -86,8 +86,15 @@ export default {
             this.paymentData.id = data.id;
             $('#payment_country_select').modal('show');
         },
-        makePayment() {
-            axios.post('/api/unique-order/payment')
+        makePayment(type) {
+            this.data.russia = type;
+            axios.post('/api/unique-order/payment', this.paymentData)
+                .then((response) => {
+
+                })
+                .catch((error) => {
+
+                })
         },
     },
     created() {

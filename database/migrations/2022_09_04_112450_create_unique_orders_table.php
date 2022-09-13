@@ -18,7 +18,7 @@ class CreateUniqueOrdersTable extends Migration
             $table->bigInteger('check_unique_id')->unsigned();
             $table->boolean('russia')->nullable();
             $table->string('url')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->integer('sum')->unsigned()->default(0);
             $table->string('paymentType')->nullable();
             $table->timestamps();
