@@ -44,10 +44,13 @@ Route::get('/articles', function () {
     return view('site.articles.index');
 });
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article.show');
-use App\Http\Controllers\Site\StaticPageController;
-Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 
 use App\Http\Controllers\Site\UnitPayController;
 Route::get('/unitpay/result', [UnitPayController::class, 'handlePayment']);
+
+use App\Http\Controllers\Site\StaticPageController;
+Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
+
+
 
 
