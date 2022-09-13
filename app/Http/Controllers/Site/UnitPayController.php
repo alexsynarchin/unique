@@ -64,7 +64,7 @@ class UnitPayController extends Controller
     public function handlePayment(Request $request)
     {
 
-        dd(App::call(config('unitpay.searchOrder'), ['order_id' => $request->input('params.account')]));
-        //return UnitPay::handle($request);
+        //dd(App::call(config('unitpay.searchOrder'), ['order_id' => $request->input('params.account')]));
+        return UnitPay::handle($request);
     }
 }
