@@ -47,10 +47,8 @@ class CheckSystemController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'api_id' => 'required'
         ], [
             'title.required' => 'Введите название системы проверки',
-            'api_id.required' => 'Выберите сервис api для системы проверки'
         ]);
         $system = CheckSystem::findOrFail($id);
         $system->update($request->except(['logo', 'logoName']));
