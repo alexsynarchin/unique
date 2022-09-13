@@ -17,8 +17,7 @@ class CheckSystemController extends Controller
     public function show($id)
     {
         $system = CheckSystem::findOrFail($id);
-        $system ->status =1;
-        $system->save();
+
         return $system;
     }
 
