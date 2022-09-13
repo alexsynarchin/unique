@@ -24,13 +24,9 @@ class UnitPayController extends Controller
         $order = UniqueOrder::where('id', $order_id)->first();
 
         if($order) {
-            $order['_orderSum'] = $order->sum;
-
-            // If your field can be `paid` you can set them like string
-            $order['_orderStatus'] = $order['status'];
 
             // Else your field doesn` has value like 'paid', you can change this value
-            $order['_orderStatus'] = ('1' == $order['status']) ? 'paid' : false;
+            $order['status'] = ('1' == $order['status']) ? 'paid' : false;
 
             return $order;
         }
