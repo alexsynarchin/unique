@@ -15,7 +15,7 @@ class CheckReportController extends Controller
             $orders = $check_unique->orders()->get();
             foreach ($orders as $order) {
                 if($order->status !== 'paid') {
-                    return  redirect(route('home'));
+                    return  redirect(route('main-page'));
                 }
             }
         }
