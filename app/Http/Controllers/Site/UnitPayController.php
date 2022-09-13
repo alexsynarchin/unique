@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
 use UnitPay;
 
@@ -18,7 +19,7 @@ class UnitPayController extends Controller
      */
     public function searchOrder(Request $request, $order_id)
     {
-        $order = Order::where('id', $order_id)->first();
+        $order = UniqueOrder::where('id', $order_id)->first();
 
         if($order) {
             $order['_orderSum'] = $order->sum;
