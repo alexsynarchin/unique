@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class UniqueOrderController extends Controller
 {
-    public function PaymentCountrySelect($orderId)
+    public function success(Request $request)
     {
-
+        dd($request);
     }
 }
