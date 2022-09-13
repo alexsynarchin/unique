@@ -9,6 +9,6 @@ class UniqueOrderController extends Controller
 {
     public function success(Request $request)
     {
-        dd($request);
+        dd($request->all());
     }
 }
