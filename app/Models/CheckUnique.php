@@ -29,6 +29,11 @@ class CheckUnique extends Model
         return $this->belongsToMany(Service::class,'check_unique_service', 'check_unique_id','service_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(UniqueOrder::class, 'check_unique_id');
+    }
+
     public function getFormattedDateAttribute()
     {
         $date = $this->attributes['created_at'];

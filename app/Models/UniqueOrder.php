@@ -11,4 +11,9 @@ class UniqueOrder extends Model
     protected $fillable = [
         'check_unique_id', 'russia', 'sum', 'paymentType', 'status', 'url'
     ];
+
+    public function checkUnique()
+    {
+        return $this -> belongsTo(CheckUnique::class, 'check_unique_id');
+    }
 }
