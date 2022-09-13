@@ -216,6 +216,6 @@ class CheckUniqueController extends Controller
         $services  = json_decode($request->get('services'), true);
         $check_unique->services()->attach($services);
         $url = route('report', $check_unique->id);
-        return ['url' => $url, 'id' => $check_unique->id];
+        return ['url' => $url, 'check_unique_id' => $check_unique->id];
     }
 }
