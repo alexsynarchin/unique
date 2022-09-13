@@ -22,7 +22,6 @@ class UnitPayController extends Controller
     public function searchOrder(Request $request, $order_id)
     {
         $order = UniqueOrder::where('id', $order_id)->first();
-
         if($order) {
 
             // Else your field doesn` has value like 'paid', you can change this value
