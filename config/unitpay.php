@@ -41,14 +41,14 @@ return [
      *  _orderStatus
      *  _orderSum
      */
-    'searchOrder' => null, //  'App\Http\Controllers\UnitPayController@searchOrder',
+    'searchOrder' => 'App\Http\Controllers\Site\UnitPayController@searchOrder', //  'App\Http\Controllers\UnitPayController@searchOrder',
 
     /*
      *  PaidOrder
      *  If current _orderStatus from DB != paid then call PaidOrderFilter
      *  update order into DB & other actions
      */
-    'paidOrder' => null, //  'App\Http\Controllers\UnitPayController@paidOrder',
+    'paidOrder' => 'App\Http\Controllers\Site\UnitPayController@paidOrder', //  'App\Http\Controllers\UnitPayController@paidOrder',
 
     /*
      * Customize error messages

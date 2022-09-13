@@ -11,5 +11,8 @@ class UniqueOrderController extends Controller
     public function store(Request $request)
     {
         $order = UniqueOrder::create($request->all());
+
     }
+
+
 }
