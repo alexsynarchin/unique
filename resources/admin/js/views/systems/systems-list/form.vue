@@ -103,6 +103,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 axios.get('/api/admin/check-api/list')
                     .then((response) => {
                         this.api_list = response.data;
+                        this.api_list.push({title:"Ручная", id:null})
                     })
             },
             uploadImage(file){
