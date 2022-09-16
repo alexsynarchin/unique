@@ -13,4 +13,9 @@ class UniqueOrderController extends Controller
         $order = UniqueOrder::findOrFail($request->get('account'));
         return redirect(route('report', $order -> check_unique_id));
     }
+
+    public function fail(Request $request)
+    {
+        dd($request->all());
+    }
 }
