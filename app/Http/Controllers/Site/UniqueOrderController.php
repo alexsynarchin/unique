@@ -16,6 +16,7 @@ class UniqueOrderController extends Controller
 
     public function fail(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
+        return view('site.order.fail');
     }
 }
