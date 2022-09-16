@@ -4,7 +4,7 @@
             Оплата прошла успешно, вы будете перенаправлены на страницу отчета.
         </div>
         <button class="btn button" @click.prevent="goToReport">
-            Оплатить
+           Перейти к отчету
         </button>
     </section>
 </template>
@@ -17,7 +17,7 @@
             },
         },
         mounted() {
-            setTimeout(function () { this.goToReport() }.bind(this), 1000)
+            setTimeout(function () { this.goToReport() }.bind(this), 3000)
         }
     }
 </script>
