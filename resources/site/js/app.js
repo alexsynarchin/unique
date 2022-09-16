@@ -63,6 +63,7 @@ Vue.component('Articles', require('./views/article/index').default)
 
 //Order
 Vue.component('OrderFail', require('./components/order/fail').default);
+Vue.component('OrderSuccess', require('./components/order/success').default);
 const app = new Vue({
     el: '#app',
     created(){
