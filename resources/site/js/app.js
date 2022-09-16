@@ -60,6 +60,9 @@ Vue.component('FooterNavFirst', require('./components/footer/FooterNavFirst').de
 Vue.component('FooterNavSecond', require('./components/footer/FooterNavSecond').default);
 
 Vue.component('Articles', require('./views/article/index').default)
+
+//Order
+Vue.component('OrderFail', require('./components/order/fail').default);
 const app = new Vue({
     el: '#app',
     created(){
