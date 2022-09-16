@@ -1,6 +1,6 @@
 @extends('site.base.base')
 @section('content')
     <div class="container">
-        <order-fail></order-fail>
+        <order-fail :url="{{json_encode($url)}}"></order-fail>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\CheckUnique;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,10 @@ class UniqueOrderController extends Controller
     public function fail(Request $request)
     {
         //dd($request->all());
-        return view('site.order.fail');
+        $order = UniqueOrder::findOrFail($request->get('account'));
+        $check_unique = CheckUnique::findOrFail($order->check_unique_id);
+        $description = 'Проверка уникальности';
+        $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $description);
+        return view('site.order.fail', ['url' => $url]);
     }
 }

@@ -4,7 +4,7 @@
            Попытка оплаты не удалась, вы можете попробовать оплатить еще раз.
         </div>
         <div class="text-center">
-            <button class="btn button">
+            <button class="btn button" @click.prevent="goToPayment">
                 Оплатить
             </button>
         </div>
@@ -12,9 +12,15 @@
 </template>
 <script>
     export default {
+        props:['url'],
         data() {
             return {
 
+            }
+        },
+        methods: {
+            goToPayment() {
+                window.location.href=this.url;
             }
         }
     }
