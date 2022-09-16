@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
+use UnitPay;
 
 class UniqueOrderController extends Controller
 {
