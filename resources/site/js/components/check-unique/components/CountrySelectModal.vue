@@ -52,7 +52,7 @@
                                             <span>{{paymentData.sum}} руб.</span>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn button disabled">Оплатить</button>
+                                            <button class="btn button " @click.prevent="makePayment(false)">Оплатить</button>
                                         </div>
                                     </div>
                                 </div>

@@ -12,6 +12,10 @@ class UniqueOrder extends Model
         'check_unique_id', 'russia', 'sum', 'paymentType', 'status', 'url'
     ];
 
+    protected $casts = [
+        'russia'  => 'boolean',
+    ];
+
     public function checkUnique()
     {
         return $this -> belongsTo(CheckUnique::class, 'check_unique_id');
