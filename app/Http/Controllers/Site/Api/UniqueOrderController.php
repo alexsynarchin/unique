@@ -15,6 +15,7 @@ class UniqueOrderController extends Controller
         $order = UniqueOrder::create($request->all());
         $check_unique = CheckUnique::findOrFail($order->check_unique_id);
         $description = 'Проверка уникальности';
+
         $netting = !$request->get('russia');
         $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
         return $url;

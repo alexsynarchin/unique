@@ -60,6 +60,7 @@ class UnitPayController extends Controller
     {
 
         //dd(App::call(config('unitpay.searchOrder'), ['order_id' => $request->input('params.account')]));
-        return UnitPay::handle($request);
+        $order = UniqueOrder::findOrFail($request->input('params.account'));
+        return UnitPay::handle($request, !$order->russia);
     }
 }

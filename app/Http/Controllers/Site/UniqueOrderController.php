@@ -23,7 +23,7 @@ class UniqueOrderController extends Controller
         $order = UniqueOrder::findOrFail($request->get('account'));
         $check_unique = CheckUnique::findOrFail($order->check_unique_id);
         $description = 'Проверка уникальности';
-        $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $description);
+        $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, !$order->russia, $description);
         return view('site.order.fail', ['url' => $url]);
     }
 }
