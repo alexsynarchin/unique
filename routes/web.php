@@ -47,7 +47,7 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articl
 
 use App\Http\Controllers\Site\UnitPayController;
 Route::get('/unitpay/result', [UnitPayController::class, 'handlePayment']);
-
+Route::get('/unitpay/result-netting', [UnitPayController::class, 'handlePaymentNetting']);
 use App\Http\Controllers\Site\UniqueOrderController;
 Route::get('/order/success', [UniqueOrderController::class, 'success'])->name('order.success');
 Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.fail');

@@ -58,9 +58,13 @@ class UnitPayController extends Controller
      */
     public function handlePayment(Request $request)
     {
+        //$order = UniqueOrder::findOrFail($request->input('params.account'));
+        return UnitPay::handle($request, false);
+    }
 
-        //dd(App::call(config('unitpay.searchOrder'), ['order_id' => $request->input('params.account')]));
-        $order = UniqueOrder::findOrFail($request->input('params.account'));
-        return UnitPay::handle($request, !$order->russia);
+    public function handlePaymentNetting(Request $request)
+    {
+        //$order = UniqueOrder::findOrFail($request->input('params.account'));
+        return UnitPay::handle($request, false);
     }
 }
