@@ -65,6 +65,6 @@ class UnitPayController extends Controller
     public function handlePaymentNetting(Request $request)
     {
         //$order = UniqueOrder::findOrFail($request->input('params.account'));
-        return UnitPay::handle($request, false);
+        return UnitPay::handle($request, true);
     }
 }
