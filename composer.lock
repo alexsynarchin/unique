@@ -2400,12 +2400,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alexsynarchin/laravel-unitpay-netting.git",
-                "reference": "7cd0c16392fc0a628a0e01d397dbd3d87c8642a9"
+                "reference": "59465ffe80e33c7af73e419923ad1dc5f903b945"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alexsynarchin/laravel-unitpay-netting/zipball/7cd0c16392fc0a628a0e01d397dbd3d87c8642a9",
-                "reference": "7cd0c16392fc0a628a0e01d397dbd3d87c8642a9",
+                "url": "https://api.github.com/repos/alexsynarchin/laravel-unitpay-netting/zipball/59465ffe80e33c7af73e419923ad1dc5f903b945",
+                "reference": "59465ffe80e33c7af73e419923ad1dc5f903b945",
                 "shasum": ""
             },
             "require": {
@@ -2452,7 +2452,7 @@
             "support": {
                 "source": "https://github.com/alexsynarchin/laravel-unitpay-netting/tree/netting"
             },
-            "time": "2022-09-19T09:32:02+00:00"
+            "time": "2022-09-22T07:27:24+00:00"
         },
         {
             "name": "monolog/monolog",

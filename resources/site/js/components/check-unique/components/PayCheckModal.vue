@@ -121,6 +121,9 @@ import ServiceList from "./ServiceList";
             }
         },
         methods: {
+            onCloseModal() {
+                this.sum = 0;
+            },
             showModal(data, list, file) {
                 this.textParams = data;
                 this.systems = list;
@@ -187,6 +190,7 @@ import ServiceList from "./ServiceList";
             var payCheckModal = document.getElementById('pay_check');
             let vm = this;
             payCheckModal.addEventListener('hidden.bs.modal', function (event) {
+                vm.onCloseModal();
                 vm.errors.clear();
             });
         }
