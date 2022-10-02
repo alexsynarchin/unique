@@ -113,6 +113,7 @@ class CheckUniqueController extends Controller
 
     public function makeReport(Request $request)
     {
+
         $request->validate([
             'email' => 'required|email',
             'plainText' => 'required',
@@ -213,8 +214,13 @@ class CheckUniqueController extends Controller
 
         $check_unique->save();
 
+
         $services  = json_decode($request->get('services'), true);
-        $check_unique->services()->attach($services);
+        $services_ids = [];
+        foreach ($services as $service) {
+            $services_ids[] = $service['id'];
+        }
+        $check_unique->services()->attach($services_ids);
         $url = route('report', $check_unique->id);
         return ['url' => $url, 'check_unique_id' => $check_unique->id];
     }

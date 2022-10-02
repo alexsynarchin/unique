@@ -2,7 +2,7 @@
     <ul class="unique-service-list">
         <li class="unique-service-list__item"
             v-for="(item, index) in serviceList"
-            @click.prevent="selectService(item.id)"
+            @click.prevent="selectService({id:item.id, price:item.price})"
         >
             <figure class="unique-service-list__logo-wrap">
                 <img v-if="item.logo"
@@ -27,7 +27,7 @@
                             <input name=""
                                    type="checkbox"
                                    class="unique-service-checkbox__input"
-                                   :checked="selectedServices.indexOf(item.id) !== -1">
+                                   :checked="selectedServices.map(x => x.id).indexOf(item.id) !== -1">
                             <span class="unique-service-checkbox__checkmark"></span>
                         </label>
                     </div>
@@ -51,8 +51,8 @@
             }
         },
         methods: {
-            selectService(id) {
-                this.$emit('select-service', id);
+            selectService(item) {
+                this.$emit('select-service', item);
             },
             getServiceList(){
                 axios.get('/api/services')

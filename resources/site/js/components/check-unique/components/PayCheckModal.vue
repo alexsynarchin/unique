@@ -176,10 +176,11 @@ import ServiceList from "./ServiceList";
                     })
             },
              selectService(data) {
-                if(this.services.indexOf(data) === -1) {
+
+                if( this.services.map(x => x.id).indexOf(data.id) === -1) {
                     this.services.push(data);
                 } else {
-                    let index = this.services.indexOf(data);
+                    let index =  this.services.map(x => x.id).indexOf(data.id);
                     this.services.splice(index, 1);
                 }
 
