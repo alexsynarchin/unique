@@ -24,8 +24,13 @@
         margin-bottom: 20px;
     }
     &__footer {
-        display: flex;
-        align-items: center;
+        @include media-breakpoint-down(md) {
+            text-align: center;
+        }
+        @include media-breakpoint-up(md) {
+            display: flex;
+            align-items: center;
+        }
         &-text {
             color: rgba(19, 19, 19, 0.75);
             font-size: 14px;
@@ -33,7 +38,12 @@
         }
     }
     &__btn {
-        flex: 1;
-        white-space:nowrap;
+        @include media-breakpoint-down(md) {
+            margin-bottom: 15px;
+        }
+        @include media-breakpoint-up(md) {
+            flex: 1;
+            white-space:nowrap;
+        }
     }
 }

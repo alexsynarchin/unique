@@ -3,6 +3,7 @@
     margin-left: 0;
     padding-left: 0;
     &__item {
+        align-items: start;
         cursor: pointer;
         display: flex;
         margin-bottom: 36px;

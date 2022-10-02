@@ -179,9 +179,11 @@ import ServiceList from "./ServiceList";
 
                 if( this.services.map(x => x.id).indexOf(data.id) === -1) {
                     this.services.push(data);
+                    this.sum = this.sum + data.price;
                 } else {
                     let index =  this.services.map(x => x.id).indexOf(data.id);
                     this.services.splice(index, 1);
+                    this.sum = this.sum - data.price;
                 }
 
              }
