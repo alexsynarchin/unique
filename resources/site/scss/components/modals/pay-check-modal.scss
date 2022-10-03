@@ -3,12 +3,18 @@
         display: flex;
         margin-bottom: 45px;
         &-icon {
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
             width: 145px;
             min-width: 145px;
             margin-bottom: 0;
+
         }
         &-content {
-            padding-right: 45px;
+            @include media-breakpoint-up(md) {
+                padding-right: 45px;
+            }
         }
     }
     &__descr {
