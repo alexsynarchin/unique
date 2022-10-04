@@ -21,8 +21,6 @@ class GeneratePdfService
             ->waitUntilNetworkIdle()
             ->setNodeBinary('/usr/bin/node')
             ->setNpmBinary('/usr/bin/npm')
-            ->setNodeModulePath("/root/node_modules/")
-            ->setChromePath("/root/node_modules/puppeteer/.local-chromium")
             ->save(Storage::disk('local')->path('public/' . $link));
         return '/storage/' . $link;
     }
