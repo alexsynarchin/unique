@@ -214,13 +214,15 @@ class CheckUniqueController extends Controller
 
         $check_unique->save();
 
-
-        $services  = json_decode($request->get('services'), true);
-        $services_ids = [];
-        foreach ($services as $service) {
-            $services_ids[] = $service['id'];
+        if($request->get('services')) {
+            $services  = json_decode($request->get('services'), true);
+            $services_ids = [];
+            foreach ($services as $service) {
+                $services_ids[] = $service['id'];
+            }
+            $check_unique->services()->attach($services_ids);
         }
-        $check_unique->services()->attach($services_ids);
+
         $url = route('report', $check_unique->id);
         return ['url' => $url, 'check_unique_id' => $check_unique->id];
     }
