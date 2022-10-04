@@ -82,7 +82,7 @@
                     <div style="width: {{$report->data['unique']}}% " class="report-progress-bar__line-percent"></div>
                 </div>
                 <div class="report-progress-bar__text">
-                    {{$report->data['unique']}}% текст неуникальный
+                    {{$report->data['unique']}}%  @if($report->data['unique'] > 70 ) Текст неуникальный @elseтекст неуникальный @endif
                 </div>
             </section>
             <a href="" class="report-information__link">
