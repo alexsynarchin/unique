@@ -99,7 +99,8 @@ class ReportController extends Controller
     {
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($id);
-        Mail::to($request->get('email'))->send(new ReportMail($link));
+        $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail(1);
+        Mail::to($request->get('email'))->send(new ReportMail($link, $report));
         $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
 
         if($exists) {

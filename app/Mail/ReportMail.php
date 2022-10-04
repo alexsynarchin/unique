@@ -11,15 +11,17 @@ class ReportMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $link;
+    public $report;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link)
+    public function __construct($link, $report)
     {
         $this -> link = $link;
+        $this -> report = $report;
     }
 
     /**
@@ -31,7 +33,7 @@ class ReportMail extends Mailable
     {
         $mail = $this->from('gwynbleid11@yandex.ru')
             -> subject('Заявка с сайта unique.ru');
-        return $mail-> view('mails.contact')
+        return $mail-> view('mails.contact' , ['data' => $this-> report])
             ->attach(public_path() . $this->link, [
                 'mime' => 'application/pdf',
             ]);
