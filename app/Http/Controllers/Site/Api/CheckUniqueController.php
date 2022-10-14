@@ -48,7 +48,7 @@ class CheckUniqueController extends Controller
        // dd($source->getClientOriginalName());
         $text = '';
         //dd($request->file('file')->getClientMimeType());
-        dd($request->file('file')->getClientMimeType());
+        //dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
             //dd($request->file('file')->getRealPath());
             $filename = $request->file('file')->getRealPath();
@@ -56,27 +56,8 @@ class CheckUniqueController extends Controller
             //$text = file_get_contents($filename);
           //  dd($text);
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
-
-            $phpWord = $objReader->load($source);
-            $sections = $phpWord->getSections();
-            foreach($phpWord->getSections() as $section) {
-                foreach($section->getElements() as $element) {
-                    if (method_exists($element, 'getElements')) {
-                        foreach($element->getElements() as $childElement) {
-                            if (method_exists($childElement, 'getText')) {
-                                $text .= $childElement->getText() . ' ';
-                            }
-                            else if (method_exists($childElement, 'getContent')) {
-                                $text .= $childElement->getContent() . ' ';
-                            }
-                        }
-                    }
-                    else if (method_exists($element, 'getText')) {
-                        $text .= $element->getText() . ' ';
-                    }
-                }
-            }
+            $filename = $request->file('file')->getRealPath();
+            $text = shell_exec('/usr/bin/antiword -m UTF-8.txt -w 0 '.$filename);
         }
 
        // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
