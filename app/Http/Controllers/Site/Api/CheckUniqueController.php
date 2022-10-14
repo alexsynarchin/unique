@@ -48,6 +48,7 @@ class CheckUniqueController extends Controller
        // dd($source->getClientOriginalName());
         $text = '';
         //dd($request->file('file')->getClientMimeType());
+        dd($request->file('file')->getClientMimeType());
         if($request->file('file')->getClientMimeType() === 'application/msword') {
             //dd($request->file('file')->getRealPath());
             $filename = $request->file('file')->getRealPath();
