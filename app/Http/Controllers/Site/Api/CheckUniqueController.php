@@ -58,9 +58,9 @@ class CheckUniqueController extends Controller
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             $filename = $request->file('file')->getRealPath();
             $text = shell_exec('/usr/bin/antiword -m UTF-8.txt -w 0 '.$filename);
-            dd($text);
-        }
 
+        }
+        dd($text);
        // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
        // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
