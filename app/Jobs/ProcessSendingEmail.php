@@ -34,11 +34,11 @@ class ProcessSendingEmail implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Report $report, $email)
+    public function handle(Report $report)
     {
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($report->id);
-        Mail::to($email)->send(new ReportMail($link, $report));
+        Mail::to($report->checkUnique->email)->send(new ReportMail($link, $report));
         $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
 
         if($exists) {

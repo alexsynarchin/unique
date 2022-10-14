@@ -101,8 +101,7 @@ class ReportController extends Controller
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($id);
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
-        $email = $request->get('email');
-        ProcessSendingEmail::dispatch($report, $email);
+        ProcessSendingEmail::dispatch($report);
     }
 
     private function getWordsFromString($string)
