@@ -56,11 +56,29 @@ class CheckUniqueController extends Controller
             //$text = file_get_contents($filename);
           //  dd($text);
         }  elseif ($request->file('file')->getClientMimeType() === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            $filename = $request->file('file')->getRealPath();
-            $text = shell_exec('/usr/bin/antiword -m UTF-8.txt -w 0 '.$filename);
+            $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
 
+            $phpWord = $objReader->load($source);
+            $sections = $phpWord->getSections();
+            foreach($phpWord->getSections() as $section) {
+                foreach($section->getElements() as $element) {
+                    if (method_exists($element, 'getElements')) {
+                        foreach($element->getElements() as $childElement) {
+                            if (method_exists($childElement, 'getText')) {
+                                $text .= $childElement->getText() . ' ';
+                            }
+                            else if (method_exists($childElement, 'getContent')) {
+                                $text .= $childElement->getContent() . ' ';
+                            }
+                        }
+                    }
+                    else if (method_exists($element, 'getText')) {
+                        $text .= $element->getText() . ' ';
+                    }
+                }
+            }
         }
-        dd($text);
+
        // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
        // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
