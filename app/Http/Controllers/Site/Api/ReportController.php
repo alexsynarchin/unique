@@ -98,8 +98,6 @@ class ReportController extends Controller
 
     public function sendEmail(Request $request, $id)
     {
-        $generatePdfService = new GeneratePdfService();
-        $link = $generatePdfService -> generate($id);
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
         ProcessSendingEmail::dispatch($report);
         return 'success';
