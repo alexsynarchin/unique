@@ -12,6 +12,7 @@ use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\ProcessSendingEmail;
 
 class ReportController extends Controller
 {
@@ -74,7 +75,7 @@ class ReportController extends Controller
                 }
 
             }
-            if($check_system->api_id ===5) {
+            if($check_system->api_id === 5) {
                 if($data['unique'] < 1) {
                     $percent = 9;
                 } else {
@@ -100,22 +101,8 @@ class ReportController extends Controller
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($id);
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
-        Mail::to($request->get('email'))->send(new ReportMail($link, $report));
-        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
-
-        if($exists) {
-            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
-            $email = $setting -> value;
-            $email = explode(',', $email);
-        } else {
-            $email = ['alexsynarchin@gmail.com'];
-        }
-        $form = [
-            'link' => $link
-        ];
-        foreach ($email as $recipient) {
-            Mail::to($recipient)->send(new AdminReportMail($form));
-        }
+        $email = $request->get('email');
+        ProcessSendingEmail::dispatch($report, $email);
     }
 
     private function getWordsFromString($string)
