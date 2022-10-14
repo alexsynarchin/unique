@@ -17,7 +17,7 @@ class CheckUniqueService
 
     public function getResult($uid)
     {
-        $userkey = '7a7b404004f32189cd5dd70c4eb23d70';
+        $userkey = 'fe890c8469b496690240a23521e4ad17';
         sleep(15);
         //Получаете результат проверки
         $jsonvisible = 'detail'; //Необязательный параметр. Укажите "detail" чтобы получить расширенные данные по тексту
