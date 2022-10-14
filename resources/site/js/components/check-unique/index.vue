@@ -148,6 +148,7 @@
                 };
             },
             handleFileUpload() {
+                this.$root.isLoading = true;
                 this.file = this.$refs.file.files[0];
                 this.fileName = this.file.name;
                 const formData = new FormData();
@@ -158,6 +159,7 @@
                 }
                 axios.post('/api/check-unique-file', formData, config)
                     .then((response) => {
+                        this.$root.isLoading = false;
                         this.textParams = response.data;
                     })
             },

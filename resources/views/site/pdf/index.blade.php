@@ -20,10 +20,10 @@
         </section>
         <section class="header__right">
             <span class="header__phone">
-                8 800 555 65 65
+                {{$phone}}
             </span>
             <span class="header__link">
-                уникальность.ru
+                проверить-уникальность.рф
             </span>
         </section>
     </header>

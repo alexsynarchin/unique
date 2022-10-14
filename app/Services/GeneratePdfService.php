@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Report;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
 
@@ -13,7 +14,8 @@ class GeneratePdfService
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
         $link =  "reports/". $report->check_unique_id."/report-" .$report->id.".pdf";
         Storage::makeDirectory('public/reports/'. $report->check_unique_id);
-        $html = view('site.pdf.index', ['report' => $report])->render();
+        $setting = Setting::where('name', 'phone_header')->firstOrFail();
+        $html = view('site.pdf.index', ['report' => $report, 'phone' => $setting->value])->render();
         Browsershot::html($html)
             ->noSandbox()
             ->showBackground()

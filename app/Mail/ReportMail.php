@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -33,7 +34,8 @@ class ReportMail extends Mailable
     {
         $mail = $this->from('gwynbleid11@yandex.ru')
             -> subject('Отчет о проверке уникальности');
-        return $mail-> view('mails.contact' , ['data' => $this-> report])
+        $setting = Setting::where('name', 'phone_header')->firstOrFail();
+        return $mail-> view('mails.contact' , ['data' => $this-> report, 'phone' => $setting->value])
             ->attach(public_path() . $this->link, [
                 'mime' => 'application/pdf',
             ]);

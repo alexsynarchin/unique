@@ -82,7 +82,7 @@
             font-size: 24px;
             font-weight: bold;
         "
-        >8 800 555 65 65</span>
+        >{{$phone}}</span>
                 </td>
             </tr>
         </table>
