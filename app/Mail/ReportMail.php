@@ -33,7 +33,7 @@ class ReportMail extends Mailable
     public function build()
     {
         $mail = $this->from('gwynbleid11@yandex.ru')
-            -> subject('Отчет о проверке уникальности');
+            -> subject('Отчет о проверке уникальности (' . $this->report->checkSystem->title . ')');
         $setting = Setting::where('name', 'phone_header')->firstOrFail();
         return $mail-> view('mails.contact' , ['data' => $this-> report, 'phone' => $setting->value])
             ->attach(public_path() . $this->link, [
