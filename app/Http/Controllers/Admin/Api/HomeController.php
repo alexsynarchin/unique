@@ -35,7 +35,8 @@ class HomeController extends Controller
             'countToday' => $autoCountToday,
             'items' => $auto
         ];
-        $free =   $check_uniques -> whereHas('reports', function ($query){
+        $check_uniques = (new CheckUnique) -> newQuery();
+        $free = $check_uniques -> whereHas('reports', function ($query){
             $query->whereHas('checkSystem', function ($query) {
                 $query->where('manual', 0);
                 $query->where('price', 0);
@@ -49,6 +50,7 @@ class HomeController extends Controller
            'countToday' => $freeCountToday,
            'items' => $free
        ];
+        $check_uniques = (new CheckUnique) -> newQuery();
        $manual = $check_uniques -> whereHas('reports', function ($query){
            $query->whereHas('checkSystem', function ($query) {
                $query->where('manual', 1);
