@@ -7,34 +7,14 @@
                         <span>Доход</span>
                     </div>
                     <div class="mp-card__sum">
-                        0 руб
+                        {{data.sum.all}} руб
                     </div>
                     <div class="mp-card-today">
                         <label class="mp-card-today__label">
                             За сегодня:
                         </label>
                         <span class="mp-card-today__value">
-                        0 руб
-                    </span>
-                    </div>
-
-                </el-card>
-            </div>
-
-            <div class="col-md-4">
-                <el-card class="box-card">
-                    <div slot="header" class="clearfix">
-                        <span>Пользователи</span>
-                    </div>
-                    <div class="mp-card__sum">
-                        0
-                    </div>
-                    <div class="mp-card-today">
-                        <label class="mp-card-today__label">
-                            За сегодня:
-                        </label>
-                        <span class="mp-card-today__value">
-                        0
+                        {{data.sum.sumToday}} руб
                     </span>
                     </div>
 
@@ -48,14 +28,14 @@
                        <span>Заявки на рерайт</span>
                    </div>
                    <div class="mp-card__sum">
-                       0
+                       {{data.rewrites.count}}
                    </div>
                    <div class="mp-card-today">
                        <label class="mp-card-today__label">
                            За сегодня:
                        </label>
                        <span class="mp-card-today__value">
-                        0
+                        {{data.rewrites.countToday}}
                     </span>
                    </div>
 
@@ -63,6 +43,18 @@
                <el-card class="box-card">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
+                       <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
+                           <li
+                               v-for="(item, index) in data.rewrites.items"
+                               class="d-flex justify-content-between" style="font-size: 13px">
+                               <span>
+                                   Заявка № {{item.id}}
+                               </span>
+                               <span>
+                                   {{item.formatted_date}}
+                               </span>
+                           </li>
+                       </ul>
                    </div>
                </el-card>
            </div>
@@ -144,14 +136,14 @@
                        <span>Ручные заявки</span>
                    </div>
                    <div class="mp-card__sum">
-                      0
+                      {{data.manual.count}}
                    </div>
                    <div class="mp-card-today">
                        <label class="mp-card-today__label">
                            За сегодня:
                        </label>
                        <span class="mp-card-today__value">
-                      0
+                      {{data.manual.countToday}}
                     </span>
                    </div>
 
@@ -159,7 +151,18 @@
                <el-card class="box-card">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
-
+                       <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
+                           <li
+                               v-for="(item, index) in data.manual.items"
+                               class="d-flex justify-content-between" style="font-size: 12px">
+                               <span>
+                                   Заявка № {{item.id}}
+                               </span>
+                               <span>
+                                   {{item.formatted_date}}
+                               </span>
+                           </li>
+                       </ul>
                    </div>
                </el-card>
            </div>
@@ -172,12 +175,26 @@
             return {
                 loaded:false,
                 data: {
+                    rewrites: {
+                        count:0,
+                        countToday:0,
+                        items:[],
+                    },
+                    sum: {
+                        all:0,
+                        sumToday:0,
+                    },
                     auto: {
                         count:0,
                         countToday:0,
                         items:[],
                     },
                     free: {
+                        count:0,
+                        countToday:0,
+                        items:[],
+                    },
+                    manual: {
                         count:0,
                         countToday:0,
                         items:[],

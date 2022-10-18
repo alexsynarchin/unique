@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
+use App\Models\Order;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -13,6 +17,24 @@ class ContactController extends Controller
             'name' => 'required',
             'phone' => 'required'
         ]);
+
+        $order = Order::create($request->all());
+        $order -> status = 1;
+        $order -> save();
+        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
+        if($exists) {
+            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
+            $email = $setting -> value;
+            $email = explode(',', $email);
+
+
+        } else {
+            $email = ['alexsynarchin@gmail.com'];
+        }
+        foreach ($email as $recipient) {
+            $recipient = str_replace(" ", '', $recipient);
+            Mail::to($recipient)->send(new ContactMail($request->all()));
+        }
         return $request->all();
     }
 }

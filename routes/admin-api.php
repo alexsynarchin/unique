@@ -91,3 +91,7 @@ Route::get('/static-page/{id}', [StaticPageController::class, 'show'])->name('st
 Route::post('/static-page', [StaticPageController::class, 'store'])->name('static.page.store');
 Route::put('/static-page/{id}', [StaticPageController::class, 'update'])->name('static.page.update');
 Route::delete('/static-page/{id}', [StaticPageController::class, 'destroy'])->name('static.page.destroy');
+
+use App\Http\Controllers\Admin\Api\ContactOrderController;
+Route::get('/contact-order', [ContactOrderController::class, 'index'])->name('contacts');
+Route::get('/contact-order/{id}', [ContactOrderController::class, 'show'])->name('contact.show');

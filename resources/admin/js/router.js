@@ -15,6 +15,7 @@ import Rewrites from "./views/rewrites";
 import Services from "./views/services";
 import Articles from "./views/articles";
 import StaticPages from "./views/static-pages";
+import ContactOrders from "./views/contact-orders";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
@@ -31,6 +32,7 @@ let routes = [
     {name:'rewrites', path:'/admin/rewrites', component: Rewrites},
     {name:'services', path:'/admin/services', component: Services},
     {name: 'articles', path: '/admin/articles', component: Articles},
+    {name: 'contacts', path: '/admin/requests', component: ContactOrders},
     {name: 'static-pages', path: '/admin/static-pages', component: StaticPages},
 ];
 export default new VueRouter({
