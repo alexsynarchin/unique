@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class ModeratorController extends Controller
@@ -25,14 +26,23 @@ class ModeratorController extends Controller
             'password' => 'required|confirmed'
         ]);
         $user = User::create($request->all());
+        $user -> password = Hash::make($request->get('password'));
         $role = Role::findByName('admin');
         $user -> assignRole($role);
+        $user->syncPermissions($request->get('permissions_arr'));
+
         return $user;
     }
 
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $user->getAllPermissions();
+        $permissions = [];
+        foreach ($user->permissions as $permission) {
+            $permissions[]=$permission['name'];
+        }
+        $user -> permissions_arr = $permissions;
         return $user;
     }
 

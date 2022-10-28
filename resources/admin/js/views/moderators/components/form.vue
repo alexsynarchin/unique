@@ -44,9 +44,17 @@
                 </div>
             </el-form>
         </el-tab-pane>
-        <!-- <el-tab-pane label="Права доступа">
+        <el-tab-pane label="Права доступа">
+            <el-checkbox-group v-model="form.permissions_arr" @change="">
+                <div class="row">
+                    <div class="col-md-6 mb-2" v-for="permission in permissions">
+                        <el-checkbox    :label="permission.name" :key="permission.name">{{permission.name}}</el-checkbox>
+                    </div>
 
-         </el-tab-pane>-->
+                </div>
+
+            </el-checkbox-group>
+         </el-tab-pane>
     </el-tabs>
 </template>
 <script>
@@ -65,10 +73,17 @@ export default {
     },
     data() {
         return {
+            permissions: [],
             errors: new Errors(),
         }
     },
     methods: {
+        getPermissions() {
+            axios.get('/api/admin/permissions')
+                .then((response) => {
+                    this.permissions = response.data;
+                })
+        },
         closeModal(data) {
             this.$emit('close', data);
         },
@@ -90,6 +105,9 @@ export default {
             ;
 
         },
+    },
+    mounted() {
+        this.getPermissions();
     }
 }
 </script>

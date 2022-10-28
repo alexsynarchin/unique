@@ -95,3 +95,6 @@ Route::delete('/static-page/{id}', [StaticPageController::class, 'destroy'])->na
 use App\Http\Controllers\Admin\Api\ContactOrderController;
 Route::get('/contact-order', [ContactOrderController::class, 'index'])->name('contacts');
 Route::get('/contact-order/{id}', [ContactOrderController::class, 'show'])->name('contact.show');
+
+use App\Http\Controllers\Admin\Api\PermissionController;
+Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions');

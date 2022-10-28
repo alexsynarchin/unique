@@ -56,6 +56,10 @@ use App\Http\Controllers\Site\TestMailController;
 Route::get('/mailable', [TestMailController::class,'testMail']);
 Route::get('/mailable/send', [TestMailController::class, 'sendTestMail']);
 
+Route::get('/get-permissions', function () {
+    return auth()->check()?auth()->user()->jsPermissions():0;
+});
+
 use App\Http\Controllers\Site\StaticPageController;
 Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 

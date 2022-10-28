@@ -26,7 +26,7 @@ export default {
                 password:"",
                 password_confirmation:"",
                 id:null,
-
+                permissions_arr:[],
             }
         }
     },
