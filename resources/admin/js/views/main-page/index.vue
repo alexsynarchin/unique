@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <h1>
             Настройки главной
         </h1>
@@ -27,6 +27,7 @@ export default {
     },
     data() {
      return {
+         CanAccess: 'Просмотр "Главная страница"',
         form: {
 
         },

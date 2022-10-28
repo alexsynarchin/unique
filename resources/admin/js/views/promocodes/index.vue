@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <div class="row">
             <div class="col-md-4">
                 <el-button icon="el-icon-plus" type="primary" @click.prevent="addPromoCode">Новый промокод</el-button>
@@ -75,6 +75,7 @@ import Create from "./create";
         },
         data() {
             return {
+                CanAccess: 'Просмотр "Промокоды"',
                 tableData:[],
                 dialogVisible:false,
                 state:"",

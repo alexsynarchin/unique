@@ -1,5 +1,5 @@
 <template>
-    <section class="page">
+    <section class="page" v-if="can(CanAccess) || is('Super-Admin')">
         <div class="page-heading d-flex align-items-center justify-content-between mb-3">
             <h1 class="page-title mb-0">Модераторы</h1>
             <el-button type="success" icon="el-icon-plus" @click="moderatorModalOpen('create')">Добавить</el-button>
@@ -92,6 +92,7 @@ export default {
     },
     data() {
         return {
+            CanAccess: 'Просмотр "Модераторы"',
             id:null,
             moderatorModal:false,
             moderatorModalStatus:"",

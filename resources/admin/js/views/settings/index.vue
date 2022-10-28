@@ -1,5 +1,5 @@
 <template>
-    <el-tabs type="card" @tab-click="handleClick" v-model="activeTab">
+    <el-tabs type="card" @tab-click="handleClick" v-model="activeTab" v-if="can(CanAccess) || is('Super-Admin')">
         <el-tab-pane label="Общие" name="common">
             <common></common>
         </el-tab-pane>
@@ -21,6 +21,7 @@ export default {
     },
     data() {
         return {
+            CanAccess: 'Просмотр "Настройки"',
             activeTab: 'common'
         };
     },

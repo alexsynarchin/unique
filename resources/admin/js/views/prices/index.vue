@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <h1>
             Стоимость
         </h1>
@@ -64,6 +64,7 @@ import PriceListForm from "./components/PriceListForm";
         },
         data() {
             return {
+                CanAccess: 'Просмотр "Стоимость"',
                 currentListItemData: null,
                 currentId: null,
                 state:"",

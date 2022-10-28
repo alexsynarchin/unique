@@ -56,6 +56,7 @@ class ModeratorController extends Controller
         ]);
 
         $user -> update($request->all());
+        $user->syncPermissions($request->get('permissions_arr'));
         return $user;
     }
 

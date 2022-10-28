@@ -1,5 +1,5 @@
 <template>
-    <section class="items-list">
+    <section class="items-list" v-if="can(CanAccess) || is('Super-Admin')">
         <el-row type="flex" class="mb-3">
             <el-col :span="12">
                 <el-button type="success" icon="el-icon-plus" @click.prevent="newItem">Добавить Страницу</el-button>
@@ -114,6 +114,7 @@ export default {
     },
     data(){
         return{
+            CanAccess: 'Просмотр "Статические страницы"',
             id:null,
             pages:[],
             pageModal:false,

@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <h1>Страница о компании</h1>
         <utp class="mb-5"></utp>
         <ratings class="mb-5"></ratings>
@@ -16,8 +16,13 @@ import WorkResult from "./components/work-result/WorkResult";
         components: {
             utp, ratings, guarantees, WorkResult
         },
+        data() {
+            return {
+                CanAccess: 'Просмотр "О проекте"',
+            }
+        },
         mounted() {
-            if(!can('Просмотр "О проекте"') && !is('Super-Admin')) {
+            if(can('Просмотр "О проекте"') && !is('Super-Admin')) {
                 window.location.href='/admin'
             }
         }

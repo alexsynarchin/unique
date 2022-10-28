@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <data-tables :data="contacts" :table-props="tableProps">
             <el-table-column
                 type="index"
@@ -58,6 +58,7 @@ import show from './components/show'
     },
     data() {
         return {
+            CanAccess:'Просмотр "Заявки"',
             contacts: [],
             dialogVisible:false,
             currentId:null,

@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <h1>Дополнительные услуги</h1>
         <div class="mb-3">
             <el-button type="success" icon="el-icon-plus" @click="serviceModalOpen('create')">Добавить</el-button>
@@ -83,6 +83,7 @@
         },
         data() {
             return {
+                CanAccess: 'Просмотр "Дополнительные услуги"',
                 currentId: null,
                 services: [],
                 serviceModalStatus: "",

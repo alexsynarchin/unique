@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <h1>
             Вопросы и ответы
         </h1>
@@ -62,6 +62,7 @@ import QuestionListEdit from "./QuestionListEdit";
         },
         data() {
             return {
+                CanAccess: 'Просмотр "Вопросы и ответы"',
                 currentListItemData: null,
                 currentId: null,
                 state:"",

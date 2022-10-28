@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="row">
+        <div class="row" v-if="can(CanAccess) || is('Super-Admin')">
             <div class="col-md-6 col-lg-4">
                 <label>
                     Система
@@ -140,6 +140,7 @@ import CheckReport from "./components/report/index";
         components: {CheckReport},
         data() {
             return {
+                CanAccess:'Просмотр "Системы проверки"',
                 check_uniques: [],
                 dialogVisible:false,
                 currentId:null,

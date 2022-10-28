@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="can(CanAccess) || is('Super-Admin')">
         <data-tables :data="rewrites" :table-props="tableProps">
             <el-table-column
                 type="index"
@@ -58,6 +58,7 @@ export default {
     components: {Show},
     data() {
         return {
+            CanAccess: 'Просмотр "Заявки на рерайт"',
             rewrites: [],
             dialogVisible:false,
             currentId:null,
