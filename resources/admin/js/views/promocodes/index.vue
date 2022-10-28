@@ -42,6 +42,22 @@
                 prop="discount"
             >
             </el-table-column>
+            <el-table-column>
+                <template slot-scope="scope">
+                    <el-button
+                        type="primary"
+                        @click="handleEdit(scope.row)"
+                        size="mini">
+                        Редактировать
+                    </el-button>
+                    <el-button
+                        type="danger"
+                        @click="handleDelete(scope.row)"
+                        size="mini">
+                        Удалить
+                    </el-button>
+                </template>
+            </el-table-column>
         </data-tables>
         <el-dialog
             :title="ModalTitle"
@@ -53,14 +69,20 @@
                 @close-modal=""
                 @create-promo-code="createPromoCode"
             ></create>
+            <edit v-if="dialogVisible && state === 'edit'"
+                  :id="currentId"
+                  @close-modal=""
+                @edit-promo-code="editPromoCode"
+            ></edit>
         </el-dialog>
     </section>
 </template>
 <script>
 import Create from "./create";
+import Edit from "./edit";
     export default {
         components: {
-            Create
+            Create, Edit
         },
         computed: {
             ModalTitle:function () {
@@ -79,9 +101,40 @@ import Create from "./create";
                 tableData:[],
                 dialogVisible:false,
                 state:"",
+                currentId: null,
             }
         },
         methods: {
+            handleEdit(item) {
+                this.currentId = item.id;
+                this.dialogVisible = true;
+                this.state = 'edit';
+            },
+            handleDelete(item) {
+                this.$confirm('Вы уверены что хотите удалить промокод', 'Удаление промокода', {
+                    confirmButtonText: 'Удалить',
+                    cancelButtonText: 'Отмена',
+                    type: 'warning'
+                }).then(() => {
+                    axios.delete('/api/admin/promo-codes/' + item.id)
+                        .then((response) => {
+                            let index = this.tableData.findIndex(item => item.id === response.data.id);
+                            this.tableData.splice(index, 1);
+                            this.$message({
+                                type: 'success',
+                                message: 'Промокод удален'
+                            });
+                        });
+
+                }).catch(() => {
+
+                });
+            },
+            editPromoCode(data) {
+                let index = this.tableData.findIndex(item => item.id === data.id);
+                this.tableData[index] =data;
+                this.closeModal();
+            },
             getTableData() {
                 axios.get('/api/admin/promo-codes')
                     .then((response) => {
@@ -94,6 +147,7 @@ import Create from "./create";
             },
             closeModal() {
                 this.dialogVisible = false
+                this.currentId = null;
             },
             addPromoCode() {
                 this.dialogVisible = true;

@@ -62,7 +62,8 @@ class PromoCodeController extends Controller
      */
     public function show($id)
     {
-        //
+        $promo = PromoCode::findOrFail($id);
+        return $promo;
     }
 
     /**
@@ -74,7 +75,9 @@ class PromoCodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $promo = PromoCode::findOrFail($id);
+        $promo -> update($request->all());
+        return $promo;
     }
 
     /**
@@ -85,6 +88,8 @@ class PromoCodeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $promo = PromoCode::findOrFail($id);
+        $promo->delete();
+        return $promo;
     }
 }
