@@ -156,7 +156,7 @@
                     date:"",
                     email: "",
                     comment:"",
-                    promocode:"",
+                    promocode:null,
                     plain_text: "",
                     text_params: {},
                 },

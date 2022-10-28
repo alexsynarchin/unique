@@ -13,7 +13,6 @@ class RewriteController extends Controller
     public function order(Request $request)
     {
 
-
         $request->validate([
             'email' => 'required|email',
             'name' => 'required',
@@ -23,7 +22,7 @@ class RewriteController extends Controller
                 function ($attribute, $value, $fail) use ($request) {
                     $exists =  PromoCode::where('name', $request->get('promocode'))->exists();
                     if (!$exists) {
-                        $fail('Данный промокод не сущетсвует');
+                        $fail('Данный промокод не существует');
                     }
                 },
                 function ($attribute, $value, $fail) use ($request) {

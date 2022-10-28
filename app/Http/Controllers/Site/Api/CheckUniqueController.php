@@ -124,7 +124,7 @@ class CheckUniqueController extends Controller
                 function ($attribute, $value, $fail) use ($request) {
                    $exists =  PromoCode::where('name', $request->get('promocode'))->exists();
                    if (!$exists) {
-                       $fail('Данный промокод не сущетсвует');
+                       $fail('Данный промокод не существует');
                    }
                 },
             function ($attribute, $value, $fail) use ($request) {
