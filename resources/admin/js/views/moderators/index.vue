@@ -52,6 +52,14 @@
                         size="mini"
                         type="primary"
                         @click="handleEdit(scope.row)">Редактировать</el-button>
+                    <el-button
+                        v-if="scope.row.id !== 1"
+                        size="mini"
+                        type="danger"
+                        @click="handleDelete(scope.row)"
+                    >
+                        Удалить
+                    </el-button>
 
                 </template>
             </el-table-column>
@@ -107,6 +115,26 @@ export default {
         }
     },
     methods: {
+        handleDelete(item) {
+            this.$confirm('Вы уверены что хотите удалить пользователя', 'Удаление пользователя', {
+                confirmButtonText: 'Удалить',
+                cancelButtonText: 'Отмена',
+                type: 'warning'
+            }).then(() => {
+                axios.delete('/api/admin/moderators/' + item.id)
+                    .then((response) => {
+                        let index = this.moderators.findIndex(item => item.id === response.data.id);
+                        this.moderators.splice(index, 1);
+                        this.$message({
+                            type: 'success',
+                            message: 'Пользователь удален'
+                        });
+                    });
+
+            }).catch(() => {
+
+            });
+        },
         moderatorModalOpen(status) {
             this.moderatorModalStatus = status;
             this.moderatorModal = true;

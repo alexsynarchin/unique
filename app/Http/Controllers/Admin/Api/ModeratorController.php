@@ -60,9 +60,11 @@ class ModeratorController extends Controller
         return $user;
     }
 
-    public function delete()
+    public function destroy($id)
     {
-
+        $moderator = User::findOrFail($id);
+        $moderator->delete();
+        return $moderator;
     }
 
 }
