@@ -156,7 +156,7 @@
                     date:"",
                     email: "",
                     comment:"",
-                    promocode:null,
+                    promocode:"",
                     plain_text: "",
                     text_params: {},
                 },
@@ -178,7 +178,7 @@
                 }
                 const formData = new FormData();
                 for ( var key in this.form ) {
-                    formData.append(key, JSON.stringify(this.form[key]));
+                    formData.append(key, this.form[key]);
                 }
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
