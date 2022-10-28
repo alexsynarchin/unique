@@ -15,6 +15,11 @@ import WorkResult from "./components/work-result/WorkResult";
     export default {
         components: {
             utp, ratings, guarantees, WorkResult
+        },
+        mounted() {
+            if(!can('Просмотр "О проекте"') && !is('Super-Admin')) {
+                window.location.href='/admin'
+            }
         }
     }
 </script>
