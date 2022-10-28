@@ -15,13 +15,18 @@ Vue.use(vTitle)
 Vue.component('AdminLogin', require('./components/admin-login/index').default);
 import router from './router';
 Vue.component('AdminApp',require('./Admin').default);
+
 axios.get('/get-permissions').then(
     response => {
         window.Laravel.jsPermissions = response.data;
     }
 );
-import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs';
+import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
+
+
 Vue.use(LaravelPermissionToVueJS)
+
+
 const app = new Vue({
     el: '#app',
     router,
@@ -39,3 +44,5 @@ const app = new Vue({
 
     }
 });
+
+

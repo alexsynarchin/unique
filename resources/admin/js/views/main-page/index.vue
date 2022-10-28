@@ -3,6 +3,7 @@
         <h1>
             Настройки главной
         </h1>
+
         <utp class="mb-5"></utp>
         <ratings class="mb-5"></ratings>
         <why class="mb-5"></why>
