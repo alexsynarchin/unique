@@ -12,7 +12,7 @@ class RewriteController extends Controller
 {
     public function order(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $request->validate([
             'email' => 'required|email',
             'name' => 'required',
