@@ -78,6 +78,7 @@
                                     format="dd.MM.yyyy"
                                     wrapper-class="u-datepicker__wrap"
                                     :use-utc="true"
+                                    :disabledDates="disabledDates"
                                     input-class="u-input-group__input u-datepicker"
                                     :language="ru">
                                 </datepicker>
@@ -150,6 +151,9 @@
             return {
                 en: en,
                 ru: ru,
+                disabledDates: {
+                    to:new Date(), //dayjs().format('DD.MM.YYYY')
+                },
                 form: {
                     file:null,
                     name:"",
