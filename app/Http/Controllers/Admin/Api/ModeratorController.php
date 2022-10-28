@@ -27,6 +27,7 @@ class ModeratorController extends Controller
         ]);
         $user = User::create($request->all());
         $user -> password = Hash::make($request->get('password'));
+        $user->save();
         $role = Role::findByName('admin');
         $user -> assignRole($role);
         $user->syncPermissions($request->get('permissions_arr'));
