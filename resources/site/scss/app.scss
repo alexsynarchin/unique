@@ -16,6 +16,7 @@ $container-max-widths: (
 @import "~bootstrap/scss/bootstrap";
 @import "fonts";
 @import "variables";
+@import "mixins/mixins";
 //Components
 @import "components/scaffoldings";
 @import "components/preloader";

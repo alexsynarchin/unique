@@ -27,6 +27,9 @@
             flex: 1 20%;
             max-width: 20%;
         }
+
+
+
     }
 }
 .check-system-item {
@@ -36,6 +39,10 @@
     border-radius: 10px;
     padding: 8px 8px 0 8px;
     text-align: center;
+    transition: 10ms;
+    &:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
     @include media-breakpoint-down(md) {
         padding-bottom: 15px;
     }
@@ -150,3 +157,4 @@
     }
 
 }
+
