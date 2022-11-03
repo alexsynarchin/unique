@@ -1,16 +1,19 @@
 <template>
     <section class="check-unique-bl" id="check_unique">
-        <h3 class="block-title  check-unique-bl__title">
-            Проверьте текст на уникальность <span class="block-title__cursor"></span>
-        </h3>
-        <p class="check-unique-bl__text">
-            Вставьте или загрузите до 15 000 символов бесплатно
-        </p>
+        <div class="text-center">
+            <h2 class="block-title  check-unique-bl__title">
+                Проверить уникальность текста онлайн бесплатно <span class="block-title__cursor"></span>
+            </h2>
+            <p class="check-unique-bl__text">
+                Все системы проверки в одном месте
+            </p>
+        </div>
+
         <section class="check-unique">
             <section class="check-unique__textarea-wrap">
                 <textarea class="check-unique__textarea form-control"
                           v-model="text"
-                          placeholder="Вставьте ваш текст"></textarea>
+                          placeholder="Вставьте текст или загрузите документ до 15000 символов бесплатно"></textarea>
             </section>
             <div class="check-unique__actions">
 
