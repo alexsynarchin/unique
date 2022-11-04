@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'phone', 'status', 'comment'
+        'name', 'phone', 'status', 'comment', 'email'
     ];
     protected $casts = [
         'created_at' => 'date: d.m.Y',

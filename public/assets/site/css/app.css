@@ -12171,8 +12171,13 @@ img {
     border-bottom-right-radius: 0;
     background-image: url("../images/unique-modal-cons-bg.png");
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: 140% 50%;
     background-size: contain;
+  }
+}
+@media (min-width: 1200px) {
+  .consultation-modal__content {
+    background-position: 128% 50%;
   }
 }
 .consultation-modal__form {
@@ -12507,6 +12512,12 @@ img {
   color: rgba(19, 19, 19, 0.75);
   margin-top: 15px;
   font-size: 14px;
+}
+@media (min-width: 1024px) {
+  .consultation-form__invalid-feedback {
+    position: absolute;
+    font-size: 0.75em;
+  }
 }
 
 .u-datepicker {

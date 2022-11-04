@@ -15,7 +15,8 @@ class ContactController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'email' => 'nullable|email'
         ]);
 
         $order = Order::create($request->all());

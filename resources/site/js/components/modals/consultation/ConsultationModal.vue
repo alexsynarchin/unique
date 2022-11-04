@@ -33,7 +33,7 @@
                                        :class="{'is-invalid': errors.has('name')}"
                                 >
                             </div>
-                            <div class="invalid-feedback" v-text="errors.get('name')"></div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('name')"></div>
                         </div>
                         <div class="u-form-group">
                             <label class="u-form-group__label">
@@ -51,7 +51,41 @@
                                        v-phone
                                 >
                             </div>
-                            <div class="invalid-feedback" v-text="errors.get('phone')"></div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('phone')"></div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-form-group__label">
+                                Почта
+                            </label>
+                            <div class="u-input-group"   :class="{'is-invalid': errors.has('email')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       v-model="form.email"
+                                       :class="{'is-invalid': errors.has('email')}"
+                                >
+                            </div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('email')"></div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-form-group__label">
+                                Комментарий
+                            </label>
+                            <div class="u-input-group u-input-group--dark"  :class="{'is-invalid': errors.has('comment')}">
+                                <i class="u-input-group__icon u-input-group__icon--textarea">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg ">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
+                                    </svg>
+                                </i>
+                                <textarea class="u-input-group__input u-input-group__input--textarea"
+                                          v-model="form.comment"
+                                          :class="{'is-invalid': errors.has('comment')}"
+                                ></textarea>
+                            </div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('comment')"></div>
                         </div>
                         <div class="consultation-modal__footer">
                             <button class="btn button consultation-form__btn" @click.prevent="sendMsg">
@@ -75,6 +109,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 form: {
                     name: '',
                     phone:'',
+                    email:'',
                 },
                 errors: new Errors(),
             }

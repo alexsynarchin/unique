@@ -48,7 +48,7 @@
             <label class="u-form-group__label">
                 Комментарий
             </label>
-            <div class="u-input-group u-input-group--dark"  :class="{'is-invalid': errors.has('name')}">
+            <div class="u-input-group u-input-group--dark"  :class="{'is-invalid': errors.has('comment')}">
                 <i class="u-input-group__icon u-input-group__icon--textarea">
                     <svg viewBox="0 0 24 24" class="u-input-group__svg ">
                         <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
