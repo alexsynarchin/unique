@@ -2,4 +2,9 @@
     &__content {
         background-color: transparent;
     }
+    &__dialog {
+        @include media-breakpoint-up(lg) {
+            max-width: 90%;
+        }
+    }
 }

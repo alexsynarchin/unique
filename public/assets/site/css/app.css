@@ -12271,6 +12271,11 @@ img {
 .video-modal__content {
   background-color: transparent;
 }
+@media (min-width: 1024px) {
+  .video-modal__dialog {
+    max-width: 90%;
+  }
+}
 
 .free-check-modal {
   margin-bottom: 60px;
