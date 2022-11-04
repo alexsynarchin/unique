@@ -44,6 +44,27 @@
                 </div>
             </section>
         </div>
+        <div class="contact-form__row">
+            <section class="contact-form__group">
+                <div class="u-form-group ">
+                    <label class="u-form-group__label">
+                        Почта
+                    </label>
+                    <div class="u-input-group u-input-group--dark"   :class="{'is-invalid': errors.has('email')}">
+                        <i class="u-input-group__icon">
+                            <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
+                                <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                            </svg>
+                        </i>
+                        <input class="u-input-group__input"
+                               v-model="form.email"
+                               :class="{'is-invalid': errors.has('email')}"
+                        >
+                    </div>
+                    <div class="invalid-feedback" v-text="errors.get('email')"></div>
+                </div>
+            </section>
+        </div>
         <div class="u-form-group">
             <label class="u-form-group__label">
                 Комментарий
@@ -79,6 +100,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 form: {
                     name: '',
                     phone:'',
+                    email:'',
                     comment: ''
                 },
                 errors: new Errors(),
