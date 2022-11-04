@@ -21,8 +21,8 @@
             </div>
             <div class="contact-block-content__right">
                 <ul class="contact-social">
-                    <li class="contact-social__item" v-if="contact.whatsapp_link">
-                        <a :href="'https://api.whatsapp.com/send/?phone=' + contact.whatsapp_link" class="contact-social__link" target="_blank">
+                    <li class="contact-social__item contact-item" v-if="contact.whatsapp_link">
+                        <a :href="'https://api.whatsapp.com/send/?phone=' + contact.whatsapp_link" class="contact-social__link contact-item__icon" target="_blank">
                             <svg viewBox="0 0 24 24" >
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=12#sprite-whatsup-white"></use>
                             </svg>
