@@ -31,9 +31,9 @@
         </ul>
         @endif
         <div class="mp-about__btns">
-            <button class="btn button mp-about__btn-first">
+            <a href="/garatnii" class="btn button mp-about__btn-first">
                 Узнать подробнее о гарантиях
-            </button>
+            </a>
             <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#video_modal">
                 <span>
                     Смотреть видео о сервисе
