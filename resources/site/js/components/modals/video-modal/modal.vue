@@ -7,7 +7,7 @@
                         <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                 </button>
-                <iframe width="100%" height="auto" :src="url" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <iframe width="100%" height="500" :src="url" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
     </div>
     </div>
