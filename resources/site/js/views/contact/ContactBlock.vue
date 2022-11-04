@@ -26,8 +26,8 @@
                             <svg viewBox="0 0 24 24" >
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=12#sprite-whatsup-white"></use>
                             </svg>
-                            <span>{{contact.whatsapp_link}}</span>
                         </a>
+                        <span class="contact-item__val">{{contact.whatsapp_link}}</span>
                     </li>
                     <li class="contact-social__item" v-if="contact.vk_link">
                         <a :href="contact.vk_link" class="contact-social__link" target="_blank">
