@@ -33,6 +33,8 @@
                     <el-input v-model="form.vk_link"></el-input>
                 </el-form-item>
             </div>
+            <h4>Фавикон</h4>
+
             <el-button type="success" @click="submitForm">Сохранить</el-button>
         </el-form>
     </section>

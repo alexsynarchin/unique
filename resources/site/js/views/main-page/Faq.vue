@@ -1,6 +1,7 @@
 <template>
     <section>
-        <accordion-list  :faqList="list"></accordion-list>
+        <accordion-list class="mb-3"  :faqList="list"></accordion-list>
+        <a href="/faq" class="btn button">ВСЕ ВОПРОСЫ </a>
     </section>
 
 </template>
