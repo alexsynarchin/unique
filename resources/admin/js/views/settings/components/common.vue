@@ -33,14 +33,18 @@
                     <el-input v-model="form.vk_link"></el-input>
                 </el-form-item>
             </div>
-            <h4>Фавикон</h4>
-
             <el-button type="success" @click="submitForm">Сохранить</el-button>
         </el-form>
+
+       <!-- <favicon-upload></favicon-upload>-->
     </section>
 </template>
 <script>
+    import FaviconUpload from "./FaviconUpload";
     export default {
+        components: {
+            FaviconUpload
+        },
         data() {
           return {
               form:{
@@ -52,6 +56,7 @@
                   instagram_link:"",
                   whatsapp_link:"",
                   vk_link:"",
+                  favicon: "",
               }
           }
         },

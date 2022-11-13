@@ -13565,6 +13565,11 @@ img {
     margin-bottom: 56px;
   }
 }
+@media (min-width: 768px) {
+  .mp-reviews__heading-right {
+    display: flex;
+  }
+}
 .mp-reviews__title {
   margin-bottom: 0;
 }
@@ -13574,12 +13579,30 @@ img {
   border-radius: 500px;
   padding: 8px;
 }
+.mp-reviews__all-link--desctop {
+  margin-right: 15px;
+}
+@media (max-width: 767.98px) {
+  .mp-reviews__all-link--desctop {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .mp-reviews__all-link--mobile {
+    display: none;
+  }
+}
 
-.mp-reviews-list {
+@media (max-width: 767.98px) {
+  .mp-reviews-list {
+    margin-bottom: 20px;
+  }
+}
+.mp-reviews-list__wrap {
   margin-bottom: 70px;
 }
 @media (min-width: 1024px) {
-  .mp-reviews-list {
+  .mp-reviews-list__wrap {
     margin-bottom: 100px;
   }
 }

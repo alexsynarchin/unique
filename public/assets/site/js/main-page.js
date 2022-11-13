@@ -88,38 +88,47 @@ $(document).ready(function(){
     }
     $(document).ready(function(e) {
         owlInitialize();
+        mpReviewsCar.owlCarousel({
+            dots:false,
+            margin:30,
+            autoplay:false,
+            responsiveClass:true,
+            navText:['<i aria-hidden="true" class="fas fa-chevron-left"></i>','<i aria-hidden="true" class="fas fa-chevron-right"></i>' ],
+            responsive:{
+                0:{
+                    loop:true,
+                    items:1,
+                    nav:true,
+                    navContainer:'.landing-reviews__nav',
+                    autoHeight:true,
+                    stagePadding: 50
+                },
+                768:{
+                    items:2,
+                    nav:false,
+                    loop:false
+                },
+                1000:{
+                    items:2,
+                    nav:false,
+                    loop:false
+                }
+            },
+            autoplayTimeout:10000,
+        });
+        $('.mp-reviews-control--left').click(function () {
+            mpReviewsCar.trigger('prev.owl.carousel');
+            console.log('test')
+        })
+        $('.mp-reviews-control--right').click(function (){
+            mpReviewsCar.trigger('next.owl.carousel');
+        })
     });
 
     $(window).resize(function() {
         owlInitialize();
 
     });
-    $(".mp-reviews-list").owlCarousel({
-        dots:false,
-        margin:30,
-        autoplay:false,
-        responsiveClass:true,
-        navText:['<i aria-hidden="true" class="fas fa-chevron-left"></i>','<i aria-hidden="true" class="fas fa-chevron-right"></i>' ],
-        responsive:{
-            0:{
-                loop:true,
-                items:1,
-                nav:true,
-                navContainer:'.landing-reviews__nav',
-                autoHeight:true,
-                stagePadding: 50
-            },
-            768:{
-                items:2,
-                nav:false,
-                loop:false
-            },
-            1000:{
-                items:2,
-                nav:false,
-                loop:false
-            }
-        },
-        autoplayTimeout:10000,
-    });
+
+
 });

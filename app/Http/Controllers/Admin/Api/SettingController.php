@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FaviconUploadRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class SettingController extends Controller
 {
@@ -34,5 +37,12 @@ class SettingController extends Controller
             $values[$setting->name] = $setting ->value;
         }
         return json_encode($values);
+    }
+
+    public function uploadFavicon(FaviconUploadRequest $request)
+    {
+
+        $validated = $request->validate();
+        Storage::disk('local') ->put('/public/favicons/',$request->file('file'));
     }
 }

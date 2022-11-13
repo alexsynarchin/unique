@@ -19,5 +19,5 @@
 
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/site/js/main-page.js?ver=33')}}"></script>
+    <script src="{{asset('assets/site/js/main-page.js?ver=36')}}"></script>
 @endsection

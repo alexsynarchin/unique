@@ -1,7 +1,13 @@
 .mp-reviews-list {
-    margin-bottom: 70px;
-    @include media-breakpoint-up(lg) {
-        margin-bottom: 100px;
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: 20px;
+    }
+    &__wrap {
+        margin-bottom: 70px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 100px;
+        }
     }
     &__item {
         border: 3px solid #E3E5ED;

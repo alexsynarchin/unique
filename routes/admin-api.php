@@ -23,6 +23,7 @@ Route::apiResource('/moderators', ModeratorController::class);
 use App\Http\Controllers\Admin\Api\SettingController;
 Route::get('/setting/common/get', [SettingController::class, 'getCommon'])->name('setting.get-common');
 Route::post('/setting/common-update', [SettingController::class, 'updateCommon'])->name('setting.update-common');
+Route::post('/setting/upload-favicon', [SettingController::class, 'uploadFavicon'])->name('setting.upload-favicon');
 
 use App\Http\Controllers\Admin\Api\MenuController;
 Route::post('/menu/store',[MenuController::class, 'store'])->name('menu.store');

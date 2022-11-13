@@ -15,7 +15,7 @@
                         <h4 class="check-system-item__title">
                             {{item.title}}
                         </h4>
-                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" @click.prevent="showSystemModal(index, item)">
+                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" @click.stop.prevent="showSystemModal(index, item)">
                             Подробнее
                         </a>
                         <span class="check-system-item__price check-system-item__price--mobile">
