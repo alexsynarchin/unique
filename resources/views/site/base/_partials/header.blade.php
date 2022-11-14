@@ -5,7 +5,9 @@
         </a>
        <header-panel-btn></header-panel-btn>
         <section class="page-header__right">
-            <a href="" class="btn button" v-scroll-to="'#check_unique'">
+
+
+            <a href="/#check_unique" class="btn button"  @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
                 Проверить уникальность
             </a>
             <ul class="social-list social-list--header">

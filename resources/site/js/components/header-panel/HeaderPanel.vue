@@ -7,9 +7,9 @@
         <div class="header-panel__inner container">
             <div class="row">
                 <div class="header-panel__left col-md-3">
-                    <button class="btn button button--width-100 mb-4" v-scroll-to="'#check_unique'">
+                    <a href="/#check_unique" class="btn button button--width-100 mb-4">
                         Проверить уникальность
-                    </button>
+                    </a>
                     <button class="btn button button--width-100 button--transparent" data-bs-toggle="modal" data-bs-target="#video_modal">
                         <span class="button__text">
                             Смотреть видео о сервисе
