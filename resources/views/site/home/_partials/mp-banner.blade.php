@@ -5,16 +5,17 @@
        </figure>
        <div class="mp-banner__content">
            <h3 class="mp-banner__title">
-               Получить консультацию
+               Проверить оригинальность текста
+
            </h3>
            <p class="mp-banner__text">
-               Заполните форму и мы ответим на все ваши вопросы!
+               Бесплатные проверка уникальности и платные тарифы
            </p>
        </div>
        <div class="mp-banner__action">
-           <button class="btn button button--white" data-bs-toggle="modal" data-bs-target="#order-call">
-               Получить консультацию
-           </button>
+           <a href="/#check_unique'" class="btn button button--white" @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
+               Бесплатные проверка уникальности и платные тарифы
+           </a>
        </div>
 
    </section>
