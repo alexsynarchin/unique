@@ -37,11 +37,17 @@
         <button class="btn button" @click.prevent = "checkTextUnique">
             Проверить уникальность полного текста
         </button>
+       <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
+            {{errors.get('text')}}
+           {{errors.get('symbols_count')}}
+           {{errors.get('length')}}
+       </div>
         <select-system-modal ref="select_system_modal" @selectSystem="handleSelected"></select-system-modal>
     </section>
 </template>
 <script>
     import selectSystemModal from "./SelectSystemModal";
+    import { Errors } from  '@/common/js/services/errors.js';
     export default {
         props: {
             stateSelectedSystems: {
@@ -60,6 +66,7 @@
                 selectedSystemsList:[],
                 systemIndex: [],
                 CheckSystems: [],
+                errors: new Errors(),
             }
         },
         methods: {
@@ -107,6 +114,7 @@
 
             },
             checkTextUnique() {
+
                 this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
             },
             getSystemsList() {

@@ -19,6 +19,20 @@ class CheckUniqueController extends Controller
         return $check_unique;
     }
 
+    public function validateCheckUniqueModal(Request $request)
+    {
+        $request->validate([
+            'text' => 'required',
+            'symbols_count' => 'numeric|min:100|max:150000',
+            'length' => 'numeric|min:1'
+        ],[
+            'text.required'=> 'Загрузите файл или введите текст для проверки на уникальность',
+            'symbols_count.min' => 'Длина текста не может быть меньше 100 символов',
+            'length.min' => 'Выберите систему проверки уникальности'
+        ]);
+        return $request->all();
+    }
+
     public function check(Request $request)
     {
         $words_count = count(preg_split('/\s+/', $request->get('text')));

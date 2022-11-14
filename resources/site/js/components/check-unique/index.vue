@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <systems-list @selectSystem="handleSelected"></systems-list>
+        <systems-list @selectSystem="handleSelected" ref="systems_list"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
         <CountrySelectModal></CountrySelectModal>
@@ -111,6 +111,7 @@
     import FreeCheckModal from "./components/FreeCheckModal";
     import PayCheckModal from "./components/PayCheckModal";
     import CountrySelectModal from "./components/CountrySelectModal";
+
     export default {
         components: {
             SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal
@@ -176,12 +177,23 @@
 
             },
             handleSelected(data) {
-                console.log(data);
-                if(data.free && data.list.length > 0) {
-                    this.$refs.free_check_modal.showModal(this.textParams, data.list, this.file);
-                } else if(data.list.length > 0) {
-                    this.$refs.pay_check_nodal.showModal(this.textParams, data.list, this.file);
-                }
+                axios.post('/api/check-unique/validate-modal',
+                    {
+                            length: data.list.length,
+                            text:this.textParams.plainText,
+                            symbols_count:this.textParams.symbolsCount
+                    })
+                    .then((response) => {
+                        if(data.free && data.list.length > 0) {
+                            this.$refs.free_check_modal.showModal(this.textParams, data.list, this.file);
+                        } else if(data.list.length > 0) {
+                            this.$refs.pay_check_nodal.showModal(this.textParams, data.list, this.file);
+                        }
+                    })
+                    .catch((error) => {
+                        this.$refs.systems_list.errors.record(error.response.data.errors);
+                    })
+
 
             },
 

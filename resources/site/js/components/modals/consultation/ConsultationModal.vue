@@ -121,7 +121,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                         $('#order-call').modal('hide');
                     })
                     .catch((error) => {
-                        this.errors.record(error.response.data.errors);
+
                     })
             },
        },
