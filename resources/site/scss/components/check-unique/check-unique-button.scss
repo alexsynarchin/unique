@@ -1,0 +1,9 @@
+.check-unique-button {
+    @include media-breakpoint-up(lg) {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 21px;
+    }
+}

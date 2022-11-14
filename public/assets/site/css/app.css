@@ -12947,6 +12947,18 @@ img {
   transform: rotate(45deg);
 }
 
+@media (min-width: 1024px) {
+  .check-unique-button {
+    font-size: 20px;
+    padding: 20px 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .check-unique-button {
+    font-size: 21px;
+  }
+}
+
 .sidebar-banner {
   display: block;
   text-align: center;

@@ -34,7 +34,7 @@
             </section>
         </div>
     </div>
-        <button class="btn button" @click.prevent = "checkTextUnique">
+        <button class="btn button check-unique-button" @click.prevent = "checkTextUnique">
             Проверить уникальность полного текста
         </button>
        <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
