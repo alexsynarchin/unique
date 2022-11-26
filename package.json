@@ -41,6 +41,7 @@
         "bootstrap": "^5.1.3",
         "dayjs": "^1.11.4",
         "element-ui": "^2.15.6",
+        "element-ui-el-table-draggable": "^1.2.10",
         "jquery": "^3.6.0",
         "laravel-permission-to-vuejs": "^2.0.5",
         "owl.carousel": "^2.3.4",

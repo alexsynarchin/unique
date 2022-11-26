@@ -13,7 +13,13 @@
                         placeholder="Название системы проверки"/>
                 </div>
             </div>
-            <data-tables :data="tableData">
+            <el-table-draggable @drop="endSort" >
+                <el-table row-key="menuindex" :data="tableData">
+                    <el-table-column width="26px">
+                        <template>
+                            <i class="el-icon-rank" style="cursor: pointer"></i>
+                        </template>
+                    </el-table-column>
                 <el-table-column
                     type="index"
                 >
@@ -57,7 +63,8 @@
                     </el-button>
                 </template>
                 </el-table-column>
-            </data-tables>
+                </el-table>
+            </el-table-draggable>
         </div>
         <el-dialog
             :title="modalTitle"
@@ -80,9 +87,10 @@
 <script>
 import Create from './systems-list/create';
 import Edit from "./systems-list/edit";
+import ElTableDraggable from 'element-ui-el-table-draggable';
     export default {
         components: {
-            Create, Edit
+            Create, Edit,  'ElTableDraggable': ElTableDraggable,
         },
         data() {
             return {
@@ -109,6 +117,20 @@ import Edit from "./systems-list/edit";
             },
         },
         methods: {
+            endSort(e) {
+                console.log(e)
+                var valuesSort = this.tableData.map(function (item, i) {
+                    var sortItem = {};
+                    sortItem.menuindex = i;
+                    sortItem.id = item.id;
+                    sortItem.name = item.name;
+                    return sortItem;
+                });
+                axios.post('/api/admin/systems/sort',{sort:valuesSort})
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+            },
             getList() {
                 axios.get('/api/admin/check-systems')
                     .then((response) => {

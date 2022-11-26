@@ -1,0 +1,26 @@
+.upload-file {
+    background: #fff;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    left: 0;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    &__file-name {
+        line-height: 1;
+        display: block;
+        margin-bottom: 1px;
+        font-size: 19px;
+        font-weight: 500;
+    }
+    &__delete {
+        padding: 0;
+        text-decoration: underline;
+        font-weight: 700;
+        font-size: 17px;
+        color: #ABAFC3;
+    }
+}

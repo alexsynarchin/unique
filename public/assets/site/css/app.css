@@ -11590,20 +11590,6 @@ img {
   align-items: center;
   display: flex;
 }
-.upload-button__file-name {
-  line-height: 1;
-  display: block;
-  margin-bottom: 1px;
-  font-size: 17px;
-  font-weight: 500;
-}
-.upload-button__delete {
-  padding: 0;
-  text-decoration: underline;
-  font-weight: 700;
-  font-size: 17px;
-  color: #ABAFC3;
-}
 
 .breadcrumb-list {
   margin-bottom: 20px;
@@ -12595,7 +12581,7 @@ img {
 }
 .check-unique__textarea-wrap:after {
   bottom: 18px;
-  right: 20px;
+  right: 40px;
   position: absolute;
   content: "Максимум 300 000 символов";
   color: #ABAFC3;
@@ -12957,6 +12943,33 @@ img {
   .check-unique-button {
     font-size: 21px;
   }
+}
+
+.upload-file {
+  background: #fff;
+  padding: 15px;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  left: 0;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+}
+.upload-file__file-name {
+  line-height: 1;
+  display: block;
+  margin-bottom: 1px;
+  font-size: 19px;
+  font-weight: 500;
+}
+.upload-file__delete {
+  padding: 0;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 17px;
+  color: #ABAFC3;
 }
 
 .sidebar-banner {

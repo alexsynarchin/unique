@@ -11,6 +11,10 @@
 
         <section class="check-unique">
             <section class="check-unique__textarea-wrap">
+                <div class="upload-file" v-if="fileName">
+                    <span class="upload-file__file-name">{{fileName}}</span>
+                    <button class="btn-link btn upload-file__delete" @click="handleFileDelete">Удалить</button>
+                </div>
                 <textarea class="check-unique__textarea form-control"
                           v-model="text"
                           placeholder="Вставьте текст или загрузите документ до 15000 символов бесплатно"></textarea>
@@ -70,10 +74,7 @@
                     Загрузить документ
                     </span>
                     </label>
-                    <div class="upload-button__actions" v-if="fileName">
-                        <span class="upload-button__file-name">{{fileName}}</span>
-                        <button class="btn-link btn upload-button__delete" @click="handleFileDelete">Удалить</button>
-                    </div>
+
 
                 </div>
 
