@@ -14,7 +14,7 @@
        </div>
        <div class="mp-banner__action">
            <a href="/#check_unique'" class="btn button button--white" @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
-               Бесплатные проверка уникальности и платные тарифы
+               Проверить уникальность
            </a>
        </div>
 
