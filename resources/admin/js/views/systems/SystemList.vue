@@ -126,7 +126,7 @@ import ElTableDraggable from 'element-ui-el-table-draggable';
                     sortItem.name = item.name;
                     return sortItem;
                 });
-                axios.post('/api/admin/systems/sort',{sort:valuesSort})
+                axios.post('/api/admin/sort',{sort:valuesSort, model:'CheckSystem'})
                     .then((response) => {
                         console.log(response.data);
                     })

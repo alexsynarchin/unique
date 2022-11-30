@@ -20,6 +20,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 use App\Http\Controllers\Admin\Api\ModeratorController;
 Route::apiResource('/moderators', ModeratorController::class);
 
+use App\Http\Controllers\Admin\Api\SortController;
+Route::post('/sort', [SortController::class, 'sort'])->name('sorting');
+
 use App\Http\Controllers\Admin\Api\SettingController;
 Route::get('/setting/common/get', [SettingController::class, 'getCommon'])->name('setting.get-common');
 Route::post('/setting/common-update', [SettingController::class, 'updateCommon'])->name('setting.update-common');

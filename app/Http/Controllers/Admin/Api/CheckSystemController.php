@@ -10,7 +10,7 @@ class CheckSystemController extends Controller
 {
     public function index()
     {
-        $systems = CheckSystem::with('checkApi')->get();
+        $systems = CheckSystem::with('checkApi')->orderBy('menuindex','asc')->orderBy('created_at','desc')->get();
         return $systems;
     }
 
@@ -65,4 +65,6 @@ class CheckSystemController extends Controller
         $system->delete();
         return 'success';
     }
+
+
 }

@@ -10,7 +10,7 @@ class CheckSystemController extends Controller
 {
     public function index()
     {
-        $systems = CheckSystem::all();
+        $systems = CheckSystem::orderBy('menuindex','asc')->orderBy('created_at','desc')->get();
         return $systems;
     }
 }
