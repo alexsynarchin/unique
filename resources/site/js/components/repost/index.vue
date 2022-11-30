@@ -60,7 +60,7 @@
             return {
                 data: {
                     url: 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai',
-                    title: 'Проверка-уникальности.рф',
+                    title: 'Проверка-уникальности.рф. Бесплатная проверка уникальности текста. Все системы в одном месте',
                     media:'/assets/site/images/favicon.png',
                     description: 'Бесплатная проверка уникальности текста. Все системы в одном месте'
                 }
