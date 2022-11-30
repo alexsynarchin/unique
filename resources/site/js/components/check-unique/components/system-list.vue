@@ -3,7 +3,6 @@
     <div class="check-systems">
         <div class="check-systems__item" v-for="(item, index) in CheckSystems" >
             <section class="check-system-item" @click.prevent="selectSystem(index, item)">
-
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
                         <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) != -1">
@@ -108,7 +107,12 @@
                     this.systemIndex.push(data.index);
                     this.selectedSystemsList = [];
                     this.systemIndex.forEach((element) => {
-                        this.selectedSystemsList.push({id:this.CheckSystems[element].id, price:this.CheckSystems[element].price, title:this.CheckSystems[element].title});
+                        this.selectedSystemsList.push(
+                            {id:this.CheckSystems[element].id,
+                                logo: this.CheckSystems[element].logo,
+                                price:this.CheckSystems[element].price,
+                                title:this.CheckSystems[element].title
+                            });
                     })
                 }
 

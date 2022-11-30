@@ -12095,6 +12095,15 @@ img {
     font-size: 36px;
   }
 }
+.unique-modal__title--medium {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+@media (min-width: 1024px) {
+  .unique-modal__title--medium {
+    font-size: 28px;
+  }
+}
 .unique-modal__descr {
   color: #131313;
   font-size: 17px;
@@ -12385,18 +12394,57 @@ img {
 
 .pay-check-modal-list {
   list-style-type: none;
-  padding-left: 0;
   margin-left: 0;
-  margin-bottom: 35px;
-}
-.pay-check-modal-list__label {
-  color: rgba(19, 19, 19, 0.75);
+  padding-left: 0;
 }
 .pay-check-modal-list__item {
-  font-size: 17px;
+  align-items: start;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 20px;
 }
-.pay-check-modal-list__value {
-  color: #FF9902;
+.pay-check-modal-list__title {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 0;
+  flex: 1;
+}
+.pay-check-modal-list__description {
+  font-weight: 400;
+  font-size: 15px;
+  padding-right: 25px;
+}
+.pay-check-modal-list__content {
+  display: flex;
+  flex: 1;
+  padding-left: 20px;
+  align-items: center;
+}
+.pay-check-modal-list__logo {
+  margin-bottom: 6px;
+}
+.pay-check-modal-list__logo-wrap {
+  min-width: 65px;
+  width: 65px;
+  border-radius: 5px;
+}
+.pay-check-modal-list__check {
+  position: relative;
+  margin-bottom: 0;
+  height: 35px;
+  width: 35px;
+  min-width: 35px;
+}
+.pay-check-modal-list__check:after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 3px;
+  width: 12px;
+  height: 22px;
+  border: solid #008000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 .u-form-group {

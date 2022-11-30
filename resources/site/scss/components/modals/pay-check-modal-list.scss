@@ -1,15 +1,56 @@
 .pay-check-modal-list {
     list-style-type: none;
-    padding-left: 0;
     margin-left: 0;
-    margin-bottom: 35px;
-    &__label {
-        color: rgba(19, 19, 19, 0.75);;
-    }
+    padding-left: 0;
     &__item {
-        font-size: 17px;
+        align-items: start;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 20px;
     }
-    &__value {
-        color: $orange-color;
+    &__title {
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    &__description {
+        font-weight: 400;
+        font-size: 15px;
+        padding-right: 25px;
+    }
+    &__content {
+        display: flex;
+        flex:1;
+        padding-left: 20px;
+        align-items: center;
+
+    }
+    &__logo {
+
+        margin-bottom: 6px;
+        &-wrap {
+            min-width: 65px;
+            width: 65px;
+            border-radius: 5px;
+        }
+    }
+    &__check {
+        position: relative;
+        margin-bottom: 0;
+        height: 35px;
+        width: 35px;
+        min-width: 35px;
+        &:after {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 3px;
+            width: 12px;
+            height: 22px;
+            border: solid #008000;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
     }
 }

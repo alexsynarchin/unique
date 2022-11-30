@@ -5,6 +5,13 @@
         @include media-breakpoint-up(lg) {
             font-size: 36px;
         }
+        &--medium {
+            font-size: 22px;
+            margin-bottom: 20px;
+            @include media-breakpoint-up(lg) {
+                font-size: 28px;
+            }
+        }
     }
     &__descr {
         color: #131313;

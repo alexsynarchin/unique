@@ -22,6 +22,35 @@
                             <img src="/assets/site/images/document.png">
                         </figure>
                     </div>
+                    <h4 class="unique-modal__title unique-modal__title--medium">
+                        Проверка по {{ ['системе', 'системам'] | OneOrManyWord(systems.length)}}:
+                    </h4>
+                    <ul class="pay-check-modal-list">
+                        <li class="pay-check-modal-list__item"
+                            v-for="(item, index) in systems"
+                            @click.prevent="selectService({id:item.id, price:item.price})"
+                        >
+                            <figure class="pay-check-modal-list__logo-wrap">
+                                <img v-if="item.logo"
+                                     :src="item.logo" class="pay-check-modal-list__logo"/>
+                                <svg viewBox="0 0 24 24"  class="pay-check-modal-list__logo" v-else>
+                                    <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-magnifying-glass"></use>
+                                </svg>
+                            </figure>
+                            <div class="pay-check-modal-list__content">
+                                <h4 class="pay-check-modal-list__title">
+                                    {{item.title}}
+                                </h4>
+                                <figure class="pay-check-modal-list__check">
+
+                                </figure>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <h4 class="unique-modal__title unique-modal__title--medium">
+                        Выберите дополнительные услуги:
+                    </h4>
                     <service-list
                         :selected-services="services"
                         @select-service="selectService"
@@ -73,19 +102,7 @@
                 <div class="pay-check-modal__sum">
                     Итого к оплате: {{sum}} руб
                 </div>
-                <ul class="pay-check-modal-list">
-                    <li class="pay-check-modal-list__item">
-                        <label class="pay-check-modal-list__label">
-                            Проверка по системе:
-                        </label>
-                        <span class="pay-check-modal-list__value">
-                            <template v-for="(system, index) in systems">
-                                {{system.title}}
-                                <template v-if="index !== (systems.length - 1)">,</template>
-                            </template>
-                        </span>
-                    </li>
-                </ul>
+
                 <div class="pay-check-modal__footer">
                     <button class="btn button pay-check-modal__btn" @click.prevent="uniqueCheck">Проверить уникальность</button>
                     <div class="pay-check-modal__footer-text">
@@ -101,7 +118,9 @@
 import { Errors } from  '@/common/js/services/errors.js';
 import { bus } from '@/site/js/services/bus.js';
 import ServiceList from "./ServiceList";
-    export default {
+import { OneOrManyWord } from "@/site/js/filters/index.js";
+
+export default {
         components: {
             ServiceList,
         },
@@ -120,6 +139,9 @@ import ServiceList from "./ServiceList";
                 errors: new Errors(),
             }
         },
+    filters: {
+        OneOrManyWord,
+    },
         methods: {
             onCloseModal() {
                 this.sum = 0;
