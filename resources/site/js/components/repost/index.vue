@@ -23,6 +23,7 @@
                 network="odnoklassniki"
                 :url="data.url"
                 :title="data.title"
+                :media="data.logo"
                 :description="data.description"
             >
                 <svg class="repost__icon" viewBox="0 0 20 22">
@@ -58,9 +59,10 @@
         data() {
             return {
                 data: {
-                    url: 'http://unique.welcome-rb.ru/about',
-                    title: 'Проверка уникальности',
-                    description: 'Очень часто студенты проверяют свои курсовые, дипломные работы или рефераты в бесплатной версии (общедоступной). Антиплагиат, получив высокий процент уникальности при проверке'
+                    url: 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai',
+                    title: 'Проверка-уникальности.рф',
+                    media:'/assets/site/images/favicon.png',
+                    description: 'Бесплатная проверка уникальности текста. Все системы в одном месте'
                 }
 
             }

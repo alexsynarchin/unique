@@ -7,8 +7,11 @@
     <link href="{{mix('css/app.css', 'assets/site')}}?ver=19" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="{{URL::asset('assets/site/images/favicon.png')}}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token()}}" />
-    <meta name="description" content="">
+    <meta name="description" content="Бесплатная проверка уникальности текста. Все системы в одном месте">
     <title>Проверка уникальности</title>
-    <meta name="description">
+    <meta property="og:title" content="Проверка-уникальности.рф" />
+    <meta property="og:description" content="Бесплатная проверка уникальности текста. Все системы в одном месте">
+    <meta name="og:image" content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
+    <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png" />
     @yield('head')
 </head>
