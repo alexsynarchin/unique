@@ -24,7 +24,7 @@
                 </el-date-picker>
             </el-form-item>
             <el-form-item class="col-md-6" label="Размер скидки" prop="discount" :error="errors.get('discount')">
-                <el-input-number v-model="form.discount" :step="100" :min="100"  step-strictly></el-input-number>
+                <el-input-number v-model="form.discount" :step="5" :min="1"  step-strictly></el-input-number>
             </el-form-item>
         </div>
         <el-row :gutter="15">
