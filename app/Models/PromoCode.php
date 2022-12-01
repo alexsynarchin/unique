@@ -10,8 +10,8 @@ class PromoCode extends Model
     use HasFactory;
 
     protected $casts = [
-        'start_time'  => 'date:m-d-Y',
-        'end_time' => 'date:m-d-Y',
+        'start_time'  => 'date:d-m-Y',
+        'end_time' => 'date:d-m-Y',
     ];
 
     protected $fillable = [

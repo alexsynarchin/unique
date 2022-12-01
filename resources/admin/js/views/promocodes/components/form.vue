@@ -1,7 +1,7 @@
 <template>
     <el-form :model="form" label-position="top">
-        <el-form-item class="" prop="discount_type" label="Тип скидки">
-            <el-select v-model="form.discount_type" placeholder="Выбрать тип скидки" :error="errors.get('discount_type')">
+        <el-form-item class="" prop="discount_type" label="Тип скидки" :error="errors.get('discount_type')">
+            <el-select v-model="form.discount_type" placeholder="Выбрать тип скидки" >
                 <el-option
                     v-for="item in discount_types"
                     :key="item.value"
@@ -19,12 +19,18 @@
                     start-placeholder="Дата начала"
                     end-placeholder="Дата завершения"
                     format="dd-MM-yyyy"
+                    value-format="dd-MM-yyyy"
                     style="width: 100%"
                 >
                 </el-date-picker>
             </el-form-item>
-            <el-form-item class="col-md-6" label="Размер скидки" prop="discount" :error="errors.get('discount')">
-                <el-input-number v-model="form.discount" :step="5" :min="1"  step-strictly></el-input-number>
+            <el-form-item class="col-md-6"  prop="discount" :error="errors.get('discount')">
+                <slot name="label">
+                    <label class="el-form-item__label" style="display: block">
+                        Размер скидки, <span v-if="form.discount_type === 'percent'">%</span> <span v-else>руб.</span>
+                    </label>
+                </slot>
+            <el-input-number v-model="form.discount" :step="5" :min="0" :max="maxDiscount" :disabled="disableDiscountInput"></el-input-number>
             </el-form-item>
         </div>
         <el-row :gutter="15">
@@ -35,7 +41,7 @@
             </el-col>
             <el-col :span="10">
                 <el-form-item label="Количество использований" prop="max_count" :error="errors.get('max_count')">
-                    <el-input-number v-model="form.max_count" :step="10" :min="0" ></el-input-number>
+                    <el-input-number v-model="form.max_count" :step="10" :min="0"  ></el-input-number>
                 </el-form-item>
             </el-col>
         </el-row>
@@ -58,6 +64,22 @@ import { Errors } from  '@/common/js/services/errors.js';
             action_url: {
                 type:String
             },
+        },
+        computed: {
+            maxDiscount(){
+                if(this.form.discount_type === 'percent'){
+                    return 100;
+                } else {
+                    return Infinity;
+                }
+            },
+            disableDiscountInput() {
+                if(this.form.discount_type) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
         },
         data() {
             return {

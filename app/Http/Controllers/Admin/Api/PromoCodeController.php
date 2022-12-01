@@ -32,11 +32,12 @@ class PromoCodeController extends Controller
         $request->validate([
            'name' => 'required',
             'discount_type' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|numeric|min:1',
             'max_count' => 'required',
             'range' => 'required',
         ], [
-            'range.required' => 'Выберите срок действия промокода'
+            'range.required' => 'Выберите срок действия промокода',
+            'discount.min' => 'Введите размер скидки'
         ]);
 
         $start_time = date('Y-m-d H:i:s',  strtotime($request ->get('range')[0]));
