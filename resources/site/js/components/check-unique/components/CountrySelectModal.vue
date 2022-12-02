@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade unique-modal modal-inner" id="payment_country_select"  tabindex="-1" role="dialog"  aria-hidden="true" data-backdrop="static">
+    <div class="modal unique-modal" id="payment_country_select"  tabindex="-1" role="dialog"  aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">

@@ -11352,6 +11352,14 @@ img {
   }
 }
 
+.modal:nth-of-type(odd) {
+  z-index: 1062 !important;
+}
+
+.modal-backdrop.show:nth-of-type(odd) {
+  z-index: 1061 !important;
+}
+
 .overlay {
   left: 0;
   top: 0;

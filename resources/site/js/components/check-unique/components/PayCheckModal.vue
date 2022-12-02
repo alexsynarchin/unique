@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade unique-modal" id="pay_check"  tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal  unique-modal" id="pay_check"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -186,6 +186,7 @@ export default {
                 }
                 axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
+                        console.log(response.data);
                         this.$root.isLoading = false;
                        // window.location.href = response.data;
                         let data = response.data;
