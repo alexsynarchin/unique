@@ -164,7 +164,7 @@ export default {
             },
             uniqueCheck() {
                 $('#pay_check').modal('show');
-                this.$root.isLoading = true;
+                //this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
                 this.textParams.services = this.services;
