@@ -13028,6 +13028,10 @@ img {
   color: #ABAFC3;
 }
 
+.highlight--red {
+  color: red;
+}
+
 .sidebar-banner {
   display: block;
   text-align: center;

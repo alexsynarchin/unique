@@ -25,7 +25,7 @@
 
             <ul class="report-item-links">
                 <li class="report-item-links__item" v-for="(item, index) in report.data.urls">
-                    <section class="report-item-links__text" @click.prevent="selectUrl(item)">
+                    <section class="report-item-links__text" @click.prevent="selectUrl(index)">
                         <span class="report-item-links__percent">
                             {{item.plagiat + '%'}}
                         </span>
@@ -43,9 +43,7 @@
 
                 </li>
             </ul>
-            <section class="report--item-detail-text">
-                {{report.data.clear_text}}
-            </section>
+            <section class="report--item-detail-text" v-html="resultText"></section>
         </section>
     </section>
 </template>
@@ -59,14 +57,27 @@
         data() {
             return {
                 showDetail: false,
+                textArray:[],
+                resultText: "",
             }
         },
         methods: {
             handleDetail() {
                 this.showDetail = !this.showDetail;
             },
-            selectUrl(url) {
+            highlightWords(index) {
 
+            },
+            selectUrl(index) {
+                this.textArray = this.report.data.clear_text.split(" ");
+                let wordsIndexes = this.report.data.urls[index]['words'].split(" ");
+
+                wordsIndexes.forEach(item => {
+
+                    this.textArray[item] = '<span class="highlight--red">' + this.textArray[item] + '</span>'
+                })
+                let text = this.textArray.join(" ");
+                this.resultText = text;
             },
             copyUrl(index, url) {
                // url.select();
@@ -76,6 +87,10 @@
                 document.execCommand('copy');
                 urlToCopy.setAttribute('type', 'hidden');
             },
+        },
+        mounted() {
+
+            this.resultText = this.report.data.clear_text;
         }
     }
 </script>
