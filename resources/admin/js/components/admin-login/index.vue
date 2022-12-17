@@ -38,6 +38,7 @@ export default {
     },
     methods:{
         loginPost() {
+            /*
             this.errors.clear();
             var _this = this;
             axios.post('/admin/handle-login', _this.loginForm)
@@ -47,6 +48,8 @@ export default {
                 .catch(function (error) {
                     _this.errors.record(error.response.data.errors)
                 })
+                */
+
         }
     }
 
