@@ -3,9 +3,9 @@
         <el-tab-pane name="list" label="Системы проверки">
             <system-list></system-list>
         </el-tab-pane>
-        <el-tab-pane name="api" label="Api систем проверки">
+       <!-- <el-tab-pane name="api" label="Api систем проверки">
             <api-list></api-list>
-        </el-tab-pane>
+        </el-tab-pane>-->
     </el-tabs>
 </template>
 <script>
