@@ -18,4 +18,9 @@ class CheckApiController extends Controller
     {
 
     }
+
+    public function show($id)
+    {
+        
+    }
 }

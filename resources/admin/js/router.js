@@ -16,12 +16,14 @@ import Services from "./views/services";
 import Articles from "./views/articles";
 import StaticPages from "./views/static-pages";
 import ContactOrders from "./views/contact-orders";
+import ApiShow from "./views/systems/ApiList/ApiShow.vue";
 Vue.use(VueRouter);
 let routes = [
     { name: 'home', path: '/admin', component: AdminHome},
     { name: 'moderators', path: '/admin/moderators', component: AdminModerators},
     { name: 'settings', path: '/admin/settings', component: AdminSettings},
     { name: 'check-systems', path: '/admin/check-systems', component: AdminCheckSystems},
+    {name: 'check-api', path: '/admin/check-systems/api/:id', component: ApiShow},
     {name: 'check-uniques', path: '/admin/check-uniques', component: AdminCheckUniques},
     {name: 'promo-codes', path: '/admin/promo-codes', component: PromoCodes},
     {name: 'prices', path: '/admin/prices', component: Prices},

@@ -9,7 +9,7 @@
     </el-tabs>
 </template>
 <script>
-    import ApiList from './ApiList';
+    import ApiList from './ApiList/ApiList.vue';
     import SystemList from './SystemList'
     export default {
         components: {
