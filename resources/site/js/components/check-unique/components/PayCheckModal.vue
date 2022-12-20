@@ -28,7 +28,6 @@
                     <ul class="pay-check-modal-list">
                         <li class="pay-check-modal-list__item"
                             v-for="(item, index) in systems"
-                            @click.prevent="selectService({id:item.id, price:item.price})"
                         >
                             <figure class="pay-check-modal-list__logo-wrap">
                                 <img v-if="item.logo"
