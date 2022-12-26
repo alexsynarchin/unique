@@ -15,6 +15,7 @@ class RewriteController extends Controller
         //dd($request->all());
         $request->validate([
             'email' => 'required|email',
+            'phone' => 'required',
             'name' => 'required',
             'plain_text' => 'required',
             'symbolsCount' => 'numeric|min:100|max:150000',
@@ -62,14 +63,17 @@ class RewriteController extends Controller
             'email.required' => 'Введите ваш e-mail',
             'plain_text.required' => 'Введите текст на рерайт или загрузите документ',
             'promocode.exists,name' => 'Промокод не найден',
-            'name' => 'Введите ваше имя'
+            'name' => 'Введите ваше имя',
+            'phone.required' => 'Введите ваш телефон'
         ]);
         $rewrite = Rewrite::create($request->all());
+        if($request->hasFile('file')) {
+            $filename = $request->file('file')->getClientOriginalName();
+            $path = $request->file('file')->storeAs(
+                'public/rewrites/' . $rewrite->id, $filename
+            );
+        }
 
-        $filename = $request->file('file')->getClientOriginalName();
-        $path = $request->file('file')->storeAs(
-            'public/rewrites/' . $rewrite->id, $filename
-        );
         if($request->has('promocode') && $request->get('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
             $promo_code -> max_count = $promo_code -> max_count-1;

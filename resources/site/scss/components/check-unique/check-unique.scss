@@ -19,13 +19,13 @@
 
         &-wrap {
             position: relative;
-            &:after {
+           /* &:after {
                 bottom: 18px;
                 right: 40px;
                 position: absolute;
                 content: "Максимум 300 000 символов";
                 color: #ABAFC3;
-            }
+            }*/
         }
     }
     &__actions {

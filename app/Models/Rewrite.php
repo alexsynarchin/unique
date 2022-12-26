@@ -12,7 +12,7 @@ class Rewrite extends Model
     protected $fillable = [
         'name', 'email', 'text_params', 'filename',
         'price', 'date', 'status', 'plain_text',
-        'comment', 'promo_id'
+        'comment', 'promo_id', 'phone'
     ];
 
     protected $casts = [

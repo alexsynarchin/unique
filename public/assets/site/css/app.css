@@ -12634,13 +12634,13 @@ img {
 }
 .check-unique__textarea-wrap {
   position: relative;
-}
-.check-unique__textarea-wrap:after {
-  bottom: 18px;
-  right: 40px;
-  position: absolute;
-  content: "Максимум 300 000 символов";
-  color: #ABAFC3;
+  /* &:after {
+       bottom: 18px;
+       right: 40px;
+       position: absolute;
+       content: "Максимум 300 000 символов";
+       color: #ABAFC3;
+   }*/
 }
 .check-unique__actions {
   margin-bottom: 35px;

@@ -40,7 +40,27 @@
                             <div class="invalid-feedback" v-if="errors.has('plain_text')" v-text="errors.get('plain_text')"></div>
                             <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
                         </div>
+                        <div class="u-form-group col-md-6">
+                            <label class="u-form-group__label">
+                                Телефон
+                            </label>
+                            <div class="u-input-group"   :class="{'is-invalid': errors.has('phone')}">
+                                <i class="u-input-group__icon">
+                                    <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
+                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                    </svg>
+                                </i>
+                                <input class="u-input-group__input"
+                                       v-model="form.phone"
+                                       :class="{'is-invalid': errors.has('phone')}"
+                                       v-phone
+                                >
+                            </div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('phone')"></div>
+                        </div>
 
+                    </div>
+                    <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
                                 Укажите E-mail для получения отчета
@@ -60,8 +80,6 @@
                             <div class="invalid-feedback" v-if="errors.has('email')" v-text="errors.get('email')"></div>
 
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
                                 Необходимые сроки
@@ -158,6 +176,7 @@
                     file:null,
                     name:"",
                     date:"",
+                    phone: "",
                     email: "",
                     comment:"",
                     promocode:"",
