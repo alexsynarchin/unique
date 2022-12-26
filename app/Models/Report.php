@@ -24,6 +24,7 @@ class Report extends Model
     public function getFormattedDateAttribute()
     {
         $date = $this->attributes['created_at'];
+        $date = Carbon::create($this->attributes['created_at'])->addHours(5);
         $date = DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y H:i');
         return $date;
     }
