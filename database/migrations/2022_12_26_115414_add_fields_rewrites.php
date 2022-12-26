@@ -14,7 +14,6 @@ class AddFieldsRewrites extends Migration
     public function up()
     {
         Schema::table('rewrites', function (Blueprint $table) {
-            $table->text('comment')->nullable();
             $table->string('phone')->nullable();
         });
     }
@@ -27,7 +26,7 @@ class AddFieldsRewrites extends Migration
     public function down()
     {
         Schema::table('rewrites', function (Blueprint $table) {
-            $table->dropColumn(['comment', 'phone']);
+            $table->dropColumn(['phone']);
         });
     }
 }
