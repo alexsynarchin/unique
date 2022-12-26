@@ -10,7 +10,7 @@ class CheckReportController extends Controller
 {
     public function show($slug)
     {
-        $check_unique = CheckUnique::firstOrFail($slug);
+        $check_unique = CheckUnique::where('slug', $slug)->firstOrFail();
         if($check_unique->orders()->exists()) {
             $orders = $check_unique->orders()->get();
             foreach ($orders as $order) {
