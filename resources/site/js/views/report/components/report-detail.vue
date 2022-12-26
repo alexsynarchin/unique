@@ -42,7 +42,9 @@
                     </figure>
 
                 </li>
+                <li class="report-item-links__item"><span class="report-item-detail__control" @click.prevent="highlightAllWords">Подсветить все</span></li>
             </ul>
+
             <section class="report--item-detail-text" v-html="resultText"></section>
         </section>
     </section>
@@ -65,8 +67,17 @@
             handleDetail() {
                 this.showDetail = !this.showDetail;
             },
-            highlightWords(index) {
+            highlightAllWords() {
+                let plagiats_arr = [];
+                this.report.data.urls.forEach(item => {
+                    plagiats_arr.push(item.plagiat)
+                })
 
+                let index = plagiats_arr.indexOf(this.getMaxOfArray(plagiats_arr));
+                this.selectUrl(index);
+            },
+           getMaxOfArray(numArray) {
+            return Math.max.apply(null, numArray);
             },
             selectUrl(index) {
                 this.textArray = this.report.data.clear_text.split(" ");
@@ -91,6 +102,7 @@
         mounted() {
 
             this.resultText = this.report.data.clear_text;
+            this.highlightAllWords();
         }
     }
 </script>
