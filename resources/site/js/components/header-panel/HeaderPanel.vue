@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="header-panel__right col-md-5">
-                    <section class="header-panel-banner" style="background-image: url('/assets/site/images/header-panel-banner.png')">
+                    <section class="header-panel-banner" style="background-image: url('/assets/site/images/header-panel-banner.png')" @click.prevent="repost">
                         <h3 class="header-panel-banner__title">
                             Получите скидку 10% за репост!
                         </h3>
@@ -96,6 +96,9 @@ import { bus } from '@/site/js/services/bus.js';
                         this.menu = response.data;
                     })
             },
+            repost() {
+                window.location.href='https://vk.com/share.php?url=https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai'
+            } ,
         },
         mounted() {
             this.getMenu();
