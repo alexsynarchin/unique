@@ -245,7 +245,7 @@ class CheckUniqueController extends Controller
             $check_unique->services()->attach($services_ids);
         }
 
-        $url = route('report', $check_unique->id);
+        $url = route('report', $check_unique->slug);
         return ['url' => $url, 'check_unique_id' => $check_unique->id];
     }
 }
