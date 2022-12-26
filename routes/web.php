@@ -23,7 +23,7 @@ Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('a
 
 
 use App\Http\Controllers\Site\CheckReportController;
-Route::get('/report-{id}', [CheckReportController::class, 'show'])->name('report');
+Route::get('/report/{slug}', [CheckReportController::class, 'show'])->name('report');
 
 use App\Http\Controllers\Site\AboutController;
 Route::get('/about', [AboutController::class, 'show'])->name('about-page');

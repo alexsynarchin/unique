@@ -10,7 +10,7 @@ use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jaybizzle\DocToText\Doc;
-
+use Illuminate\Support\Str;
 class CheckUniqueController extends Controller
 {
     public function show($id)
@@ -193,6 +193,8 @@ class CheckUniqueController extends Controller
             $check_unique = CheckUnique::findOrFail($request->get('id'));
         } else {
             $check_unique = CheckUnique::create($request->except('file'));
+            $slug = Str::random(40);
+            $check_unique->slug = $slug;
         }
         if($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class CheckReportController extends Controller
 {
-    public function show($id)
+    public function show($slug)
     {
-        $check_unique = CheckUnique::findOrFail($id);
+        $check_unique = CheckUnique::firstOrFail($slug);
         if($check_unique->orders()->exists()) {
             $orders = $check_unique->orders()->get();
             foreach ($orders as $order) {
@@ -19,6 +19,6 @@ class CheckReportController extends Controller
                 }
             }
         }
-        return view('site.check-report.show', ['id' => $id]);
+        return view('site.check-report.show', ['id' => $check_unique->id]);
     }
 }

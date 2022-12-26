@@ -12,7 +12,7 @@ class CheckUnique extends Model
     protected $fillable= [
         'pages', 'wordsCount',
         'symbolsCount', 'sentenceCount', 'type',
-        'plainText', 'email'
+        'plainText', 'email', 'slug'
     ];
 
     protected $appends = [
