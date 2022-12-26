@@ -40,13 +40,17 @@ class CheckUniqueController extends Controller
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
         $sentenceCount = substr_count($request->get('text'),'.') + substr_count($request->get('text'),'!')+ substr_count($request->get('text'),'?');
+        $pages = (int) ($symbols_count/1750);
+        if ($pages === 0) {
+            $pages = 1;
+        }
         $textParams = [
             'symbolsCount' => (int) $symbols_count,
             'wordsCount' => $words_count,
             'plainText' => $request->get('text'),
             'sentenceCount' => $sentenceCount,
             'size' => 0,
-            'pages' => 0,
+            'pages' => $pages ,
         ];
         return $textParams;
     }
@@ -100,7 +104,7 @@ class CheckUniqueController extends Controller
         $symbols_count = iconv_strlen($symbols_count);
         $words_count = preg_split('/\s+/',$text);
         $words_count = sizeof($words_count);
-        $pages = (int) ($words_count/200);
+        $pages = (int) ($symbols_count/1750);
         if ($pages === 0) {
             $pages = 1;
         }
