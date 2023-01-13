@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Отчет о проверке уникальности</title>
     <style>
-        @import url("{{asset('assets/site/css/pdf-catalog.css?ver=69')}}");
+        @import url("{{asset('assets/site/css/pdf-catalog.css?ver=65')}}");
     </style>
 </head>
 <body>
