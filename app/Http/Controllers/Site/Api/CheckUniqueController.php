@@ -183,11 +183,22 @@ class CheckUniqueController extends Controller
                 'plainText.required' => 'Введите текст для проверки уникальности',
                 'promocode.exists,name' => 'Промокод не найден'
             ]]);
-
+        $data = [];
+        if($request->has('sum')) {
+            $data['sum'] = $request->get('sum');
+        }
         if($request->has('promocode') && $request->get('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
             $promo_code -> max_count = $promo_code -> max_count-1;
             $promo_code -> save();
+            if($promo_code->discount_type === 'rubles') {
+                $data['sum'] = $data['sum'] - $promo_code->discount;
+                if($data['sum'] < 0) {
+                    $data['sum'] = 0;
+                }
+            } else {
+                $data['sum'] = $data['sum'] - ($data['sum'] * ($promo_code->discount/100));
+            }
         }
         if($request->has('id')) {
             $check_unique = CheckUnique::findOrFail($request->get('id'));
@@ -246,6 +257,8 @@ class CheckUniqueController extends Controller
         }
 
         $url = route('report', $check_unique->slug);
-        return ['url' => $url, 'check_unique_id' => $check_unique->id];
+        $data['url'] = $url;
+        $data['check_unique_id'] = $check_unique->id;
+        return $data;
     }
 }

@@ -180,6 +180,7 @@ export default {
 
                     formData.append(key, data);
                 }
+                formData.append('sum', this.sum);
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
@@ -189,8 +190,12 @@ export default {
                         this.$root.isLoading = false;
                        // window.location.href = response.data;
                         let data = response.data;
-                        data.sum = this.sum;
-                        this.selectPaymentCountry(data);
+                        if(data.sum > 0) {
+                            this.selectPaymentCountry(data);
+                        } else {
+                            window.location.href = response.data.url;
+                        }
+
                     })
                     .catch((error) => {
                         this.$root.isLoading = false;
