@@ -187,7 +187,7 @@ class CheckUniqueController extends Controller
         if($request->has('sum')) {
             $data['sum'] = $request->get('sum');
         }
-        if($request->has('promocode') && $request->get('promocode')) {
+        if($request->has('promocode') && $request->get('promocode') && $request->has('sum') && $request->get('sum')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
             $promo_code -> max_count = $promo_code -> max_count-1;
             $promo_code -> save();
