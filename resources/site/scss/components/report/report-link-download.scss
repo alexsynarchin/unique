@@ -1,0 +1,13 @@
+.report-link-download {
+    display: flex;
+    align-items: center;
+    &__label {
+        color:$blue-color;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+    &__item {
+        font-size: 13px;
+        margin-right: 10px;
+    }
+}

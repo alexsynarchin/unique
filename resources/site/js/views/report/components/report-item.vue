@@ -90,6 +90,15 @@
                 </div>
             </section>
         </div>
+        <div class="report-link-download mt-3">
+            <label class="report-link-download__label">Ссылка на отчет: </label>
+            <span class="report-link-download__item" id="report-link-download__item">https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{check_unique.slug}}</span>
+            <figure class="report-item-links__icon" @click.prevent="copyUrl()" v-title="'Скопировать ссылку'">
+                <svg viewBox="0 0 18 22" >
+                    <use xlink:href="/assets/site/images/sprites.svg?ver=17#sprite-copy"></use>
+                </svg>
+            </figure>
+        </div>
     </section>
 </template>
 <script>
@@ -115,6 +124,18 @@ import ProgressBar from 'vue-simple-progress'
             },
         },
         methods: {
+            copyUrl() {
+                var copyTextarea = document.createElement("textarea");
+                copyTextarea.style.position = "fixed";
+                copyTextarea.style.opacity = "0";
+                copyTextarea.textContent = 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/'+ this.check_unique.slug;
+
+                document.body.appendChild(copyTextarea);
+                copyTextarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(copyTextarea);
+
+            },
             downloadPdf() {
                 this.$root.isLoading = true;
                 axios.post('/api/report/' +this.report.id + '/download')

@@ -14829,6 +14829,20 @@ img {
   text-decoration: underline;
 }
 
+.report-link-download {
+  display: flex;
+  align-items: center;
+}
+.report-link-download__label {
+  color: #366AF3;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+.report-link-download__item {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
 .repost {
   margin-top: 65px;
   margin-bottom: 65px;
