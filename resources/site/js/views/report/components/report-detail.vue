@@ -37,7 +37,7 @@
                     </section>
                     <figure class="report-item-links__icon" @click.prevent="copyUrl(index, item.url)" v-title="'Скопировать ссылку'">
                         <svg viewBox="0 0 18 22" >
-                            <use xlink:href="assets/site/images/sprites.svg?ver=17#sprite-copy"></use>
+                            <use xlink:href="/assets/site/images/sprites.svg?ver=17#sprite-copy"></use>
                         </svg>
                     </figure>
 
