@@ -22,7 +22,7 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
-        if(!$report->highlight_text) {
+        if(!$report->highlight_text && $report->result) {
             $highLightService = new ReportHighLightTextService();
             $report->highlight_text = $highLightService->highLightText($report['data']);
             $report->save();
@@ -95,8 +95,11 @@ class ReportController extends Controller
             }
             $data['unique'] = round($data['unique'], 2);
             $report->data = $data;
-            $highLightService = new ReportHighLightTextService();
-            $report->highlight_text = $highLightService->highLightText($data);
+            if($report->result) {
+                $highLightService = new ReportHighLightTextService();
+                $report->highlight_text = $highLightService->highLightText($data);
+            }
+
             $report->save();
         }
         return $report;
