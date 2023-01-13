@@ -72,6 +72,7 @@ class RewriteController extends Controller
             $path = $request->file('file')->storeAs(
                 'public/rewrites/' . $rewrite->id, $filename
             );
+            $rewrite->filename = $filename;
         }
 
         if($request->has('promocode') && $request->get('promocode')) {
@@ -80,7 +81,7 @@ class RewriteController extends Controller
             $promo_code -> save();
             $rewrite ->promoCode()->associate($promo_code);
         }
-        $rewrite->filename = $filename;
+
         $rewrite->save();
 
         return $rewrite;
