@@ -175,6 +175,16 @@
                         .then((response) => {
                           this.textParams = response.data;
                         })
+                } else if(!text) {
+                    this.textParams = {
+                        plainText: "",
+                        symbolsCount: 0,
+                        wordsCount:0,
+                        sentenceCount:0,
+                        size:0,
+                        pages:0,
+
+                    };
                 }
 
             },
