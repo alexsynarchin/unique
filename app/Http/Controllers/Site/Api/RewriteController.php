@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RewriteOrder;
 use App\Models\PromoCode;
 use App\Models\Rewrite;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RewriteController extends Controller
 {
@@ -83,7 +86,20 @@ class RewriteController extends Controller
         }
 
         $rewrite->save();
+        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
+        if($exists) {
+            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
+            $email = $setting -> value;
+            $email = explode(',', $email);
 
+
+        } else {
+            $email = ['alexsynarchin@gmail.com'];
+        }
+        foreach ($email as $recipient) {
+            $recipient = str_replace(" ", '', $recipient);
+            Mail::to(trim($recipient))->send(new RewriteOrder($rewrite));
+        }
         return $rewrite;
     }
 }
