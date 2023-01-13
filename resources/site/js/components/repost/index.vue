@@ -13,7 +13,7 @@
                 :description="data.description"
             >
                 <svg class="repost__icon" viewBox="0 0 20 22">
-                    <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
+                    <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
                 </svg>
 
             </ShareNetwork>
@@ -27,7 +27,7 @@
                 :description="data.description"
             >
                 <svg class="repost__icon" viewBox="0 0 20 22">
-                    <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-odnoklassniki"></use>
+                    <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-odnoklassniki"></use>
                 </svg>
 
             </ShareNetwork>

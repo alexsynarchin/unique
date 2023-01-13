@@ -21,7 +21,7 @@
         <h3 class="report-item-another-system__title">Вы можете
             <a href class="report-item-another-system__link" data-bs-toggle="modal" data-bs-target="#rewrite_modal">повысить уникальность</a>
             текста или проверить текст в другой системе</h3>
-        <select-systems @selectSystem="handleSelectedSystem" :state-selected-systems="selectedSystems"></select-systems>
+        <select-systems ref="select_systems" @selectSystem="handleSelectedSystem" :state-selected-systems="selectedSystems"></select-systems>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
     </section>
@@ -63,11 +63,24 @@ import PayCheckModal from "@/site/js/components/check-unique/components/PayCheck
             },
             handleSelectedSystem(data) {
                 console.log(data);
-                if(data.free && data.list.length > 0) {
-                    this.$refs.free_check_modal.showModal(this.check_unique, data.list);
-                } else if(data.list.length > 0) {
-                    this.$refs.pay_check_nodal.showModal(this.check_unique, data.list);
-                }
+                axios.post('/api/check-unique/validate-modal',
+                    {
+                        length: data.list.length,
+                        text:this.check_unique.plainText,
+                        symbols_count:this.check_unique.symbolsCount
+                    })
+                    .then((response) => {
+                        if(data.free && data.list.length > 0) {
+                            this.$refs.free_check_modal.showModal(this.check_unique, data.list);
+                        } else if(data.list.length > 0) {
+                            this.$refs.pay_check_nodal.showModal(this.check_unique, data.list);
+                        }
+                    })
+                    .catch((error) => {
+                        this.$refs.select_systems.errors.record(error.response.data.errors);
+                    })
+
+
             },
 
         },
