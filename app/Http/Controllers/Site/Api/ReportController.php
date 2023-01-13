@@ -10,6 +10,7 @@ use App\Models\Report;
 use App\Models\Setting;
 use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
+use App\Services\ReportHighLightTextService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,6 +22,11 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
+        if(!$report->highlight_text) {
+            $highLightService = new ReportHighLightTextService();
+            $report->highlight_text = $highLightService->highLightText($report['data']);
+            $report->save();
+        }
         return $report;
     }
 
@@ -36,7 +42,6 @@ class ReportController extends Controller
 
     public function getResult(Request $request, $id)
     {
-
         $report = Report::findOrFail($id);
         $service = new CheckUniqueService();
         $result = $service->getResult($report->uid);
@@ -90,6 +95,8 @@ class ReportController extends Controller
             }
             $data['unique'] = round($data['unique'], 2);
             $report->data = $data;
+            $highLightService = new ReportHighLightTextService();
+            $report->highlight_text = $highLightService->highLightText($data);
             $report->save();
         }
         return $report;

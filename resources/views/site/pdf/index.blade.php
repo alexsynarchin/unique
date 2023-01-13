@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Отчет о проверке уникальности</title>
     <style>
-        @import url("{{asset('assets/site/css/pdf-catalog.css?ver=39')}}");
+        @import url("{{asset('assets/site/css/pdf-catalog.css?ver=69')}}");
     </style>
 </head>
 <body>
@@ -29,7 +29,7 @@
     </header>
     <div class="report-item-descr">
         <figure class="report-item-descr__icon">
-            <img src="http://unique.welcome-rb.ru/assets/site/images/union.png">
+            <img src="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/union.png">
         </figure>
         <div class="report-item-descr__content">
             <p class="report-item-descr__text">
@@ -85,7 +85,7 @@
                     {{$report->data['unique']}}%  @if($report->data['unique'] > 70 ) Текст уникальный @elseтекст неуникальный @endif
                 </div>
             </section>
-            <a href="" class="report-information__link">
+            <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{$report->checkUnique->slug}}" class="report-information__link">
                 Посмотреть отчет на сайте
             </a>
         </div>
@@ -138,7 +138,7 @@
         @endforeach
     </ul>
     <div class="report-text">
-        {!! $report->data['clear_text'] !!}
+        {!! $report->highlight_text !!}
     </div>
 </section>
 </body>
