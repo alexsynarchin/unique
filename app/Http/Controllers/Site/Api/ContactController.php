@@ -34,7 +34,7 @@ class ContactController extends Controller
         }
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
-            Mail::to($recipient)->send(new ContactMail($request->all()));
+            Mail::to(trim($recipient))->send(new ContactMail($request->all()));
         }
         return $request->all();
     }

@@ -120,11 +120,9 @@ class ReportController extends Controller
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-        $form = [
-            'link' => $link
-        ];
+
         foreach ($email as $recipient) {
-            Mail::to($recipient)->send(new AdminReportMail($form));
+            Mail::to(trim($recipient))->send(new AdminReportMail($report));
         }
     }
 
