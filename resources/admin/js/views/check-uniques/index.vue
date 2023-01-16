@@ -68,11 +68,9 @@
             </el-table-column>
             <el-table-column
                 label="Сумма"
+                prop="sum"
                 sortable
             >
-                <template>
-                    0
-                </template>
             </el-table-column>
             <el-table-column
                 label="Кол-во систем проверки"

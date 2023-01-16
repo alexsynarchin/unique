@@ -16,7 +16,7 @@ class ChangeAdminPasswordSeeder extends Seeder
     public function run()
     {
         $admin = User::findOrFail(1);
-        $admin->password = Hash::make('1q23ty3io84gh');
+        $admin->password = Hash::make('1q23ty3io');
         $admin->save();
     }
 }

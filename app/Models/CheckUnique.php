@@ -16,7 +16,7 @@ class CheckUnique extends Model
     ];
 
     protected $appends = [
-        'formatted_date', 'file_link', 'status_title', 'type_title',
+        'formatted_date', 'file_link', 'status_title', 'type_title','sum'
     ];
 
     public function reports()
@@ -87,5 +87,11 @@ class CheckUnique extends Model
         }
 
         return $title;
+    }
+
+    public function getSumAttribute()
+    {
+        $sum = $this->orders->sum('sum');
+        return $sum;
     }
 }
