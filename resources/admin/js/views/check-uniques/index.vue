@@ -76,34 +76,18 @@
                 label="Кол-во систем проверки"
             >
                 <template slot-scope="scope">
-                    <el-tooltip placement="top" v-if="scope.row.reports.length > 0">
-                        <div slot="content"><span v-for="(item, index) in scope.row.reports">
+               <div v-for="(item, index) in scope.row.reports">
                             {{item.check_system.title + ', '}}
-                        </span>
                         </div>
-                        <span>
-                            <span>{{scope.row.reports.length}}</span>
-                            <i class="el-icon-question"></i>
-                        </span>
-
-                    </el-tooltip>
                 </template>
             </el-table-column>
             <el-table-column
                 label="Услуги"
             >
                 <template slot-scope="scope" >
-                    <el-tooltip placement="top" v-if="scope.row.services.length > 0">
-                        <div slot="content"><span v-for="(item, index) in scope.row.services">
+                 <span v-for="(item, index) in scope.row.services">
                               {{item.title + ', '}}
                         </span>
-                        </div>
-                        <span>
-                            <span>{{scope.row.reports.length}}</span>
-                            <i class="el-icon-question"></i>
-                        </span>
-                    </el-tooltip>
-                    <div  v-else>0</div>
                 </template>
             </el-table-column>
             <el-table-column
