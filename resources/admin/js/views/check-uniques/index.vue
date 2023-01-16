@@ -76,7 +76,7 @@
                 label="Кол-во систем проверки"
             >
                 <template slot-scope="scope">
-               <div  v-for="(item, index) in scope.row.reports">
+               <div  v-for="(item, index) in scope.row.reports" style="word-break: normal">
                    <div>{{item.check_system.title + ', '}}</div>
                 </div>
                 </template>
