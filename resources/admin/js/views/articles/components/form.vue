@@ -36,25 +36,30 @@
                                 <el-checkbox v-model="form.published">Опубликован</el-checkbox>
                             </el-form-item>
                         </div>
+                        {{form.content.text}}
                         <el-form-item prop="text" label="Текст">
-                            <richtext :value.sync ="form.content.text" v-if="form.content"></richtext>
-                        </el-form-item>
-                        <Editor
-                            v-model="form.content.text"
-                            api-key="no-api-key"
-                            :init="{
+                            <Editor
+                                v-model="form.content.text"
+                                api-key="no-api-key"
+                                :init="{
+                                height: 600,
         plugins: 'lists link image table code help wordcount',
-        toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent forecolor backcolor',
+        toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor',
          language: 'ru',
+         table_background_color_map: [
+    { title: 'Gray', value: 'F0F1F6' },
+    { title: 'Orange', value: 'FF9902' },
+    { title: 'Blue', value: '366AF3' },
+  ],
            color_map: [
-    '000000', 'Black',
     'F0F1F6', 'Gray',
     'FF9902', 'Orange',
-    '008000', 'Green',
     '366AF3', 'Blue'
   ]
       }"
-                        />
+                            />
+                        </el-form-item>
+
                     </div>
                 </div>
             </el-tab-pane>
