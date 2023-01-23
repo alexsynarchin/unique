@@ -40,6 +40,7 @@
                             <richtext :value.sync ="form.content.text" v-if="form.content"></richtext>
                         </el-form-item>
                         <Editor
+                            v-model="form.content.text"
                             api-key="no-api-key"
                             :init="{
         plugins: 'lists link image table code help wordcount',
@@ -47,12 +48,10 @@
          language: 'ru',
            color_map: [
     '000000', 'Black',
-    '808080', 'Gray',
-    'FFFFFF', 'White',
-    'FF0000', 'Red',
-    'FFFF00', 'Yellow',
+    'F0F1F6', 'Gray',
+    'FF9902', 'Orange',
     '008000', 'Green',
-    '0000FF', 'Blue'
+    '366AF3', 'Blue'
   ]
       }"
                         />
