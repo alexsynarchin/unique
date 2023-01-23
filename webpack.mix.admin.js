@@ -2,7 +2,13 @@ const mix = require('laravel-mix');
 let distPath = 'public/assets/admin';
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const path = require('path')
-
+function resolve(dir) {
+    return path.join(
+        __dirname,
+        '/resources',
+        dir
+    );
+}
 mix
     .js('resources/admin/js/app.js', 'js')
     .vue({ version: 2 })
@@ -23,8 +29,9 @@ mix
         resolve: {
             extensions: ['.js', '.vue', '.json','.scss','.css'],
             alias: {
-                '@': path.resolve(__dirname, 'resources')
+                '@': path.join(__dirname, 'resources')
             },
+            fallback: {"path":false}
         },
     })
     .sourceMaps()

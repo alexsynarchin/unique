@@ -1,35 +1,34 @@
 <template>
-    <section class="d-flex flex-column" style="flex: 1"  v-cloak>
-        <header  class="page-header container-fluid">
-            <div class="row h-100">
-                <div class="col-md-6">
-                    <h1 class="auth__title">Проверка уникальности</h1>
-                </div>
-                <div class="col-md-6 page-header__right">
-                    <header-profile
-                        :user="user"
-                    ></header-profile>
-                </div>
+<el-container >
+    <header class="page-header">
+        <div class="page-header__logo">
+            Проверка Уникальности
+        </div>
+        <div class="page-header__content">
+            <div class="page-header__right">
+                <header-profile
+                    :user="user"
+                ></header-profile>
             </div>
-        </header>
-        <section class="el-container" style="flex: 1">
-            <el-aside class="el-aside--sidebar">
-                <sidebar-nav ></sidebar-nav>
+        </div>
+    </header>
+    <el-container class="app-main">
+        <aside class="main-sidebar">
+            <sidebar-nav ></sidebar-nav>
+        </aside>
+        <el-container>
+            <el-main >
+                <router-view></router-view>
+            </el-main>
+            <el-footer>Footer</el-footer>
+        </el-container>
 
-
-            </el-aside>
-            <el-container direction="vertical">
-
-                <el-main>
-                    <router-view></router-view>
-                </el-main>
-            </el-container>
-        </section>
-    </section>
+    </el-container>
+</el-container>
 </template>
 <script>
-import SidebarNav from './components/SidebarNav';
-import HeaderProfile from "./components/HeaderProfile";
+import SidebarNav from '@/admin/js/components/SidebarNav';
+import HeaderProfile from "@/admin/js/components/HeaderProfile";
     export default {
     components:{
         SidebarNav, HeaderProfile

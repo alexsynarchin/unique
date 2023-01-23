@@ -6,8 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token()}}"/>
     <meta name="description" content="">
     <title>Проверка уникальности</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <meta name="description">
     @yield('head')
 </head>

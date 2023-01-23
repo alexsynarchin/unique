@@ -11282,11 +11282,53 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.app-main {
+  padding-top: 70px;
+}
+
+.page-header {
+  display: flex;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  position: fixed;
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+.page-header__logo {
+  width: 17.1875rem;
+  padding-left: 15px;
+  color: #fff;
+  background-color: #343957;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.page-header__content {
+  display: flex;
+  flex: 1;
+  padding-top: 20px;
+}
+.page-header__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-sidebar {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 17.1875rem;
+  min-width: 17.1875rem;
+  background-color: #343957;
+}
+.main-sidebar .el-menu {
+  background-color: #343957;
+}
+
 body, html {
   height: 100%;
   min-height: 100%;
-  background-color: #FFFFFF;
-  font-family: "Roboto", sans-serif;
+  background-color: #f8f8fb;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .page-wrapper {
@@ -11343,17 +11385,6 @@ a {
   margin-bottom: 0;
 }
 
-.page-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #366AF3;
-  color: #fff;
-}
-.page-header__right {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
@@ -11382,18 +11413,28 @@ a {
   margin-bottom: 0;
 }
 
-.el-aside--sidebar {
-  min-height: 100%;
-  background-color: #fff;
-  border-right: solid 1px #e6e6e6;
-}
-
 .sidebar-nav {
   border-right: none !important;
 }
+.sidebar-nav__link {
+  color: #bdbdc7;
+}
+.sidebar-nav__link.is-active, .sidebar-nav__link:hover {
+  background-color: #6b51df;
+  color: #fff;
+}
 .sidebar-nav__link--border {
-  margin-bottom: 20px;
-  border-bottom: solid 1px #e6e6e6;
+  position: relative;
+  margin-bottom: 21px;
+}
+.sidebar-nav__link--border::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  background-color: #bdbdc7;
+  width: 90%;
+  height: 1px;
+  left: 5%;
 }
 
 .mp-card__sum {
