@@ -39,7 +39,23 @@
                         <el-form-item prop="text" label="Текст">
                             <richtext :value.sync ="form.content.text" v-if="form.content"></richtext>
                         </el-form-item>
-
+                        <Editor
+                            api-key="no-api-key"
+                            :init="{
+        plugins: 'lists link image table code help wordcount',
+        toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent forecolor backcolor',
+         language: 'ru',
+           color_map: [
+    '000000', 'Black',
+    '808080', 'Gray',
+    'FFFFFF', 'White',
+    'FF0000', 'Red',
+    'FFFF00', 'Yellow',
+    '008000', 'Green',
+    '0000FF', 'Blue'
+  ]
+      }"
+                        />
                     </div>
                 </div>
             </el-tab-pane>
@@ -54,10 +70,11 @@
 import richtext from "../../../components/richtext/richtext";
 import { Errors } from  '@/common/js/services/errors.js';
 import Seo from '@/admin/js/components/seo/seo';
+import Editor from '@tinymce/tinymce-vue'
     export default {
         components: {
             'Seo':Seo,
-            'richtext':richtext,
+            'richtext':richtext, Editor
         },
         props: {
             saveMsg: {
@@ -132,3 +149,8 @@ import Seo from '@/admin/js/components/seo/seo';
         }
     }
 </script>
+<style>
+.tox-tinymce-aux {
+    z-index: 9000 !important;
+}
+</style>
