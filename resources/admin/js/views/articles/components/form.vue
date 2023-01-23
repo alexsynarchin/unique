@@ -36,7 +36,6 @@
                                 <el-checkbox v-model="form.published">Опубликован</el-checkbox>
                             </el-form-item>
                         </div>
-                        {{form.content.text}}
                         <el-form-item prop="text" label="Текст">
                             <Editor
                                 v-model="form.content.text"
