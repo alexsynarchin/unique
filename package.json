@@ -67,6 +67,7 @@
         "vue-the-mask": "^0.11.1",
         "vuedraggable": "^2.24.3",
         "vuejs-datepicker": "^1.6.2",
-        "vuejs-title": "^1.0.16"
+        "vuejs-title": "^1.0.16",
+        "vuex": "^3.6.2"
     }
 }

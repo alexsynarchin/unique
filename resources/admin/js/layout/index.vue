@@ -16,12 +16,9 @@
             <aside class="main-sidebar">
                 <sidebar-nav ></sidebar-nav>
             </aside>
-            <el-container>
-                <el-main >
-                    <router-view></router-view>
-                </el-main>
-                <el-footer>Footer</el-footer>
-            </el-container>
+            <el-main >
+                <router-view></router-view>
+            </el-main>
 
         </el-container>
     </el-container>

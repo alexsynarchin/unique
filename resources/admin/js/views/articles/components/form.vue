@@ -39,7 +39,7 @@
                         <el-form-item prop="text" label="Текст">
                             <Editor
                                 v-model="form.content.text"
-                                api-key="no-api-key"
+                                api-key="n5vevbezoz59y0xm5lm9351k04wpcdlod46tt4h2ilw0x2er"
                                 :init="{
                                 height: 600,
         plugins: 'lists link image table code help wordcount',

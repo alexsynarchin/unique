@@ -7,7 +7,7 @@ import locale from 'element-ui/lib/locale'
 locale.use(lang);
 import VueDataTables from 'vue-data-tables';
 Vue.use(VueDataTables);
-
+import App from './views/App';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 Vue.use( CKEditor );
 import vTitle from 'vuejs-title'
