@@ -1,5 +1,5 @@
-import defaultSettings from '@/settings';
-import i18n from '@/lang';
+import defaultSettings from '@/admin/js/settings';
+import i18n from '@/admin/js/lang';
 
 const title = defaultSettings.title || 'Laravel Vue Admin';
 

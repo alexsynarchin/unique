@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\Admin\HomeController;
-Route::get('/', [HomeController::class, 'index']) -> name('home');
-Route::get('/{any}', [HomeController::class, 'index'])->where('any', '.*')->name('any');
+Route::get('/', [HomeController::class, 'index'])->where('any', '.*')->name('laravue');
+Route::get('/{any}', [HomeController::class, 'index'])->where('any', '.*')->name('laravue');
+
+
 

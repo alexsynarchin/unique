@@ -1,4 +1,4 @@
-import { pluralize } from '@/filters';
+import { pluralize } from '@/admin//js/filters';
 export function parseTime(time, cFormat) {
   if (arguments.length === 0) {
     return null;

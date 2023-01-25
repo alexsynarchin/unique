@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Resources\UserResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use \App\Laravue\JsonResponse;
+use \App\Laravue\Acl;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\Admin\Auth\LoginController;
-Route::post('/logout',[LoginController::class, 'logout']) -> name('logout');
+use App\Http\Controllers\Admin\Api\AuthController;
+Route::post('auth/login', [AuthController::class, 'login']);
+
+Route::get('/user', function (Request $request) {
+
+    return new UserResource($request->user());
+});
+
 use App\Http\Controllers\Admin\Api\HomeController;
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 use App\Http\Controllers\Admin\Api\ModeratorController;
 Route::apiResource('/moderators', ModeratorController::class);
 

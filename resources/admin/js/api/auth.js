@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/admin/js/utils/request';
 
 export function login(data) {
   return request({
@@ -24,6 +24,7 @@ export function logout() {
 
 export function csrf() {
   return request({
+    baseURL:'/api',
     url: '/sanctum/csrf-cookie',
     method: 'get',
   });

@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/admin/js/utils/request';
 
 /**
  * Simple RESTful resource class

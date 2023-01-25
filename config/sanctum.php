@@ -62,4 +62,16 @@ return [
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sanctum Prefix
+    |--------------------------------------------------------------------------
+    |
+    | Move CSRF protection to /api prefix for easier in cors configuration
+    |
+    */
+
+    'prefix' => 'api/sanctum'
+
 ];

@@ -1,49 +1,48 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">
-        {{ $t('login.title') }}
-      </h3>
-      <lang-select class="set-language" />
-      <el-form-item prop="email">
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+          <h3 class="title">
+               Проверка уникальности
+          </h3>
+          <el-form-item prop="email">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input v-model="loginForm.email" name="email" type="text" auto-complete="on" :placeholder="$t('login.email')" />
-      </el-form-item>
-      <el-form-item prop="password">
+              <el-input v-model="loginForm.email" name="email" type="text" auto-complete="on" :placeholder="$t('login.email')" />
+          </el-form-item>
+          <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
-        <el-input
-          v-model="loginForm.password"
-          :type="pwdType"
-          name="password"
-          auto-complete="on"
-          placeholder="password"
-          @keyup.enter.native="handleLogin"
-        />
-        <span class="show-pwd" @click="showPwd">
+              <el-input
+                  v-model="loginForm.password"
+                  :type="pwdType"
+                  name="password"
+                  auto-complete="on"
+                  placeholder="password"
+                  @keyup.enter.native="handleLogin"
+              />
+              <span class="show-pwd" @click="showPwd">
           <svg-icon icon-class="eye" />
         </span>
-      </el-form-item>
-      <el-form-item>
-        <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          Войти
-        </el-button>
-      </el-form-item>
-    </el-form>
+          </el-form-item>
+          <el-form-item>
+              <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
+                  Войти
+              </el-button>
+          </el-form-item>
+      </el-form>
   </div>
 </template>
 
 <script>
-import LangSelect from '@/components/LangSelect';
-import { validEmail } from '@/utils/validate';
-import { csrf } from '@/api/auth';
+
+import { validEmail } from '@/admin/js/utils/validate';
+import { csrf } from '@/admin/js/api/auth';
 
 export default {
   name: 'Login',
-  components: { LangSelect },
+
   data() {
     const validateEmail = (rule, value, callback) => {
       if (!validEmail(value)) {
@@ -61,8 +60,8 @@ export default {
     };
     return {
       loginForm: {
-        email: 'admin@laravue.dev',
-        password: 'laravue',
+        email: '',
+        password: '',
       },
       loginRules: {
         email: [{ required: true, trigger: 'blur', validator: validateEmail }],

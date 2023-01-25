@@ -1,5 +1,5 @@
 <template>
-    <section class="page" v-if="can(CanAccess) || is('Super-Admin')">
+    <section class="page">
         <div class="page-heading d-flex align-items-center justify-content-between mb-3">
             <h1 class="page-title mb-0">Модераторы</h1>
             <el-button type="success" icon="el-icon-plus" @click="moderatorModalOpen('create')">Добавить</el-button>

@@ -1,4 +1,4 @@
-import '@/bootstrap';
+import '@/admin/js/bootstrap';
 import { Message } from 'element-ui';
 // import { isLogged, setLogged } from '@/utils/auth';
 

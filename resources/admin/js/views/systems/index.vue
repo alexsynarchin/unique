@@ -1,5 +1,5 @@
 <template>
-    <el-tabs type="card" v-model="activeTabName" v-if="can(CanAccess) || is('Super-Admin')">
+    <el-tabs type="card" v-model="activeTabName" >
         <el-tab-pane name="list" label="Системы проверки">
             <system-list></system-list>
         </el-tab-pane>

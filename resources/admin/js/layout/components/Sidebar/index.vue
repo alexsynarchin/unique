@@ -5,14 +5,13 @@
             :router="true"
             class="sidebar-nav"
         >
-            <el-menu-item index="/admin" class="el-menu-item__link sidebar-nav__link">
+            <el-menu-item index="/" class="el-menu-item__link sidebar-nav__link">
                 <span class="sidebar-nav__link-text">Главная</span>
             </el-menu-item>
             <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link"
                            :class="{
                 'sidebar-nav__link--border':item.border
             }"
-                           v-if="is('Super-Admin') || can(item.permission)"
             >
             <span class="sidebar-nav__link-text">
                  {{item.title}}
@@ -39,7 +38,7 @@ export default {
             menu:[
 
                 {
-                    id:"/admin/check-systems",
+                    id:"/check-systems",
                     title:"Системы проверки",
                     permission: 'Просмотр "Системы проверки"',
                 },
@@ -59,17 +58,17 @@ export default {
                     permission: 'Просмотр "Заявки на рерайт"',
                 },
                 {
-                    id:"/admin/moderators",
+                    id:"/moderators",
                     title:"Модераторы",
                     permission: 'Просмотр "Модераторы"',
                 },
                 {
-                    id:"/admin/promo-codes",
+                    id:"/promo-codes",
                     title:"Промокоды",
                     permission: 'Просмотр "Промокоды"',
                 },
                 {
-                    id:"/admin/requests",
+                    id:"/requests",
                     title:"Заявки",
                     border:true,
                     permission: 'Просмотр "Заявки"',

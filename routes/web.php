@@ -17,11 +17,6 @@ use App\Http\Controllers\Site\MainPageController;
 Route::get('/', [MainPageController::class, 'show'])->name('main-page');
 Route::get('/pdf/{id}', [MainPageController::class, 'reviewPdf']) ->name('main-page.pdf');
 
-use App\Http\Controllers\Admin\Auth\LoginController as AdminLogin;
-Route::get('/admin-login', [AdminLogin::class, 'login']) -> middleware('admin-guest') -> name('admin.login');
-Route::post('/admin/handle-login',[AdminLogin::class, 'handleLogin']) -> name('admin.handle-login');
-
-
 use App\Http\Controllers\Site\CheckReportController;
 Route::get('/report/{slug}', [CheckReportController::class, 'show'])->name('report');
 
@@ -55,10 +50,6 @@ Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.f
 use App\Http\Controllers\Site\TestMailController;
 Route::get('/mailable', [TestMailController::class,'testMail']);
 Route::get('/mailable/send', [TestMailController::class, 'sendTestMail']);
-
-Route::get('/get-permissions', function () {
-    return auth()->check()?auth()->user()->jsPermissions():0;
-});
 
 use App\Http\Controllers\Site\StaticPageController;
 Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');

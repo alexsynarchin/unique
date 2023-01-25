@@ -6,9 +6,7 @@
             </div>
             <div class="page-header__content">
                 <div class="page-header__right">
-                    <header-profile
-                        :user="user"
-                    ></header-profile>
+
                 </div>
             </div>
         </header>
@@ -17,39 +15,25 @@
                 <sidebar-nav ></sidebar-nav>
             </aside>
             <el-main >
-                <router-view></router-view>
+                <app-main />
             </el-main>
-
         </el-container>
     </el-container>
 </template>
 <script>
-import SidebarNav from './components/SidebarNav';
-import HeaderProfile from "./components/HeaderProfile";
+import {  AppMain } from './components';
+import SidebarNav from './components/Sidebar';
+import HeaderProfile from "./components/Header";
+import { mapState } from 'vuex';
+
+
 export default {
+    name: 'Layout',
     components:{
+        AppMain,
         SidebarNav, HeaderProfile
     },
-    data() {
-        return {
-            tabs: [{
-                link: '/admin',
-                title: 'Товары'
-            },
-                {
-                    link: '/admin/students',
-                    title: 'Студенты'
-                }
-            ],
-        }
-    },
-    computed: {
-        signedIn() {
-            return window.App.signedIn;
-        },
-        user(){
-            return  window.App.user;
-        },
-    },
+
+
 }
 </script>

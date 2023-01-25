@@ -3,7 +3,7 @@ const path = require('path');
 function resolve(dir) {
   return path.join(
     __dirname,
-    '/resources',
+    '/resources/admin/js',
     dir
   );
 }

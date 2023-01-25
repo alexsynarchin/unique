@@ -1,5 +1,5 @@
-import request from '@/utils/request';
-import Resource from '@/api/resource';
+import request from '@/admin/js/utils/request';
+import Resource from '@/admin/js/api/resource';
 
 class RoleResource extends Resource {
   constructor() {

@@ -5,9 +5,7 @@
         </div>
         <div class="page-header__content">
             <div class="page-header__right">
-                <header-profile
-                    :user="user"
-                ></header-profile>
+
             </div>
         </div>
     </header>
