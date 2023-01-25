@@ -1,5 +1,5 @@
 <template>
-    <section v-if="can(CanAccess) || is('Super-Admin')">
+    <section >
         <h1>Дополнительные услуги</h1>
         <div class="mb-3">
             <el-button type="success" icon="el-icon-plus" @click="serviceModalOpen('create')">Добавить</el-button>

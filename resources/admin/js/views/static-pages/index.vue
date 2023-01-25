@@ -1,5 +1,5 @@
 <template>
-    <section class="items-list" v-if="can(CanAccess) || is('Super-Admin')">
+    <section class="items-list" >
         <el-row type="flex" class="mb-3">
             <el-col :span="12">
                 <el-button type="success" icon="el-icon-plus" @click.prevent="newItem">Добавить Страницу</el-button>

@@ -1,5 +1,5 @@
 <template>
-    <section v-if="can(CanAccess) || is('Super-Admin')">
+    <section>
         <data-tables :data="rewrites" :table-props="tableProps">
             <el-table-column
                 type="index"
