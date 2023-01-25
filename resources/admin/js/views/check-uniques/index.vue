@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="row" v-if="can(CanAccess) || is('Super-Admin')">
+        <div class="row">
             <div class="col-md-6 col-lg-4">
                 <label>
                     Система
