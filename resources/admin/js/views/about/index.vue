@@ -1,5 +1,5 @@
 <template>
-    <section v-if="can(CanAccess) || is('Super-Admin')">
+    <section>
         <h1>Страница о компании</h1>
         <utp class="mb-5"></utp>
         <ratings class="mb-5"></ratings>
