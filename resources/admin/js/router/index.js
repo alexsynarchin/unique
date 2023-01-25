@@ -80,8 +80,63 @@ export const constantRoutes = [
             },
             {name: 'check-api',
                 path: 'check-systems/api/:id',
-                component: () => import('@/admin/js/views/systems/ApiList/ApiShow')},
-
+                component: () => import('@/admin/js/views/systems/ApiList/ApiShow')
+            },
+            {name: 'check-uniques',
+                path: 'check-uniques',
+                component: () => import('@/admin/js/views/check-uniques/index')
+            },
+            {
+                name: 'promo-codes',
+                path: 'promo-codes',
+                component: () => import('@/admin/js/views/promocodes/index.vue')
+            },
+            {
+                name: 'prices',
+                path: 'prices',
+                component: () => import('@/admin/js/views/prices/index')
+            },
+            {
+                name: 'faq',
+                path: 'faq',
+                component: () => import('@/admin/js/views/faq/index')
+            },
+            {
+                name:'main-page',
+                path:'main-page',
+                component: () => import('@/admin/js/views/main-page/index')
+            },
+            {name:'reviews',
+                path:'reviews',
+                component: () => import('@/admin/js/views/reviews/index')
+            },
+            {name:'about',
+                path:'about',
+                component: () => import('@/admin/js/views/about/index')
+            },
+            {
+                name:'rewrites',
+                path:'rewrites',
+                component: () => import('@/admin/js/views/rewrites/index')
+            },
+            {
+                name:'services',
+                path:'services',
+                component: () => import('@/admin/js/views/services/index')
+            },
+            {name: 'articles',
+                path: 'articles',
+                component: () => import('@/admin/js/views/articles/index')
+            },
+            {name: 'contacts',
+                path: 'requests',
+                component: () => import('@/admin/js/views/contact-orders/index')
+            },
+            {
+                name: 'static-pages',
+                path: 'static-pages',
+                component: () => import('@/admin/js/views/static-pages/index')
+            },
         ],
     },
 
