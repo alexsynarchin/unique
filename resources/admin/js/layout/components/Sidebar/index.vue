@@ -12,6 +12,7 @@
                            :class="{
                 'sidebar-nav__link--border':item.border
             }"
+                           v-if="checkPermission([item.permission])"
             >
             <span class="sidebar-nav__link-text">
                  {{item.title}}
@@ -24,6 +25,7 @@
 
 </template>
 <script>
+import checkPermission from '@/admin/js/utils/permission';
 export default {
     mounted(){
 
@@ -31,6 +33,9 @@ export default {
     },
 
     computed:{
+    },
+    methods: {
+        checkPermission,
     },
     data(){
         return{
@@ -40,79 +45,79 @@ export default {
                 {
                     id:"/check-systems",
                     title:"Системы проверки",
-                    permission: 'Просмотр "Системы проверки"',
+                    permission: 'manage check systems',
                 },
                 {
                     id:"/check-uniques",
                     title:"Запросы на проверку",
-                    permission: 'Просмотр "Запросы на проверку"',
+                    permission: 'manage check uniques',
                 },
                 {
                     id:"/services",
                     title:"Дополнительные услуги",
-                    permission: 'Просмотр "Дополнительные услуги"',
+                    permission: 'manage services',
                 },
                 {
                     id:"/rewrites",
                     title:"Заявки на рерайт",
-                    permission: 'Просмотр "Заявки на рерайт"',
+                    permission: 'manage rewrites',
                 },
                 {
                     id:"/moderators",
                     title:"Модераторы",
-                    permission: 'Просмотр "Модераторы"',
+                    permission: 'manage moderators',
                 },
                 {
                     id:"/promo-codes",
                     title:"Промокоды",
-                    permission: 'Просмотр "Промокоды"',
+                    permission: 'manage promo codes',
                 },
                 {
                     id:"/requests",
                     title:"Заявки",
                     border:true,
-                    permission: 'Просмотр "Заявки"',
+                    permission: 'manage contact orders',
                 },
                 {
                     id:"/main-page",
                     title:"Главная страница",
-                    permission: 'Просмотр "Главная страница"',
+                    permission: 'manage main page',
                 },
                 {
                     id:"/prices",
                     title:"Стоимость",
-                    permission: 'Просмотр "Стоимость"',
+                    permission: 'manage prices page',
                 },
                 {
                     id:"/faq",
                     title:"Вопросы и ответы",
-                    permission: 'Просмотр "Вопросы и ответы"',
+                    permission: 'manage faq page',
                 },
                 {
                     id:"/reviews",
                     title:"Отзывы",
-                    permission: 'Просмотр "Отзывы"',
+                    permission: 'manage reviews page',
                 },
                 {
                     id:"/about",
                     title:"О проекте",
-                    permission: 'Просмотр "О проекте"',
+                    permission: 'manage about page',
                 },
                 {
                     id:"/static-pages",
                     title:"Статические страницы",
-                    permission: 'Просмотр "Статические страницы"',
+                    permission: 'manage static pages',
                 },
                 {
                     id:"/articles",
                     title:"Статьи",
-                    permission: 'Просмотр "Статьи"',
+                    permission: 'manage articles',
                     border:true,
                 },
                 {
                     id:"/settings",
                     title:"Настройки",
-                    permission: 'Просмотр "Настройки"',
+                    permission: 'manage settings',
                 },
             ],
         }

@@ -11342,6 +11342,7 @@ textarea.form-control-lg {
   top: 70px;
   left: 0;
   transition: width 0.28s ease-in-out, min-width 0.28s ease-in-out;
+  height: 100%;
 }
 .main-sidebar .el-menu {
   background-color: #343957;
