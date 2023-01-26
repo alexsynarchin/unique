@@ -47,8 +47,8 @@
         <el-tab-pane label="Права доступа">
             <el-checkbox-group v-model="form.permissions_arr" @change="">
                 <div class="row">
-                    <div class="col-md-6 mb-2" v-for="permission in permissions">
-                        <el-checkbox    :label="permission.name" :key="permission.name">{{permission.name}}</el-checkbox>
+                    <div class="col-md-6 mb-2" v-for="permission in permissions" v-if="permission.name !=='manage_permission'">
+                        <el-checkbox    :label="permission.name" :key="permission.name">{{$t('permissions.' + permission.name)}}</el-checkbox>
                     </div>
 
                 </div>

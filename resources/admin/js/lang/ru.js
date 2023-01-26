@@ -203,6 +203,17 @@ export default {
         manage_check_uniques: 'Управление заявками на проверку уникальности',
         manage_services: 'Управление дополнительными услугами',
         manage_rewrites: 'Управление заявками на рерайт',
-        manage_moderators: 'Управление заявками на рерайт',
+        manage_moderators: 'Управление модераторами',
+        manage_contact_orders: 'Управление заявками на обратную связь',
+        manage_main_page: 'Управление главная страница сайта',
+        manage_prices_page: 'Управление страницей стоимостей',
+        manage_faq_page: 'Управление страницей вопрос-ответ',
+        manage_reviews_page: 'Управление страницей отзывов',
+        manage_about_page: 'Управление страницей о компании',
+        manage_static_pages: 'Управление статическими страницами',
+        manage_articles: 'Управление статьями',
+        manage_settings: 'Управление настройками сайта',
+        manage_permission: 'Управление правами доступа',
+        manage_promo_codes: 'Упраление промокодами'
     },
 };
