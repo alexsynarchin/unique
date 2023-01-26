@@ -18,11 +18,13 @@ use \App\Laravue\Acl;
 
 use App\Http\Controllers\Admin\Api\AuthController;
 Route::post('auth/login', [AuthController::class, 'login']);
-
-Route::get('/user', function (Request $request) {
-
-    return new UserResource($request->user());
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/user', function (Request $request) {
+        return new UserResource($request->user());
+    });
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
+
 
 use App\Http\Controllers\Admin\Api\HomeController;
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

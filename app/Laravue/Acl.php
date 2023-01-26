@@ -22,22 +22,22 @@ final class Acl
     const ROLE_MANAGER = 'manager';
 
 
-    const PERMISSION_VIEW_MENU_ELEMENT_UI = 'view menu element ui';
-    const PERMISSION_VIEW_MENU_PERMISSION = 'view menu permission';
-    const PERMISSION_VIEW_MENU_COMPONENTS = 'view menu components';
-    const PERMISSION_VIEW_MENU_CHARTS = 'view menu charts';
-    const PERMISSION_VIEW_MENU_NESTED_ROUTES = 'view menu nested routes';
-    const PERMISSION_VIEW_MENU_TABLE = 'view menu table';
-    const PERMISSION_VIEW_MENU_ADMINISTRATOR = 'view menu administrator';
-    const PERMISSION_VIEW_MENU_THEME = 'view menu theme';
-    const PERMISSION_VIEW_MENU_CLIPBOARD = 'view menu clipboard';
-    const PERMISSION_VIEW_MENU_EXCEL = 'view menu excel';
-    const PERMISSION_VIEW_MENU_ZIP = 'view menu zip';
-    const PERMISSION_VIEW_MENU_PDF = 'view menu pdf';
-    const PERMISSION_VIEW_MENU_I18N = 'view menu i18n';
+    const PERMISSION_MANAGE_CHECK_SYSTEMS = 'manage check systems';
 
-    const PERMISSION_USER_MANAGE = 'manage user';
-    const PERMISSION_ARTICLE_MANAGE = 'manage article';
+    const PERMISSION_MANAGE_CHECK_UNIQUES = 'manage check uniques';
+    const PERMISSION_MANAGE_SERVICES = 'manage services';
+    const PERMISSION_MANAGE_REWRITES = 'manage rewrites';
+    const PERMISSION_MANAGE_MODERATORS = 'manage moderators';
+    const PERMISSION_MANAGE_PROMO_CODES = 'manage promo codes';
+    const PERMISSION_MANAGE_CONTACT_ORDERS = 'manage contact orders';
+    const PERMISSION_MANAGE_MAIN_PAGE = 'manage main page';
+    const PERMISSION_MANAGE_PRICES_PAGE = 'manage prices page';
+    const PERMISSION_MANAGE_FAQ_PAGE = 'manage faq page';
+    const PERMISSION_MANAGE_REVIEWS_PAGE = 'manage reviews page';
+    const PERMISSION_MANAGE_ABOUT_PAGE = 'manage about page';
+    const PERMISSION_MANAGE_STATIC_PAGES = 'manage static pages';
+    const PERMISSION_MANAGE_ARTICLES = 'manage articles';
+    const PERMISSION_MANAGE_SETTINGS = 'manage settings';
     const PERMISSION_PERMISSION_MANAGE = 'manage permission';
 
     /**
