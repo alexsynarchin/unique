@@ -23,7 +23,7 @@ class MainPageController extends Controller
         $lists = ['mp-ratings', 'mp-why-list', 'mp-process-list', 'mp-about-list', 'mp-about-gallery', 'mp-reviews-list', 'mp-faq-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
-        return view('site.dashboard.index', ['blocks' => $blocks, 'lists' => $lists]);
+        return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists]);
     }
 
     public function reviewPdf($id)
