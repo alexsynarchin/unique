@@ -22,23 +22,23 @@ final class Acl
     const ROLE_MANAGER = 'manager';
 
 
-    const PERMISSION_MANAGE_CHECK_SYSTEMS = 'manage check systems';
+    const PERMISSION_MANAGE_CHECK_SYSTEMS = 'manage_check_systems';
 
-    const PERMISSION_MANAGE_CHECK_UNIQUES = 'manage check uniques';
-    const PERMISSION_MANAGE_SERVICES = 'manage services';
-    const PERMISSION_MANAGE_REWRITES = 'manage rewrites';
-    const PERMISSION_MANAGE_MODERATORS = 'manage moderators';
-    const PERMISSION_MANAGE_PROMO_CODES = 'manage promo codes';
-    const PERMISSION_MANAGE_CONTACT_ORDERS = 'manage contact orders';
-    const PERMISSION_MANAGE_MAIN_PAGE = 'manage main page';
-    const PERMISSION_MANAGE_PRICES_PAGE = 'manage prices page';
-    const PERMISSION_MANAGE_FAQ_PAGE = 'manage faq page';
-    const PERMISSION_MANAGE_REVIEWS_PAGE = 'manage reviews page';
-    const PERMISSION_MANAGE_ABOUT_PAGE = 'manage about page';
-    const PERMISSION_MANAGE_STATIC_PAGES = 'manage static pages';
-    const PERMISSION_MANAGE_ARTICLES = 'manage articles';
-    const PERMISSION_MANAGE_SETTINGS = 'manage settings';
-    const PERMISSION_PERMISSION_MANAGE = 'manage permission';
+    const PERMISSION_MANAGE_CHECK_UNIQUES = 'manage_check_uniques';
+    const PERMISSION_MANAGE_SERVICES = 'manage_services';
+    const PERMISSION_MANAGE_REWRITES = 'manage_rewrites';
+    const PERMISSION_MANAGE_MODERATORS = 'manage_ moderators';
+    const PERMISSION_MANAGE_PROMO_CODES = 'manage_promo_codes';
+    const PERMISSION_MANAGE_CONTACT_ORDERS = 'manage_contact_orders';
+    const PERMISSION_MANAGE_MAIN_PAGE = 'manage_main_page';
+    const PERMISSION_MANAGE_PRICES_PAGE = 'manage_prices_page';
+    const PERMISSION_MANAGE_FAQ_PAGE = 'manage_faq_page';
+    const PERMISSION_MANAGE_REVIEWS_PAGE = 'manage_reviews_page';
+    const PERMISSION_MANAGE_ABOUT_PAGE = 'manage_about_page';
+    const PERMISSION_MANAGE_STATIC_PAGES = 'manage_static_pages';
+    const PERMISSION_MANAGE_ARTICLES = 'manage_articles';
+    const PERMISSION_MANAGE_SETTINGS = 'manage_settings';
+    const PERMISSION_PERMISSION_MANAGE = 'manage_permission';
 
     /**
      * @param array $exclusives Exclude some permissions from the list
