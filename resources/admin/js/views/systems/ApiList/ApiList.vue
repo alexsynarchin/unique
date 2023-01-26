@@ -15,21 +15,16 @@
                 >
                 </el-table-column>
                 <el-table-column>
-                    <tepmplate slot-scope="scope">
-                        <router-link :to="'/admin/check-systems/api/' + scope.row.id" class="el-button el-button--primary el-button--small">
+                    <template slot-scope="scope">
+                        <router-link :to="'api/' + scope.row.id" class="el-button el-button--primary el-button--small">
                             <i class="el-icon-setting"></i>
+                            {{scope.row.id}}
                             Настройки
                         </router-link>
-                    </tepmplate>
+                    </template>
                 </el-table-column>
             </data-tables>
         </div>
-        <el-dialog
-            title="Редактровать Api"
-            :visible.sync="modalVisible"
-            width="50%"
-        >
-        </el-dialog>
     </section>
 </template>
 <script>

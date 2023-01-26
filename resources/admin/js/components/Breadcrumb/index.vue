@@ -50,13 +50,16 @@ export default {
       return toPath(params);
     },
     handleLink(item) {
-        console.log(item)
       const { redirect, path } = item;
-      if (redirect) {
-        this.$router.push(redirect);
-        return;
-      }
-      this.$router.push(this.pathCompile(path));
+
+        if(this.$route.fullPath !== redirect  && this.$route.fullPath !==path) {
+            if (redirect) {
+                this.$router.push(redirect);
+                return;
+            }
+            this.$router.push(this.pathCompile(path));
+        }
+
     },
   },
 };

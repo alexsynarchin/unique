@@ -12,6 +12,7 @@ Vue.use(Router);
 /* Layout */
 import Layout from '@/admin/js/layout';
 
+
 /* Router for modules */
 import errorRoutes from './modules/error';
 import * as path from "path";
@@ -85,16 +86,7 @@ export const asyncRoutes = [
                 component: () => import('@/admin/js/views/settings/index'),
                 meta: { title: 'Настройки',  noCache: false , permissions: ['manage_settings']},
             },
-            { name: 'check-systems',
-                path: 'check-systems',
-                component: () => import('@/admin/js/views/systems/index'),
-                meta: { title: 'Системы проверки уникальности',  noCache: false , permissions: ['manage_check_systems']},
-            },
-            {name: 'check-api',
-                path: 'check-systems/api/:id',
-                component: () => import('@/admin/js/views/systems/ApiList/ApiShow'),
-                meta: { title: 'Апи систем проверки',  noCache: false , permissions: ['manage_check_systems']},
-            },
+
             {name: 'check-uniques',
                 path: 'check-uniques',
                 component: () => import('@/admin/js/views/check-uniques/index'),
@@ -164,6 +156,41 @@ export const asyncRoutes = [
             },
         ],
     },
+
+    { name: 'check-systems',
+        path: '/check-systems',
+        component: Layout,
+        meta: { title: 'Системы проверки уникальности',  noCache: false , permissions: ['manage_check_systems']},
+        redirect: '/check-systems/list',
+        alwaysShow: true,
+        children: [
+            {
+                name:'check-systems-list',
+                path: 'list',
+                component: () => import('@/admin/js/views/systems/systems-list/SystemList'),
+                meta: {title:'Список'},
+
+            },
+            {
+                name:'check-systems-api-list',
+                path: 'api',
+                component: () => import('@/admin/js/views/systems/ApiList/ApiList'),
+                meta: {title:'Api'},
+
+                children: [
+                    {
+                        name:'ApiSettings',
+                        path: ':id',
+                        component: () => import('@/admin/js/views/systems/ApiList/ApiShow'),
+                        meta: { title:'Настройка'},
+
+                    }
+                ],
+
+            }
+        ]
+    },
+
     errorRoutes,
     { path: '*', redirect: '/404', hidden: true },
 ];

@@ -85,8 +85,8 @@
     </section>
 </template>
 <script>
-import Create from './systems-list/create';
-import Edit from "./systems-list/edit";
+import Create from './create.vue';
+import Edit from "./edit.vue";
 import ElTableDraggable from 'element-ui-el-table-draggable';
     export default {
         components: {

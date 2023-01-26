@@ -1,25 +1,26 @@
 <template>
-    <el-tabs type="card" v-model="activeTabName" >
-        <el-tab-pane name="list" label="Системы проверки">
-            <system-list></system-list>
-        </el-tab-pane>
-       <!-- <el-tab-pane name="api" label="Api систем проверки">
-            <api-list></api-list>
-        </el-tab-pane>-->
-    </el-tabs>
+   <section>
+       <el-menu  class="el-menu-demo" mode="horizontal"  :router="true"  @select="handleSelect">
+           <el-menu-item index='/check-systems/list' >Системы проверки</el-menu-item>
+           <el-menu-item index="/check-systems/api">Api систем проверки</el-menu-item>
+       </el-menu>
+       <router-view ></router-view>
+   </section>
 </template>
 <script>
-    import ApiList from './ApiList/ApiList.vue';
-    import SystemList from './SystemList'
+    import SystemList from './systems-list/SystemList.vue'
     export default {
         components: {
-            ApiList, SystemList
+            SystemList
         },
         data() {
             return {
-                CanAccess: 'Просмотр "Системы проверки"',
                 activeTabName: 'list',
-
+            }
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
             }
         }
     }
