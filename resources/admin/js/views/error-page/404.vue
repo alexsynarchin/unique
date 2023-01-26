@@ -6,7 +6,7 @@
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">
-          Доступ запрещен
+          Страница не найдена
         </div>
         <div class="bullshit__headline">
           {{ message }}

@@ -6,7 +6,7 @@
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">
-          Данная страница не существует
+          Доступ запрещен
         </h1>
         <ul class="list-unstyled">
           <li>Вернуться на главную:</li>
