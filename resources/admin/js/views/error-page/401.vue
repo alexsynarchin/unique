@@ -6,21 +6,15 @@
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">
-          Oops!
+          Данная страница не существует
         </h1>
-        <h2>You don't have permission to go to this page</h2>
-        <h6>If you are dissatisfied, please contact admistrator.</h6>
         <ul class="list-unstyled">
-          <li>Or you can go:</li>
+          <li>Вернуться на главную:</li>
           <li class="link-type">
             <router-link to="/dashboard">
-              {{ $t('route.dashboard') }}
+              На главную
             </router-link>
           </li>
-          <li class="link-type">
-            <a href="https://www.google.com/">just looking around</a>
-          </li>
-          <li><a href="#" @click.prevent="dialogVisible=true">show a picture</a></li>
         </ul>
       </el-col>
       <el-col :span="12">

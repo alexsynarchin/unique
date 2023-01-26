@@ -54,6 +54,15 @@ export const constantRoutes = [
         component: () => import('@/admin/js/views/error-page/401'),
         hidden: true,
     },
+
+
+
+
+    //elementUiRoutes,
+];
+
+
+export const asyncRoutes = [
     {
         path: '/',
         component: Layout,
@@ -69,95 +78,93 @@ export const constantRoutes = [
                 path:'moderators',
                 component: () => import('@/admin/js/views/moderators/index'),
                 name: 'Moderators',
-                meta: { title: 'moderators',  noCache: false },
+                meta: { title: 'Модераторы',  noCache: false , permissions: ['manage moderators']},
             },
             { name: 'settings',
                 path: 'settings',
                 component: () => import('@/admin/js/views/settings/index'),
+                meta: { title: 'Настройки',  noCache: false , permissions: ['manage settings']},
             },
             { name: 'check-systems',
                 path: 'check-systems',
                 component: () => import('@/admin/js/views/systems/index'),
+                meta: { title: 'Системы проверки уникальности',  noCache: false , permissions: ['manage check systems']},
             },
             {name: 'check-api',
                 path: 'check-systems/api/:id',
-                component: () => import('@/admin/js/views/systems/ApiList/ApiShow')
+                component: () => import('@/admin/js/views/systems/ApiList/ApiShow'),
+                meta: { title: 'Апи систем проверки',  noCache: false , permissions: ['manage check systems']},
             },
             {name: 'check-uniques',
                 path: 'check-uniques',
-                component: () => import('@/admin/js/views/check-uniques/index')
+                component: () => import('@/admin/js/views/check-uniques/index'),
+                meta: { title: 'Заявки на проверку уникальности',  noCache: false , permissions: ['manage check uniques']},
             },
             {
                 name: 'promo-codes',
                 path: 'promo-codes',
-                component: () => import('@/admin/js/views/promocodes/index.vue')
+                component: () => import('@/admin/js/views/promocodes/index.vue'),
+                meta: { title: 'Промокоды',  noCache: false , permissions: ['manage promo codes']},
             },
             {
                 name: 'prices',
                 path: 'prices',
-                component: () => import('@/admin/js/views/prices/index')
+                component: () => import('@/admin/js/views/prices/index'),
+                meta: { title: 'Цены',  noCache: false , permissions: ['manage prices page']},
             },
             {
                 name: 'faq',
                 path: 'faq',
-                component: () => import('@/admin/js/views/faq/index')
+                component: () => import('@/admin/js/views/faq/index'),
+                meta: { title: 'FAQ',  noCache: false , permissions: ['manage faq page']},
             },
             {
                 name:'main-page',
                 path:'main-page',
-                component: () => import('@/admin/js/views/main-page/index')
+                component: () => import('@/admin/js/views/main-page/index'),
+                meta: { title: 'Главная страница',  noCache: false , permissions: ['manage main page']},
             },
             {name:'reviews',
                 path:'reviews',
-                component: () => import('@/admin/js/views/reviews/index')
+                component: () => import('@/admin/js/views/reviews/index'),
+                meta: { title: 'Отзывы',  noCache: false , permissions: ['manage reviews page']},
             },
             {name:'about',
                 path:'about',
-                component: () => import('@/admin/js/views/about/index')
+                component: () => import('@/admin/js/views/about/index'),
+                meta: { title: 'Страница о компании',  noCache: false , permissions: ['manage about page']},
             },
             {
                 name:'rewrites',
                 path:'rewrites',
-                component: () => import('@/admin/js/views/rewrites/index')
+                component: () => import('@/admin/js/views/rewrites/index'),
+                meta: { title: 'Заявки на рерайт',  noCache: false , permissions: ['manage rewrites']},
             },
             {
                 name:'services',
                 path:'services',
-                component: () => import('@/admin/js/views/services/index')
+                component: () => import('@/admin/js/views/services/index'),
+                meta: { title: 'Дополнительные услуги',  noCache: false , permissions: ['manage services']},
             },
             {name: 'articles',
                 path: 'articles',
-                component: () => import('@/admin/js/views/articles/index')
+                component: () => import('@/admin/js/views/articles/index'),
+                meta: { title: 'Статьи',  noCache: false , permissions: ['manage articles']},
             },
             {name: 'contacts',
                 path: 'requests',
-                component: () => import('@/admin/js/views/contact-orders/index')
+                component: () => import('@/admin/js/views/contact-orders/index'),
+                meta: { title: 'Заявки обратная связь',  noCache: false , permissions: ['manage contact orders']},
             },
             {
                 name: 'static-pages',
                 path: 'static-pages',
-                component: () => import('@/admin/js/views/static-pages/index')
+                component: () => import('@/admin/js/views/static-pages/index'),
+                meta: { title: 'Статическая страница',  noCache: false , permissions: ['manage static pages']},
             },
         ],
     },
-
-
-
-
-
-    //elementUiRoutes,
-];
-
-export const asyncRoutes = [
-
-
     errorRoutes,
-
-
-
-
-
-
     { path: '*', redirect: '/404', hidden: true },
 ];
 
