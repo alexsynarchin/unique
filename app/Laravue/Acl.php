@@ -27,7 +27,7 @@ final class Acl
     const PERMISSION_MANAGE_CHECK_UNIQUES = 'manage_check_uniques';
     const PERMISSION_MANAGE_SERVICES = 'manage_services';
     const PERMISSION_MANAGE_REWRITES = 'manage_rewrites';
-    const PERMISSION_MANAGE_MODERATORS = 'manage_ moderators';
+    const PERMISSION_MANAGE_MODERATORS = 'manage_moderators';
     const PERMISSION_MANAGE_PROMO_CODES = 'manage_promo_codes';
     const PERMISSION_MANAGE_CONTACT_ORDERS = 'manage_contact_orders';
     const PERMISSION_MANAGE_MAIN_PAGE = 'manage_main_page';
