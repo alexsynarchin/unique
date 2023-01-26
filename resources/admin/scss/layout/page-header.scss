@@ -1,5 +1,6 @@
 .page-header {
     display: flex;
+    align-items: center;
     width: 100%;
     z-index: 3;
     top: 0;
@@ -9,20 +10,43 @@
     box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
 
     &__logo {
+        overflow: hidden;
+        height: 100%;
         width: 17.1875rem;
-        padding-left: 15px;
+        min-width: 17.1875rem;
+
         color: #fff;
         background-color: #343957;
         padding-top: 20px;
         padding-bottom: 20px;
+        transition: width  0.28s ease-in-out, min-width 0.28s ease-in-out;
     }
     &__content {
+        transition: transform .28s;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         flex: 1;
-        padding-top: 20px;
+    }
+    &__container {
+        align-items: center;
+        display: flex;
     }
     &__right {
-        display: flex;
+
         justify-content: flex-end;
     }
 }
+.page-header-logo {
+    &__text {
+        padding-left: 15px;
+    }
+}
+.hideSidebar {
+    .page-header__logo {
+        white-space: nowrap;
+        width:0;
+        min-width: 0;
+    }
+}
+

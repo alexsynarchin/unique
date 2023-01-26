@@ -63,12 +63,13 @@ export const constantRoutes = [
                 path: 'dashboard',
                 component: () => import('@/admin/js/views/dashboard/index'),
                 name: 'Dashboard',
-                meta: { title: 'dashboard', icon: 'el-icon-s-dashboard', noCache: false },
+                meta: { title: 'dashboard',  noCache: false },
             },
             {
                 path:'moderators',
                 component: () => import('@/admin/js/views/moderators/index'),
-                name: 'Moderators'
+                name: 'Moderators',
+                meta: { title: 'moderators',  noCache: false },
             },
             { name: 'settings',
                 path: 'settings',

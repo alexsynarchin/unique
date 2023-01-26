@@ -1,10 +1,18 @@
 .main-sidebar {
+    overflow: hidden;
     box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
     width: 17.1875rem;
-    min-width: 17.1875rem;
     background-color: #343957;
+    position:fixed;
+    top: 70px;
+    left:0;
+    transition: width  0.28s ease-in-out, min-width 0.28s ease-in-out;
     .el-menu {
         background-color: #343957;
     }
 
+}
+.hideSidebar .main-sidebar {
+    width: 0;
+    min-width: 0;
 }

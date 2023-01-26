@@ -1,0 +1,8 @@
+.main-container {
+    margin-left: 17.1875rem;
+    transition: margin-left 0.28s;
+}
+.hideSidebar .main-container {
+    margin-left: 0 !important;
+    transition: margin-left 0.52s;
+}
