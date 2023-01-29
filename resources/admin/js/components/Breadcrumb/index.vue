@@ -51,7 +51,6 @@ export default {
     },
     handleLink(item) {
       const { redirect, path } = item;
-
         if(this.$route.fullPath !== redirect  && this.$route.fullPath !==path) {
             if (redirect) {
                 this.$router.push(redirect);
@@ -59,7 +58,6 @@ export default {
             }
             this.$router.push(this.pathCompile(path));
         }
-
     },
   },
 };
