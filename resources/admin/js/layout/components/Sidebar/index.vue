@@ -1,5 +1,6 @@
 <template>
-    <aside class="main-sidebar"  ref="SidebarMenu">
+    <aside class="main-sidebar"  ref="SidebarMenu" id="main_sidebar">
+
             <el-menu
                 :router="true"
                 class="sidebar-nav"
@@ -31,16 +32,14 @@ import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 export default {
     components: { PerfectScrollbar },
     mounted(){
-        this.isMounted = true;
-
+        const resize_ob = new ResizeObserver(() => {
+            this.matchHeight();
+        });
+        resize_ob.observe(document.querySelector('#main_sidebar'));
 
     },
     computed:{
-        height () {
-            if(this.isMounted) {
-                return this.$refs.SidebarMenu.clientHeight - 80;
-            }
-        }
+
     },
 
     methods: {
@@ -53,7 +52,7 @@ export default {
     },
     data(){
         return{
-            isMounted:false,
+           height:0,
             menu:[
 
                 {
