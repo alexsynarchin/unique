@@ -35,7 +35,8 @@ class ReportController extends Controller
         $service = new CheckUniqueService();
         $report = Report::findOrFail($id);
         $check_unique = $report->checkUnique()->first();
-        $uid = $service->getUid($check_unique->plainText);
+        $symbols = $report->checkSystem -> symbols_count;
+        $uid = $service->getUid(mb_substr($check_unique->plainText, 0, $symbols));
         $report->uid = $uid;
         $report->save();
     }
