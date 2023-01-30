@@ -50,7 +50,11 @@ class CheckUniqueController extends Controller
 
     public function show($id)
     {
-
+        $checkUnique = CheckUnique::findOrFail($id);
+        if (!$checkUnique->viewed) {
+            $checkUnique->viewed = true;
+            $checkUnique->save();
+        }
     }
 
     public function getSystems()

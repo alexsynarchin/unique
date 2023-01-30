@@ -58,7 +58,7 @@ export default {
     components: {Show},
     data() {
         return {
-            CanAccess: 'Просмотр "Заявки на рерайт"',
+
             rewrites: [],
             dialogVisible:false,
             currentId:null,

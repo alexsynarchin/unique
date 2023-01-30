@@ -62,12 +62,15 @@ import Report from "./components/report";
                        })
                     })
             },
+            setViewed() {
+                axios.get('/api/admin/check-unique/' + this.id + '/show')
+            }
 
         },
         mounted() {
             this.$root.isLoading = true;
             this.getCheckUnique();
-
+            this.setViewed();
         }
     }
 </script>

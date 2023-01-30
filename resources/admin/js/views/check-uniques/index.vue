@@ -44,9 +44,7 @@
                 </el-select>
             </div>
         </div>
-
-
-        <data-tables :data="check_uniques" >
+        <data-tables :data="check_uniques"  :table-props="tableProps">
             <el-table-column
                 label="№"
             >
@@ -73,21 +71,20 @@
             >
             </el-table-column>
             <el-table-column
-                label="Кол-во систем проверки"
+                label="Системы проверки"
             >
                 <template slot-scope="scope">
-               <div  v-for="(item, index) in scope.row.reports" style="word-break: normal">
-                   <div>{{item.check_system.title + ', '}}</div>
-                </div>
+                    <el-tag class="admin-tag" type="success" :key="index" v-for="(item, index) in scope.row.reports" style="word-break: normal;">
+                        {{item.check_system.title}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column
                 label="Услуги"
             >
                 <template slot-scope="scope" >
-                 <span v-for="(item, index) in scope.row.services">
-                              {{item.title + ', '}}
-                        </span>
+                 <el-tag class="admin-tag" :key="index" v-for="(item, index) in scope.row.services">
+                      {{item.title + ', '}}
+                 </el-tag>
                 </template>
             </el-table-column>
             <el-table-column
@@ -154,7 +151,7 @@ import CheckReport from "./components/report/index";
                 tableProps: {
                     "row-class-name": function (row) {
 
-                        if (row.row.status === 0) {
+                        if (row.row.viewed === 0) {
                             return 'warning-row';
                         }
                         return ''
@@ -176,6 +173,8 @@ import CheckReport from "./components/report/index";
             handleShow(id) {
                 this.currentId = id;
                 this.dialogVisible = true;
+                let index = this.check_uniques.findIndex(item => item.id === id);
+                this.check_uniques[index].viewed = 1;
             },
             getCheckUniques() {
                 axios.get('/api/admin/check-uniques', {params:{type:this.type, system: this.system, price_type:this.priceType}})
@@ -190,12 +189,18 @@ import CheckReport from "./components/report/index";
         }
     }
 </script>
-<style>
+<style lang="scss">
 .el-table .warning-row {
     background: oldlace;
 }
 
 .el-table .success-row {
     background: #f0f9eb;
+}
+.admin-tag {
+    width: 100%;
+    &:nth-child(2n) {
+        margin-top: 10px;
+    }
 }
 </style>

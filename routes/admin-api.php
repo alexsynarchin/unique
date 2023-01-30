@@ -64,6 +64,7 @@ Route::post('/check-system/{id}/destroy',[CheckSystemController::class, 'destroy
 use App\Http\Controllers\Admin\Api\CheckUniqueController;
 Route::get('/check-uniques', [CheckUniqueController::class, 'index'])->name('check-unique.index');
 Route::get('/check-unique/systems', [CheckUniqueController::class, 'getSystems'])->name('check-unique.systems');
+Route::get('/check-unique/{id}/show', [CheckUniqueController::class, 'show']);
 
 use App\Http\Controllers\Admin\Api\PromoCodeController;
 Route::apiResource('/promo-codes', PromoCodeController::class);
