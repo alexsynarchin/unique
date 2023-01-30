@@ -98,7 +98,7 @@
                 </button>
             </div>
         </div>
-        {{systems}}
+
         <systems-list @selectSystem="handleSelected" ref="systems_list"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
