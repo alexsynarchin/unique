@@ -34,7 +34,7 @@
         </div>
     </div>
         <button class="btn button check-unique-button" @click.prevent = "checkTextUnique">
-            Проверить уникальность полного текста
+           {{checkUniqueButtonString}}
         </button>
        <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
             {{errors.get('text')}}
@@ -47,6 +47,7 @@
 <script>
     import selectSystemModal from "./SelectSystemModal";
     import { Errors } from  '@/common/js/services/errors.js';
+    import { bus } from '@/site/js/services/bus.js';
     export default {
         props: {
             stateSelectedSystems: {
@@ -58,6 +59,15 @@
         },
         components: {
             selectSystemModal
+        },
+        computed: {
+            checkUniqueButtonString: function () {
+                if (this.free) {
+                    return 'Проверить уникальность полного текста бесплатно'
+                } else {
+                    return 'Проверить уникальность полного текста'
+                }
+            }
         },
         data() {
             return {
@@ -88,6 +98,7 @@
                 this.$refs.select_system_modal.showSelectSystem(index, item);
             },
             handleSelected(data) {
+                console.log(data)
                 let checkIndex = this.systemIndex.indexOf(data.index);
                 let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
                     return data.item.id === object.id
@@ -125,6 +136,8 @@
                 axios.get('/api/check-systems')
                     .then((response) => {
                         this.CheckSystems = response.data;
+                        const searchIndex = response.data.findIndex((system) => system.price===0);
+                        bus.$emit('change-symbols-count', response.data[searchIndex].symbols_count);
                         if(this.stateSelectedSystems.length > 0) {
                             this.preSelectSystems();
                         }
@@ -144,6 +157,7 @@
         },
         mounted() {
             this.getSystemsList();
+
 
         }
     }

@@ -18,7 +18,7 @@
                 </div>
                 <textarea class="check-unique__textarea form-control"
                           v-model="text"
-                          placeholder="Вставьте текст или загрузите документ до 15000 символов бесплатно"></textarea>
+                          :placeholder="symbolsCountString"></textarea>
             </section>
             <div class="check-unique__actions">
 
@@ -75,10 +75,7 @@
                     Загрузить документ
                     </span>
                     </label>
-
-
                 </div>
-
             </div>
 
         </section>
@@ -101,7 +98,7 @@
                 </button>
             </div>
         </div>
-
+        {{systems}}
         <systems-list @selectSystem="handleSelected" ref="systems_list"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
@@ -113,13 +110,24 @@
     import FreeCheckModal from "./components/FreeCheckModal";
     import PayCheckModal from "./components/PayCheckModal";
     import CountrySelectModal from "./components/CountrySelectModal";
-
+    import { bus } from '@/site/js/services/bus.js';
     export default {
         components: {
             SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal
         },
+        computed: {
+            symbolsCountString: function () {
+                if(this.symbols_count) {
+                    return 'Вставьте текст или загрузите документ до ' +  this.symbols_count + ' символов бесплатно';
+                } else {
+                    return ""
+                }
+            },
+
+        },
         data() {
             return {
+                symbols_count: 0,
                 systems: [],
                 text: "",
                 file:"",
@@ -189,6 +197,7 @@
 
             },
             handleSelected(data) {
+                console.log(data);
                 axios.post('/api/check-unique/validate-modal',
                     {
                             length: data.list.length,
@@ -208,10 +217,16 @@
 
 
             },
+            changeSymbolsCount(data) {
+                this.symbols_count = data;
+            }
 
         },
         mounted() {
 
+        },
+        created() {
+            bus.$on('change-symbols-count', this.changeSymbolsCount)
         }
     }
 </script>

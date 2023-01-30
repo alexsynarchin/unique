@@ -87,7 +87,14 @@ import PayCheckModal from "@/site/js/components/check-unique/components/PayCheck
         mounted() {
             this.$root.isLoading = true;
             this.getCheckUnique();
+            let urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.has('test')); // true
+            console.log(urlParams.get('test')); // "MyParam"
 
-        }
+
+        },
+        created() {
+
+        },
     }
 </script>
