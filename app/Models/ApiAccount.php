@@ -13,6 +13,7 @@ class ApiAccount extends Model
         'key',
         'password',
         'balance',
-        'menuindex'
+        'menuindex',
+        'api_id'
     ];
 }

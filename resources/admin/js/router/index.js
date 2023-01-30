@@ -172,12 +172,17 @@ export const asyncRoutes = [
 
             },
             {
-                name:'check-systems-api-list',
+                name:'check-systems-api',
                 path: 'api',
-                component: () => import('@/admin/js/views/systems/ApiList/ApiList'),
+                component: () => import('@/admin/js/views/systems/ApiList/index'),
                 meta: {title:'Api'},
-
                 children: [
+                    {
+                        name:'check-systems-api-list',
+                        path: '',
+                        component: () => import('@/admin/js/views/systems/ApiList/ApiList.vue'),
+                        meta: {title:'Список'},
+                    },
                     {
                         name:'ApiSettings',
                         path: ':id',
@@ -185,9 +190,9 @@ export const asyncRoutes = [
                         meta: { title:'Настройка'},
 
                     }
-                ],
+                ]
+            },
 
-            }
         ]
     },
 

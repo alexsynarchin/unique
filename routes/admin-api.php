@@ -28,8 +28,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 use App\Http\Controllers\Admin\Api\HomeController;
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
 use App\Http\Controllers\Admin\Api\ModeratorController;
 Route::apiResource('/moderators', ModeratorController::class);
+
+use App\Http\Controllers\Admin\Api\ApiAccountController;
+Route::apiResource('/api-accounts', ApiAccountController::class);
 
 use App\Http\Controllers\Admin\Api\SortController;
 Route::post('/sort', [SortController::class, 'sort'])->name('sorting');

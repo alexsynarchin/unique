@@ -22,7 +22,6 @@
                     <template slot-scope="scope">
                         <router-link :to="'api/' + scope.row.id" class="el-button el-button--primary el-button--small">
                             <i class="el-icon-setting"></i>
-                            {{scope.row.id}}
                             Настройки
                         </router-link>
                     </template>
