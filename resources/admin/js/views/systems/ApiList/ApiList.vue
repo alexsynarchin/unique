@@ -1,5 +1,9 @@
 <template>
     <section>
+        <el-menu default-active="/check-systems/api" class="el-menu-demo" mode="horizontal"  :router="true"  >
+            <el-menu-item index='/check-systems/list' >Системы проверки</el-menu-item>
+            <el-menu-item index="/check-systems/api">Api систем проверки</el-menu-item>
+        </el-menu>
         <div class="col-md-10">
 
             <data-tables :data="tableData">

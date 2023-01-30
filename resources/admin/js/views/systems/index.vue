@@ -1,7 +1,7 @@
 <template>
    <section>
        <el-menu  class="el-menu-demo" mode="horizontal"  :router="true"  @select="handleSelect">
-           <el-menu-item index='/check-systems/list' >Системы проверки</el-menu-item>
+           <el-menu-item index='/check-systems' >Системы проверки</el-menu-item>
            <el-menu-item index="/check-systems/api">Api систем проверки</el-menu-item>
        </el-menu>
        <router-view ></router-view>

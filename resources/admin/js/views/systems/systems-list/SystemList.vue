@@ -1,5 +1,9 @@
 <template>
     <section>
+        <el-menu  default-active="/check-systems/list"   class="el-menu-demo" mode="horizontal"  :router="true"  >
+            <el-menu-item index='/check-systems/list' >Системы проверки</el-menu-item>
+            <el-menu-item index="/check-systems/api">Api систем проверки</el-menu-item>
+        </el-menu>
         <div class="col-md-10">
             <div class="d-flex mb-3 mt-2">
                 <div style="margin-right: 20px">
