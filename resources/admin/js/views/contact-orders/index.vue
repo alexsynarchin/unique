@@ -97,7 +97,7 @@ import show from './components/show'
 </script>
 <style>
 .el-table .warning-row {
-    background-color: #f8d7da;
+    background: oldlace;
 }
 
 .el-table .success-row {
