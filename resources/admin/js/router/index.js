@@ -91,6 +91,14 @@ export const asyncRoutes = [
                 path: 'check-uniques',
                 component: () => import('@/admin/js/views/check-uniques/index'),
                 meta: { title: 'Заявки на проверку уникальности',  noCache: false , permissions: ['manage_check_uniques']},
+                children: [
+                    {
+                        name:'check-uniques-list',
+                        path:"",
+                        component: () => import('@/admin/js/views/check-uniques/List'),
+                        meta: { title: 'Список'},
+                    }
+                ]
             },
             {
                 name: 'promo-codes',
