@@ -1,6 +1,6 @@
 <template>
     <section class="mb-4">
-        {{check_unique}}
+
         <report-item v-if="loaded"
                      :report="report"
                     :check_unique="check_unique"
