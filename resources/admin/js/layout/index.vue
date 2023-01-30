@@ -2,9 +2,7 @@
     <el-container :class="classObj" @click="handleClickOutside" >
         <page-header ></page-header>
         <el-container class="app-main">
-            <aside class="main-sidebar">
-                <sidebar-nav ></sidebar-nav>
-            </aside>
+            <sidebar-nav></sidebar-nav>
             <el-main class="main-container">
                 <app-main />
             </el-main>
@@ -25,6 +23,7 @@ export default {
         PageHeader,
         AppMain,
         SidebarNav,
+
     },
     computed: {
         ...mapState({

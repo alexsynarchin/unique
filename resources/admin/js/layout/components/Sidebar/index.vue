@@ -1,45 +1,59 @@
 <template>
-    <div>
+    <aside class="main-sidebar"  ref="SidebarMenu">
+            <el-menu
+                :router="true"
+                class="sidebar-nav"
 
-        <el-menu
-            :router="true"
-            class="sidebar-nav"
-        >
-            <el-menu-item index="/" class="el-menu-item__link sidebar-nav__link">
-                <span class="sidebar-nav__link-text">Главная</span>
-            </el-menu-item>
-            <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link"
-                           :class="{
-                'sidebar-nav__link--border':item.border
-            }"
-                           v-if="checkPermission([item.permission])"
             >
-            <span class="sidebar-nav__link-text">
-                 {{item.title}}
-            </span>
-            </el-menu-item>
-        </el-menu>
+                <perfect-scrollbar :style="{height: height + 'px'}">
+                <el-menu-item index="/" class="el-menu-item__link sidebar-nav__link">
+                    <span class="sidebar-nav__link-text">Главная</span>
+                </el-menu-item>
+                <el-menu-item  v-for="item in menu"  v-bind:key="item.id" :index="item.id" class="el-menu-item__link sidebar-nav__link"
+                               :class="{
+            'sidebar-nav__link--border':item.border
+        }"
+                               v-if="checkPermission([item.permission])"
+                >
+        <span class="sidebar-nav__link-text">
+             {{item.title}}
+        </span>
+                </el-menu-item>
+                </perfect-scrollbar>
+            </el-menu>
 
-
-    </div>
-
+    </aside>
 </template>
 <script>
+
 import checkPermission from '@/admin/js/utils/permission';
+import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 export default {
+    components: { PerfectScrollbar },
     mounted(){
+        this.isMounted = true;
 
 
     },
-
     computed:{
+        height () {
+            if(this.isMounted) {
+                return this.$refs.SidebarMenu.clientHeight - 80;
+            }
+        }
     },
+
     methods: {
         checkPermission,
+        matchHeight() {
+            let height = this.$refs.SidebarMenu.clientHeight;
+
+            this.height = height - 80;
+        }
     },
     data(){
         return{
-
+            isMounted:false,
             menu:[
 
                 {
@@ -119,8 +133,16 @@ export default {
                     title:"Настройки",
                     permission: 'manage_settings',
                 },
+
             ],
         }
     }
 }
 </script>
+<style>
+@import "vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css";
+.ps {
+
+}
+</style>
+

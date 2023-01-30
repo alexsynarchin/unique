@@ -1,5 +1,7 @@
 .sidebar-nav {
+    position: relative;
     border-right: none !important;
+    height: 100%;
     &__link {
         color: #bdbdc7;
 
