@@ -13,7 +13,7 @@
 
             </div>
             <div class="col-xl-3 page-footer__col-2">
-                <a href="/#check_unique'" class="btn button button--width-100 mb-4" @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
+                <a href="/#check_unique" class="btn button button--width-100 mb-4" @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
                     Проверить уникальность
                 </a>
                 <button class="btn button button--width-100 button--transparent" data-bs-toggle="modal" data-bs-target="#video_modal">

@@ -118,7 +118,7 @@
     </section>
 </template>
 <script>
-import CheckReport from "./components/show/index";
+import CheckReport from "./show/index";
 export default {
     components: {CheckReport},
     data() {

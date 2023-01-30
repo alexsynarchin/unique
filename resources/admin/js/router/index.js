@@ -97,7 +97,8 @@ export const asyncRoutes = [
                         path:"",
                         component: () => import('@/admin/js/views/check-uniques/List'),
                         meta: { title: 'Список'},
-                    }
+                    },
+
                 ]
             },
             {
