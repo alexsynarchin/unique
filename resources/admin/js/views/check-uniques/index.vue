@@ -89,8 +89,12 @@
             </el-table-column>
             <el-table-column
                 label="Формат"
-                prop="type_title"
-                ></el-table-column>
+                >
+                <template slot-scope="scope">
+                    <el-tag class="admin-tag" type="info"> {{scope.row.type_title}}</el-tag>
+
+                </template>
+            </el-table-column>
             <el-table-column
                 label="Действия"
             >
