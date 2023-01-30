@@ -18,7 +18,7 @@
                 а не законной цитатой, система оставляет на ваше усмотрение.
             </div>
         </div>
-        <h3 class="report-item-another-system__title">Вы можете
+        <h3 class="report-item-another-system__title" name="high_unique">Вы можете
             <a href class="report-item-another-system__link" data-bs-toggle="modal" data-bs-target="#rewrite_modal">повысить уникальность</a>
             текста или проверить текст в другой системе</h3>
         <select-systems ref="select_systems" @selectSystem="handleSelectedSystem" :state-selected-systems="selectedSystems"></select-systems>

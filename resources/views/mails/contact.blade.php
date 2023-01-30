@@ -36,6 +36,9 @@
             background: #F0F1F6;
             padding: 25px;
         }
+        img {
+            max-width: 100%;
+        }
     </style>
 </head>
 <body style="font-family: Verdana, sans-serif;">
@@ -119,6 +122,11 @@
             </td>
         </tr>
     </table>
+    <div style="margin-top:20px; margin-bottom: 20px;">
+        <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{$report->checkUnique->slug}}#high_unique" class="button" target="_blank">
+            Просмотреть отчет
+        </a>
+    </div>
     <table border="0" cellpadding="0" cellspacing="0" style="margin:0 0 100px 0; padding:0; width: 100%;">
         <tr>
             <td style="width: 25%; padding-right: 10px;">
@@ -176,6 +184,14 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <p style="margin-top: 20px">
+        Данное письмо сгенерировано автоматически. Отвечать на него не нужно. По всем вопросам пишите в службу техподдержки.
+    </p>
+    <div style="margin-top: 20px">
+        <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/contact">
+            <img src="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/consultation.jpg">
+        </a>
     </div>
 </div>
 
