@@ -83,7 +83,7 @@
             >
                 <template slot-scope="scope" >
                  <el-tag class="admin-tag" :key="index" v-for="(item, index) in scope.row.services">
-                      {{item.title + ', '}}
+                      {{item.title}}
                  </el-tag>
                 </template>
             </el-table-column>
@@ -199,6 +199,7 @@ import CheckReport from "./components/report/index";
 }
 .admin-tag {
     width: 100%;
+    text-align: center;
     &:nth-child(2n) {
         margin-top: 10px;
     }
