@@ -67,7 +67,7 @@ export default {
 
     },
     mounted() {
-        this.$route.meta.title = this.$route.meta.title + this.$route.params.id;
+        this.$route.meta.title = ' Заявка №' + this.$route.params.id;
         this.$root.isLoading = true;
         this.getCheckUnique();
         this.setViewed();
