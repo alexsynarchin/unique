@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DateTime;
@@ -37,6 +38,7 @@ class CheckUnique extends Model
     public function getFormattedDateAttribute()
     {
         $date = $this->attributes['created_at'];
+        $date = Carbon::create($this->attributes['created_at'])->addHours(5);
         $date = DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y H:i');
         return $date;
     }
