@@ -36,8 +36,9 @@
                                 size="15"
                                 :val="report.data.unique"></progress-bar>
                             <div class="report-progress-bar__text">
+                                Процент уникальности:
                                 <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
-                                Текст неуникальный
+
                             </div>
                         </div>
 

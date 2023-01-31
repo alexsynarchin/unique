@@ -5,7 +5,7 @@
                     :check_unique="check_unique"
         ></report-item>
         <report-detail
-            v-if="report.result"
+            v-if="report.result && report.check_system.api_id"
             :report="report"
         ></report-detail>
     </section>

@@ -67,8 +67,9 @@ import { Errors } from  '@/common/js/services/errors.js';
                 };
                 axios.post('/api/admin/report/' + this.report.id + '/send', formData, config)
                     .then((response) => {
-                        this.$emit('refresh-data')
                         this.handleClose();
+                        this.$emit('refresh-data')
+
                     })
                     .catch((error) => {
                         this.errors.record(error.response.data.errors);
