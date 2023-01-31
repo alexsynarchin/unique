@@ -23,7 +23,7 @@
                         </el-tag>
                         <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
                     </div>
-                    <el-button type="primary" v-if="!report.check_system.api_id" @click.prevent="$refs.reportSend.openModal()">Отправить отчет</el-button>
+                    <el-button type="primary" v-if="!report.check_system.api_id" @click.prevent="$refs.reportSend.openModal()">{{reportBtnString}}</el-button>
                 </div>
 
 
