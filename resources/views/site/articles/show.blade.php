@@ -24,7 +24,18 @@
                 </h1>
             </div>
             <div class="col-lg-3">
-
+                <section class="vk-subscribe">
+                    <h5 class="vk-subscribe__title">Мы во Вконтакте</h5>
+                    <a class="vk-subscribe__link" href="">
+                        <figure class="vk-subscribe__icon">
+                            <svg viewBox="0 0 24 24">
+                                <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
+                            </svg>
+                        </figure>
+                        <span class="vk-subscribe__name">Проверить уникальность</span>
+                    </a>
+                    <button class="button btn vk-subscribe__btn">Подписаться</button>
+                </section>
             </div>
         </div>
         <div class="row mb-5">

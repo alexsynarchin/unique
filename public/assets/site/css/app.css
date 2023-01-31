@@ -14905,3 +14905,47 @@ img {
   font-weight: 500;
   font-size: 17px;
 }
+
+.vk-subscribe {
+  background-color: #F0F1F6;
+  padding: 30px;
+  border-radius: 20px;
+}
+.vk-subscribe__title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.vk-subscribe__link {
+  color: #222222;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.vk-subscribe__link:hover, .vk-subscribe__link:focus {
+  text-decoration: none;
+  color: #222222;
+}
+.vk-subscribe__name {
+  font-size: 16px;
+  font-weight: 500;
+}
+.vk-subscribe__icon {
+  margin-right: 10px;
+  border-radius: 100%;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0;
+  background-color: #0d6efd;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vk-subscribe__icon svg {
+  fill: #fff;
+}
+.vk-subscribe__btn {
+  width: 100%;
+}

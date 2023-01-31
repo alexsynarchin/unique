@@ -1,0 +1,43 @@
+.vk-subscribe {
+    background-color: #F0F1F6;
+    padding: 30px;
+    border-radius: 20px;
+    &__title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__link {
+        color:#222222;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        &:hover, &:focus {
+            text-decoration: none;
+            color:#222222;
+        }
+    }
+    &__name {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    &__icon {
+        margin-right: 10px;
+        border-radius: 100%;
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+        background-color: $blue;
+        padding: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            fill: #fff;
+        }
+    }
+    &__btn {
+        width: 100%;
+    }
+}
