@@ -23,7 +23,7 @@
                         </el-tag>
                         <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
                     </div>
-                    <el-button type="primary" v-if="!report.check_system.api_id">Отправить отчет</el-button>
+                    <el-button type="primary" v-if="!report.check_system.api_id" @click.prevent="$refs.reportSend.openModal()">Отправить отчет</el-button>
                 </div>
 
 
@@ -87,16 +87,17 @@
                         </span>
                     </li>
                 </ul>
-
             </section>
         </div>
+        <report-send :id="report.id" ref="reportSend"></report-send>
     </section>
 </template>
 <script>
-import ProgressBar from 'vue-simple-progress'
+import ProgressBar from 'vue-simple-progress';
+import ReportSend from "@/admin/js/views/check-uniques/components/report-send.vue";
     export default {
     components: {
-        ProgressBar
+        ProgressBar, ReportSend
     },
         computed: {
             checkUniqueTypeString: function () {
