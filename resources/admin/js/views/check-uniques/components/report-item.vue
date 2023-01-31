@@ -14,7 +14,7 @@
             </div>
             <section class="report-item__center">
                     <el-tag type="success" v-if="report.result">
-                        Отчет сформировани
+                        Отчет сформирован
                     </el-tag>
                     <el-tag type="warning" v-else>
                         Отчет не сформирован
@@ -94,7 +94,7 @@ import ProgressBar from 'vue-simple-progress'
     },
         computed: {
             checkUniqueTypeString: function () {
-                if(this.report.api_id) {
+                if(this.report.check_system.api_id) {
                     return 'Автоматическая проверка'
                 } else {
                     return 'Ручная проверка'
