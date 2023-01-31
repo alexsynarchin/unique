@@ -122,9 +122,9 @@
             </td>
         </tr>
     </table>
-    <div style="margin-top:20px; margin-bottom: 20px;">
+    <div style="margin: 20px auto 20px auto; width: 400px;">
         <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{$report->checkUnique->slug}}#high_unique" class="button" target="_blank">
-            Просмотреть отчет
+            Повысить уникальность
         </a>
     </div>
     <table border="0" cellpadding="0" cellspacing="0" style="margin:0 0 100px 0; padding:0; width: 100%;">

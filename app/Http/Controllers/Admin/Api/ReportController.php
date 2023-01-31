@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReportMail;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReportController extends Controller
 {
@@ -17,10 +19,10 @@ class ReportController extends Controller
         ], [
             'report_file.required' => 'Прикрепите файл отчета'
         ]);
-        $report  = Report::findOrFail($id);
+        $report  = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
 
         $data = [
-            'unique' => $request->get('unique_percent'),
+            'unique' => (int) $request->get('unique_percent'),
         ];
         $filename = $request->file('report_file')->getClientOriginalName();
 
@@ -31,6 +33,8 @@ class ReportController extends Controller
         $report->result = 1;
         $report->filename = $filename;
         $report->save();
+        $link = '/storage/reports/' . $report->id . '/' . $report->filename;
+        Mail::to($report->checkUnique->email)->send(new ReportMail($link, $report));
         return $report;
     }
 }
