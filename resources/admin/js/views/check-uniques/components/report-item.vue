@@ -13,27 +13,33 @@
                 </figure>
             </div>
             <section class="report-item__center">
-                    <el-tag type="success" v-if="report.result">
-                        Отчет сформирован
-                    </el-tag>
-                    <el-tag type="warning" v-else>
-                        Отчет не сформирован
-                    </el-tag>
-                    <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
-
-                <div v-if="report.result">
-                    <div class="report-progress-bar" v-if="report.result">
-                        <progress-bar
-                            bg-color="#E3E5ED"
-                            bar-color="#366AF3"
-                            :bar-border-radius="30"
-                            size="15"
-                            :val="report.data.unique"></progress-bar>
-                        <div class="report-progress-bar__text">
-                            <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
-                            Текст неуникальный
-                        </div>
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                    <div>
+                        <el-tag type="success" v-if="report.result">
+                            Отчет сформирован
+                        </el-tag>
+                        <el-tag type="warning" v-else>
+                            Отчет не сформирован
+                        </el-tag>
+                        <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
                     </div>
+                    <el-button type="primary" v-if="!report.check_system.api_id">Отправить отчет</el-button>
+                </div>
+
+
+                    <div v-if="report.result">
+                        <div class="report-progress-bar" v-if="report.result">
+                            <progress-bar
+                                bg-color="#E3E5ED"
+                                bar-color="#366AF3"
+                                :bar-border-radius="30"
+                                size="15"
+                                :val="report.data.unique"></progress-bar>
+                            <div class="report-progress-bar__text">
+                                <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
+                                Текст неуникальный
+                            </div>
+                        </div>
 
 
                 </div>
@@ -98,6 +104,13 @@ import ProgressBar from 'vue-simple-progress'
                     return 'Автоматическая проверка'
                 } else {
                     return 'Ручная проверка'
+                }
+            },
+            reportBtnString: function () {
+                if(this.report.result) {
+                    return 'Отправить отчет заново'
+                } else {
+                    return 'Отправить отчет'
                 }
             }
         },
