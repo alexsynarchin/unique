@@ -13389,6 +13389,16 @@ img {
   margin-right: 60px;
 }
 
+.article-content .mp-banner__title {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.article-content .mp-banner__text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
 .mp-about {
   background-color: #F0F1F6;
   border-radius: 30px;

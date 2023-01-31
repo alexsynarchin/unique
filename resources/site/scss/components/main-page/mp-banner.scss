@@ -19,6 +19,7 @@
         align-items: center;
         background-image: url('../images/mp/mp-banner-img.png');
     }
+
     &__mobile-img {
         text-align: center;
 
@@ -43,5 +44,20 @@
     }
     &__content {
         margin-right: 60px;
+    }
+}
+.article-content {
+    .mp-banner {
+        &__title {
+            color: #fff;
+            font-size: 26px;
+            margin-bottom: 10px;
+
+        }
+        &__text {
+            font-weight: 700;
+            font-size: 18px;
+
+        }
     }
 }

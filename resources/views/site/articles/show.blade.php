@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-lg-9">
+            <div class="col-lg-9 article-content">
                 {!! $article->content->text !!}
             </div>
             <div class="col-lg-3">
