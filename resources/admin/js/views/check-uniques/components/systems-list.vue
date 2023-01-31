@@ -4,8 +4,8 @@
             Системы проверки:
         </h3>
         <ul class="report-systems-list__list">
-            <li class="report-systems-list__item" v-for="(item , index) in list">
-                <section class="report-systems-list-item" :class="{'report-systems-list-item--active': selected.indexOf(item.id) !==-1}">
+            <li class="report-systems-list__item" v-for="(item , index) in list" v-if="selected.indexOf(item.id) !==-1">
+                <section class="report-systems-list-item">
                     {{item.title}}
                 </section>
             </li>

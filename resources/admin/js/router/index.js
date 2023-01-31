@@ -15,7 +15,8 @@ import Layout from '@/admin/js/layout';
 
 /* Router for modules */
 import errorRoutes from './modules/error';
-import * as path from "path";
+
+import checkUniqueRoutes from './modules/check-unique'
 
 export const constantRoutes = [
     {
@@ -87,20 +88,7 @@ export const asyncRoutes = [
                 meta: { title: 'Настройки',  noCache: false , permissions: ['manage_settings']},
             },
 
-            {name: 'check-uniques',
-                path: 'check-uniques',
-                component: () => import('@/admin/js/views/check-uniques/index'),
-                meta: { title: 'Заявки на проверку уникальности',  noCache: false , permissions: ['manage_check_uniques']},
-                children: [
-                    {
-                        name:'check-uniques-list',
-                        path:"",
-                        component: () => import('@/admin/js/views/check-uniques/List'),
-                        meta: { title: 'Список'},
-                    },
 
-                ]
-            },
             {
                 name: 'promo-codes',
                 path: 'promo-codes',
@@ -204,7 +192,7 @@ export const asyncRoutes = [
 
         ]
     },
-
+    checkUniqueRoutes,
     errorRoutes,
     { path: '*', redirect: '/404', hidden: true },
 ];

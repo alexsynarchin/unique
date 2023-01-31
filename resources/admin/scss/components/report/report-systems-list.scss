@@ -1,9 +1,9 @@
 .report-systems-list {
     &__title {
-        font-size: 20px;
-        margin-bottom: 30px;
+        font-size: 18px;
+        margin-bottom: 20px;
         @include media-breakpoint-up(xl) {
-            font-size: 22px;
+            font-size: 20px;
         }
     }
     &__list {
@@ -13,7 +13,7 @@
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: 60px;
+        margin-bottom: 20px;
     }
     &__item {
         margin-bottom: 15px;
@@ -41,10 +41,10 @@
 .report-systems-list-item {
     cursor: pointer;
     text-align: center;
-    background: #E3E5ED;
+    background: $blue-color;
     border-radius: 5px;
     padding: 10px;
-    color: #ABAFC3;
+    color: #fff;
     font-weight: 500;
     font-size: 14px;
     @include media-breakpoint-up(lg) {
@@ -53,8 +53,5 @@
     @include media-breakpoint-up(xxl) {
         font-size: 17px;
     }
-    &--active {
-        background: $blue-color;
-        color: #fff;
-    }
+
 }

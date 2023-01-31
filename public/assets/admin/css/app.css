@@ -11511,12 +11511,12 @@ a {
 }
 
 .report-systems-list__title {
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 @media (min-width: 1200px) {
   .report-systems-list__title {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 .report-systems-list__list {
@@ -11526,7 +11526,7 @@ a {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 .report-systems-list__item {
   margin-bottom: 15px;
@@ -11558,10 +11558,10 @@ a {
 .report-systems-list-item {
   cursor: pointer;
   text-align: center;
-  background: #E3E5ED;
+  background: #366AF3;
   border-radius: 5px;
   padding: 10px;
-  color: #ABAFC3;
+  color: #fff;
   font-weight: 500;
   font-size: 14px;
 }
@@ -11574,10 +11574,6 @@ a {
   .report-systems-list-item {
     font-size: 17px;
   }
-}
-.report-systems-list-item--active {
-  background: #366AF3;
-  color: #fff;
 }
 
 .report-item {
