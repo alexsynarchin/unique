@@ -87,6 +87,11 @@
                         </span>
                     </li>
                 </ul>
+                <div class="report-item-bnts">
+                    <button class="btn button" @click.prevent="downloadPdf" v-if="report.result">
+                        Скачать отчет
+                    </button>
+                </div>
             </section>
         </div>
         <report-send @refresh-data="refreshData" :report="report" ref="reportSend"></report-send>
@@ -142,7 +147,7 @@ import ReportSend from "@/admin/js/views/check-uniques/components/report-send.vu
                         this.$root.isLoading = false;
                         let link = document.createElement('a')
                         link.href = response.data;
-                        link.download = 'report.pdf'
+                        link.download = 'report'
                         link.click()
                     })
                     .catch((error) => {

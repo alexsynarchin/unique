@@ -144,7 +144,7 @@ import ProgressBar from 'vue-simple-progress'
                         this.$root.isLoading = false;
                         let link = document.createElement('a')
                         link.href = response.data;
-                        link.download = 'report.pdf'
+                        link.download = 'report'
                         link.click()
                     })
                     .catch((error) => {

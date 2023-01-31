@@ -138,8 +138,15 @@ class ReportController extends Controller
 
     public function downloadPdf($id)
     {
-        $generatePdfService = new GeneratePdfService();
-        $link = $generatePdfService -> generate($id);
+        $report=Report::findOrFail($id);
+        if($report->filename) {
+            $link = '/storage/reports/' . $report->id . '/' . $report->filename;
+
+        } else {
+            $generatePdfService = new GeneratePdfService();
+            $link = $generatePdfService -> generate($id);
+        }
+
         return $link;
     }
 }
