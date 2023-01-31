@@ -89,7 +89,7 @@
                 </ul>
             </section>
         </div>
-        <report-send :id="report.id" ref="reportSend"></report-send>
+        <report-send :report="report" ref="reportSend"></report-send>
     </section>
 </template>
 <script>
