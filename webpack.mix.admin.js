@@ -21,6 +21,7 @@ mix
     ])
     .vue({ version: 2 })
     .sass('resources/admin/scss/app.scss', 'css')
+    .sass('resources/admin/scss/components/tinymce/tinymce.scss', 'css')
     .options({
         processCssUrls: false,
         processJsUrls:false

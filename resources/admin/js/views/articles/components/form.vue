@@ -40,27 +40,9 @@
                                 <el-checkbox v-model="form.published">Опубликован</el-checkbox>
                             </el-form-item>
                         </div>
+
                         <el-form-item prop="text" label="Текст">
-                            <Editor
-                                v-model="form.content.text"
-                                api-key="n5vevbezoz59y0xm5lm9351k04wpcdlod46tt4h2ilw0x2er"
-                                :init="{
-                                height: 600,
-                                plugins: 'lists link image table code help wordcount',
-                                toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor',
-                                 language: 'ru',
-                                 table_background_color_map: [
-                            { title: 'Gray', value: 'F0F1F6' },
-                            { title: 'Orange', value: 'FF9902' },
-                            { title: 'Blue', value: '366AF3' },
-                          ],
-                                   color_map: [
-                            'F0F1F6', 'Gray',
-                            'FF9902', 'Orange',
-                            '366AF3', 'Blue'
-                          ]
-                              }"
-                            />
+                           <tinymce v-model="form.content.text"/>
                         </el-form-item>
 
                     </div>
@@ -78,11 +60,12 @@
 import richtext from "../../../components/richtext/richtext";
 import { Errors } from  '@/common/js/services/errors.js';
 import Seo from '@/admin/js/components/seo/seo';
-import Editor from '@tinymce/tinymce-vue'
+import Tinymce from '@/admin/js/components/Tinymce';
     export default {
         components: {
             'Seo':Seo,
-            'richtext':richtext, Editor
+            'richtext':richtext,
+            Tinymce
         },
         props: {
             saveMsg: {

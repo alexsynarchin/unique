@@ -53,11 +53,7 @@
         },
         data() {
             return {
-                CanAccess: 'Просмотр "Статьи"',
-                currentId: null,
                 articles: [],
-                articleModalStatus: '',
-                showModal:false,
             }
         },
         computed: {
