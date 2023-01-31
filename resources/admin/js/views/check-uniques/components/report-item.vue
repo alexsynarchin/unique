@@ -13,15 +13,16 @@
                 </figure>
             </div>
             <section class="report-item__center">
-                <div class="report-progress-bar" v-if="!report.result">
-                    <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15" :val="increasing_pct"></progress-bar>
-                    <div class="report-progress-bar__text">
-                        <span class="report-progress-bar__precent">{{increasing_pct + '%'}}</span>
-                        Идет формирование отчета
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="report-progress-bar">
+                    <el-tag type="success" v-if="report.result">
+                        Отчет сформировани
+                    </el-tag>
+                    <el-tag type="warning" v-else>
+                        Отчет не сформирован
+                    </el-tag>
+                    <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
+
+                <div v-if="report.result">
+                    <div class="report-progress-bar" v-if="report.result">
                         <progress-bar
                             bg-color="#E3E5ED"
                             bar-color="#366AF3"
@@ -32,9 +33,6 @@
                             <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
                             Текст неуникальный
                         </div>
-                        <p class="report-progress-bar__descr">
-                            У вашего текста низкий процент уникальности, мы рекомендуем вам проверить его в платных системах или воспользоваться услугой рерайта
-                        </p>
                     </div>
 
 
@@ -94,6 +92,15 @@ import ProgressBar from 'vue-simple-progress'
     components: {
         ProgressBar
     },
+        computed: {
+            checkUniqueTypeString: function () {
+                if(this.report.api_id) {
+                    return 'Автоматическая проверка'
+                } else {
+                    return 'Ручная проверка'
+                }
+            }
+        },
         data() {
         return {
             check_system: {},
