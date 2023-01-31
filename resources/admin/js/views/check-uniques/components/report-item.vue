@@ -88,9 +88,9 @@
                     </li>
                 </ul>
                 <div class="report-item-bnts">
-                    <button class="btn button" @click.prevent="downloadPdf" v-if="report.result">
+                    <el-button type="primary" @click.prevent="downloadPdf" v-if="report.result">
                         Скачать отчет
-                    </button>
+                    </el-button>
                 </div>
             </section>
         </div>
