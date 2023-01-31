@@ -4,7 +4,6 @@
         :visible.sync="dialogVisible"
         width="30%"
         :before-close="handleClose">
-        {{form}}
         <el-form :model="form" label-position="top">
             <el-form-item label="Процент уникальности" prop="unique_percent">
                 <el-input-number v-model="form.unique_percent" :min="0" :max="100"></el-input-number>
