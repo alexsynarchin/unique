@@ -2,7 +2,10 @@
     <section>
         <h1>Статьи</h1>
         <div class="mb-3">
-            <el-button type="success" icon="el-icon-plus" @click="articleModalOpen('create')">Добавить</el-button>
+            <router-link to="create">
+                <el-button type="success" icon="el-icon-plus">Новая статья</el-button>
+            </router-link>
+
         </div>
         <data-tables :data="articles">
             <el-table-column
@@ -26,40 +29,27 @@
                 label="Действия"
             >
                 <template slot-scope="scope">
-                    <el-button
-                        size="mini"
-                        type="primary"
-                        @click="handleEdit(scope.row)">Редактировать</el-button>
+                    <router-link :to="'edit/'+ scope.row.id">
+                        <el-button
+                            size="mini"
+                            type="primary">
+                            Редактировать
+                        </el-button>
+                    </router-link>
+
                     <el-button size="mini"
                                type="danger"
                                @click="handleDelete(scope.row.id)">Удалить </el-button>
                 </template>
             </el-table-column>
         </data-tables>
-        <el-dialog
-            :before-close="closeModal"
-            :visible.sync="showModal"
-            width="60%"
-            :title="articleModalTitle"
-        >
-            <create
-                @close="closeModal"
-                @store="storeArticle"
-                v-if="showModal && articleModalStatus === 'create'"></create>
-            <edit
-                :id="currentId"
-                @close="closeModal"
-                @update="updateArticle"
-                v-if="showModal && articleModalStatus === 'edit'"></edit>
-        </el-dialog>
     </section>
 </template>
 <script>
-    import create from "./create";
-    import edit from "./edit";
+
     export default {
         components: {
-            create, edit,
+
         },
         data() {
             return {
@@ -71,14 +61,7 @@
             }
         },
         computed: {
-            articleModalTitle:function () {
-                if(this.articleModalStatus === 'create') {
-                    return 'Новая статья';
-                }
-                if(this.articleModalStatus === 'edit') {
-                    return 'Редактировать статью';
-                }
-            },
+
         },
         methods: {
             getArticles() {
@@ -86,32 +69,6 @@
                     .then((response) => {
                         this.articles = response.data;
                     })
-            },
-            articleModalOpen(status) {
-                this.articleModalStatus = status;
-                this.showModal = true;
-            },
-            handleEdit(item) {
-                this.currentId = item.id;
-                this.articleModalStatus = 'edit';
-                this.showModal = true;
-            },
-            updateArticle(data) {
-                let index = this.articles.findIndex(object => {
-                    return object.id === data.id;
-                });
-                this.articles[index].title = data.title;
-                this.articles[index].date = data.date;
-                this.closeModal();
-            },
-            storeArticle(data) {
-                this.articles.push(data);
-                this.closeModal();
-            },
-            closeModal() {
-                this.showModal = false;
-                this.currentId = null;
-                this.articleModalStatus = '';
             },
             handleDelete(id) {
                 axios.delete('/api/admin/article/' + id)

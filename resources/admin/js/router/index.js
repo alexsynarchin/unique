@@ -17,7 +17,7 @@ import Layout from '@/admin/js/layout';
 import errorRoutes from './modules/error';
 
 import checkUniqueRoutes from './modules/check-unique'
-
+import articlesRoutes from "./modules/artisles";
 export const constantRoutes = [
     {
         path: '/redirect',
@@ -135,11 +135,7 @@ export const asyncRoutes = [
                 component: () => import('@/admin/js/views/services/index'),
                 meta: { title: 'Дополнительные услуги',  noCache: false , permissions: ['manage_services']},
             },
-            {name: 'articles',
-                path: 'articles',
-                component: () => import('@/admin/js/views/articles/index'),
-                meta: { title: 'Статьи',  noCache: false , permissions: ['manage_articles']},
-            },
+
             {name: 'contacts',
                 path: 'requests',
                 component: () => import('@/admin/js/views/contact-orders/index'),
@@ -193,6 +189,7 @@ export const asyncRoutes = [
         ]
     },
     checkUniqueRoutes,
+    articlesRoutes,
     errorRoutes,
     { path: '*', redirect: '/404', hidden: true },
 ];

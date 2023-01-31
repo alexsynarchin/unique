@@ -1,4 +1,5 @@
 <template>
+    <el-card class="box-card">
     <el-form :model="form" label-position="top">
         <el-tabs type="card" v-model="activeTab">
             <el-tab-pane label="Основная информация" name="main">
@@ -42,20 +43,20 @@
                                 api-key="n5vevbezoz59y0xm5lm9351k04wpcdlod46tt4h2ilw0x2er"
                                 :init="{
                                 height: 600,
-        plugins: 'lists link image table code help wordcount',
-        toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor',
-         language: 'ru',
-         table_background_color_map: [
-    { title: 'Gray', value: 'F0F1F6' },
-    { title: 'Orange', value: 'FF9902' },
-    { title: 'Blue', value: '366AF3' },
-  ],
-           color_map: [
-    'F0F1F6', 'Gray',
-    'FF9902', 'Orange',
-    '366AF3', 'Blue'
-  ]
-      }"
+                                plugins: 'lists link image table code help wordcount',
+                                toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor',
+                                 language: 'ru',
+                                 table_background_color_map: [
+                            { title: 'Gray', value: 'F0F1F6' },
+                            { title: 'Orange', value: 'FF9902' },
+                            { title: 'Blue', value: '366AF3' },
+                          ],
+                                   color_map: [
+                            'F0F1F6', 'Gray',
+                            'FF9902', 'Orange',
+                            '366AF3', 'Blue'
+                          ]
+                              }"
                             />
                         </el-form-item>
 
@@ -65,9 +66,10 @@
             <el-tab-pane label="Настройки и SEO" name="config">
                 <Seo :form = "form.seo" v-if="form.seo"></Seo>
             </el-tab-pane>
-        </el-tabs>
-        <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
-    </el-form>
+            </el-tabs>
+            <el-button type="success" @click.prevent="submitForm">Сохранить</el-button>
+        </el-form>
+    </el-card>
 </template>
 <script>
 import richtext from "../../../components/richtext/richtext";

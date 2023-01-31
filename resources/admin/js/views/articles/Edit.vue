@@ -12,9 +12,7 @@
 import form from './components/form';
 export default {
     props: {
-        id: {
-            type:Number,
-        }
+        id: {}
     },
     components: {
         'ArticleForm': form,
