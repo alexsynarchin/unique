@@ -31,6 +31,8 @@
     </el-dialog>
 </template>
 <script>
+    import error from "@/admin/js/router/modules/error";
+
     export default {
         props: {
             report: { }
@@ -41,7 +43,7 @@
                 fileList: [],
                 form: {
                     unique_percent: 0,
-                    file: null,
+                    report_file: "",
                 }
             }
         },
@@ -53,13 +55,26 @@
                 this.dialogVisible = true;
             },
             sendReport() {
-                console.log(this.fileList[0].raw)
+                let formData = new FormData();
+                formData.append('report_file', this.form.report_file);
+                formData.append('unique_percent', this.form.unique_percent);
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                };
+                axios.post('/api/admin/report/' + this.report.id + '/send', formData, config)
+                    .then((response) => {
+
+                    })
+                    .catch((error) => {
+
+                    })
+
             },
             handleFileChange(file, filelist) {
-                this.form.file = file.raw;
+                this.form.report_file = file.raw;
             },
             handleFileRemove(file, fileList) {
-               this.form.file = null;
+               this.form.report_file = "";
             }
 
         },

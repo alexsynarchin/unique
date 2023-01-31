@@ -66,6 +66,9 @@ Route::get('/check-uniques', [CheckUniqueController::class, 'index'])->name('che
 Route::get('/check-unique/systems', [CheckUniqueController::class, 'getSystems'])->name('check-unique.systems');
 Route::get('/check-unique/{id}/show', [CheckUniqueController::class, 'show']);
 
+use App\Http\Controllers\Admin\Api\ReportController;
+Route::post('/report/{id}/send', [ReportController::class, 'sendReport']);
+
 use App\Http\Controllers\Admin\Api\PromoCodeController;
 Route::apiResource('/promo-codes', PromoCodeController::class);
 
