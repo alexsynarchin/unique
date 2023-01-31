@@ -89,7 +89,7 @@
                 </ul>
             </section>
         </div>
-        <report-send :report="report" ref="reportSend"></report-send>
+        <report-send @refresh-data="refreshData" :report="report" ref="reportSend"></report-send>
     </section>
 </template>
 <script>
@@ -131,6 +131,9 @@ import ReportSend from "@/admin/js/views/check-uniques/components/report-send.vu
             },
         },
         methods: {
+        refreshData() {
+            this.$emit('refresh-data')
+        },
             downloadPdf() {
                 this.$root.isLoading = true;
                 axios.post('/api/report/' +this.report.id + '/download')

@@ -53,6 +53,7 @@ import { Errors } from  '@/common/js/services/errors.js';
         methods: {
             handleClose() {
                 this.dialogVisible = false;
+                this.errors.clear('report_file');
             },
             openModal() {
                 this.dialogVisible = true;
@@ -66,7 +67,8 @@ import { Errors } from  '@/common/js/services/errors.js';
                 };
                 axios.post('/api/admin/report/' + this.report.id + '/send', formData, config)
                     .then((response) => {
-
+                        this.$emit('refresh-data')
+                        this.handleClose();
                     })
                     .catch((error) => {
                         this.errors.record(error.response.data.errors);

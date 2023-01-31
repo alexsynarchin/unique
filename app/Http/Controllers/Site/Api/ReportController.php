@@ -22,7 +22,7 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
-        if(!$report->highlight_text && $report->result) {
+        if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id) {
             $highLightService = new ReportHighLightTextService();
             $report->highlight_text = $highLightService->highLightText($report['data']);
             $report->save();
