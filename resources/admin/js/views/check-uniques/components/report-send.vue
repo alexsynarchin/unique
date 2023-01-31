@@ -4,6 +4,7 @@
         :visible.sync="dialogVisible"
         width="30%"
         :before-close="handleClose">
+        {{form}}
         <el-form :model="form" label-position="top">
             <el-form-item label="Процент уникальности" prop="unique_percent">
                 <el-input-number v-model="form.unique_percent" :min="0" :max="100"></el-input-number>
@@ -15,10 +16,12 @@
             action=""
             :file-list="fileList"
             :limit="1"
-            :on-change="onFileChange"
+            :on-change="handleFileChange"
+            :on-remove="handleFileRemove"
             :auto-upload="false"
             >
-            <el-button slot="trigger" size="small" type="primary">Прикрепить файл отчета</el-button>
+            <el-button slot="trigger" size="small" type="primary" v-if="!form.file">Прикрепить файл отчета</el-button>
+            <el-button  size="small" type="primary" v-else @click.prevent="$refs.upload.clearFiles()">Прикрепить файл отчета</el-button>
             <div class="el-upload__tip" slot="tip"></div>
         </el-upload>
         <span slot="footer" class="dialog-footer">
@@ -38,7 +41,7 @@
                 fileList: [],
                 form: {
                     unique_percent: 0,
-                    file: "",
+                    file: null,
                 }
             }
         },
@@ -49,14 +52,14 @@
             openModal() {
                 this.dialogVisible = true;
             },
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
             sendReport() {
                 console.log(this.fileList[0].raw)
             },
-            onFileChange(file, filelist) {
-                console.log(filelist)
+            handleFileChange(file, filelist) {
+                this.form.file = file.raw;
+            },
+            handleFileRemove(file, fileList) {
+               this.form.file = null;
             }
 
         },
