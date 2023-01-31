@@ -24,7 +24,7 @@
                  :id="item.id"
                  :check_unique="check_unique"
                  v-if="loaded"
-                 @refresh-data="this.getCheckUnique()"
+
         ></report>
         </el-card>
 </template>

@@ -4,6 +4,7 @@
         <report-item v-if="loaded"
                      :report="report"
                     :check_unique="check_unique"
+                     @refresh-data="this.getReport"
         ></report-item>
         <report-detail
             v-if="report.result && report.check_system.api_id"

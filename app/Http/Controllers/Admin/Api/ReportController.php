@@ -24,5 +24,6 @@ class ReportController extends Controller
         $report->data =$data;
         $report->result = 1;
         $report->save();
+        return $report;
     }
 }
