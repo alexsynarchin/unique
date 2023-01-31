@@ -8,21 +8,24 @@
             <el-form-item label="Процент уникальности" prop="unique_percent">
                 <el-input-number v-model="form.unique_percent" :min="0" :max="100"></el-input-number>
             </el-form-item>
+            <el-form-item  :error="errors.get('report_file')">
+                <el-upload
+                    class="upload-demo"
+                    ref="upload"
+                    action=""
+                    :file-list="fileList"
+                    :limit="1"
+                    :on-change="handleFileChange"
+                    :on-remove="handleFileRemove"
+                    :auto-upload="false"
+                >
+                    <el-button slot="trigger" size="small" type="primary" v-if="!form.file">Прикрепить файл отчета</el-button>
+                    <el-button  size="small" type="primary" v-else @click.prevent="$refs.upload.clearFiles()">Прикрепить файл отчета</el-button>
+                    <div class="el-upload__tip" slot="tip"></div>
+                </el-upload>
+            </el-form-item>
         </el-form>
-        <el-upload
-            class="upload-demo"
-            ref="upload"
-            action=""
-            :file-list="fileList"
-            :limit="1"
-            :on-change="handleFileChange"
-            :on-remove="handleFileRemove"
-            :auto-upload="false"
-            >
-            <el-button slot="trigger" size="small" type="primary" v-if="!form.file">Прикрепить файл отчета</el-button>
-            <el-button  size="small" type="primary" v-else @click.prevent="$refs.upload.clearFiles()">Прикрепить файл отчета</el-button>
-            <div class="el-upload__tip" slot="tip"></div>
-        </el-upload>
+
         <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">Отмена</el-button>
     <el-button type="primary" @click="sendReport">Отправить</el-button>
@@ -30,7 +33,7 @@
     </el-dialog>
 </template>
 <script>
-    import error from "@/admin/js/router/modules/error";
+import { Errors } from  '@/common/js/services/errors.js';
 
     export default {
         props: {
@@ -43,7 +46,8 @@
                 form: {
                     unique_percent: 0,
                     report_file: "",
-                }
+                },
+                errors: new Errors(),
             }
         },
         methods: {
@@ -65,7 +69,7 @@
 
                     })
                     .catch((error) => {
-
+                        this.errors.record(error.response.data.errors);
                     })
 
             },

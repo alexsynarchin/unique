@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function sendReport(Request $request)
+    public function sendReport(Request $request, $id)
     {
-
         $request->validate([
             'report_file' => 'required',
 
