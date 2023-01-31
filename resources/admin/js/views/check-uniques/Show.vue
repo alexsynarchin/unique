@@ -1,7 +1,7 @@
 <template>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
-                <h5>Основная информация</h5>
+                <h5>Заявка №{{id}}</h5>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
