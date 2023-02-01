@@ -14950,3 +14950,16 @@ img {
 .vk-subscribe__btn {
   width: 100%;
 }
+
+.interesting-articles {
+  margin-bottom: 60px;
+}
+@media (min-width: 1024px) {
+  .interesting-articles {
+    margin-bottom: 100px;
+  }
+}
+.interesting-articles__title {
+  font-size: 36px;
+  margin-bottom: 45px;
+}

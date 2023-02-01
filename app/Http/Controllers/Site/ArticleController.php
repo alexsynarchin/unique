@@ -11,6 +11,11 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug) -> with('content', 'seo')->firstOrFail();
-        return view('site.articles.show', ['article' => $article]);
+        $interestingArticles = Article::where('id', '!=', $article->id)
+            ->where('published', 1)
+            ->orderBy('created_at','desc')
+            ->limit(3)
+            ->get();
+        return view('site.articles.show', ['article' => $article, 'interesting_articles' => $interestingArticles]);
     }
 }

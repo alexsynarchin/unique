@@ -1,0 +1,10 @@
+.interesting-articles {
+    margin-bottom: 60px;
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 100px;
+    }
+    &__title {
+        font-size: 36px;
+        margin-bottom: 45px;
+    }
+}
