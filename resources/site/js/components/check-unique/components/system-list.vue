@@ -63,7 +63,7 @@
         computed: {
             checkUniqueButtonString: function () {
                 if (this.free) {
-                    return 'Проверить уникальность полного текста бесплатно'
+                    return 'Проверить уникальность текста бесплатно'
                 } else {
                     return 'Проверить уникальность полного текста'
                 }

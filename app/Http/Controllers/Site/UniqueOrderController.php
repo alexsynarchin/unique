@@ -13,7 +13,7 @@ class UniqueOrderController extends Controller
     public function success(Request $request)
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
-        $url = route('report', $order -> check_unique_id);
+        $url = route('report', $order -> url);
         return view('site.order.success', ['url'=> $url]);
     }
 
