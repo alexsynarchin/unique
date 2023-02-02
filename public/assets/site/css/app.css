@@ -11768,6 +11768,7 @@ img {
 }
 
 .header-panel-banner {
+  cursor: pointer;
   height: 144px;
   background-color: #E3E5ED;
   border-radius: 20px;
