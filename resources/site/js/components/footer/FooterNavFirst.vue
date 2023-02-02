@@ -1,7 +1,7 @@
 <template>
     <ul class="main-nav main-nav--footer">
         <li class="main-nav__item" v-for="(item,index) in menu">
-            <a :href="item.link" class="main-nav__link main-nav__link--footer">
+            <a :href="'/' + item.link" class="main-nav__link main-nav__link--footer">
                 {{item.title}}
             </a>
         </li>

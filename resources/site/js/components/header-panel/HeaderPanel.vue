@@ -22,7 +22,7 @@
                 <div class="header-panel__nav col-lg-4">
                     <ul class="main-nav">
                         <li class="main-nav__item" v-for="(item, index) in menu">
-                            <a :href="item.link" class="main-nav__link">
+                            <a :href="'/' + item.link" class="main-nav__link">
                                 {{item.title}}
                             </a>
                         </li>
