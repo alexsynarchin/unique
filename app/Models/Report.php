@@ -15,7 +15,7 @@ class Report extends Model
         'uid', 'data', 'check_unique_id', 'system_id'
     ];
     protected $appends = [
-        'formatted_date'
+        'formatted_date', 'symbols_count'
     ];
     protected $casts = [
         'result' => 'boolean',
@@ -37,5 +37,15 @@ class Report extends Model
     public function checkUnique()
     {
         return $this->belongsTo(CheckUnique::class, 'check_unique_id');
+    }
+
+    public function getSymbolsCountAttribute() {
+        $text_symbols = $this->checkUnique->symbolsCount;
+        $system_symbols = $this->checkSystem->symbols_count;
+        $symbols_count = $text_symbols;
+        if($text_symbols > $system_symbols) {
+            $symbols_count = $system_symbols;
+        }
+        return $symbols_count;
     }
 }

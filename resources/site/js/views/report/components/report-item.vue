@@ -71,7 +71,7 @@
                             Символов:
                         </label>
                         <span class="report-text-params__value">
-                            {{check_unique.symbolsCount}}
+                            {{report.symbols_count}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
