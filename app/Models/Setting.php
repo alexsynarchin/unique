@@ -4,21 +4,37 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Config;
 class Setting extends Model
 {
     use HasFactory;
 
-    public static function get($name)
+    protected $fillable =[
+        'name', 'value', 'group',
+    ];
+
+    public static function get($group, $name)
     {
         $setting = new self();
-        $entry = $setting->where('group','common') -> where('name', $name)->first();
+        $entry = $setting->where('group',$group) -> where('name', $name)->first();
         if (!$entry) {
             return;
         }
         return $entry->value;
     }
-    protected $fillable =[
-        'name', 'value', 'group',
-    ];
+
+    public static function set($group, $name, $value=null): bool
+    {
+        $setting = new self();
+        $entry = $setting->where('group', 'common') ->where('name', $name)->firstOrFail();
+        $entry->value = $value;
+        $entry->saveOrFail();
+        Config::set('key', $value);
+        if (Config::get($group, $name) == $value) {
+            return true;
+        }
+        return false;
+    }
 }
+
+

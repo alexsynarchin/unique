@@ -188,6 +188,7 @@ export default {
                     .then((response) => {
                         console.log(response.data);
                         this.$root.isLoading = false;
+                        console.log(response.data);
                        // window.location.href = response.data;
                         let data = response.data;
                         if(data.sum > 0) {

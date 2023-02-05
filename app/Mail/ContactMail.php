@@ -30,7 +30,7 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        $mail = $this->from('report@проверить-уникальность.рф')
+        $mail = $this->from('report247@mail.ru')
             -> subject('Заявка на консультацию');
         return $mail->view('mails.report-admin', ['contact' => $this->contact]);
     }

@@ -31,7 +31,7 @@
             <div class="col-lg-3 col-xl-2 page-footer__col-4 ">
                 <section class="contact-bl page-footer__contact-bl">
                     <span class="contact-bl__phone contact-bl__phone--footer">
-                   {!! Config::get('settings.phone_footer') !!}
+                   {!! Config::get('settings.common.phone_footer') !!}
                 </span>
                     <a href="" class="contact-bl__btn contact-bl__btn--footer" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
@@ -41,30 +41,30 @@
                     <svg viewBox="0 0 15 12" class="page-footer__e-mail-icon">
                         <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-envelope"></use>
                     </svg>
-                    {!! Config::get('settings.email') !!}
+                    {!! Config::get('settings.common.email') !!}
                 </div>
                 <ul class="social-list page-footer__social-list">
-                    @if(Config::get('settings.whatsapp_link'))
+                    @if(Config::get('settings.common.whatsapp_link'))
                     <li class="social-list__item">
-                        <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
+                        <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.common.whatsapp_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-whatsapp-wh"></use>
                             </svg>
                         </a>
                     </li>
                     @endif
-                    @if(Config::get('settings.instagram_link'))
+                    @if(Config::get('settings.common.instagram_link'))
                     <li class="social-list__item">
-                        <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
+                        <a href="{!! Config::get('settings.common.instagram_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-instagram-wh"></use>
                             </svg>
                         </a>
                     </li>
                     @endif
-                    @if(Config::get('settings.vk_link'))
+                    @if(Config::get('settings.common.vk_link'))
                     <li class="social-list__item">
-                        <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
+                        <a href="{!! Config::get('settings.common.vk_link') !!}" class="social-list__link social-list__link--dark" target="_blank">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk-wh"></use>
                             </svg>
@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
                 <div class="page-footer__copyright col-lg-3">
-                    {!! Config::get('settings.copyright') !!}
+                    {!! Config::get('settings.common.copyright') !!}
                 </div>
                 <div class="col-lg-9">
                     <footer-nav-second></footer-nav-second>

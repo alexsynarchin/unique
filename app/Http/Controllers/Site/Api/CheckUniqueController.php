@@ -199,11 +199,14 @@ class CheckUniqueController extends Controller
             'manual' => false,
             'auto' => false,
         ];
+        $reports = [];
         foreach ($systems as $system) {
            $report = Report::create([
                'check_unique_id' => $check_unique -> id,
                'system_id' => $system['id']
            ]);
+
+          $reports[] = $report->id;
             $system = CheckSystem::findOrFail($system['id']);
            if($system['manual'] === 1) {
                if(!$check_unique_types['manual']) {
@@ -237,6 +240,7 @@ class CheckUniqueController extends Controller
         $url = route('report', $check_unique->slug);
         $data['url'] = $url;
         $data['check_unique_id'] = $check_unique->id;
+        $data['reports'] = $reports;
         return $data;
     }
 }

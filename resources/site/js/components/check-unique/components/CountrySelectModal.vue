@@ -74,6 +74,7 @@ export default {
                 url:"",
                 check_unique_id:null,
                 russia:null,
+                reports:[],
             },
 
         }
@@ -84,6 +85,7 @@ export default {
             this.paymentData.sum = data.sum;
             this.paymentData.url = data.url;
             this.paymentData.check_unique_id = data.check_unique_id;
+            this.paymentData.reports = data.reports;
             $('#payment_country_select').modal('show');
         },
         makePayment(type) {

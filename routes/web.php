@@ -50,7 +50,8 @@ Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.f
 use App\Http\Controllers\Site\TestMailController;
 Route::get('/mailable', [TestMailController::class,'testMail']);
 Route::get('/mailable/send', [TestMailController::class, 'sendTestMail']);
-
+use App\Http\Controllers\Site\ViewNotificationTemplateController;
+Route::get('/payment-mail',[ViewNotificationTemplateController::class, 'needPaymentNotification']);
 use App\Http\Controllers\Site\StaticPageController;
 Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 

@@ -20,4 +20,9 @@ class UniqueOrder extends Model
     {
         return $this -> belongsTo(CheckUnique::class, 'check_unique_id');
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class,'unique_order_id');
+    }
 }

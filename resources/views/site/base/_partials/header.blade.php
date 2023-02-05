@@ -11,27 +11,27 @@
                 Проверить уникальность
             </a>
             <ul class="social-list social-list--header">
-                @if(Config::get('settings.whatsapp_link'))
+                @if(Config::get('settings.common.whatsapp_link'))
                 <li class="social-list__item">
-                    <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.whatsapp_link') !!}" class="social-list__link" target="_blank">
+                    <a href="https://api.whatsapp.com/send/?phone={!! Config::get('settings.common.whatsapp_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-whatsapp")}}></use>
                         </svg>
                     </a>
                 </li>
                 @endif
-                @if(Config::get('settings.instagram_link'))
+                @if(Config::get('settings.common.instagram_link'))
                 <li class="social-list__item">
-                    <a href="{!! Config::get('settings.instagram_link') !!}" class="social-list__link" target="_blank">
+                    <a href="{!! Config::get('settings.common.instagram_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-instagram")}}></use>
                         </svg>
                     </a>
                 </li>
                 @endif
-                @if(Config::get('settings.vk_link'))
+                @if(Config::get('settings.common.vk_link'))
                 <li class="social-list__item">
-                    <a href="{!! Config::get('settings.vk_link') !!}" class="social-list__link" target="_blank">
+                    <a href="{!! Config::get('settings.common.vk_link') !!}" class="social-list__link" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
                         </svg>
@@ -42,7 +42,7 @@
             <div class="page-header__contact contact-bl">
                 <span class="contact-bl__phone">
 
-                     {!! Config::get('settings.phone_header') !!}
+                     {!! Config::get('settings.common.phone_header') !!}
                 </span>
                 <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
                     Получить консультацию

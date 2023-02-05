@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Config;
+use Illuminate\Support\Facades\Config;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -34,10 +34,10 @@ class SettingServiceProvider extends ServiceProvider
     {
         if (!\App::runningInConsole() && count(Schema::getColumnListing('settings'))) {
 
-            $settings = Setting::where('group','common')->get();
+            $settings = Setting::all();
             foreach ($settings as $key => $setting)
             {
-                Config::set('settings.'. $setting->name, $setting->value);
+                Config::set('settings.'. $setting->group . '.' .  $setting->name, $setting->value);
             }
         }
     }

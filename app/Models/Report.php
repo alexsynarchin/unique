@@ -34,6 +34,10 @@ class Report extends Model
         return $this->belongsTo(CheckSystem::class, 'system_id');
     }
 
+    public function uniqueOrder()
+    {
+        return $this->belongsTo(UniqueOrder::class, 'unique_order_id');
+    }
     public function checkUnique()
     {
         return $this->belongsTo(CheckUnique::class, 'check_unique_id');
