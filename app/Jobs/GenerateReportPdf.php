@@ -39,6 +39,6 @@ class GenerateReportPdf implements ShouldQueue
     {
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($this->report->id);
-        Mail::to($this->report->checkUnique->email)->send(new ReportMail($link, $this->report));
+        //Mail::to($this->report->checkUnique->email)->send(new ReportMail($link, $this->report));
     }
 }
