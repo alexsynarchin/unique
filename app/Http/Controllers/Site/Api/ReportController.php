@@ -28,6 +28,9 @@ class ReportController extends Controller
             $report->highlight_text = $highLightService->highLightText($report['data']);
             $report->save();
         }
+        if(!$report->filename) {
+            GenerateReportPdf::dispatch($report);
+        }
         return $report;
     }
 
@@ -55,9 +58,7 @@ class ReportController extends Controller
         $report->save();
         $check_system = $report -> checkSystem;
         $percent = 0;
-        if(!$report->filename) {
-            GenerateReportPdf::dispatch($report);
-        }
+
         if($check_system->api_id !=1 && $report->data['unique'] != 100) {
             $data = $report->data;
             if($check_system->api_id ===2) {
