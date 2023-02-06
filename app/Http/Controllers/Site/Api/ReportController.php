@@ -112,19 +112,7 @@ class ReportController extends Controller
         $link = $generatePdfService -> generate($id);
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
         Mail::to($request->get('email'))->send(new ReportMail($link, $report));
-        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
 
-        if($exists) {
-            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
-            $email = $setting -> value;
-            $email = explode(',', $email);
-        } else {
-            $email = ['alexsynarchin@gmail.com'];
-        }
-
-        foreach ($email as $recipient) {
-            Mail::to(trim($recipient))->send(new AdminReportMail($report));
-        }
     }
 
     private function getWordsFromString($string)

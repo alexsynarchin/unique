@@ -233,14 +233,13 @@
             }
         },
         mounted() {
-
             var rewriteModal = document.getElementById('rewrite_modal');
             let vm = this;
             rewriteModal.addEventListener('hidden.bs.modal', function (event) {
                 vm.errors.clear();
             });
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 const params = new URLSearchParams(window.location.search);
                 if(params.has('rewrite')) {
                     this.showModal()
