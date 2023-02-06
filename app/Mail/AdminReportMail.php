@@ -16,11 +16,11 @@ class AdminReportMail extends Mailable
      *
      * @return void
      */
-    public $contact;
+    public $order;
 
-    public function __construct($contact)
+    public function __construct($order)
     {
-        $this -> contact = $contact;
+        $this -> order = $order;
     }
 
     /**
