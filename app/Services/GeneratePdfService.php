@@ -24,6 +24,8 @@ class GeneratePdfService
             ->setNodeBinary('/usr/bin/node')
             ->setNpmBinary('/usr/bin/npm')
             ->save(Storage::disk('local')->path('public/' . $link));
+        $report->filename = "/report-" . $report->id . ".pdf";
+        $report->save();
         return '/storage/' . $link;
     }
 }

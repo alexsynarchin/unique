@@ -42,11 +42,6 @@ import ReportDetail from "./report-detail";
                             this.report = response.data;
                         })
                 } while (!this.report.result)
-                do {
-                    if(this.report.result) {
-                        this.sendMail();
-                    }
-                } while (!this.report.result)
             },
             async getReport() {
 

@@ -57,13 +57,13 @@
                 <td>
                     <h1
                         style="
-        float: left;
-        position: relative;
-        margin: 0 20px 0 0;
-        text-transform: uppercase;
-        padding: 0 10px 0 0;
-        line-height: 1;
-        font-size: 30px;
+                        float: left;
+                        position: relative;
+                        margin: 0 20px 0 0;
+                        text-transform: uppercase;
+                        padding: 0 10px 0 0;
+                        line-height: 1;
+                        font-size: 30px;
         "
                     >Уникальность
                         <span style="
