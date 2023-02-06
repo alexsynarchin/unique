@@ -4,8 +4,9 @@
         api-key="n5vevbezoz59y0xm5lm9351k04wpcdlod46tt4h2ilw0x2er"
         :init="{
                                 height: 600,
-                                plugins: 'lists link image table code help wordcount, template',
-                                toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor, template',
+                                plugins: 'lists link image table code help wordcount template',
+                                toolbar: 'fontsize | undo redo | styles | bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor  template',
+                                font_size_formats: '8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
                                  language: 'ru',
                                  content_css:'/assets/admin/css/tinymce.css',
                                  templates: [

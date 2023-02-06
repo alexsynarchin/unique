@@ -15,7 +15,9 @@ export default {
     components:{
         'PageForm':form,
     },
-    props:['id'],
+    props:{
+        id:{}
+    },
     data() {
         return {
             loaded:false,

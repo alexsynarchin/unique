@@ -1,66 +1,47 @@
 <template>
-    <el-form ref="form" :model="form" label-position="top" :rules="rules">
-        <el-tabs type="card" v-model="activeTab">
-            <el-tab-pane label="Основная информация" name="main">
-                <div class="row">
-                    <el-form-item prop="name" label="Заголовок"  class="col-md-7">
-                        <el-input v-model="form.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="Опубликован" class="col-md-5"  prop="published" v-if="formAction != '/api/admin/static-page/store'">
-                        <el-checkbox v-model="form.active">Опубликован</el-checkbox>
-                    </el-form-item>
-                </div>
-                <div class="row">
-                    <el-form-item prop="slug" label="URL"  class="col-md-7" :error="errors.get('slug')">
-                        <el-input v-model="form.slug"></el-input>
-                    </el-form-item>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <Editor
-                            v-model="form.content.text"
-                            api-key="n5vevbezoz59y0xm5lm9351k04wpcdlod46tt4h2ilw0x2er"
-                            :init="{
-                                height: 600,
-        plugins: 'lists link image table code help wordcount',
-        toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor',
-         language: 'ru',
-         table_background_color_map: [
-    { title: 'Gray', value: 'F0F1F6' },
-    { title: 'Orange', value: 'FF9902' },
-    { title: 'Blue', value: '366AF3' },
-  ],
-           color_map: [
-    'F0F1F6', 'Gray',
-    'FF9902', 'Orange',
-    '366AF3', 'Blue'
-  ]
-      }"
-                        />
+    <el-card class="box-card">
+        <el-form ref="form" :model="form" label-position="top" :rules="rules">
+            <el-tabs type="card" v-model="activeTab">
+                <el-tab-pane label="Основная информация" name="main">
+                    <div class="row">
+                        <el-form-item prop="name" label="Заголовок"  class="col-md-7">
+                            <el-input v-model="form.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="Опубликован" class="col-md-5"  prop="published" v-if="formAction != '/api/admin/static-page/store'">
+                            <el-checkbox v-model="form.active">Опубликован</el-checkbox>
+                        </el-form-item>
                     </div>
-                </div>
-            </el-tab-pane>
-            <el-tab-pane label="Настройки и SEO" name="config">
-                <Seo :form = "form.seo" v-if="form.seo"></Seo>
-            </el-tab-pane>
-        </el-tabs>
-        <div class="text-right mt-3">
-            <el-button type="success" @click="submitForm('form')">Сохранить</el-button>
-            <el-button @click="closeModal">Отмена</el-button>
-        </div>
-    </el-form>
+                    <div class="row">
+                        <el-form-item prop="slug" label="URL"  class="col-md-7" :error="errors.get('slug')">
+                            <el-input v-model="form.slug"></el-input>
+                        </el-form-item>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <tinymce v-model="form.content.text"/>
+                        </div>
+                    </div>
+                </el-tab-pane>
+                <el-tab-pane label="Настройки и SEO" name="config">
+                    <Seo :form = "form.seo" v-if="form.seo"></Seo>
+                </el-tab-pane>
+            </el-tabs>
+            <div class="text-right mt-3">
+                <el-button type="success" @click="submitForm('form')">Сохранить</el-button>
+                <el-button @click="closeModal">Отмена</el-button>
+            </div>
+        </el-form>
+    </el-card>
 </template>
 <script>
-import richtext from "../../../components/richtext/richtext";
 import { Errors } from  '@/common/js/services/errors.js';
 import Seo from '@/admin/js/components/seo/seo';
-import Editor from '@tinymce/tinymce-vue'
+import Tinymce from '@/admin/js/components/Tinymce';
 export default {
     props:['form','formAction'],
     components: {
         'Seo':Seo,
-        'richtext':richtext,
-        Editor
+        Tinymce
     },
     data() {
         return {

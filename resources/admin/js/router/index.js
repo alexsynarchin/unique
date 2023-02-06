@@ -18,6 +18,7 @@ import errorRoutes from './modules/error';
 
 import checkUniqueRoutes from './modules/check-unique'
 import articlesRoutes from "./modules/artisles";
+import staticPagesRoutes from "./modules/static-pages";
 export const constantRoutes = [
     {
         path: '/redirect',
@@ -141,12 +142,7 @@ export const asyncRoutes = [
                 component: () => import('@/admin/js/views/contact-orders/index'),
                 meta: { title: 'Заявки обратная связь',  noCache: false , permissions: ['manage_contact_orders']},
             },
-            {
-                name: 'static-pages',
-                path: 'static-pages',
-                component: () => import('@/admin/js/views/static-pages/index'),
-                meta: { title: 'Статическая страница',  noCache: false , permissions: ['manage_static_pages']},
-            },
+
         ],
     },
 
@@ -190,6 +186,7 @@ export const asyncRoutes = [
     },
     checkUniqueRoutes,
     articlesRoutes,
+    staticPagesRoutes,
     errorRoutes,
     { path: '*', redirect: '/404', hidden: true },
 ];

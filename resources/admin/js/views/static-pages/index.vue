@@ -2,7 +2,9 @@
     <section class="items-list" >
         <el-row type="flex" class="mb-3">
             <el-col :span="12">
-                <el-button type="success" icon="el-icon-plus" @click.prevent="newItem">Добавить Страницу</el-button>
+                <router-link to="create">
+                    <el-button type="success" icon="el-icon-plus">Добавить Страницу</el-button>
+                </router-link>
             </el-col>
             <el-col :span="12">
                 <el-input
@@ -41,10 +43,13 @@
             >
 
                 <template slot-scope="scope">
-                    <el-button
-                        size="mini"
-                        type="primary"
-                        @click="handleEdit(scope.$index, scope.row)">Редактировать</el-button>
+                    <router-link :to="'edit/'+ scope.row.id">
+                        <el-button
+                            size="mini"
+                            type="primary">
+                            Редактировать
+                        </el-button>
+                    </router-link>
                     <el-button
                         size="mini"
                         type="danger"
@@ -52,56 +57,21 @@
                 </template>
             </el-table-column>
         </data-tables>
-
-        <el-dialog
-            :title="ModalTitle"
-            :visible.sync="pageModal"
-            width="80%"
-        >
-            <create-page
-                v-if="ModalStatus === 'new' && pageModal"
-                @closeModal="closeModal"
-            ></create-page>
-            <edit-page
-                :id="id"
-                @closeModal="closeModal"
-                v-if="ModalStatus === 'edit' && pageModal"
-            >
-            </edit-page>
-        </el-dialog>
     </section>
 </template>
 <script>
-import create from "./create";
-import edit from "./edit";
+
 export default {
 
     components: {
-        'CreatePage': create,
-        'editPage': edit,
+
     },
     methods:{
-        handleEdit(index, row){
-            this.ModalStatus = 'edit';
-            this.pageModal = true;
-            this.id = row.id;
-
-        },
         handleDelete(index,row) {
             axios.delete('/api/admin/static-page/'+ row.id)
                 .then((response) => {
                     this.pages.splice(index, 1);
                 })
-        },
-        newItem() {
-            this.ModalStatus = 'new',
-                this.pageModal = true;
-        },
-        closeModal(value) {
-            this.pageModal = false;
-            if(value === 'submit') {
-                this.getPages();
-            }
         },
         getPages()
         {
@@ -114,12 +84,7 @@ export default {
     },
     data(){
         return{
-            CanAccess: 'Просмотр "Статические страницы"',
-            id:null,
             pages:[],
-            pageModal:false,
-            ModalTitle:'Добавить статическую страницу',
-            ModalStatus:'',
             filters: [{
                 prop: 'name',
                 value: ''

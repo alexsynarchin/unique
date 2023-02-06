@@ -57,14 +57,13 @@
     </el-card>
 </template>
 <script>
-import richtext from "../../../components/richtext/richtext";
+
 import { Errors } from  '@/common/js/services/errors.js';
 import Seo from '@/admin/js/components/seo/seo';
 import Tinymce from '@/admin/js/components/Tinymce';
     export default {
         components: {
             'Seo':Seo,
-            'richtext':richtext,
             Tinymce
         },
         props: {
