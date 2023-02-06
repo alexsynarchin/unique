@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckUniqueRequest;
 use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
@@ -109,58 +110,9 @@ class CheckUniqueController extends Controller
         return $return;
     }
 
-    public function makeReport(Request $request)
+    public function makeReport(CheckUniqueRequest  $request)
     {
 
-        $request->validate([
-            'email' => 'required|email',
-            'plainText' => 'required',
-            'symbolsCount' => 'numeric|min:100|max:150000',
-            'promocode' => ['nullable',
-                function ($attribute, $value, $fail) use ($request) {
-                   $exists =  PromoCode::where('name', $request->get('promocode'))->exists();
-                   if (!$exists) {
-                       $fail('Данный промокод не существует');
-                   }
-                },
-            function ($attribute, $value, $fail) use ($request) {
-            if(PromoCode::where('name', $request->get('promocode'))->exists()){
-                $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
-                if($promo_code->max_count < 1) {
-                    $fail('Данный промокод не может больше  использоваться');
-                }
-            }
-
-    },
-            function ($attribute, $value, $fail) use ($request) {
-                if(PromoCode::where('name', $request->get('promocode'))->exists()){
-                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
-                    $date1 = Carbon::parse(date('Y-m-d'));
-                    $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->end_time)));
-                    if($date1> $date2) {
-                        $fail('Данный промокод не может больше  использоваться');
-                    }
-                }
-
-    },
-            function ($attribute, $value, $fail) use ($request) {
-                if(PromoCode::where('name', $request->get('promocode'))->exists()){
-                    $promo_code  = PromoCode::where('name', $request->get('promocode')) ->firstOrFail();
-                    $date1 = Carbon::parse(date('Y-m-d'));
-                    $date2 = Carbon::parse(date('Y-m-d', strtotime($promo_code->start_time)));
-                    if($date2 > $date1) {
-                        $fail('Данный промокод не может использоваться');
-                    }
-                }
-
-    },],
-            [
-                'symbolsCount.min' => 'Количество символов должно быть больше 100',
-                'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
-                'email.required' => 'Введите ваш e-mail',
-                'plainText.required' => 'Введите текст для проверки уникальности',
-                'promocode.exists,name' => 'Промокод не найден'
-            ]]);
         $data = [];
         if($request->has('sum')) {
             $data['sum'] = $request->get('sum');

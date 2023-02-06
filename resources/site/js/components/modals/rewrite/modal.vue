@@ -210,6 +210,11 @@
                     .then((response) => {
                         this.$root.isLoading = false;
                         $('#rewrite_modal').modal('hide');
+                        this.$toast("Ваша заявка отправлена. Наш менеджер свяжется с вами в близжайшее время.", {
+                            timeout: 500,
+                            type: 'success',
+                            hideProgressBar: true,
+                        });
                         console.log(response.data)
                     })
                     .catch((error) => {

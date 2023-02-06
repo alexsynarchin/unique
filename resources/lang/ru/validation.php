@@ -203,7 +203,7 @@ return [
         'size'                  => 'Размер',
         'subject'               => 'Тема письма',
         'text'                  => 'Текст сообщения',
-'comment'                       => 'Комментарий',
+        'comment'               => 'Комментарий',
         'profile_type'          => 'Пол',
         'surname'               => 'Фамилия',
         'message'               => 'Текст сообщения',
@@ -211,6 +211,7 @@ return [
         'new_password_confirmation' => 'Подтверждение пароля',
         'current_password' => 'Текущий пароль',
         'check' => 'условия',
-        'conf_agree' => '"Политикy кофиденциальности"'
+        'conf_agree' => '"Политикy кофиденциальности"',
+        'promocode' => 'Промокод'
     ],
 ];

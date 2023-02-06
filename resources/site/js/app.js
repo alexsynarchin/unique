@@ -1,6 +1,9 @@
 require('./bootstrap');
 require('owl.carousel/dist/owl.carousel');
 import Vue from 'vue';
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+Vue.use(Toast);
 var VueScrollTo = require('vue-scrollto');
 import vTitle from 'vuejs-title'
 Vue.use(vTitle)

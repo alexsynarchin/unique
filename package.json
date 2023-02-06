@@ -71,6 +71,7 @@
         "vue-simple-progress": "^1.1.1",
         "vue-social-sharing": "^3.0.9",
         "vue-the-mask": "^0.11.1",
+        "vue-toastification": "^1.7.14",
         "vue2-perfect-scrollbar": "^1.5.56",
         "vuedraggable": "^2.24.3",
         "vuejs-datepicker": "^1.6.2",
