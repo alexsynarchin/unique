@@ -123,7 +123,7 @@
         </tr>
     </table>
     <div style="margin: 20px auto 20px auto; width: 400px;">
-        <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{$report->checkUnique->slug}}#high_unique" class="button" target="_blank">
+        <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/report/{{$report->checkUnique->slug}}?rewrite" class="button" target="_blank">
             Повысить уникальность
         </a>
     </div>

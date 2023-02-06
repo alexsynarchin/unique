@@ -188,6 +188,7 @@
         },
         methods: {
             showModal() {
+                console.log('test');
                 $('#rewrite_modal').modal('show');
             },
             customFormatter(date) {
@@ -238,6 +239,14 @@
             rewriteModal.addEventListener('hidden.bs.modal', function (event) {
                 vm.errors.clear();
             });
+
+            setTimeout(()=>{
+                const params = new URLSearchParams(window.location.search);
+                if(params.has('rewrite')) {
+                    this.showModal()
+                }
+
+            }, 300)
         }
     }
 </script>
