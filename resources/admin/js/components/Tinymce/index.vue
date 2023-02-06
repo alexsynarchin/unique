@@ -5,8 +5,8 @@
         :init="{
                                 height: 600,
                                 plugins: 'lists link image table code help wordcount template',
-                                toolbar: 'fontsize | undo redo | styles | bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor  template',
-                                font_size_formats: '8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
+                                toolbar: 'undo redo | formatselect | fontsizeselect | fontselect | lineheight | styles | bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table forecolor backcolor  template',
+                                fontsize_formats: '8px 10px 12px 14px 16px 18px 24px 36px 48px',
                                  language: 'ru',
                                  content_css:'/assets/admin/css/tinymce.css',
                                  templates: [
