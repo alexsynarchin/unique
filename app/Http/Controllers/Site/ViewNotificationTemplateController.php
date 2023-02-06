@@ -11,6 +11,6 @@ class ViewNotificationTemplateController extends Controller
     public function needPaymentNotification()
     {
         $order = UniqueOrder::with('checkUnique', 'reports.checkSystem')->findOrFail(13);
-        return view('mails.need-payment-notification',['order' =>$order]);
+        return view('mails.report-admin',['order' =>$order]);
     }
 }
