@@ -20,6 +20,7 @@ class GeneratePdfService
             ->noSandbox()
             ->showBackground()
             ->format('a4')
+            ->noSandbox()
             ->waitUntilNetworkIdle()
             ->setNodeBinary('/usr/bin/node')
             ->timeout(240)
