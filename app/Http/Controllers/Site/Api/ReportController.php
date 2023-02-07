@@ -134,7 +134,7 @@ class ReportController extends Controller
     {
         $report=Report::findOrFail($id);
         if($report->filename) {
-            $link = '/storage/reports/' . $report->id . '/' . $report->filename;
+            $link = '/storage/reports/' . $report->checkUnique->id . '/' . $report->filename;
 
         } else {
             $generatePdfService = new GeneratePdfService();
