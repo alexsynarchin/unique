@@ -22,6 +22,7 @@ class GeneratePdfService
             ->format('a4')
             ->waitUntilNetworkIdle()
             ->setNodeBinary('/usr/bin/node')
+            ->timeout(240)
             ->setNpmBinary('/usr/bin/npm')
             ->save(Storage::disk('local')->path('public/' . $link));
         $report->filename = "report-" . $report->id . ".pdf";
