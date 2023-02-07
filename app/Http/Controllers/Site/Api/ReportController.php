@@ -55,6 +55,9 @@ class ReportController extends Controller
         $report->save();
         $check_system = $report -> checkSystem;
         $percent = 0;
+        $highLightService = new ReportHighLightTextService();
+        $report->highlight_text = $highLightService->highLightText($report['data']);
+        $report->save();
         if(!$report->filename) {
             $generatePdfService = new GeneratePdfService();
             $link = $generatePdfService -> generate($report->id);
