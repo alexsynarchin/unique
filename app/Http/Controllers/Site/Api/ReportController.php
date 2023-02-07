@@ -56,6 +56,8 @@ class ReportController extends Controller
         $check_system = $report -> checkSystem;
         $percent = 0;
         if(!$report->filename) {
+            $generatePdfService = new GeneratePdfService();
+            $link = $generatePdfService -> generate($report->id);
             GenerateReportPdf::dispatch($report);
         }
         if($check_system->api_id !=1 && $report->data['unique'] != 100) {
