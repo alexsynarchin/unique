@@ -7,10 +7,11 @@ class ReportHighLightTextService
     public function highLightText($data)
     {
         $plagiats_arr = [];
+        dd($data);
         foreach ($data['urls'] as $item) {
            array_push($plagiats_arr, $item['plagiat']);
         }
-        dd($plagiats_arr);
+
         $index = array_keys($plagiats_arr, max($plagiats_arr))[0];
         $textArr  = $this->textToArray($data['clear_text']);
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
