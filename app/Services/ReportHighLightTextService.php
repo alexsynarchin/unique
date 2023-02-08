@@ -7,7 +7,9 @@ class ReportHighLightTextService
     public function highLightText($data)
     {
         $plagiats_arr = [];
-        dd($data);
+        if(count($data['urls']) === 0) {
+            return $data['clear_text'];
+        }
         foreach ($data['urls'] as $item) {
            array_push($plagiats_arr, $item['plagiat']);
         }
