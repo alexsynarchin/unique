@@ -22,7 +22,6 @@
             <p class="report-item-detail-content__descr">
                 Нажмите на ссылку для подсвечивания заимствованного текста
             </p>
-
             <ul class="report-item-links">
                 <li class="report-item-links__item" v-for="(item, index) in report.data.urls">
                     <section class="report-item-links__text" @click.prevent="selectUrl(index)">
@@ -103,6 +102,9 @@
 
             this.resultText = this.report.data.clear_text;
             this.highlightAllWords();
+            if(this.report.check_system.price === 0) {
+                this.showDetail = true;
+            }
         }
     }
 </script>
