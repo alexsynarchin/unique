@@ -5,6 +5,11 @@
                 {{item.title}}
             </a>
         </li>
+        <li class="footer-bt-nav__item">
+            <a class="footer-bt-nav__link" href="https://pandaworks.ru" target="_blank">
+                Разработано в пандаворкс
+            </a>
+        </li>
     </ul>
 </template>
 <script>
