@@ -1,4 +1,7 @@
 @extends('site.base.base')
+@section('head')
+
+@endsection
 @section('content')
     <div class="container">
         <ul class="breadcrumb-list">
@@ -29,7 +32,7 @@
             <div class="col-lg-3">
                 <section class="vk-subscribe">
                     <h5 class="vk-subscribe__title">Мы во Вконтакте</h5>
-                    <a class="vk-subscribe__link" href="">
+                    <a class="vk-subscribe__link" href="https://vk.com/public218705996">
                         <figure class="vk-subscribe__icon">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
@@ -81,4 +84,7 @@
         </section>
     </div>
 @endsection
+@section('scripts')
+    //
 
+@endsection
