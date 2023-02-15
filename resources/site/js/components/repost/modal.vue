@@ -1,6 +1,6 @@
 <template>
-    <div  class="modal fade unique-modal" id="promo_modal"  tabindex="-1" role="dialog"  aria-hidden="true" style="background: rgba(0,0,0,0.5)">
-        <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
+    <div  class="modal fade unique-modal" id="promo_modal"  tabindex="-1" role="dialog"  aria-hidden="true" style="background: rgba(0,0,0,0.5); ">
+        <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document" style="z-index: 30000">
             <div class="unique-modal__content modal-content" style="background: #F0F1F6;">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40">

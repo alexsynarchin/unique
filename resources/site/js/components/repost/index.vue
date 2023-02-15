@@ -4,19 +4,9 @@
             Получите скидку 10% за репост
         </h4>
         <section class="repost__list">
-            <ShareNetwork
-                class="repost__item repost__item--vk"
-                network="vk"
-                @close="closeRepost"
-                :url="data.url"
-                :title="data.title"
-                :description="data.description"
-            >
-                <svg class="repost__icon" viewBox="0 0 20 22">
-                    <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
-                </svg>
 
-            </ShareNetwork>
+            <a id="btn-podel" href="javascript:void(0)" class="repost__item repost__item--vk share-network-vk"><svg viewBox="0 0 20 22" class="repost__icon"><use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use></svg></a>
+
             <ShareNetwork
                 @close="closeRepost"
                 class="repost__item repost__item--odnoklassniki"
@@ -47,14 +37,16 @@
             </ShareNetwork>
             -->
         </section>
-<promo-modal ref="promoModal"></promo-modal>
     </div>
 </template>
 <script>
-    import PromoModal from './modal'
+
+
+    import {bus} from "@/site/js/services/bus";
+
     export default {
         components: {
-            PromoModal
+
         },
         data() {
             return {
@@ -69,8 +61,35 @@
         },
         methods: {
             closeRepost(data) {
-                console.log(data)
-                this.$refs.promoModal.showModal();
+                console.log(data);
+                bus.$emit('show-promo-modal');
+            }
+        },
+        mounted() {
+            VK.init({ apiId: 51553840 }); // id вашего приложения ВК, где в настройках прописан ваш домен
+            document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
+            let vm =this;
+
+            function hClick() { // обработчик нажатия
+                VK.Api.call('wall.post', {
+                    message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
+                    attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
+            }
+
+            function hPost(r) { // обработчик окончания выполнения API запроса
+                if(!r) throw "Bad response from VK";
+                if( r.error) { // если отказался постить
+                    console.log("Not posted. Error:", r.error);
+                } else if( r.response) {
+                    if( r.response.post_id) { // это id свежесозданного поста
+                        console.log("Posted with id ", r.response.post_id);
+                        bus.$emit('show-promo-modal');
+                    } else {
+                        console.log("No post id, no idea why", r);
+                    }
+                } else {
+                    console.log("Not posted, no idea why", r);
+                }
             }
         }
     }

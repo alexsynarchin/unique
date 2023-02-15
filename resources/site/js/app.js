@@ -10,6 +10,8 @@ Vue.use(vTitle)
 Vue.use(VueScrollTo);
 import VueSocialSharing from 'vue-social-sharing'
 Vue.use(VueSocialSharing);
+import VKWidgets from 'vue-vk';
+Vue.use(VKWidgets);
 Vue.directive('phone', {
     bind(el) {
         el.oninput = function(e) {
@@ -67,6 +69,7 @@ Vue.component('Articles', require('./views/article/index').default)
 //Order
 Vue.component('OrderFail', require('./components/order/fail').default);
 Vue.component('OrderSuccess', require('./components/order/success').default);
+Vue.component('PromoModal', require('./components/modals/promo-modal/index.vue').default)
 const app = new Vue({
     el: '#app',
     created(){

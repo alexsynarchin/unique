@@ -43,7 +43,9 @@ class CheckUniqueController extends Controller
         $symbols_count = strip_tags($request->get('text'));
         $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
-        $sentenceCount = substr_count($request->get('text'),'.') + substr_count($request->get('text'),'!')+ substr_count($request->get('text'),'?');
+        $sentenceCount = substr_count($request->get('text'),'.')
+            + substr_count($request->get('text'),'!')
+            + substr_count($request->get('text'),'?');
         $pages = (int) ($symbols_count/1750);
         if ($pages === 0) {
             $pages = 1;

@@ -27,7 +27,7 @@
                                  :class="{'is-invalid': errors.has('name')|| errors.has('plain_text')  || errors.has('symbolsCount')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-user"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-user"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -47,7 +47,7 @@
                             <div class="u-input-group"   :class="{'is-invalid': errors.has('phone')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -69,7 +69,7 @@
                                  :class="{'is-invalid': errors.has('email') }">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -87,7 +87,7 @@
                             <div class="u-input-group "  :class="{'is-invalid': errors.has('date')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg ">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-calendar"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=41#sprite-calendar"></use>
                                     </svg>
                                 </i>
                                 <datepicker
@@ -112,7 +112,7 @@
                                  :class="{'is-invalid': errors.has('promocode')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=42#sprite-percent"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=42#sprite-percent"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -131,7 +131,7 @@
                         <div class="u-input-group "  :class="{'is-invalid': errors.has('comment')}">
                             <i class="u-input-group__icon u-input-group__icon--textarea">
                                 <svg viewBox="0 0 24 24" class="u-input-group__svg ">
-                                    <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
+                                    <use xlink:href="/assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
                                 </svg>
                             </i>
                             <textarea class="u-input-group__input u-input-group__input--textarea"
