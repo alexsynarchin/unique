@@ -71,10 +71,29 @@
             let vm =this;
 
             function hClick() { // обработчик нажатия
-                VK.Api.call('wall.post', {
-                    message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                    attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
-            }
+                function postWall(message)
+                {
+                    VK.Auth.login
+                    (
+                        function(response)
+                        {
+                            if (response.session)
+                            {
+                                var userId = response.session.mid;
+                                VK.Api.call('wall.post',
+                                    {owner_id: userId, message: message,attachments:'http://ya.ru'}, function (data) {
+                                        if (data.response)
+                                        {
+                                            alert('Запись успешно добавлена!');
+                                        }
+                                    });
+                            }
+                        },
+                        8192+4
+                    )
+                }
+
+
 
             function hPost(r) { // обработчик окончания выполнения API запроса
                 if(!r) throw "Bad response from VK";
