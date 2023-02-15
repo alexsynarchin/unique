@@ -90,9 +90,7 @@
                     },
                     8192+4
                 )
-                VK.Api.call('wall.post', {
-                    message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                    attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
+
             }
 
             function hPost(r) { // обработчик окончания выполнения API запроса
