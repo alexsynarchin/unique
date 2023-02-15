@@ -73,7 +73,7 @@
             function hClick() { // обработчик нажатия
                 VK.Api.call('wall.post', {
                     message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                  }, hPost);
+                    attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
             }
 
             function hPost(r) { // обработчик окончания выполнения API запроса
