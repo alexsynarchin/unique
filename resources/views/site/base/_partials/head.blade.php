@@ -14,6 +14,6 @@
     <meta name="og:image" content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
     <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png" />
     <meta name="yandex-verification" content="ac1eeab5f2d97b5c" />
-    <script crossorigin="use-credentials" src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+    <script  src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
     @yield('head')
 </head>
