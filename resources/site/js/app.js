@@ -10,8 +10,7 @@ Vue.use(vTitle)
 Vue.use(VueScrollTo);
 import VueSocialSharing from 'vue-social-sharing'
 Vue.use(VueSocialSharing);
-import VKWidgets from 'vue-vk';
-Vue.use(VKWidgets);
+
 Vue.directive('phone', {
     bind(el) {
         el.oninput = function(e) {

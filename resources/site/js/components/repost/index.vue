@@ -5,7 +5,10 @@
         </h4>
         <section class="repost__list">
 
-            <a id="btn-podel" href="javascript:void(0)" class="repost__item repost__item--vk share-network-vk"><svg viewBox="0 0 20 22" class="repost__icon"><use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use></svg></a>
+            <a id="btn-podel" href="javascript:void(0)" class="repost__item repost__item--vk share-network-vk">
+                <svg viewBox="0 0 20 22" class="repost__icon"><use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
+                </svg>
+            </a>
 
             <ShareNetwork
                 @close="closeRepost"
@@ -41,7 +44,6 @@
 </template>
 <script>
 
-
     import {bus} from "@/site/js/services/bus";
 
     export default {
@@ -66,17 +68,24 @@
             }
         },
         mounted() {
-            VK.init({ apiId: 51553840 }); // id вашего приложения ВК, где в настройках прописан ваш домен
+            VK.init({ apiId: 51554125 }); // id вашего приложения ВК, где в настройках прописан ваш домен
             document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
             let vm =this;
 
             function hClick() { // обработчик нажатия
-                VK.Api.call('wall.post', {
+                VK.Auth.getLoginStatus(function (res) {
+                    console.log(res)
+                })
+
+                //617865644
+            }
+                /*VK.Api.call('wall.post', {
                     message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
                     attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
-            }
+            }*/
 
             function hPost(r) { // обработчик окончания выполнения API запроса
+                console.log(r);
                 if(!r) throw "Bad response from VK";
                 if( r.error) { // если отказался постить
                     console.log("Not posted. Error:", r.error);
