@@ -212,7 +212,7 @@
                         this.$root.isLoading = false;
                         $('#rewrite_modal').modal('hide');
                         this.$toast("Ваша заявка отправлена. Наш менеджер свяжется с вами в близжайшее время.", {
-                            timeout: 500,
+                            timeout: 2000,
                             type: 'success',
                             hideProgressBar: true,
                         });
