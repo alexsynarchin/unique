@@ -1,6 +1,6 @@
 @extends('site.base.base')
 @section('head')
-
+    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
 @endsection
 @section('content')
     <div class="container">
@@ -30,18 +30,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <section class="vk-subscribe">
-                    <h5 class="vk-subscribe__title">Мы во Вконтакте</h5>
-                    <a class="vk-subscribe__link" href="https://vk.com/public218705996">
-                        <figure class="vk-subscribe__icon">
-                            <svg viewBox="0 0 24 24">
-                                <use xlink:href={{asset("assets/site/images/sprites.svg?ver=15#sprite-vk")}}></use>
-                            </svg>
-                        </figure>
-                        <span class="vk-subscribe__name">Проверить уникальность</span>
-                    </a>
-                    <button class="button btn vk-subscribe__btn">Подписаться</button>
-                </section>
+                <div id="vk_groups" style="width:100%"></div>
                 <p>Поделиться статьей:</p>
                 <script src="https://yastatic.net/share2/share.js"></script>
                 <div class="ya-share2" data-curtain data-services="vkontakte,odnoklassniki"></div>
@@ -85,6 +74,8 @@
     </div>
 @endsection
 @section('scripts')
-    //
+    <script type="text/javascript">
+        VK.Widgets.Group("vk_groups", {mode: 3, color1: 'F0F1F6', width:230}, 218705996);
+    </script>
 
 @endsection
