@@ -1,6 +1,6 @@
 @extends('site.base.base')
 @section('head')
-    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
 @endsection
 @section('content')
     <div class="container">
