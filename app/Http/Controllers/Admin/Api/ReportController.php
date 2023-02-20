@@ -27,7 +27,7 @@ class ReportController extends Controller
         $filename = $request->file('report_file')->getClientOriginalName();
 
         $path = $request->file('report_file')->storeAs(
-            'public/reports/' . $report->id, $filename
+            'public/reports/' . $report->checkUnique->id, $filename
         );
         $report->data =$data;
         $report->result = 1;
