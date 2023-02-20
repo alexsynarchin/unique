@@ -3,49 +3,25 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CheckUniqueResource;
 use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CheckUniqueController extends Controller
 {
+
+    const ITEM_PER_PAGE = 15;
     public function index(Request $request)
     {
-        $check_uniques = (new CheckUnique) -> newQuery();
-        //dd($request->all());
-        if($request->get('type') !==null) {
-            $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
-               $query->whereHas('checkSystem', function ($query) use ($request) {
-                    $query->where('manual', (int) $request->get('type'));
-               });
-            });
-        }
-        if($request->get('price_type') !==null) {
-            if((int) $request->get('price_type')=== 0) {
-                $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
-                    $query->whereHas('checkSystem', function ($query) use ($request) {
-                        $query->where('price', '=', 0);
-                    });
-                });
-            } else {
-                $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
-                    $query->whereHas('checkSystem', function ($query) use ($request) {
-                        $query->where('price',  '>', 0);
-                    });
-                });
-            }
-        }
-
-        if($request->get('system') !==null) {
-            $check_uniques = $check_uniques -> whereHas('reports', function ($query) use ($request){
-                $query->whereHas('checkSystem', function ($query) use ($request) {
-                    $query->where('id', $request->get('system'));
-                });
-            });
-        }
-
-        $check_uniques = $check_uniques->with(['reports.checkSystem', 'services']) ->orderBy('created_at', 'desc')->get();
-        return $check_uniques;
+        $searchParams = $request->all();
+        $checkUniqueQuery = CheckUnique::query();
+        $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
+        return CheckUniqueResource::collection(
+            $checkUniqueQuery -> with('reports.checkSystem')
+            ->orderBy('created_at', 'desc')
+            ->paginate($limit));
     }
 
     public function show($id)

@@ -44,7 +44,7 @@
                 </el-select>
             </div>
         </div>
-        <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
+        <data-tables :data="check_uniques"  :table-props="tableProps">
             <el-table-column
                 label="№"
             >
@@ -109,25 +109,14 @@
 
                 </template>
             </el-table-column>
-        </el-table>
-        <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+        </data-tables>
     </section>
 </template>
 <script>
-import Pagination from '@/admin/js/components/Pagination'; // Secondary package based on el-pagination
-import Resource from '@/admin/js/api/resource';
-const checkUniqueResource = new Resource('check-uniques');
+
 export default {
-    components: { Pagination },
     data() {
         return {
-            list: null,
-            total: 0,
-            listLoading: true,
-            listQuery: {
-                page: 1,
-                limit: 20,
-            },
             check_uniques: [],
             type:null,
             priceType:null,
@@ -166,13 +155,6 @@ export default {
         }
     },
     methods: {
-        async getList() {
-            this.listLoading = true;
-            const { data, meta } = await checkUniqueResource.list(this.listQuery);
-            this.list = data;
-            this.total = meta.total;
-            this.listLoading = false;
-        },
         getSystems() {
             axios.get('/api/admin/check-unique/systems')
                 .then((response) => {
@@ -186,10 +168,8 @@ export default {
                 })
         },
     },
-    created() {
-        this.getList();
-    },
     mounted() {
+        this.getCheckUniques();
         this.getSystems();
     }
 }
