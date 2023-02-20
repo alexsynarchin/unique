@@ -111,7 +111,7 @@
     <table border="0" cellpadding="0" cellspacing="0" style="margin:0 0 60px 0; padding:0; width: 100%;">
         <tr>
             <td style="padding-right: 12px; width: 50%;">
-                <a href="{{route('report', $report->checkUnique->id)}}" class="button" target="_blank">
+                <a href="{{route('report', $report->checkUnique->slug)}}" class="button" target="_blank">
                     Просмотреть отчет
                 </a>
             </td>
