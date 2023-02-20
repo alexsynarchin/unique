@@ -68,7 +68,7 @@
             }
         },
         mounted() {
-            VK.init({ apiId: 51553840 }); // id вашего приложения ВК, где в настройках прописан ваш домен
+            VK.init({ apiId: 51554125 }); // id вашего приложения ВК, где в настройках прописан ваш домен
             document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
             let vm =this;
 

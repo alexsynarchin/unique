@@ -27,7 +27,7 @@ class CheckUniqueController extends Controller
     {
         $request->validate([
             'text' => 'required',
-            'symbols_count' => 'numeric|min:100|max:150000',
+            'symbols_count' => 'numeric|min:100|max:500000',
             'length' => 'numeric|min:1'
         ],[
             'text.required'=> 'Загрузите файл или введите текст для проверки на уникальность',
