@@ -28,8 +28,7 @@
     </div>
 @endsection
 @section('scripts')
-    3
-    <script type="text/javascript"> VK.init({apiId: 51553840, onlyWidgets: true}); </script>
+    <script type="text/javascript"> VK.init({apiId: 51553840}); </script>
     <script>
         //  alert('ok');
         document.getElementById('test').addEventListener('click', hClick); // ждём нажатий на кнопку
