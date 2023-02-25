@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-3">
                 <sidebar-banner></sidebar-banner>
-                <figure class="">
+                <figure class="" id='test'>
                     <img src="/assets/site/images/sidebar-banner.png">
                 </figure>
             </div>
@@ -28,6 +28,20 @@
     </div>
 @endsection
 @section('scripts')
+    3
+    <script type="text/javascript"> VK.init({apiId: 51553840, onlyWidgets: true}); </script>
+    <script>
+        //  alert('ok');
+        document.getElementById('test').addEventListener('click', hClick); // ждём нажатий на кнопку
+        function hClick() { // обработчик нажатия
+            VK.Auth.getLoginStatus(function (res) {
+                console.log(res)
+            })
 
+            //617865644
+        }
+
+
+    </script>
 @endsection
 
