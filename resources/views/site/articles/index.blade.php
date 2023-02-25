@@ -20,8 +20,14 @@
             </div>
             <div class="col-lg-3">
                 <sidebar-banner></sidebar-banner>
+                <figure class="">
+                    <img src="/assets/site/images/sidebar-banner.png">
+                </figure>
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+
 @endsection
 
