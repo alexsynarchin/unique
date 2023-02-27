@@ -68,38 +68,35 @@
             }
         },
         mounted() {
-            VK.init({ apiId: 51553840 }); // id вашего приложения ВК, где в настройках прописан ваш домен
+            VK.init({apiId:51553840}); // id вашего приложения ВК, где в настройках прописан ваш домен
             document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
-            let vm =this;
+            let vm = this;
 
             function hClick() { // обработчик нажатия
-                VK.Auth.getLoginStatus(function (res) {
-                    console.log(res)
-                })
+
 
                 //617865644
-            }
-                /*VK.Api.call('wall.post', {
+                VK.Api.call('wall.post', {
                     message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
                     attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
-            }*/
+            }
 
-            function hPost(r) { // обработчик окончания выполнения API запроса
-                console.log(r);
-                if(!r) throw "Bad response from VK";
-                if( r.error) { // если отказался постить
-                    console.log("Not posted. Error:", r.error);
-                } else if( r.response) {
-                    if( r.response.post_id) { // это id свежесозданного поста
-                        console.log("Posted with id ", r.response.post_id);
-                        bus.$emit('show-promo-modal');
+                function hPost(r) { // обработчик окончания выполнения API запроса
+                    console.log(r);
+                    if (!r) throw "Bad response from VK";
+                    if (r.error) { // если отказался постить
+                        console.log("Not posted. Error:", r.error);
+                    } else if (r.response) {
+                        if (r.response.post_id) { // это id свежесозданного поста
+                            console.log("Posted with id ", r.response.post_id);
+                            bus.$emit('show-promo-modal');
+                        } else {
+                            console.log("No post id, no idea why", r);
+                        }
                     } else {
-                        console.log("No post id, no idea why", r);
+                        console.log("Not posted, no idea why", r);
                     }
-                } else {
-                    console.log("Not posted, no idea why", r);
                 }
             }
-        }
     }
 </script>
