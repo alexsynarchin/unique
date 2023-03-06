@@ -17,10 +17,11 @@
                     :limit="1"
                     :on-change="handleFileChange"
                     :on-remove="handleFileRemove"
+                    :on-exceed="clearFiles"
                     :auto-upload="false"
                 >
-                    <el-button slot="trigger" size="small" type="primary" v-if="!form.file">Прикрепить файл отчета</el-button>
-                    <el-button  size="small" type="primary" v-else @click.prevent="$refs.upload.clearFiles()">Прикрепить файл отчета</el-button>
+                    <el-button slot="trigger" size="small" type="primary" v-if="!form.report_file ">Прикрепить файл отчета</el-button>
+
                     <div class="el-upload__tip" slot="tip"></div>
                 </el-upload>
             </el-form-item>
@@ -67,6 +68,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 };
                 axios.post('/api/admin/report/' + this.report.id + '/send', formData, config)
                     .then((response) => {
+                        console.log(response.data);
                         this.handleClose();
                         this.$emit('refresh-data')
 
@@ -77,10 +79,16 @@ import { Errors } from  '@/common/js/services/errors.js';
 
             },
             handleFileChange(file, filelist) {
+
                 this.form.report_file = file.raw;
             },
             handleFileRemove(file, fileList) {
                this.form.report_file = "";
+            },
+            clearFiles(files, fileList) {
+                //this.$refs.upload.clearFiles();
+                console.log(files)
+                console.log(this.$refs.upload);
             }
 
         },

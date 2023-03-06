@@ -32,6 +32,7 @@ class ReportMail extends Mailable
      */
     public function build()
     {
+
         $mail = $this->from('report247@mail.ru')
             -> subject('Отчет о проверке уникальности (' . $this->report->checkSystem->title . ')');
         $setting = Setting::where('name', 'phone_header')->firstOrFail();

@@ -33,8 +33,10 @@ class ReportController extends Controller
         $report->result = 1;
         $report->filename = $filename;
         $report->save();
-        $link = '/storage/reports/' . $report->id . '/' . $report->filename;
+        $link = '/storage/reports/' . $report->checkUnique->id . '/' . $report->filename;
+
         Mail::to($report->checkUnique->email)->send(new ReportMail($link, $report));
+
         return $report;
     }
 }
