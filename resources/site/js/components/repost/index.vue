@@ -39,6 +39,7 @@
 
             </ShareNetwork>
             -->
+            <div id="vk_api_transport"> </div>
         </section>
     </div>
 </template>
@@ -68,8 +69,19 @@
             }
         },
         mounted() {
-            VK.init({apiId:51553840}); // id вашего приложения ВК, где в настройках прописан ваш домен
+            window.vkAsyncInit = function() {
+                VK.init({
+                    apiId: 51554125
+                });
+            };
             document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
+            setTimeout(function() {
+                var el = document.createElement("script");
+                el.type = "text/javascript";
+                el.src = "https://vk.com/js/api/openapi.js?169";
+                el.async = true;
+                document.getElementById("vk_api_transport").appendChild(el);
+            }, 0);
             let vm = this;
 
             function hClick() { // обработчик нажатия
@@ -78,7 +90,7 @@
                 //617865644
                 VK.Api.call('wall.post', {
                     message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                    attachments:"https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/about"}, hPost);
+                    }, hPost);
             }
 
                 function hPost(r) { // обработчик окончания выполнения API запроса
@@ -92,6 +104,7 @@
                             bus.$emit('show-promo-modal');
                         } else {
                             console.log("No post id, no idea why", r);
+                            bus.$emit('show-promo-modal');
                         }
                     } else {
                         console.log("Not posted, no idea why", r);

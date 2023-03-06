@@ -35,7 +35,7 @@ class CheckUniqueRequest extends FormRequest
              ],
             [
                 'symbolsCount.min' => 'Количество символов должно быть больше 100',
-                'symbolsCount.max' => 'Количество символов не может быть больше 1500000',
+                'symbolsCount.max' => 'Количество символов не может быть больше 500000',
                 'email.required' => 'Введите ваш e-mail',
                 'plainText.required' => 'Введите текст для проверки уникальности',
             ]
