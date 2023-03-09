@@ -20,7 +20,7 @@
                 </el-table-column>
                 <el-table-column>
                     <template slot-scope="scope">
-                        <router-link :to="'api/' + scope.row.id" class="el-button el-button--primary el-button--small" v-if="scope.row.id === 1 || scope.row.id === 2 || scope.row.id === 2">
+                        <router-link :to="'api/' + scope.row.id" class="el-button el-button--primary el-button--small">
                             <i class="el-icon-setting"></i>
                             Настройки
                         </router-link>
