@@ -19,12 +19,15 @@ class VkontakteController extends Controller
     {
         $vk = new \VK\Client\VKApiClient();
         $oauth = new \VK\OAuth\VKOAuth();
-        $client_id = 51554125;
+        //51554125
+        //51553840
+        $client_id = 51553840;
         $redirect_uri = 'http://unique.loc/vk';
         $display = VKOAuthDisplay::PAGE;
         $scope = array(VKOAuthUserScope::WALL, VKOAuthUserScope::FRIENDS,  VKOAuthUserScope::GROUPS);
 
         //45uuDrTz0Pcia2fhSwBy
+        //GZlXA1GHvYa0KoELFuzN
         $state = '45uuDrTz0Pcia2fhSwBy';
         $browser_url = $oauth->getAuthorizeUrl(VKOAuthResponseType::CODE, $client_id, $redirect_uri, $display, $scope, $state);
         return $browser_url;

@@ -11,7 +11,7 @@ class VkController extends Controller
     {
 
         $oauth = new \VK\OAuth\VKOAuth();
-        $client_id = 51554125;
+        $client_id = 51553840;
         $client_secret = '45uuDrTz0Pcia2fhSwBy';
         $redirect_uri = 'http://unique.loc/vk';
         $code = $request->get('code');
@@ -20,11 +20,12 @@ class VkController extends Controller
         $access_token = $response['access_token'];
 
         $vk = new \VK\Client\VKApiClient();
+
         $vk_wall_response = $vk->wall()->post($access_token, [
             'owner_id'=> $response['user_id'],
             'message'=> 'test'
         ]);
+        dd($response);
 
-        dd($vk_wall_response);
     }
 }
