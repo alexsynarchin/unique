@@ -74,9 +74,23 @@
                     window.location.href = response.data;
                 })
             },
+            getSession() {
+                VK.Auth.getLoginStatus(function(res){
+                    console.log(res)
+                })
+                VK.Auth.getSession(function(res){
+                    console.log(res)
+                })
+            },
+            logout() {
+                VK.Auth.logout(function(res) {
+                    console.log(res)
+                })
+            },
             sendRepost() {
-                VK.Auth.getLoginStatus(function(response) {
-                    console.log(response)
+
+                VK.Auth.login(function(response) {
+                    console.log(response.session)
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
 
@@ -90,16 +104,21 @@
                             }
                         });
                     } else {
-                        /* Пользователь нажал кнопку Отмена в окне авторизации */
+
                     }
                 });
             },
+        },
+        created() {
+
+
         },
         mounted() {
             window.vkAsyncInit = function() {
                 VK.init({
                     apiId: 51553840
                 });
+
             };
 
             setTimeout(function() {
@@ -108,8 +127,8 @@
                 el.src = "https://vk.com/js/api/openapi.js?169";
                 el.async = true;
                 document.getElementById("vk_api_transport").appendChild(el);
+
             }, 0);
-            let vm = this;
 
             }
 
