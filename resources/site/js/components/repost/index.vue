@@ -91,21 +91,7 @@
 
                 VK.Auth.login(function(response) {
                     console.log(response)
-                    if (response.session) {
-                        /* Пользователь успешно авторизовался */
 
-                        VK.Api.call('wall.post', {
-                            owner_id:response.session.mid,
-                            message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                        }, function (r) {
-                            console.log(r.response.post_id)
-                            if(r.response.post_id) {
-                                bus.$emit('show-promo-modal');
-                            }
-                        });
-                    } else {
-
-                    }
                 });
             },
         },
