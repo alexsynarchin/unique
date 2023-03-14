@@ -24,7 +24,7 @@ class VkontakteController extends Controller
         $client_id = 51553840;
         $redirect_uri = 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/vk';
         $display = VKOAuthDisplay::PAGE;
-        $scope = array(VKOAuthUserScope::WALL, VKOAuthUserScope::FRIENDS,  VKOAuthUserScope::GROUPS);
+        $scope = array(VKOAuthUserScope::WALL,  VKOAuthUserScope::GROUPS);
 
         //45uuDrTz0Pcia2fhSwBy
         //GZlXA1GHvYa0KoELFuzN
