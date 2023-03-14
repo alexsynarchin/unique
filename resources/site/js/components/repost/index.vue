@@ -116,9 +116,7 @@
         mounted() {
             window.vkAsyncInit = function() {
                 VK.init({
-                    apiId: 51554125
-                });
-
+                    apiId: 51553840
             };
 
             setTimeout(function() {
