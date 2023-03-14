@@ -117,6 +117,7 @@
             window.vkAsyncInit = function() {
                 VK.init({
                     apiId: 51553840
+                })
             };
 
             setTimeout(function() {
@@ -129,7 +130,6 @@
             }, 0);
 
             }
-        }
 
     }
 </script>
