@@ -20,12 +20,12 @@ class VkController extends Controller
         $access_token = $response['access_token'];
 
         $vk = new \VK\Client\VKApiClient();
-
+        dd($response);
         $vk_wall_response = $vk->wall()->post($access_token, [
             'owner_id'=> $response['user_id'],
             'message'=> 'test'
         ]);
-        dd($response);
+
 
     }
 }
