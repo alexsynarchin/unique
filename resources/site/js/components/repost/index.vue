@@ -90,6 +90,7 @@
             sendRepost() {
 
                 VK.Auth.getLoginStatus(function(response) {
+                    console.log(response);
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
                         console.log(response);
