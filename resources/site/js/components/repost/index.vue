@@ -71,7 +71,7 @@
         mounted() {
             window.vkAsyncInit = function() {
                 VK.init({
-                    apiId: 51554125
+                    apiId: 51553840
                 });
             };
             document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
