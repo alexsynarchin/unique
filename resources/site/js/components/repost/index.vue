@@ -89,8 +89,8 @@
             },
             sendRepost() {
 
-                VK.Auth.getLoginStatus(function(response) {
-                    console.log(response.session)
+                VK.Auth.login(function(response) {
+                    console.log(response)
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
 
@@ -116,7 +116,7 @@
         mounted() {
             window.vkAsyncInit = function() {
                 VK.init({
-                    apiId: 51553840
+                    apiId: 51554125
                 });
 
             };
