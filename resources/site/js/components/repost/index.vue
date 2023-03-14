@@ -5,7 +5,7 @@
         </h4>
         <section class="repost__list">
 
-            <a id="btn-podel" href="javascript:void(0)" class="repost__item repost__item--vk share-network-vk">
+            <a @click.prevent="sendRepost" href="#" class="repost__item repost__item--vk share-network-vk">
                 <svg viewBox="0 0 20 22" class="repost__icon"><use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
                 </svg>
             </a>
@@ -66,7 +66,27 @@
             closeRepost(data) {
                 console.log(data);
                 bus.$emit('show-promo-modal');
-            }
+            },
+            sendRepost() {
+                VK.Auth.getLoginStatus(function(response) {
+
+                    if (response.session) {
+                        /* Пользователь успешно авторизовался */
+                        console.log(response.session.mid)
+                        VK.Api.call('wall.post', {
+                            owner_id:response.session.mid,
+                            message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
+                        }, function (r) {
+                            console.log(r.response.post_id)
+                            if(r.response.post_id) {
+                                bus.$emit('show-promo-modal');
+                            }
+                        });
+                    } else {
+                        /* Пользователь нажал кнопку Отмена в окне авторизации */
+                    }
+                });
+            },
         },
         mounted() {
             window.vkAsyncInit = function() {
@@ -74,7 +94,7 @@
                     apiId: 51553840
                 });
             };
-            document.getElementById('btn-podel').addEventListener('click', hClick); // ждём нажатий на кнопку
+
             setTimeout(function() {
                 var el = document.createElement("script");
                 el.type = "text/javascript";
@@ -84,32 +104,7 @@
             }, 0);
             let vm = this;
 
-            function hClick() { // обработчик нажатия
-
-
-                //617865644
-                VK.Api.call('wall.post', {
-                    message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                    }, hPost);
             }
 
-                function hPost(r) { // обработчик окончания выполнения API запроса
-                    console.log(r);
-                    if (!r) throw "Bad response from VK";
-                    if (r.error) { // если отказался постить
-                        console.log("Not posted. Error:", r.error);
-                    } else if (r.response) {
-                        if (r.response.post_id) { // это id свежесозданного поста
-                            console.log("Posted with id ", r.response.post_id);
-                            bus.$emit('show-promo-modal');
-                        } else {
-                            console.log("No post id, no idea why", r);
-                            bus.$emit('show-promo-modal');
-                        }
-                    } else {
-                        console.log("Not posted, no idea why", r);
-                    }
-                }
-            }
     }
 </script>

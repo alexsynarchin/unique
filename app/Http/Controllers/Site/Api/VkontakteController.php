@@ -13,14 +13,17 @@ use \VK\OAuth\VKOAuthResponseType;
 
 class VkontakteController extends Controller
 {
+
+
     public function wallPost()
     {
         $vk = new \VK\Client\VKApiClient();
         $oauth = new \VK\OAuth\VKOAuth();
         $client_id = 51554125;
-        $redirect_uri = 'http://unique.loc';
+        $redirect_uri = 'http://unique.loc/vk';
         $display = VKOAuthDisplay::PAGE;
-        $scope = array(VKOAuthUserScope::WALL, VKOAuthUserScope::GROUPS);
+        $scope = array(VKOAuthUserScope::WALL, VKOAuthUserScope::FRIENDS,  VKOAuthUserScope::GROUPS);
+
         //45uuDrTz0Pcia2fhSwBy
         $state = '45uuDrTz0Pcia2fhSwBy';
         $browser_url = $oauth->getAuthorizeUrl(VKOAuthResponseType::CODE, $client_id, $redirect_uri, $display, $scope, $state);
