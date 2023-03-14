@@ -92,7 +92,7 @@
                 VK.Auth.getLoginStatus(function(response) {
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
-
+                        console.log(response);
                         VK.Api.call('wall.post', {
                             owner_id:response.session.mid,
                             message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
