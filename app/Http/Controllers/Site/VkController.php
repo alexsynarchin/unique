@@ -12,7 +12,7 @@ class VkController extends Controller
 
         $oauth = new \VK\OAuth\VKOAuth();
         $client_id = 51553840;
-        $client_secret = '45uuDrTz0Pcia2fhSwBy';
+        $client_secret = 'GZlXA1GHvYa0KoELFuzN';
         $redirect_uri = 'https://проверить-уникальность.рф/vk';
         $code = $request->get('code');
 

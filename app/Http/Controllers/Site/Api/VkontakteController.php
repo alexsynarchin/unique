@@ -28,7 +28,7 @@ class VkontakteController extends Controller
 
         //45uuDrTz0Pcia2fhSwBy
         //GZlXA1GHvYa0KoELFuzN
-        $state = '45uuDrTz0Pcia2fhSwBy';
+        $state = 'GZlXA1GHvYa0KoELFuzN';
         $browser_url = $oauth->getAuthorizeUrl(VKOAuthResponseType::CODE, $client_id, $redirect_uri, $display, $scope, $state);
         return $browser_url;
     }
