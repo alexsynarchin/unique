@@ -89,7 +89,7 @@
             },
             sendRepost() {
 
-                VK.Auth.login(function(response) {
+                VK.Auth.getLoginStatus(function(response) {
                     console.log(response.session)
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
