@@ -116,7 +116,7 @@
                                     vm.wallPost(response)
                                 },40)
                             }
-                        },+8192)
+                        })
                     }
 
 
