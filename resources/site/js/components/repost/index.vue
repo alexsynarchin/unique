@@ -99,6 +99,7 @@
                 });
             },
             sendRepostLogin() {
+                let vm = this;
                 VK.Auth.login(function (response) {
                     console.log(response)
                     if (response.session) {
