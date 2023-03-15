@@ -111,7 +111,7 @@
             },
             sendRepost() {
                 let vm = this;
-                VK.Auth.getSession(function(response) {
+                VK.Auth.getLoginStatus(function(response) {
                     console.log(response);
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
