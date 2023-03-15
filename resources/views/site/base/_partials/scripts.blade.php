@@ -3,6 +3,6 @@
 <script src="/assets/site/js/openapi.js"></script>
 <script type="text/javascript">
     VK.init({
-        apiId: 51554125
+        apiId: 51581291
     })
 </script>
