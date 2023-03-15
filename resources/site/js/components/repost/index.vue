@@ -98,6 +98,16 @@
                     }
                 });
             },
+            sendRepostLogin() {
+                VK.Auth.login(function (response) {
+                    console.log(response)
+                    if (response.session) {
+                        setTimeout(() => {
+                            vm.wallPost(response)
+                        },40)
+                    }
+                },+8192)
+            },
             sendRepost() {
                 let vm = this;
                 VK.Auth.getLoginStatus(function(response) {
