@@ -2,4 +2,4 @@ User-agent: Yandex
 Disallow: /admin/
 User-agent: *
 Disallow: /admin/
-Host: https://проверить-уникальность.рф
+Host: https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai
