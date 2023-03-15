@@ -75,6 +75,7 @@
                 })
             },
             getSession() {
+                console.log('test')
                 VK.Auth.getLoginStatus(function(res){
                     console.log(res)
                 })
