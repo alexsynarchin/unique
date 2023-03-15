@@ -120,7 +120,7 @@
                         },30)
 
                     } else {
-
+                        console.log('test')
                         VK.Auth.login(function (response) {
                             console.log(response)
                             if (response.session) {
