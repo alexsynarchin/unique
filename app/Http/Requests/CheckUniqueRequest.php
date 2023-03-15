@@ -29,7 +29,7 @@ class CheckUniqueRequest extends FormRequest
 
             'email' => 'required|email',
             'plainText' => 'required',
-            'symbolsCount' => 'numeric|min:100|max:150000',
+            'symbolsCount' => 'numeric|min:100|max:300000',
             'promocode' => ['nullable', 'exists:promo_codes,name', new PromoCode()
 
              ],
