@@ -1,2 +1,5 @@
+User-agent: Yandex
+Disallow: /admin/
 User-agent: *
-Disallow:
+Disallow: /admin/
+Host: https://проверить-уникальность.рф
