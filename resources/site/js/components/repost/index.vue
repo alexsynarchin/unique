@@ -5,7 +5,7 @@
         </h4>
         <section class="repost__list">
 
-            <a @click.prevent="sendRepostLogin" href="#" class="repost__item repost__item--vk share-network-vk">
+            <a @click.prevent="sendRepost" href="#" class="repost__item repost__item--vk share-network-vk">
                 <svg viewBox="0 0 20 22" class="repost__icon"><use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk"></use>
                 </svg>
             </a>
