@@ -1,4 +1,4 @@
-<script src="{{mix('js/app.js','assets/site')}}"></script>
+
 
 <script src="/assets/site/js/openapi.js"></script>
 <script type="text/javascript">
@@ -6,3 +6,4 @@
         apiId: 51581291
     })
 </script>
+<script src="{{mix('js/app.js','assets/site')}}"></script>
