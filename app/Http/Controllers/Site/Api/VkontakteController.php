@@ -21,14 +21,16 @@ class VkontakteController extends Controller
         $oauth = new \VK\OAuth\VKOAuth();
         //51554125
         //51553840
-        $client_id = 51553840;
-        $redirect_uri = 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/vk';
+        //51581157
+        //https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/vk
+        $client_id = 51581240;
+        $redirect_uri = 'http://unique.loc/vk';
         $display = VKOAuthDisplay::PAGE;
         $scope = array(VKOAuthUserScope::WALL,  VKOAuthUserScope::GROUPS);
 
         //45uuDrTz0Pcia2fhSwBy
         //GZlXA1GHvYa0KoELFuzN
-        $state = 'GZlXA1GHvYa0KoELFuzN';
+        $state = 'sS5baBw26QoqQ2J8D18n';
         $browser_url = $oauth->getAuthorizeUrl(VKOAuthResponseType::CODE, $client_id, $redirect_uri, $display, $scope, $state);
         return $browser_url;
     }

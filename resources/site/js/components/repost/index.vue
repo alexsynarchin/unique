@@ -87,24 +87,36 @@
                     console.log(res)
                 })
             },
+            wallPost(response) {
+                VK.Api.call('wall.post', {
+                    owner_id:response.session.mid,
+                    message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
+                }, function (r) {
+                    console.log(r.response.post_id)
+                    if(r.response.post_id) {
+                        bus.$emit('show-promo-modal');
+                    }
+                });
+            },
             sendRepost() {
-
+                let vm = this;
                 VK.Auth.getLoginStatus(function(response) {
-                    console.log(response);
+                    //console.log(response);
                     if (response.session) {
                         /* Пользователь успешно авторизовался */
-                        console.log(response);
-                        VK.Api.call('wall.post', {
-                            owner_id:response.session.mid,
-                            message:'Проверка-уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                        }, function (r) {
-                            console.log(r.response.post_id)
-                            if(r.response.post_id) {
-                                bus.$emit('show-promo-modal');
-                            }
-                        });
-                    } else {
+                        setTimeout(() => {
+                            vm.wallPost(response)
+                        },30)
 
+                    } else {
+                        VK.Auth.login(function (response) {
+                            console.log(response)
+                            if (response.session) {
+                                setTimeout(() => {
+                                    vm.wallPost(response)
+                                },40)
+                            }
+                        },+8192)
                     }
 
 
@@ -116,22 +128,8 @@
 
         },
         mounted() {
-            window.vkAsyncInit = function() {
-                VK.init({
-                    apiId: 51553840
-                })
-            };
 
-            setTimeout(function() {
-                var el = document.createElement("script");
-                el.type = "text/javascript";
-                el.src = "/assets/site/js/openapi.js";
-                el.async = true;
-                document.getElementById("vk_api_transport").appendChild(el);
-
-            }, 0);
-
-            }
+        }
 
     }
 </script>
