@@ -11,9 +11,9 @@ class VkController extends Controller
     {
 
         $oauth = new \VK\OAuth\VKOAuth();
-        $client_id = 51581240;
+        $client_id = 51581291;
         $client_secret = 'sS5baBw26QoqQ2J8D18n';
-        $redirect_uri = 'http://unique.loc/vk';
+        $redirect_uri = 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/vk';
         $code = $request->get('code');
 
         $response = $oauth->getAccessToken($client_id, $client_secret, $redirect_uri, $code);
