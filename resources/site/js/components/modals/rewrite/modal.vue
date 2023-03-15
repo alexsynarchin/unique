@@ -17,7 +17,7 @@
                     <text-block
                         @inputFile="inputFile"
                         @inputText="inputText"></text-block>
-                    <repost></repost>
+                    <repost v-if="showModal"></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
