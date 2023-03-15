@@ -188,6 +188,7 @@
         },
         methods: {
             showModal() {
+                console.log('show modal');
                 this.$refs.repost.getSession();
                 $('#rewrite_modal').modal('show');
             },
