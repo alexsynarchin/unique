@@ -17,7 +17,7 @@
                     <text-block
                         @inputFile="inputFile"
                         @inputText="inputText"></text-block>
-                    <repost v-if="showModal"></repost>
+                    <repost ref="repost"></repost>
                     <div class="row">
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
@@ -188,7 +188,7 @@
         },
         methods: {
             showModal() {
-                console.log('test');
+                this.$refs.repost.getSession();
                 $('#rewrite_modal').modal('show');
             },
             customFormatter(date) {

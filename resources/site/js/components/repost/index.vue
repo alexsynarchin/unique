@@ -78,9 +78,6 @@
                 VK.Auth.getLoginStatus(function(res){
                     console.log(res)
                 })
-                VK.Auth.getSession(function(res){
-                    console.log(res)
-                })
             },
             logout() {
                 VK.Auth.logout(function(res) {
@@ -140,9 +137,7 @@
 
         },
         mounted() {
-            VK.Auth.getLoginStatus(function(response) {
-                console.log(response)
-            })
+
         }
 
     }
