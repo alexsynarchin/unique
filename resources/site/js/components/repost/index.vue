@@ -140,7 +140,9 @@
 
         },
         mounted() {
-
+            VK.Auth.getLoginStatus(function(response) {
+                console.log(response)
+            })
         }
 
     }
