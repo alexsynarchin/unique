@@ -57,7 +57,9 @@ class ContentBlockController extends Controller
 
     public function getList($type)
     {
-        $blocks = ContentBlock::where('type', $type) -> get();
+        $blocks = ContentBlock::where('type', $type)
+            ->orderBy('menuindex','asc')
+            ->orderBy('created_at','desc') -> get();
 
         return $blocks;
     }

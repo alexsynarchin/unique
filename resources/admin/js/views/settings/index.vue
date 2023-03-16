@@ -3,9 +3,6 @@
         <el-tab-pane label="Общие" name="common">
             <common></common>
         </el-tab-pane>
-        <el-tab-pane label="Главная страница" name="main-page">
-            <main-page></main-page>
-        </el-tab-pane>
         <el-tab-pane label="Навигация" name="navigation">
             <navigation></navigation>
         </el-tab-pane>

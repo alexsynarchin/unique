@@ -6,6 +6,7 @@ class SortService
 {
     public $models = [
         'CheckSystem' => \App\Models\CheckSystem::class,
+        'ContentBlock' => \App\Models\ContentBlock::class,
     ];
 
     public function sort($modelName, $sort)

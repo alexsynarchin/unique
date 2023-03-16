@@ -24,7 +24,7 @@ class GetPageBlocksService
         $lists = [];
 
         foreach ($types as $type) {
-            $list = ContentBlock::where('type', $type) -> get();
+            $list = ContentBlock::where('type', $type)  ->orderBy('menuindex','asc')->orderBy('created_at','desc') -> get();
             $list_arr = [];
             foreach ($list as $item) {
                 $list_arr[] = $item->content;
