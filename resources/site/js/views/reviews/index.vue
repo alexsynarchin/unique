@@ -1,5 +1,6 @@
 <template>
     <section class="reviews-list row">
+        {{reviews}}
         <div class="reviews-list__item col-lg-6" v-for="(item,index) in reviews">
             <review-item v-if="!item.banner"></review-item>
             <figure class="reviews-list__banner" :style="{backgroundImage:'url(' + item.img + ')'}" v-else>
@@ -36,6 +37,7 @@
           },
         },
         mounted() {
+
             this.getReviews();
         }
     }
