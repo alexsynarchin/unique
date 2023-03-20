@@ -172,7 +172,7 @@ class CheckUniqueController extends Controller
         ];
         $reports = [];
         foreach ($systems as $system) {
-           $report = Report::create([
+           $report = Report::firstOrCreate([
                'check_unique_id' => $check_unique -> id,
                'system_id' => $system['id']
            ]);
