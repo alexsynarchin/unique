@@ -159,6 +159,7 @@ export default {
                 $('#pay_check').modal('show');
             },
             selectPaymentCountry(data) {
+                console.log('pay-check-modal')
                 bus.$emit('select-payment-country', data);
             },
             uniqueCheck() {

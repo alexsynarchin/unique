@@ -24,6 +24,7 @@
         <select-systems ref="select_systems" @selectSystem="handleSelectedSystem" :state-selected-systems="selectedSystems"></select-systems>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
+        <CountrySelectModal></CountrySelectModal>
     </section>
 </template>
 <script>
@@ -32,9 +33,10 @@ import Report from "./components/report";
 import SelectSystems from "@/site/js/components/check-unique/components/system-list.vue"
 import FreeCheckModal from "@/site/js/components/check-unique/components/FreeCheckModal";
 import PayCheckModal from "@/site/js/components/check-unique/components/PayCheckModal";
+import CountrySelectModal from "@/site/js/components/check-unique/components/CountrySelectModal";
     export default {
         components: {
-            SystemsList, Report, SelectSystems,FreeCheckModal,PayCheckModal
+            SystemsList, Report, SelectSystems,FreeCheckModal,PayCheckModal, CountrySelectModal,
         },
         props: {
             id: {

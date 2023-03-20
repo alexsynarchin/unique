@@ -19,7 +19,24 @@ class CheckUniqueController extends Controller
 {
     public function show($id)
     {
-        $check_unique = CheckUnique::with('reports')->findOrFail($id);
+        $check_unique = CheckUnique::with(['reports' => function ($query){
+
+        }])->findOrFail($id);
+
+        foreach ($check_unique->reports as $key => $report) {
+            if($report->checkSystem -> price > 0) {
+                $paid =false;
+                if($report->uniqueOrder()->exists()) {
+                    if($report->uniqueOrder->status === 'paid') {
+                        $paid = true;
+                    }
+                }
+                if(!$paid) {
+                    unset($check_unique->reports[$key]);
+                }
+            }
+        }
+
         return $check_unique;
     }
 

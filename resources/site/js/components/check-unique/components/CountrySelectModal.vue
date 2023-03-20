@@ -1,5 +1,5 @@
 <template>
-    <div class="modal unique-modal" id="payment_country_select"  tabindex="-1" role="dialog"  aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal unique-modal" id="payment_country_select" style="background: rgba(0,0,0,0.5); "  tabindex="-1" role="dialog"  aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -81,6 +81,7 @@ export default {
     },
     methods: {
         showModal(data) {
+            console.log('show-select-payment-country')
             console.log(data);
             this.paymentData.sum = data.sum;
             this.paymentData.url = data.url;
