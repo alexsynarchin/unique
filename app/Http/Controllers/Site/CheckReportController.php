@@ -12,14 +12,7 @@ class CheckReportController extends Controller
     public function show($slug)
     {
         $check_unique = CheckUnique::where('slug', $slug)->firstOrFail();
-        if($check_unique->orders()->exists()) {
-            $orders = $check_unique->orders()->get();
-            foreach ($orders as $order) {
-                if($order->status !== 'paid') {
-                    return  redirect(route('main-page'));
-                }
-            }
-        }
+
         //vk_app_51581157
         // Cookie::queue('vk_app_51581157','',10);
         //Cookie::queue(Cookie::forget('vk_app_51581291'));
