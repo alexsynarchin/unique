@@ -37,14 +37,17 @@ export default {
     },
     data() {
      return {
-         CanAccess: 'Просмотр "Главная страница"',
-        form: {
-
-        },
+         seo: {
+             title: "",
+             description: "",
+             keywords: "",
+         },
      }
  },
     methods: {
+        submitSeo() {
 
+        },
     }
 }
 </script>
