@@ -10,7 +10,9 @@ class BlockListController extends Controller
 {
     public function index(Request $request)
     {
-        $block_lists = BlockList::where('type', $request->get('type'))->get();
+        $block_lists = BlockList::where('type', $request->get('type'))
+
+            ->orderBy('created_at','desc')->get();
         return $block_lists;
     }
 
@@ -89,5 +91,13 @@ class BlockListController extends Controller
         $block_list = BlockList::findOrFail($id);
         $block_list -> delete();
         return $id;
+    }
+
+    public function sort(Request $request, $id)
+    {
+        $block_list = BlockList::findOrFail($id);
+        $block_list->list = $request->get('list');
+        $block_list->save();
+        return 'success';
     }
 }

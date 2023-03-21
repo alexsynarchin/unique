@@ -81,6 +81,7 @@ Route::put('/block-lists/{block_list}', [BlockListController::class,'updateTitle
 Route::post('/block-lists/{block_list}/store-item', [BlockListController::class,'storeItem'])->name('block-lists.store-item');
 Route::put('/block-lists/{block_list}/edit-item', [BlockListController::class,'updateItem'])->name('block-lists.edit-item');
 Route::delete('/block-lists/{block_list}/delete-item', [BlockListController::class,'destroyItem'])->name('block-lists.destroy-item');
+Route::post('/block-lists/{block_list}/sort', [BlockListController::class, 'sort'])->name('block-lists.sort');
 
 use App\Http\Controllers\Admin\Api\ContentBlockController;
 Route::get('/content-block/{type}/list', [ContentBlockController::class, 'getList'])->name('content-block.list');

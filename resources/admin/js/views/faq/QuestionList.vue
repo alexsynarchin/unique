@@ -61,7 +61,19 @@ import draggable from 'vuedraggable'
             }
         },
         methods: {
-            endSort() {
+            endSort(e) {
+                console.log(e)
+                var valuesSort =  this.block_list.list.map(function (item, i) {
+                    var sortItem = {};
+                    sortItem.menuindex = i;
+                    sortItem.id = item.id;
+                    sortItem.name = item.name;
+                    return sortItem;
+                });
+                axios.post('/api/admin/block-lists/' + this.block_list.id + '/sort', {list:this.block_list.list})
+                    .then((response) => {
+                        console.log(response);
+                    })
 
             },
             createItem() {
