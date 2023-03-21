@@ -66,7 +66,7 @@ export default {
         }
     },
     methods: {
-        endSort() {
+        endSort(e) {
             console.log(e)
             var valuesSort =  this.list.map(function (item, i) {
                 var sortItem = {};
