@@ -3,23 +3,32 @@
         <h1>
             Стоимость
         </h1>
-        <price-list-form
-            :form="form"
-            button_text="Добавить список c ценами"
-            action_type="post"
-            action_url="/api/admin/block-lists"
-            @submit="storeList"
-        ></price-list-form>
-        <el-divider></el-divider>
-        <price-list
-            v-for="(list, index) in block_lists"
-            :key="list.id"
-            :block_list="list"
-            :index="index"
-            @editListItem="editListItem"
-            @create="createItem"
-            @delete="deleteBlockList"
-        ></price-list>
+        <el-tabs type="card" v-model="activeTab">
+            <el-tab-pane label="Основная информация" name="main">
+                <price-list-form
+                    :form="form"
+                    button_text="Добавить список c ценами"
+                    action_type="post"
+                    action_url="/api/admin/block-lists"
+                    @submit="storeList"
+                ></price-list-form>
+                <el-divider></el-divider>
+                <price-list
+                    v-for="(list, index) in block_lists"
+                    :key="list.id"
+                    :block_list="list"
+                    :index="index"
+                    @editListItem="editListItem"
+                    @create="createItem"
+                    @delete="deleteBlockList"
+                ></price-list>
+            </el-tab-pane>
+            <el-tab-pane label="Настройки и SEO" name="config">
+                <Seo :form = "seo" v-if="seo"></Seo>
+                <el-button type="success" @click.prevent="submitSeo">Сохранить</el-button>
+            </el-tab-pane>
+        </el-tabs>
+
         <el-dialog
             :title="ModalTitle"
             :visible.sync="dialogVisible"
@@ -45,6 +54,7 @@ import PriceList from "./PriceList";
 import PriceListItemCreate from './PriceListItemCreate';
 import PriceListItemEdit from "./PriceListItemEdit";
 import PriceListForm from "./components/PriceListForm";
+import Seo from '@/admin/js/components/seo/seo.vue'
     export default {
         computed: {
             ModalTitle: function (){
@@ -60,11 +70,16 @@ import PriceListForm from "./components/PriceListForm";
             }
         },
         components: {
-        PriceList, PriceListItemCreate, PriceListItemEdit, PriceListForm
+        PriceList, PriceListItemCreate, PriceListItemEdit, PriceListForm, Seo
         },
         data() {
             return {
-                CanAccess: 'Просмотр "Стоимость"',
+                activeTab: 'main',
+                seo: {
+                    title: "",
+                    description: "",
+                    keywords: "",
+                },
                 currentListItemData: null,
                 currentId: null,
                 state:"",
@@ -83,6 +98,9 @@ import PriceListForm from "./components/PriceListForm";
             }
         },
         methods: {
+            submitSeo() {
+
+            },
             editListItem(data) {
                 this.currentId = data.id;
                 this.currentListItemData = data.item;

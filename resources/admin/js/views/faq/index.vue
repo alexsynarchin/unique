@@ -3,6 +3,8 @@
         <h1>
             Вопросы и ответы
         </h1>
+        <el-tabs type="card" v-model="activeTab">
+            <el-tab-pane label="Основная информация" name="main">
         <el-form class="d-flex align-items-end mb-4" :model="form" label-position="top">
             <el-form-item  style="margin-bottom: 0; width: 400px; margin-right: 15px" prop="title" label="Заголовок списка">
                 <el-input v-model="form.title"></el-input>
@@ -19,6 +21,12 @@
             @create="createItem"
             @delete="deleteBlockList"
         ></question-list>
+            </el-tab-pane>
+            <el-tab-pane label="Настройки и SEO" name="config">
+                <Seo :form = "seo" v-if="seo"></Seo>
+                <el-button type="success" @click.prevent="submitSeo">Сохранить</el-button>
+            </el-tab-pane>
+        </el-tabs>
         <el-dialog
             :title="ModalTitle"
             :visible.sync="dialogVisible"
@@ -43,6 +51,7 @@ import { Errors } from  '@/common/js/services/errors.js';
 import QuestionList from "./QuestionList";
 import QuestionListCreate from './QuestionListCreate';
 import QuestionListEdit from "./QuestionListEdit";
+import Seo from '@/admin/js/components/seo/seo.vue'
     export default {
         computed: {
             ModalTitle: function (){
@@ -58,11 +67,16 @@ import QuestionListEdit from "./QuestionListEdit";
             }
         },
         components: {
-            QuestionList, QuestionListCreate,QuestionListEdit,
+            QuestionList, QuestionListCreate,QuestionListEdit, Seo,
         },
         data() {
             return {
-                CanAccess: 'Просмотр "Вопросы и ответы"',
+                activeTab: 'main',
+                seo: {
+                    title: "",
+                    description: "",
+                    keywords: "",
+                },
                 currentListItemData: null,
                 currentId: null,
                 state:"",

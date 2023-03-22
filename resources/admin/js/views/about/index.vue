@@ -34,11 +34,12 @@ import Seo from '@/admin/js/components/seo/seo.vue'
                     description: "",
                     keywords: "",
                 },
-                submitSeo() {
-
-                },
-
             }
+        },
+        methods: {
+            submitSeo() {
+
+            },
         },
         mounted() {
 
