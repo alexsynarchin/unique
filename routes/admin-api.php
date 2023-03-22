@@ -17,12 +17,15 @@ use \App\Laravue\Acl;
 */
 
 use App\Http\Controllers\Admin\Api\AuthController;
+use App\Http\Controllers\Admin\Api\UserController;
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', function (Request $request) {
         return new UserResource($request->user());
     });
     Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('/user/{id}/profile', [UserController::class, 'show']);
+    Route::post('/user/{id}/update', [UserController::class,'update']);
 });
 
 
