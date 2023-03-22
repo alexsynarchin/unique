@@ -8,7 +8,7 @@
             </div>
 
             <el-form-item label="Описание">
-                <el-input rows="6" type="textarea" v-model="form.description"></el-input>
+                <tinymce v-if="form.description" v-model="form.description"/>
             </el-form-item>
             <div class="mt-3">
                 <el-button type="success" @click.prevent = "submitForm">Сохранить</el-button>
@@ -21,9 +21,10 @@
 <script>
 import AboutList from "./about-list/AboutList";
 import AboutGallery from "./about-gallery/AboutGallery";
+import Tinymce from '@/admin/js/components/TinymceSmall';
 export default {
     components: {
-     AboutList,AboutGallery
+     AboutList,AboutGallery, Tinymce ,
     },
     data() {
         return {

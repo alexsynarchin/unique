@@ -1,6 +1,6 @@
 <template>
     <section class="page-block">
-        <el-form ref="form" class="mb-3">
+        <el-form ref="form" class="mb-3" label-position="top">
             <div class="row">
                 <el-form-item label="Заголовок" class="col-md-6">
                     <el-input v-model="form.title"></el-input>
@@ -8,7 +8,7 @@
             </div>
 
             <el-form-item label="Текст">
-                <el-input type="textarea" rows="7" v-model="form.description"></el-input>
+                <tinymce v-if="form.description" v-model="form.description"/>
             </el-form-item>
             <div class="mt-3">
                 <el-button type="success" @click.prevent = "submitForm">Сохранить</el-button>
@@ -19,9 +19,10 @@
 </template>
 <script>
 import WorkResultList from "./work-result-list/WorkResultList";
+import Tinymce from '@/admin/js/components/TinymceSmall';
 export default {
     components: {
-        WorkResultList
+        WorkResultList,  Tinymce
     },
     data() {
         return {

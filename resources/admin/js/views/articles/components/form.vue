@@ -23,11 +23,15 @@
                         <el-form-item prop="title" label="Название" :error="errors.get('title')">
                             <el-input v-model="form.title"/>
                         </el-form-item>
-                        <el-form-item prop="slug" label="Псевдоним (Если оставить поле пустым будет сгенерировано на основе названия статьи)" :error="errors.get('slug')">
+                        <el-form-item prop="slug"
+                                      label="Псевдоним (Если оставить поле пустым будет сгенерировано на основе названия статьи)"
+                                      :error="errors.get('slug')">
                             <el-input v-model="form.slug"/>
                         </el-form-item>
                         <div class="row">
-                            <el-form-item class="col-md-6" prop="date" label="Дата" :error="errors.get('date')">
+                            <el-form-item class="col-md-6"
+                                          prop="date" label="Дата"
+                                          :error="errors.get('date')">
                                 <el-date-picker
                                     v-model="form.date"
                                     type="date"

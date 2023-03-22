@@ -1,8 +1,8 @@
 <template>
     <section class="page-block">
-        <el-form ref="form">
+        <el-form ref="form" label-position="top">
             <div class="d-flex">
-                <el-form-item prop="image" style="margin-bottom: 0; margin-right: 20px" label="Картинка">
+                <el-form-item prop="image" style="margin-bottom: 0; margin-right: 20px" label="Картинка" >
                     <el-upload
                         action=""
                         v-model="form.image.link"
@@ -26,18 +26,24 @@
                     </div>
 
                     <el-form-item label="Описание">
-                        <el-input type="textarea" v-model="form.description"></el-input>
+                        <tinymce v-if="form.description" v-model="form.description"/>
                     </el-form-item>
+
                 </div>
             </div>
             <div class="mt-3">
                 <el-button type="success" @click.prevent = "submitForm">Сохранить</el-button>
             </div>
         </el-form>
+
     </section>
 </template>
 <script>
+import Tinymce from '@/admin/js/components/TinymceSmall';
     export default {
+    components: {
+        Tinymce ,
+    },
         data() {
             return {
                 block: {},

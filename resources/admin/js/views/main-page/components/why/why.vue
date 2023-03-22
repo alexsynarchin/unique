@@ -8,7 +8,7 @@
             </div>
 
             <el-form-item label="Описание">
-                <el-input rows="6" type="textarea" v-model="form.description"></el-input>
+                <tinymce v-if="form.description" v-model="form.description"/>
             </el-form-item>
             <el-form-item label="Заголовок списка">
                 <el-input v-model="form.list_title"></el-input>
@@ -22,9 +22,10 @@
 </template>
 <script>
 import WhyList from "./why-list/WhyList";
+import Tinymce from '@/admin/js/components/TinymceSmall';
 export default {
     components: {
-        WhyList,
+        WhyList, Tinymce ,
     },
     data() {
         return {
