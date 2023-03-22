@@ -37,6 +37,7 @@ export default {
     },
     data() {
      return {
+         activeTab: 'main',
          seo: {
              title: "",
              description: "",
