@@ -78,6 +78,12 @@ export const asyncRoutes = [
                 meta: { title: 'dashboard',  noCache: false },
             },
             {
+                path: 'profile',
+                component: () => import('@/admin/js/views/user-profile/index'),
+                name: 'UserProfile',
+                meta: {title: 'Профиль'},
+            },
+            {
                 path:'moderators',
                 component: () => import('@/admin/js/views/moderators/index'),
                 name: 'Moderators',

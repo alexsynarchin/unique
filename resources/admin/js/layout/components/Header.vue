@@ -21,7 +21,7 @@
                                 {{ $t('navbar.dashboard') }}
                             </el-dropdown-item>
                         </router-link>
-                        <router-link v-show="userId !== null" :to="`/profile/edit`">
+                        <router-link v-show="userId !== null" :to="`/profile`">
                             <el-dropdown-item>
                                 {{ $t('navbar.profile') }}
                             </el-dropdown-item>
