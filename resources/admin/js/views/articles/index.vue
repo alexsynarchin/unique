@@ -1,6 +1,8 @@
 <template>
     <section>
         <h1>Статьи</h1>
+        <el-tabs type="card" v-model="activeTab">
+            <el-tab-pane label="Основная информация" name="main">
         <div class="mb-3">
             <router-link to="create">
                 <el-button type="success" icon="el-icon-plus">Новая статья</el-button>
@@ -43,23 +45,38 @@
                 </template>
             </el-table-column>
         </data-tables>
+            </el-tab-pane>
+            <el-tab-pane label="Настройки и SEO" name="config">
+                <Seo :form = "seo" v-if="seo"></Seo>
+                <el-button type="success" @click.prevent="submitSeo">Сохранить</el-button>
+            </el-tab-pane>
+        </el-tabs>
     </section>
 </template>
 <script>
-
+import Seo from '@/admin/js/components/seo/seo.vue'
     export default {
         components: {
-
+            Seo,
         },
         data() {
             return {
                 articles: [],
+                activeTab: 'main',
+                seo: {
+                    title: "",
+                    description: "",
+                    keywords: "",
+                },
             }
         },
         computed: {
 
         },
         methods: {
+            submitSeo() {
+
+            },
             getArticles() {
                 axios.get('/api/admin/articles')
                     .then((response) => {
