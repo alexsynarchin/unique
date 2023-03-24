@@ -18,7 +18,7 @@
                 <span class="block-title__cursor"></span>
             </h3>
             <div class="mp-why__text">
-                {{$blocks['mp-why']['description'] ?? null}}
+                {!! $blocks['mp-why']['description'] ?? null !!}
             </div>
             <div class="mp-why__image-wrap mp-why__image-wrap--mobile">
                 <figure class="mp-why__image ">

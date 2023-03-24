@@ -4,7 +4,7 @@
                 {{$blocks['about-work-result']['title'] ?? null}}
             </h3>
             <div class="about-result__text">
-                {{$blocks['about-work-result']['description'] ?? null}}
+                {!! $blocks['about-work-result']['description'] ?? null !!}
             </div>
         </div>
         <div class="about-result__list">

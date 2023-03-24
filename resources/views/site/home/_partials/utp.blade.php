@@ -14,7 +14,7 @@
                     {{$blocks['mp-utp']['title'] ?? ''}}
                 </h1>
                 <p class="mp-utp__text">
-                    {{$blocks['mp-utp']['description'] ?? ''}}
+                    {!! $blocks['mp-utp']['description'] ?? '' !!}
                 </p>
                 <button class="button btn" v-scroll-to="'#check_unique'">
                     Проверить уникальность текста

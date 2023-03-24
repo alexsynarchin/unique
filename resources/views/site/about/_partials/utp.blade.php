@@ -10,7 +10,7 @@
             {{$blocks['about-utp']['title'] ?? null}}
         </h3>
         <p class="about-utp__text">
-            {{$blocks['about-utp']['description'] ?? null}}
+            {!! $blocks['about-utp']['description'] ?? null !!}
         </p>
     </div>
 

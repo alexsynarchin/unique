@@ -16,7 +16,7 @@
             {{$blocks['mp-about']['title'] ?? null}}
         </h3>
         <div class="mp-about__text">
-            {{$blocks['mp-about']['description'] ?? null}}
+            {!! $blocks['mp-about']['description'] ?? null !!}
         </div>
         @if($lists['mp-about-list'] ?? null)
         <ul class="mp-about-list">
