@@ -6,7 +6,7 @@ class CheckUniqueService
 {
     public function getUid($text)
     {
-        $userkey = '11a38b8038a81e4544ccd22b2259411a';
+        $userkey = '2c58d49fbb37631e5867ada0dd394f66';
 
         $TextRuApi= new \TextRuApi\TextRuApi($userkey);
         $result = $TextRuApi->add($text);
