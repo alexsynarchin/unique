@@ -18,9 +18,12 @@ class ReportHighLightTextService
         $index = array_keys($plagiats_arr, max($plagiats_arr))[0];
         $textArr  = $this->textToArray($data['clear_text']);
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
-        dd($wordsIndexesArr);
+
         foreach ($wordsIndexesArr as $item) {
-            $textArr[$item] = '<span class="highlight--red">' . $textArr[$item] . '</span>';
+            if(isset($textArr[$item])) {
+                $textArr[$item] = '<span class="highlight--red">' . $textArr[$item] . '</span>';
+            }
+
         }
         $text = implode(" ", $textArr);
         return $text;
