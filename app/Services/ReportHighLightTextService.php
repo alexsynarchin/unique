@@ -14,7 +14,7 @@ class ReportHighLightTextService
            array_push($plagiats_arr, $item['plagiat']);
         }
 
-        dd($data);
+        dd($data['clear_text']);
         $index = array_keys($plagiats_arr, max($plagiats_arr))[0];
         $textArr  = $this->textToArray($data['clear_text']);
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
