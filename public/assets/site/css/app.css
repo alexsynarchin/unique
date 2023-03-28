@@ -14870,6 +14870,7 @@ img {
 @media (min-width: 768px) {
   .article-list {
     display: flex;
+    flex-wrap: wrap;
     margin-left: -20px;
     margin-right: -20px;
   }
