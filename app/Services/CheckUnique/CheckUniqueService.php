@@ -32,7 +32,7 @@ class CheckUniqueService
         $symbols = $report->checkSystem -> symbols_count;
         $text = mb_substr($check_unique->plainText, 0, $symbols);
         //$account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->exists()
-        if($report->checkSystem->checkApi->id === 1) {
+        if($report->checkSystem->checkApi->id === 1 || $report->checkSystem->checkApi->id) {
             sleep(15);
             $account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->first();
             $apiServiceClass = $this->selectApiServiceClass($report->checkSystem->checkApi->title);
@@ -42,7 +42,7 @@ class CheckUniqueService
             if($result['checked']) {
                 $report->result = true;
                 $highLightService = new ReportHighLightTextService();
-                $report->highlight_text = $highLightService->highLightText($report['data']);
+                $report->highlight_text = $highLightService->highLightText($report['data'], $report->checkSystem->checkApi -> title);
                 $report->save();
                 if(!$report->filename) {
                     $generatePdfService = new GeneratePdfService();

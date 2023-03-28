@@ -32,6 +32,7 @@ Route::post('/report/{id}/uid', [ReportController::class, 'getUid'])->name('repo
 Route::post('/report/{id}/result', [ReportController::class, 'getResult'])->name('report.get-result');
 Route::post('/report/{id}/download', [ReportController::class, 'downloadPdf'])->name('report.download');
 Route::post('/report/{id}/send-email', [ReportController::class, 'sendEmail'])->name('report.send-email');
+Route::post('/report/{id}/highlight', [ReportController::class, 'highlightUrl'])->name('report.highlight');
 
 use App\Http\Controllers\Site\Api\CheckSystemController;
 Route::get('/check-systems', [CheckSystemController::class, 'index'])->name('check-systems.list');

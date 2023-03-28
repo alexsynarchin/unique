@@ -79,15 +79,11 @@
             return Math.max.apply(null, numArray);
             },
             selectUrl(index) {
-                this.textArray = this.report.data.clear_text.split(" ");
-                let wordsIndexes = this.report.data.urls[index]['words'].split(" ");
+                axios.post('/api/report/' + this.report.id +'/highlight', {index:index})
+                    .then((response) => {
+                        this.resultText = response.data;
+                    })
 
-                wordsIndexes.forEach(item => {
-
-                    this.textArray[item] = '<span class="highlight--red">' + this.textArray[item] + '</span>'
-                })
-                let text = this.textArray.join(" ");
-                this.resultText = text;
             },
             copyUrl(index, url) {
                // url.select();
@@ -99,9 +95,13 @@
             },
         },
         mounted() {
+            if(this.report.highlight_text) {
+                this.resultText = this.report.highlight_text;
+            } else {
+                this.resultText = this.report.data.clear_text;
+            }
 
-            this.resultText = this.report.data.clear_text;
-            this.highlightAllWords();
+
             if(this.report.check_system.price === 0) {
                 this.showDetail = true;
             }

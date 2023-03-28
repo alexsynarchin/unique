@@ -25,7 +25,7 @@ class ReportController extends Controller
         //$text_array = $this->getWordsFromString();
         if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id && !$report->error_code) {
             $highLightService = new ReportHighLightTextService();
-            $report->highlight_text = $highLightService->highLightText($report['data']);
+            $report->highlight_text = $highLightService->highLightText($report['data'], $report->checkSystem->checkApi -> title);
             $report->save();
         }
         return $report;
@@ -57,6 +57,14 @@ class ReportController extends Controller
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
         Mail::to($request->get('email'))->send(new ReportMail($link, $report));
 
+    }
+
+    public function highlightUrl(Request $request, $id)
+    {
+        $report = Report::findOrFail($id);
+        $highLightService = new ReportHighLightTextService();
+        $highlight_text = $highLightService->highLightText($report['data'], $report->checkSystem->checkApi -> title, $request->get('index'));
+        return $highlight_text;
     }
 
     private function getWordsFromString($string)
