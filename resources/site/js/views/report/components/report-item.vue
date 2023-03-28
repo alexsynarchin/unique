@@ -55,7 +55,7 @@
                             Страниц:
                         </label>
                         <span class="report-text-params__value">
-                            {{check_unique.pages}}
+                                  {{report.params.pages}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
@@ -63,7 +63,7 @@
                             Слов:
                         </label>
                         <span class="report-text-params__value">
-                             {{check_unique.wordsCount}}
+                              {{report.params.wordsCount}}
                         </span>
                     </li>
                     <li class="report-text-params__item">
@@ -71,7 +71,7 @@
                             Символов:
                         </label>
                         <span class="report-text-params__value">
-                            {{report.symbols_count}}
+                           {{report.params.symbols_count}}
                         </span>
                     </li>
                     <li class="report-text-params__item">

@@ -14,7 +14,7 @@ use App\Services\GeneratePdfService;
 use App\Services\ReportHighLightTextService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use App\Services\Report\ReportService;
 class ReportController extends Controller
 {
     public function show($id)
@@ -23,6 +23,18 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
+        if(!$report->text && isset($report->data['clear_text'])) {
+            $report->text = $report->data['clear_text'];
+            $report->save();
+        }
+
+        if(!$report->params) {
+            $reportService = new ReportService();
+            $params = $reportService->calcTextParams($report->text);
+            $report->params = $params;
+            $report->save();
+        }
+
         if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id && !$report->error_code) {
             $highLightService = new ReportHighLightTextService();
             $report->highlight_text = $highLightService->highLightText($report['data'], $report->checkSystem->checkApi -> title);

@@ -8,6 +8,7 @@ use App\Models\Report;
 use App\Services\CheckUnique\ContentWatchApi\ContentWatchApi;
 use App\Services\CheckUnique\TextRuApiService\TextRuApiService;
 use App\Services\GeneratePdfService;
+use App\Services\Report\ReportService;
 use App\Services\ReportHighLightTextService;
 
 class CheckUniqueService
@@ -31,6 +32,7 @@ class CheckUniqueService
         $check_unique = $report->checkUnique()->first();
         $symbols = $report->checkSystem -> symbols_count;
         $text = mb_substr($check_unique->plainText, 0, $symbols);
+
         //$account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->exists()
         if($report->checkSystem->checkApi->id === 1 || $report->checkSystem->checkApi->id) {
             sleep(15);

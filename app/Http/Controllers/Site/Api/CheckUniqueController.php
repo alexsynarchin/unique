@@ -8,6 +8,7 @@ use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
 use App\Models\Report;
+use App\Services\Report\ReportService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jaybizzle\DocToText\Doc;
@@ -176,7 +177,13 @@ class CheckUniqueController extends Controller
                'check_unique_id' => $check_unique -> id,
                'system_id' => $system['id']
            ]);
-
+            $symbols = $report->checkSystem -> symbols_count;
+            $text = mb_substr($check_unique->plainText, 0, $symbols);
+            $report->text = $text;
+            $reportService = new ReportService();
+            $params = $reportService->calcTextParams($report->text);
+            $report->params = $params;
+            $report->save();
           $reports[] = $report->id;
             $system = CheckSystem::findOrFail($system['id']);
            if($system['manual'] === 1) {

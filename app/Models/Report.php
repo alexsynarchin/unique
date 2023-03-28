@@ -19,7 +19,8 @@ class Report extends Model
     ];
     protected $casts = [
         'result' => 'boolean',
-        'data' => 'array'
+        'data' => 'array',
+        'params' => 'array'
     ];
     public function getFormattedDateAttribute()
     {
