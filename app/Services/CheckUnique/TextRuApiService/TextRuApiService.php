@@ -19,7 +19,7 @@ class TextRuApiService
 
         $uid = $result["text_uid"];
 
-        return ['uid' => $uid, 'checked' => false, 'data' => [], 'error_code' => $result['error']['code'], 'error' =>$result['error']['desc'] ];
+        return ['uid' => $uid, 'checked' => false, 'data' => [], 'error_code' => $result['error']['code'] ?: 0, 'error' =>$result['error']['desc'] ];
     }
 
     private function getResult($uid)
