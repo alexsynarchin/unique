@@ -22,25 +22,31 @@ class ReportHighLightTextService
             return $data['clear_text'];
         }
         $highlight = [];
+
         if($index === -1) {
             $highlight = $data['highlight'];
         } else {
             $highlight = $data['urls'][$index]['highlight'];
+
         }
         $textArr = [];
         $textArr  = $this->textToArray($data['clear_text']);
+        //dd($highlight);
         foreach ($highlight as $key => $item )
         {
             if(is_array($item)) {
 
-                $textArr[$highlight[$key][0]] =  '<span class="highlight--red">' . ($textArr[$item[0]] ?? '') ;
-                $textArr[$highlight[$key][1]] =  ($textArr[$item[1]] ?? '') . '</span>';
+                $textArr[ (int) $item[0]] =  '<span class="highlight--red">' . ($textArr[(int) $item[0]] ?? '') ;
+
+                $textArr[ (int) $item[1]] =  ($textArr[(int) $item[1]] ?? '') . '</span>';
             } else {
-                $textArr[$highlight[$key]] =  '<span class="highlight--red">' . $textArr[$item] . '</span>';
+
+                $textArr[ (int) $item] =  '<span class="highlight--red">' . $textArr[(int) $item] . '</span>';
             }
-            $text = implode(" ", $textArr);
-            return $text;
+
         }
+        $text = implode(" ", $textArr);
+        return $text;
     }
     private function highLightTextRu($data, $index) {
         $plagiats_arr = [];
