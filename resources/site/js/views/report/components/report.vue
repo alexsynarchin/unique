@@ -41,12 +41,8 @@ import ReportDetail from "./report-detail";
                         .then((response) => {
                             this.report = response.data;
                         })
-                } while (!this.report.result)
-                do {
-                    if(this.report.result) {
-                        //this.sendMail();
-                    }
-                } while (!this.report.result)
+                } while (!this.report.result && !this.report.error_code)
+
             },
             async getReport() {
 
@@ -55,21 +51,9 @@ import ReportDetail from "./report-detail";
                         //console.log(response.data)
                         this.report = response.data;
                         this.loaded = true;
-                        if(!this.report.check_system.manual) {
-                            if(!this.report.uid) {
-                                this.getUid();
-                                this.$root.isLoading = false;
-
-                            }
-                            else if(!this.report.result) {
-                                this.$root.isLoading = false;
-                                console.log('error');
-                                this.getReportData();
-
-                            }
-                            else {
-                                this.$root.isLoading = false;
-                            }
+                        if(!this.report.check_system.manual && !this.report.result && !this.report.error_code) {
+                            this.$root.isLoading = false;
+                            this.getReportData();
                         } else {
                             this.$root.isLoading = false;
                         }

@@ -125,3 +125,7 @@ Route::get('/contact-order/{id}', [ContactOrderController::class, 'show'])->name
 
 use App\Http\Controllers\Admin\Api\PermissionController;
 Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions');
+
+use App\Http\Controllers\Admin\Api\PageController;
+Route::get('/page', [PageController::class, 'show'])->name('page');
+Route::post('/page/{id}/update', [PageController::class, 'update'])->name('page.update');

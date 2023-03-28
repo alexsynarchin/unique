@@ -75,6 +75,8 @@ import Seo from '@/admin/js/components/seo/seo.vue'
         data() {
             return {
                 activeTab: 'main',
+                slug: "price",
+                page_id:null,
                 seo: {
                     title: "",
                     description: "",
@@ -99,8 +101,20 @@ import Seo from '@/admin/js/components/seo/seo.vue'
         },
         methods: {
             submitSeo() {
-
+                axios.post('/api/admin/page/' + this.page_id + '/update', this.seo)
+                    .then((response) => {
+                        console.log(response.data);
+                    })
             },
+            getPage() {
+                axios.get('/api/admin/page', {params: {slug:this.slug}})
+                    .then((response) => {
+                        this.page_id = response.data.id;
+                        this.seo = response.data.seo;
+                        console.log(response.data);
+                    })
+            },
+
             editListItem(data) {
                 this.currentId = data.id;
                 this.currentListItemData = data.item;
@@ -154,6 +168,7 @@ import Seo from '@/admin/js/components/seo/seo.vue'
         },
         mounted() {
             this.getBlockLists();
+            this.getPage();
         }
     }
 </script>

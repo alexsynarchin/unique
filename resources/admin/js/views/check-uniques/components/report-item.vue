@@ -3,6 +3,14 @@
         <h3 class="report-item__title">
             Проверка {{report.formatted_date}}
         </h3>
+        <el-alert
+            v-if="report.error_code"
+            :title="report.error"
+            description="Необходимо отправить отчет в ручном режиме"
+            type="error"
+            class="mb-4"
+            show-icon>
+        </el-alert>
         <div class="report-item__content"  >
             <div class="report-item-system">
                 <h4 class="report-item-system__title">
@@ -23,7 +31,7 @@
                         </el-tag>
                         <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
                     </div>
-                    <el-button type="primary" v-if="!report.check_system.api_id" @click.prevent="$refs.reportSend.openModal()">{{reportBtnString}}</el-button>
+                    <el-button type="primary" v-if="!report.check_system.api_id || report.error_code" @click.prevent="$refs.reportSend.openModal()">{{reportBtnString}}</el-button>
                 </div>
 
 

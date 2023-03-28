@@ -38,6 +38,8 @@ export default {
     data() {
      return {
          activeTab: 'main',
+         slug: "home",
+         page_id:null,
          seo: {
              title: "",
              description: "",
@@ -46,9 +48,23 @@ export default {
      }
  },
     methods: {
-        submitSeo() {
-
+        getPage() {
+            axios.get('/api/admin/page', {params: {slug:this.slug}})
+                .then((response) => {
+                    this.page_id = response.data.id;
+                    this.seo = response.data.seo;
+                    console.log(response.data);
+                })
         },
+        submitSeo() {
+            axios.post('/api/admin/page/' + this.page_id + '/update', this.seo)
+                .then((response) => {
+                    console.log(response.data);
+                })
+        },
+    },
+    mounted() {
+        this.getPage();
     }
 }
 </script>

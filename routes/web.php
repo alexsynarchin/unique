@@ -55,6 +55,10 @@ Route::get('/payment-mail',[ViewNotificationTemplateController::class, 'needPaym
 
 use App\Http\Controllers\Site\VkController;
 Route::get('/vk', [VkController::class, 'index']);
+
+use App\Http\Controllers\Site\CheckUniqueTestController;
+Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
+
 use App\Http\Controllers\Site\StaticPageController;
 Route::get('{path}', [StaticPageController::class, 'show'])->where('path', '[0-9A-Za-zА-Яа-я\/\.-]+') ->name('static-page');
 

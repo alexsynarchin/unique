@@ -23,7 +23,7 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
-        if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id) {
+        if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id && !$report->error_code) {
             $highLightService = new ReportHighLightTextService();
             $report->highlight_text = $highLightService->highLightText($report['data']);
             $report->save();
@@ -44,74 +44,9 @@ class ReportController extends Controller
 
     public function getResult(Request $request, $id)
     {
-        $report = Report::findOrFail($id);
-        $service = new CheckUniqueService();
-        $result = $service->getResult($report->uid);
-        if($result['error']['code']){
-            return $report;
-        }
-        $report -> data = json_decode($result['result_json']);
-        $report->result = true;
-        $report->save();
-        $check_system = $report -> checkSystem;
-        $percent = 0;
-        $highLightService = new ReportHighLightTextService();
-        $report->highlight_text = $highLightService->highLightText($report['data']);
-        $report->save();
-        if(!$report->filename) {
-            $generatePdfService = new GeneratePdfService();
-            $link = $generatePdfService -> generate($report->id);
-            GenerateReportPdf::dispatch($report);
-        }
-        if($check_system->api_id !=1 && $report->data['unique'] != 100) {
-            $data = $report->data;
-            if($check_system->api_id ===2) {
-                if($data['unique'] < 1) {
-                    $percent = 20;
-                } else {
-                    $percent = 5;
-                }
-            }
-            if($check_system->api_id ===3) {
-                if($data['unique'] < 1) {
-                    $percent = 15;
-                } else {
-                    $percent = 3;
-                }
+        $service = new CheckUniqueService($id);
+        $report = $service->getResult();
 
-            }
-
-            if($check_system->api_id ===4) {
-                if($data['unique'] < 1) {
-                    $percent = 11;
-                } else {
-                    $percent = 2;
-                }
-
-            }
-            if($check_system->api_id === 5) {
-                if($data['unique'] < 1) {
-                    $percent = 9;
-                } else {
-                    $percent = 3;
-                }
-
-            }
-
-            $percent = ($data['unique']/100) * $percent;
-            $data['unique'] = $data['unique'] + $percent;
-            if($data['unique'] > 100) {
-                $data['unique'] = 100;
-            }
-            $data['unique'] = round($data['unique'], 2);
-            $report->data = $data;
-            if($report->result) {
-                $highLightService = new ReportHighLightTextService();
-                $report->highlight_text = $highLightService->highLightText($data);
-            }
-
-            $report->save();
-        }
         return $report;
     }
 
