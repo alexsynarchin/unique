@@ -12,7 +12,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable= [
-        'uid', 'data', 'check_unique_id', 'system_id'
+        'uid', 'data', 'check_unique_id', 'system_id', 'error', 'error_code'
     ];
     protected $appends = [
         'formatted_date', 'symbols_count'

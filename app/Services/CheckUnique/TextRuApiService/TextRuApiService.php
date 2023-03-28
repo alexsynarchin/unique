@@ -16,9 +16,10 @@ class TextRuApiService
 
         $TextRuApi= new \TextRuApi\TextRuApi($this->userkey);
         $result = $TextRuApi->add($text);
+
         $uid = $result["text_uid"];
 
-        return ['uid' => $uid, 'checked' => false, 'data' => []];
+        return ['uid' => $uid, 'checked' => false, 'data' => [], 'error_code' => $result['error']['code'], 'error' =>$result['error']['desc'] ];
     }
 
     private function getResult($uid)
