@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token()}}" />
     <meta name="description" content="Бесплатная проверка уникальности текста. Все системы в одном месте">
     <title>Проверка уникальности</title>
-    <meta property="og:title" content="Проверка-уникальности.рф" />
-    <meta property="og:description" content="Бесплатная проверка уникальности текста. Все системы в одном месте">
+    <meta property="og:title" content="Проверить-уникальность.рф" />
+    <meta property="og:description" content="Проверка уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте">
     <meta name="og:image" content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
     <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png" />
     <meta name="yandex-verification" content="ac1eeab5f2d97b5c" />
