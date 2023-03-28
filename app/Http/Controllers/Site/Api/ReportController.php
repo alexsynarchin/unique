@@ -26,6 +26,11 @@ class ReportController extends Controller
         if(!$report->text && isset($report->data['clear_text'])) {
             $report->text = $report->data['clear_text'];
             $report->save();
+        } elseif (!$report->text) {
+            $symbols = $report->checkSystem -> symbols_count;
+            $text = mb_substr($report -> CheckUnique ->plainText, 0, $symbols);
+            $report->text = $text;
+            $report->save();
         }
 
         if(!$report->params) {
