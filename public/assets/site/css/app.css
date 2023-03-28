@@ -12137,9 +12137,37 @@ img {
 .video-modal__content {
   background-color: transparent;
 }
+@media (min-width: 768px) {
+  .video-modal__dialog {
+    max-width: 600px;
+  }
+}
 @media (min-width: 1024px) {
   .video-modal__dialog {
-    max-width: 90%;
+    max-width: 700px;
+  }
+}
+@media (min-width: 1200px) {
+  .video-modal__dialog {
+    max-width: 840px;
+  }
+}
+.video-modal__iframe {
+  height: 320px;
+}
+@media (min-width: 768px) {
+  .video-modal__iframe {
+    height: 500px;
+  }
+}
+@media (min-width: 1024px) {
+  .video-modal__iframe {
+    height: 600px;
+  }
+}
+@media (min-width: 1200px) {
+  .video-modal__iframe {
+    height: 700px;
   }
 }
 

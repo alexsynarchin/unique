@@ -3,8 +3,27 @@
         background-color: transparent;
     }
     &__dialog {
+        @include media-breakpoint-up(md) {
+            max-width: 600px;
+        }
         @include media-breakpoint-up(lg) {
-            max-width: 90%;
+            max-width: 700px;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: 840px;
+        }
+    }
+    &__iframe {
+        height: 320px;
+        @include media-breakpoint-up(md) {
+            height: 500px;
+        }
+        @include media-breakpoint-up(lg) {
+            height: 600px;
+        }
+        @include media-breakpoint-up(xl) {
+            height: 700px;
+
         }
     }
 }
