@@ -23,13 +23,19 @@ Route::get('/report/{slug}', [CheckReportController::class, 'show'])->name('repo
 use App\Http\Controllers\Site\AboutController;
 Route::get('/about', [AboutController::class, 'show'])->name('about-page');
 Route::get('/price', function () {
-    return view('site.price.index');
+    $page = \App\Models\Page::where('slug', 'price')->firstOrFail();
+    $seo = $page->seo;
+    return view('site.price.index', ['seo' => $seo]);
 });
 Route::get('/reviews', function () {
-    return view('site.reviews.index');
+    $page = \App\Models\Page::where('slug', 'reviews')->firstOrFail();
+    $seo = $page->seo;
+    return view('site.reviews.index', ['seo' => $seo]);
 });
 Route::get('/faq', function () {
-    return view('site.faq.index');
+    $page = \App\Models\Page::where('slug', 'faq')->firstOrFail();
+    $seo = $page->seo;
+    return view('site.faq.index', ['seo' => $seo]);
 });
 Route::get('/contact', function () {
     return view('site.contact.index');

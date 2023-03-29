@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -16,6 +17,8 @@ class ArticleController extends Controller
             ->orderBy('created_at','desc')
             ->limit(3)
             ->get();
-        return view('site.articles.show', ['article' => $article, 'interesting_articles' => $interestingArticles]);
+        $page = Page::where('slug', 'articles')->firstOrFaile();
+        $seo = $page->seo;
+        return view('site.articles.show', ['article' => $article, 'interesting_articles' => $interestingArticles, 'seo'=>$seo]);
     }
 }

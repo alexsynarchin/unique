@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\CheckUnique;
+use App\Models\Page;
 use App\Models\Report;
 use App\Services\ContentBlock\GetPageBlocksService;
 use Illuminate\Http\Request;
@@ -23,7 +24,9 @@ class MainPageController extends Controller
         $lists = ['mp-ratings', 'mp-why-list', 'mp-process-list', 'mp-about-list', 'mp-about-gallery', 'mp-reviews-list', 'mp-faq-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
-        return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists]);
+        $page = Page::where('slug', 'home')->firstOrFaile();
+        $seo = $page->seo;
+        return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists, 'seo' => $seo]);
     }
 
     public function reviewPdf($id)

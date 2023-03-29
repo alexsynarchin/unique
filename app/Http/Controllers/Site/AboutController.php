@@ -22,7 +22,8 @@ class AboutController extends Controller
         $lists = ['about-ratings', 'about-guarantees-list', 'about-work-result-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
-        //
-        return view('site.about.index', ['blocks' => $blocks, 'lists' => $lists]);
+        $page = Page::where('slug', 'about')->firstOrFaile();
+        $seo = $page->seo;
+        return view('site.about.index', ['blocks' => $blocks, 'lists' => $lists, 'seo'=>$seo]);
     }
 }
