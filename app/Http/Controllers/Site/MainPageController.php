@@ -24,7 +24,7 @@ class MainPageController extends Controller
         $lists = ['mp-ratings', 'mp-why-list', 'mp-process-list', 'mp-about-list', 'mp-about-gallery', 'mp-reviews-list', 'mp-faq-list'];
         $blocks = $this->getPageBlocksService->index($types);
         $lists = $this->getPageBlocksService->lists($lists);
-        $page = Page::where('slug', 'home')->firstOrFaile();
+        $page = Page::where('slug', 'home')->firstOrFail();
         $seo = $page->seo;
         return view('site.home.index', ['blocks' => $blocks, 'lists' => $lists, 'seo' => $seo]);
     }
