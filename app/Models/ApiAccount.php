@@ -11,6 +11,7 @@ class ApiAccount extends Model
     protected $fillable = [
         'email',
         'key',
+        'client_id',
         'password',
         'balance',
         'menuindex',

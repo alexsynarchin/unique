@@ -13,6 +13,11 @@
                     </el-form-item>
                 </div>
                 <div class="col-md-4">
+                    <el-form-item label="client_id" :error="errors.get('client_id')">
+                        <el-input  v-model="form.client_id"></el-input>
+                    </el-form-item>
+                </div>
+                <div class="col-md-4">
                     <el-form-item label="Пароль" :error="errors.get('password')">
                         <el-input  v-model="form.password"></el-input>
                     </el-form-item>

@@ -27,6 +27,7 @@
                 form: {
                     email:"",
                     key:"",
+                    client_id: "",
                     password:"",
                     api_id: this.api_id
                 },
