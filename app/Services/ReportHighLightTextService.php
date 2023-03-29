@@ -11,6 +11,8 @@ class ReportHighLightTextService
            $text = $this->highLightTextRu($data, $index);
        } else if($type === 'content-watch.ru') {
            $text = $this->highLightContentWatch($data, $index);
+       } else if($type === 'textovod.ru') {
+           $text = $this->highLightTextovod($data, $index);
        }
       return $text;
     }
@@ -63,6 +65,28 @@ class ReportHighLightTextService
 
         $textArr  = $this->textToArray($data['clear_text']);
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
+
+        foreach ($wordsIndexesArr as $item) {
+            if(isset($textArr[$item])) {
+                $textArr[$item] = '<span class="highlight--red">' . $textArr[$item] . '</span>';
+            }
+
+        }
+        $text = implode(" ", $textArr);
+        return $text;
+    }
+
+    private function highLightTextovod($data, $index)
+    {
+
+        if($index === -1) {
+            $highlight = $data['position'];
+        } else {
+            $highlight = $data['urls'][$index]['position'];
+
+        }
+        $textArr = $this->textToArray($data['clear_text']);
+        $wordsIndexesArr = explode(',',$highlight);
 
         foreach ($wordsIndexesArr as $item) {
             if(isset($textArr[$item])) {

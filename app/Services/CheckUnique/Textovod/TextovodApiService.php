@@ -50,12 +50,12 @@ class TextovodApiService
 
     public function add($report, $text)
     {
-        if(!$report->uid) {
+       if(!$report->uid) {
             $result = $this->getUid($text);
         } else {
             $result = $this->getResult($report->uid);
         }
-        //$result = $this->getUid($text);
+       // $result = $this->getUid($text);
         $checked = isset($result['status']) && $result['status'] === 2;
         $data = [];
         if($checked) {
@@ -72,19 +72,19 @@ class TextovodApiService
                 }
             }
             $data = [
-                'clear_text' => isset($result['text']) ?:'',
-                'unique' => isset($result['originality']) ?: '',
-                'position' => isset($result['position'])? :'',
+                'clear_text' => $result['text'] ?? '',
+                'unique' => $result['originality'] ?? '',
+                'position' => $result['position'] ?? '',
                 'urls' => $urls,
                 ];
 
         }
         $result_data = [
-            'uid' => isset($result['text_id'])?:'',
+            'uid' => $result['text_id'] ?? '',
             'checked' => $checked,
             'data' => $data,
-            'error_code' => isset($result['info']) ? 999 : 0,
-            'error' =>isset($result['info']) ? :''
+            'error_code' => $result['info'] ??  0,
+            'error' => $result['info'] ?? ''
         ];
 
         return $result_data;
