@@ -6,7 +6,9 @@ class TextRuApiService
 {
     private $userkey;
 
-    public function __construct($userkey)
+
+
+    public function __construct($userkey, $client_id)
     {
         $this->userkey = $userkey;
     }
@@ -19,10 +21,13 @@ class TextRuApiService
 
         $uid = $result["text_uid"];
 
-        return ['uid' => $uid, 'checked' => false,
-            'data' => [],
-            'error_code' => $result['error']['code'] ?: 0,
-            'error' =>$result['error']['desc'] ];
+        return [
+                    'uid' => $uid,
+                    'checked' => false,
+                    'data' => [],
+                    'error_code' => $result['error']['code'] ?: 0,
+                    'error' =>$result['error']['desc']
+                ];
     }
 
     private function getResult($uid)

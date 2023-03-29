@@ -7,7 +7,9 @@ class ContentWatchApi
 
     private $userkey;
 
-    public function __construct($userkey)
+
+
+    public function __construct($userkey, $client_id)
     {
         $this->userkey = $userkey;
     }

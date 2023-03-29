@@ -19,7 +19,7 @@ class ApiAccountController extends Controller
         $request->validate([
             'email' => 'required|email',
             'key'=>'required',
-            'password' => 'required'
+
         ]);
         $account = ApiAccount::create($request->all());
         return $account;
