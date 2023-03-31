@@ -7,7 +7,7 @@ class ReportHighLightTextService
     public function highLightText($data, $type, $index=-1)
     {
         $text ='';
-       if($type === 'text.ru') {
+       if($data === 'text.ru') {
            $text = $this->highLightTextRu($data, $index);
        } else if($type === 'content-watch.ru') {
            $text = $this->highLightContentWatch($data, $index);

@@ -25,6 +25,8 @@ class CheckUnique extends Model
         return $this->hasMany(Report::class, 'check_unique_id');
     }
 
+
+
     public function services()
     {
         return $this->belongsToMany(Service::class,'check_unique_service', 'check_unique_id','service_id');

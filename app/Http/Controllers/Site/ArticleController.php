@@ -17,7 +17,7 @@ class ArticleController extends Controller
             ->orderBy('created_at','desc')
             ->limit(3)
             ->get();
-        $page = Page::where('slug', 'articles')->firstOrFaile();
+        $page = Page::where('slug', 'articles')->firstOrFail();
         $seo = $page->seo;
         return view('site.articles.show', ['article' => $article, 'interesting_articles' => $interestingArticles, 'seo'=>$seo]);
     }
