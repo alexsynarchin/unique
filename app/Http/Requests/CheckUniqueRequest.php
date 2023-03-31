@@ -29,13 +29,12 @@ class CheckUniqueRequest extends FormRequest
 
             'email' => 'required|email',
             'plainText' => 'required',
-            'symbolsCount' => 'numeric|min:100|max:300000',
+            'symbolsCount' => 'numeric|min:100',
             'promocode' => ['nullable', 'exists:promo_codes,name', new PromoCode()
 
              ],
             [
                 'symbolsCount.min' => 'Количество символов должно быть больше 100',
-                'symbolsCount.max' => 'Количество символов не может быть больше 500000',
                 'email.required' => 'Введите ваш e-mail',
                 'plainText.required' => 'Введите текст для проверки уникальности',
             ]
