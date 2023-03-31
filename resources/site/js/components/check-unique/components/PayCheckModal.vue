@@ -164,7 +164,7 @@ export default {
             },
             uniqueCheck() {
                 $('#pay_check').modal('show');
-                //this.$root.isLoading = true;
+                this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
                 this.textParams.services = this.services;
@@ -188,11 +188,12 @@ export default {
                 axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
                         console.log(response.data);
-                        this.$root.isLoading = false;
+
                         console.log(response.data);
                        // window.location.href = response.data;
                         let data = response.data;
                         if(data.sum > 0) {
+
                             this.selectPaymentCountry(data);
                         } else {
                             window.location.href = response.data.url;

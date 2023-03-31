@@ -83,6 +83,7 @@ export default {
         showModal(data) {
             console.log('show-select-payment-country')
             console.log(data);
+            this.$root.isLoading = false;
             this.paymentData.sum = data.sum;
             this.paymentData.url = data.url;
             this.paymentData.check_unique_id = data.check_unique_id;
