@@ -16,10 +16,7 @@ class CheckUniqueController extends Controller
     public function index(Request $request)
     {
         $searchParams = $request->all();
-        $checkUniqueQuery = CheckUnique::query() -> whereHas('reports.checkSystem', function ($q) {
-            $q->where('result', 0) -> where('price', '>', 0);
-
-        } );
+        $checkUniqueQuery = CheckUnique::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         return CheckUniqueResource::collection(
             $checkUniqueQuery ->  with('reports.checkSystem')
