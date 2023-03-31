@@ -172,10 +172,14 @@ class CheckUniqueController extends Controller
             'auto' => false,
         ];
         $reports = [];
+
         foreach ($systems as $system) {
+            $system = CheckSystem::find($system['id']);
+
            $report = Report::firstOrCreate([
                'check_unique_id' => $check_unique -> id,
-               'system_id' => $system['id']
+               'system_id' => $system->id,
+               'api_id' => $system -> api_id,
            ]);
             $symbols = $report->checkSystem -> symbols_count;
             $text = mb_substr($check_unique->plainText, 0, $symbols);
