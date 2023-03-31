@@ -44,6 +44,7 @@
                 </el-select>
             </div>
         </div>
+
         <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
             <el-table-column
                 label="№"

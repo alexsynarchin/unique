@@ -14,7 +14,7 @@ class AddApiIdInReportsTable extends Migration
     public function up()
     {
         Schema::table('reports', function (Blueprint $table) {
-            //
+            $table->bigInteger('api_id')->unsigned()->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddApiIdInReportsTable extends Migration
     public function down()
     {
         Schema::table('reports', function (Blueprint $table) {
-            //
+            $table->dropColumn(['api_id']);
         });
     }
 }

@@ -20,7 +20,7 @@ class CheckUniqueResource extends JsonResource
             'formatted_date'=> $this->formatted_date,
             'sum' => $this->sum,
             'type_title' => $this->type_title,
-            'reports' =>  $this->reports-> toArray(),
+            'reports' =>  $this->reports()->with('checkSystem')->get(['id', 'system_id','created_at']),
             'services' => $this->services-> toArray(),
         ];
     }

@@ -45,12 +45,16 @@ class Report extends Model
     }
 
     public function getSymbolsCountAttribute() {
-        $text_symbols = $this->checkUnique->symbolsCount;
-        $system_symbols = $this->checkSystem->symbols_count;
-        $symbols_count = $text_symbols;
-        if($text_symbols > $system_symbols) {
-            $symbols_count = $system_symbols;
+        $symbols_count = 0;
+        if($this->check_unique_id) {
+            $text_symbols = $this->checkUnique->symbolsCount;
+            $system_symbols = $this->checkSystem->symbols_count;
+            $symbols_count = $text_symbols;
+            if($text_symbols > $system_symbols) {
+                $symbols_count = $system_symbols;
+            }
         }
+
         return $symbols_count;
     }
 }
