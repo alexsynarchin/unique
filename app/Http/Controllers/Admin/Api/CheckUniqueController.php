@@ -16,10 +16,13 @@ class CheckUniqueController extends Controller
     public function index(Request $request)
     {
         $searchParams = $request->all();
-        $checkUniqueQuery = CheckUnique::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
+        $checkUniqueQuery = CheckUnique::query();
+
+
+
         return CheckUniqueResource::collection(
-            $checkUniqueQuery ->  with('reports.checkSystem')
+            $checkUniqueQuery -> whereHas('reports.checkSystem') -> with('reports.checkSystem')
             ->orderBy('created_at', 'desc')
             ->paginate($limit));
     }
