@@ -18,13 +18,14 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $checkUniqueQuery = CheckUnique::query();
+        $checkUniqueQuery = $checkUniqueQuery->whereHas('reports.checkSystem') -> with('reports.checkSystem')
+            ->orderBy('created_at', 'desc')
+            ->paginate($limit);
 
 
 
         return CheckUniqueResource::collection(
-            $checkUniqueQuery -> whereHas('reports.checkSystem') -> with('reports.checkSystem')
-            ->orderBy('created_at', 'desc')
-            ->paginate($limit));
+            $checkUniqueQuery );
     }
 
     public function show($id)
