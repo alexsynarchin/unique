@@ -127,6 +127,7 @@
         },
         data() {
             return {
+
                 symbols_count: 0,
                 systems: [],
                 text: "",
@@ -136,6 +137,7 @@
                     symbolsCount: 0,
                     wordsCount:0,
                     sentenceCount:0,
+                    text_id: null,
                     size:0,
                     pages:0,
                     plainText: "",

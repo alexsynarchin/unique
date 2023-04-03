@@ -16,6 +16,7 @@ class AddUniqueTextsTable extends Migration
         Schema::create('unique_texts', function (Blueprint $table) {
             $table->id();
             $table->longText('text')->nullable();
+            $table->string('filename')->nullable();
             $table->timestamps();
         });
     }

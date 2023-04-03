@@ -109,14 +109,14 @@ class CheckUniqueController extends Controller
             $pages = 1;
         }
 
-       // $unique_text = UniqueText::created(['text' => $text]);
+        //$unique_text = UniqueText::created(['text' => $text]);
 
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
             'sentenceCount' => 0,
             'plainText' => $text,
-         //   'text_id' => $unique_text->id,
+           // 'text_id' => $unique_text->id,
             'size' => $size,
             'pages' => $pages,
         ];
