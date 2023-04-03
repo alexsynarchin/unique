@@ -43,7 +43,9 @@
 
                 <div class="header-panel__contact contact-bl">
                 <span class="contact-bl__phone">
-                    8 800 555 65 65
+                    <template v-if="settings.phone_header">
+                        {{settings.phone_header}}
+                    </template>
                 </span>
                     <a href="" class="contact-bl__btn" data-bs-toggle="modal" data-bs-target="#order-call">
                         Получить консультацию
@@ -51,22 +53,22 @@
                 </div>
 
                 <ul class="social-list social-list--header">
-                    <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                    <li class="social-list__item" v-if="settings.whatsapp_link">
+                        <a :href="'https://api.whatsapp.com/send/?phone=' + settings.whatsapp_link" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-whatsapp-wh"></use>
                             </svg>
                         </a>
                     </li>
-                    <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                    <li class="social-list__item" v-if="settings.instagram_link">
+                        <a :href="settings.instagram_link" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-instagram-wh"></use>
                             </svg>
                         </a>
                     </li>
-                    <li class="social-list__item">
-                        <a href="" class="social-list__link social-list__link--dark">
+                    <li class="social-list__item" v-if="settings.vk_link">
+                        <a :href="settings.vk_link" class="social-list__link social-list__link--dark">
                             <svg viewBox="0 0 24 24">
                                 <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-vk-wh"></use>
                             </svg>
@@ -84,11 +86,24 @@ import { bus } from '@/site/js/services/bus.js';
             return {
                 PanelOpen:false,
                 menu:[],
+                settings: {
+                    whatsapp_link: '',
+                    phone_header: "",
+                    instagram_link: "",
+                    vk_link: ""
+                }
             }
         },
         methods: {
             showPanel() {
                 this.PanelOpen = !this.PanelOpen;
+            },
+            getSetting(group, name)
+            {
+                axios.get('/api/setting/' + group + '/' + name)
+                    .then((response) => {
+                        this.settings[name] = response.data;
+                    })
             },
             getMenu() {
                 axios.get('/api/navigation/header-top')
@@ -102,6 +117,10 @@ import { bus } from '@/site/js/services/bus.js';
         },
         mounted() {
             this.getMenu();
+            Object.keys(this.settings).forEach(key => {
+
+                this.getSetting('common', key);
+            })
         },
         created() {
            bus.$on('toggle-panel', this.showPanel)
