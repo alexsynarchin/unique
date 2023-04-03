@@ -167,7 +167,7 @@ class CheckUniqueController extends Controller
                 $unique_text = UniqueText::findOrFail($request->get('text_id'));
                 Storage::copy('public/unique_texts/' . $unique_text->id . '/' . $unique_text->filename,
                     'public/check_uniques/' . $check_unique->id. '/' . $unique_text->filename);
-                $check_unique->filename = $unique_text->fileneme;
+                $check_unique->filename = $unique_text->filename;
                 $check_unique->save();
             }
         }
