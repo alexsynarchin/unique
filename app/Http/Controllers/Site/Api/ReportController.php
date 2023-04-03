@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\GenerateReportPdf;
 use App\Mail\AdminReportMail;
 use App\Mail\ReportMail;
+use App\Models\CheckApi;
 use App\Models\CheckUnique;
 use App\Models\Report;
 use App\Models\Setting;
@@ -40,9 +41,10 @@ class ReportController extends Controller
             $report->save();
         }
 
-        if(!$report->highlight_text && $report->result && $report->checkSystem -> api_id && !$report->error_code) {
+        if(!$report->highlight_text && $report->result && $report-> api_id && !$report->error_code) {
             $highLightService = new ReportHighLightTextService();
-            $report->highlight_text = $highLightService->highLightText($report['data'], $report->checkSystem->checkApi -> title);
+            $check_api = CheckApi::findOrFail($report->api_id);
+            $report->highlight_text = $highLightService->highLightText($report['data'], $check_api-> title);
             $report->save();
         }
         return $report;

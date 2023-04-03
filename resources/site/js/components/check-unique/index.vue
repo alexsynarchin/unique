@@ -208,9 +208,9 @@
                     })
                     .then((response) => {
                         if(data.free && data.list.length > 0) {
-                            this.$refs.free_check_modal.showModal(this.textParams, data.list, this.file);
+                            this.$refs.free_check_modal.showModal(this.textParams, data.list);
                         } else if(data.list.length > 0) {
-                            this.$refs.pay_check_nodal.showModal(this.textParams, data.list, this.file);
+                            this.$refs.pay_check_nodal.showModal(this.textParams, data.list);
                         }
                     })
                     .catch((error) => {

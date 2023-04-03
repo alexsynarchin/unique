@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Jaybizzle\DocToText\Doc;
 use Illuminate\Support\Str;
 use \TextMedia\FileParser\Parser;
+use Illuminate\Support\Facades\Storage;
 use \TextMedia\FileParser\ParserException;
 use \TextMedia\FileParser\Parser\Pdf;
 class CheckUniqueController extends Controller
@@ -109,14 +110,22 @@ class CheckUniqueController extends Controller
             $pages = 1;
         }
 
-        //$unique_text = UniqueText::created(['text' => $text]);
+        $unique_text = UniqueText::create(['text' => $text]);
+        if($request->hasFile('file')) {
+            $filename = $request->file('file')->getClientOriginalName();
+            $path = $request->file('file')->storeAs(
+                'public/unique_texts/' . $unique_text->id, $filename
+            );
+            $unique_text->filename = $filename;
+            $unique_text->save();
+        }
 
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
             'sentenceCount' => 0,
             'plainText' => $text,
-           // 'text_id' => $unique_text->id,
+            'text_id' => $unique_text->id,
             'size' => $size,
             'pages' => $pages,
         ];
@@ -152,13 +161,15 @@ class CheckUniqueController extends Controller
             $slug = Str::random(40);
             $check_unique->slug = $slug;
         }
-        if($request->hasFile('file')) {
-            $filename = $request->file('file')->getClientOriginalName();
-            $path = $request->file('file')->storeAs(
-                'public/check_uniques/' . $check_unique->id, $filename
-            );
-            $check_unique->filename = $filename;
-            $check_unique->save();
+        if($request->has('text_id') && $request->get('text_id')) {
+
+            if(UniqueText::where('id', $request->get('text_id'))->exists()) {
+                $unique_text = UniqueText::findOrFail($request->get('text_id'));
+                Storage::copy('public/unique_texts/' . $unique_text->id . '/' . $unique_text->filename,
+                    'public/check_uniques/' . $check_unique->id. '/' . $unique_text->filename);
+                $check_unique->filename = $unique_text->fileneme;
+                $check_unique->save();
+            }
         }
 
         $systems = json_decode($request->get('systems'), true);

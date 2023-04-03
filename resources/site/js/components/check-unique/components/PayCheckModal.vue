@@ -148,7 +148,6 @@ export default {
             showModal(data, list, file) {
                 this.textParams = data;
                 this.systems = list;
-                this.file = file;
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
                 }
@@ -169,7 +168,6 @@ export default {
                 this.textParams.systems = this.systems;
                 this.textParams.services = this.services;
                 this.textParams.promocode = this.form.promocode;
-                this.textParams.file = this.file;
                 const formData = new FormData();
                 for ( var key in this.textParams ) {
                     let data;

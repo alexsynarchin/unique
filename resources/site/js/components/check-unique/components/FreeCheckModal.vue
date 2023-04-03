@@ -72,10 +72,9 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         methods: {
-            showModal(data, list, file) {
+            showModal(data, list) {
                 console.log(data)
                 this.textParams = data;
-                this.file = file;
                 this.systems = list;
                 if(this.textParams.email) {
                     this.form.email = this.textParams.email;
@@ -87,7 +86,6 @@ import { Errors } from  '@/common/js/services/errors.js';
                 this.$root.isLoading = true;
                 this.textParams.email = this.form.email;
                 this.textParams.systems = this.systems;
-                this.textParams.file = this.file;
                 const formData = new FormData();
                 for ( var key in this.textParams ) {
                     let data;
