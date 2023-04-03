@@ -8,6 +8,7 @@ use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
 use App\Models\Report;
+use App\Models\UniqueText;
 use App\Services\Report\ReportService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -107,28 +108,22 @@ class CheckUniqueController extends Controller
         if ($pages === 0) {
             $pages = 1;
         }
+
+       // $unique_text = UniqueText::created(['text' => $text]);
+
         $textParams = [
             'symbolsCount' => $symbols_count,
             'wordsCount' => $words_count,
             'sentenceCount' => 0,
             'plainText' => $text,
+         //   'text_id' => $unique_text->id,
             'size' => $size,
             'pages' => $pages,
         ];
         return $textParams;
     }
 
-    public function getApiTextRu($uid, $userkey)
-    {
 
-        $TextRuApi= new \TextRuApi\TextRuApi($userkey);
-
-        sleep(15);
-        //Получаете результат проверки
-        $jsonvisible = 'detail';
-        $return = $TextRuApi->get($uid, $jsonvisible);
-        return $return;
-    }
 
     public function makeReport(CheckUniqueRequest  $request)
     {
