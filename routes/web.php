@@ -42,7 +42,9 @@ Route::get('/contact', function () {
 });
 use App\Http\Controllers\Site\ArticleController;
 Route::get('/articles', function () {
-    return view('site.articles.index');
+    $page = \App\Models\Page::where('slug', 'articles')->firstOrFail();
+    $seo = $page->seo;
+    return view('site.articles.index', ['seo' => $seo]);
 });
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article.show');
 
