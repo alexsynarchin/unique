@@ -136,7 +136,7 @@ class CheckUniqueController extends Controller
 
     public function makeReport(CheckUniqueRequest  $request)
     {
-
+   
         $data = [];
         if($request->has('sum')) {
             $data['sum'] = $request->get('sum');
@@ -168,6 +168,7 @@ class CheckUniqueController extends Controller
                 Storage::copy('public/unique_texts/' . $unique_text->id . '/' . $unique_text->filename,
                     'public/check_uniques/' . $check_unique->id. '/' . $unique_text->filename);
                 $check_unique->filename = $unique_text->filename;
+                $check_unique->plainText = $unique_text->text;
                 $check_unique->save();
             }
         }

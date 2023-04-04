@@ -168,6 +168,9 @@ export default {
                 this.textParams.systems = this.systems;
                 this.textParams.services = this.services;
                 this.textParams.promocode = this.form.promocode;
+                if(this.textParams.text_id) {
+                    delete this.textParams.plainText;
+                }
                 const formData = new FormData();
                 for ( var key in this.textParams ) {
                     let data;

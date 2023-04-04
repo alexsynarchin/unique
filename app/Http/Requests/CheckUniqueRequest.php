@@ -28,7 +28,7 @@ class CheckUniqueRequest extends FormRequest
         return [
 
             'email' => 'required|email',
-            'plainText' => 'required',
+            //'plainText' => 'required',
             'symbolsCount' => 'numeric|min:100',
             'promocode' => ['nullable', 'exists:promo_codes,name', new PromoCode()
 
