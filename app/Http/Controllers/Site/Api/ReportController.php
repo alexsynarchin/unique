@@ -24,10 +24,7 @@ class ReportController extends Controller
         //dd($report->data['urls'][0]);
        // dd($this->getWordsFromString($report->data['clear_text']));
         //$text_array = $this->getWordsFromString();
-        if(!$report->text && isset($report->data['clear_text'])) {
-            $report->text = $report->data['clear_text'];
-            $report->save();
-        } elseif (!$report->text) {
+        if (!$report->text) {
             $symbols = $report->checkSystem -> symbols_count;
             $text = mb_substr($report -> CheckUnique ->plainText, 0, $symbols);
             $report->text = $text;

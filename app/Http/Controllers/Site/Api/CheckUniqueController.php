@@ -188,13 +188,7 @@ class CheckUniqueController extends Controller
                'system_id' => $system->id,
                'api_id' => $system -> api_id,
            ]);
-            $symbols = $report->checkSystem -> symbols_count;
-            $text = mb_substr($check_unique->plainText, 0, $symbols);
-            $report->text = $text;
-            $reportService = new ReportService();
-            $params = $reportService->calcTextParams($report->text);
-            $report->params = $params;
-            $report->save();
+
             $reports[] = $report->id;
 
            if($system['manual'] === 1) {
