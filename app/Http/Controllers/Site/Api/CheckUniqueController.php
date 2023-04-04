@@ -136,7 +136,7 @@ class CheckUniqueController extends Controller
 
     public function makeReport(CheckUniqueRequest  $request)
     {
-   
+
         $data = [];
         if($request->has('sum')) {
             $data['sum'] = $request->get('sum');
@@ -195,8 +195,8 @@ class CheckUniqueController extends Controller
             $params = $reportService->calcTextParams($report->text);
             $report->params = $params;
             $report->save();
-          $reports[] = $report->id;
-            $system = CheckSystem::findOrFail($system['id']);
+            $reports[] = $report->id;
+
            if($system['manual'] === 1) {
                if(!$check_unique_types['manual']) {
                    $check_unique_types['manual'] = true;
