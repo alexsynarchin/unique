@@ -207,7 +207,7 @@ import { mapGetters } from 'vuex';
             getData() {
                 axios.get('/api/admin/dashboard')
                     .then((response) => {
-
+                        console.log(response.data)
                       this.data = response.data
                         this.loaded = true;
                     })

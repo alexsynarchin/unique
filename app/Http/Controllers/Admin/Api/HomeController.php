@@ -21,60 +21,62 @@ class HomeController extends Controller
             });
         });*/
         $auto =  $check_uniques -> whereHas('reports', function ($query){
-            $query->whereHas('checkSystem', function ($query) {
-                $query->where('manual', 0);
-            });
-        })->orderBy('id','desc')->get();
+          $query->where('api_id', '!=', null);
+        })->orderBy('id','desc');
 
         $autoCount = $auto -> count();
-        $autoCountToday = $auto-> where('created_at', Carbon::today())->count();
-        $auto = $auto->take(5);
-
+        $autoItems = $auto;
+        $autoCountToday = $auto;
+        $autoItems = $autoItems->get(['id', 'created_at'])->take(5);
+        $autoCountToday = $autoCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
         $auto_arr = [
             'count' => $autoCount,
             'countToday' => $autoCountToday,
-            'items' => $auto
+            'items' => $autoItems
         ];
         $check_uniques = (new CheckUnique) -> newQuery();
         $free = $check_uniques -> whereHas('reports', function ($query){
-            $query->whereHas('checkSystem', function ($query) {
-                $query->where('manual', 0);
-                $query->where('price', 0);
-            });
-        })->orderBy('id','desc')->get();
-        $freeCount = $auto -> count();
-        $freeCountToday = $auto-> where('created_at', Carbon::today())->count();
-        $free = $free->take(5);
+            $query->whereDoesntHave('uniqueOrder');
+        })->orderBy('id','desc');
+        $freeItems = $free;
+        $freeCount = $free -> count();
+        $freeItems = $freeItems->get(['id', 'created_at'])->take(5);
+        $freeCountToday = $free;
+        $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
+
        $free_arr = [
            'count' => $freeCount,
            'countToday' => $freeCountToday,
-           'items' => $free
+           'items' => $freeItems
        ];
         $check_uniques = (new CheckUnique) -> newQuery();
        $manual = $check_uniques -> whereHas('reports', function ($query){
-           $query->whereHas('checkSystem', function ($query) {
-               $query->where('manual', 1);
-           });
-       })->orderBy('id','desc')->get();
+         $query->where('api_id', null);
+       })->orderBy('id','desc');
         $manualCount = $manual -> count();
-        $manualCountToday = $manual-> where('created_at', Carbon::today())->count();
-        $manual = $manual->take(5);
+        $manualItems = $manual;
+        $manualCountToday = $manual;
+        $manualItems = $manualItems-> get(['id','created_at'])->take(5);
+        $manualCountToday = $manualCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
         $manual_arr = [
             'count' => $manualCount,
             'countToday' => $manualCountToday,
-            'items' => $manual
+            'items' => $manualItems
         ];
-       $rewrites = Rewrite::orderBy('id','desc')->get();
+       $rewrites = Rewrite::orderBy('id','desc');
        $rewritesCount = $rewrites-> count();
-       $rewritesCountToday = $rewrites ->  where('created_at', Carbon::today())->count();
-       $rewrites = $rewrites->take(5);
+        $rewritesCountToday = $rewrites;
+        $rewritesItems = $rewrites;
+        $rewritesItems = $rewritesItems-> get(['id'])->take(5);
+       $rewritesCountToday = $rewritesCountToday ->  where('created_at', '>=', Carbon::today()->addHours(5))->count();
+
        $rewrites_arr = [
            'count' => $rewritesCount,
            'countToday' => $rewritesCountToday,
-           'items' => $rewrites
+           'items' => $rewritesItems
        ];
-       $sum = UniqueOrder::sum('sum');
-       $sumToday = UniqueOrder::where('created_at', Carbon::today()) -> sum('sum');
+       $sum = UniqueOrder::where('status', 'paid')->sum('sum');
+       $sumToday = UniqueOrder::where('created_at', '>=',  Carbon::today()->addHours(5)) -> where('status', 'paid') -> sum('sum');
        $sum_arr = [
            'all' => $sum,
            'sumToday' => $sumToday,
