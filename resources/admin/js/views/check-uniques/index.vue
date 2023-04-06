@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
+        <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%" :row-class-name="tableRowClassName">
             <el-table-column
                 label="№"
             >
@@ -159,18 +159,17 @@ export default {
                 }
             ],
             systems: [],
-            tableProps: {
-                "row-class-name": function (row) {
 
-                    if (row.row.viewed === 0) {
-                        return 'warning-row';
-                    }
-                    return ''
-                }
-            },
         }
     },
     methods: {
+        tableRowClassName({row, rowIndex}) {
+            console.log(row);
+            if (row.viewed === 0) {
+                return 'warning-row';
+            }
+            return ''
+        },
         async getList() {
             this.listLoading = true;
             const { data, meta } = await checkUniqueResource.list(this.listQuery);

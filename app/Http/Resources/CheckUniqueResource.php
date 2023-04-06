@@ -17,6 +17,7 @@ class CheckUniqueResource extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
+            'viewed' => $this->viewed,
             'formatted_date'=> $this->formatted_date,
             'sum' => $this->sum,
             'type_title' => $this->type_title,
