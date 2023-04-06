@@ -79,7 +79,6 @@
                 <template slot-scope="scope">
 
                     <el-tag class="admin-tag" :type="item.error_code ? 'danger': 'success'" :key="index" v-for="(item, index) in scope.row.reports" style="word-break: normal;">
-
                         {{item.check_system.title}}
                         <template v-if="item.error_code"><br> !Ошибка Api</template>
                     </el-tag>

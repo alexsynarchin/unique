@@ -18,6 +18,7 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $checkUniqueQuery = CheckUnique::query();
+
         $checkUniqueQuery->whereHas('reports', function ($query){
             $query->where('result', 1)
                 ->orWhere('api_id', null)
@@ -25,7 +26,9 @@ class CheckUniqueController extends Controller
         });
         $checkUniqueQuery -> whereHas('reports.uniqueOrder', function ($q) {
             $q -> where('status', 'paid');
-        })->orDoesntHave('reports.uniqueOrder');
+        })->orDoesntHave('reports.uniqueOrder')->whereHas('reports', function ($q){
+            $q->where('need_payment', 0);
+        });
         if(isset($searchParams['system'])) {
             $checkUniqueQuery -> whereHas('reports.checkSystem' ,function ($q) use ($searchParams) {
                $q -> where('id', $searchParams['system']);
