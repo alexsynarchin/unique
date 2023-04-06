@@ -19,11 +19,11 @@ class CheckUniqueController extends Controller
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $checkUniqueQuery = CheckUnique::query();
 
-        $checkUniqueQuery->whereHas('reports', function ($query){
+        /*$checkUniqueQuery->whereHas('reports', function ($query){
             $query->where('result', 1)
                 ->orWhere('api_id', null)
                 ->orWhere('error_code', '!=', 0);
-        });
+        });*/
         $checkUniqueQuery -> whereHas('reports.uniqueOrder', function ($q) {
             $q -> where('status', 'paid');
         })->orDoesntHave('reports.uniqueOrder')->whereHas('reports', function ($q){
