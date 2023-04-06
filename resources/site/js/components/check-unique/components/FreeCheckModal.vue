@@ -4,7 +4,7 @@
             <div class="free-check-modal__content unique-modal__content modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                 </button>
                 <form class="free-check-modal__form">
@@ -22,7 +22,7 @@
                                      :class="{'is-invalid': errors.has('email') || errors.has('plainText')  || errors.has('symbolsCount')}">
                                     <i class="u-input-group__icon">
                                         <svg viewBox="0 0 24 24" class="u-input-group__svg">
-                                            <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
+                                            <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-mail-white"></use>
                                         </svg>
                                     </i>
                                     <input class="u-input-group__input"
