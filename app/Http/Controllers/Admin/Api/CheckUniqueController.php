@@ -18,8 +18,37 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $checkUniqueQuery = CheckUnique::query();
-        $checkUniqueQuery = $checkUniqueQuery->whereHas('reports.checkSystem');
 
+        if(isset($searchParams['system'])) {
+            $checkUniqueQuery -> whereHas('reports.checkSystem' ,function ($q) use ($searchParams) {
+               $q -> where('id', $searchParams['system']);
+            });
+        }
+
+        if(isset($searchParams['price_type'])) {
+            if((int) $searchParams['price_type'] === 1) {
+                $checkUniqueQuery -> whereHas('reports.uniqueOrder' ,function ($q)  {
+                    $q -> where('status', 'paid');
+                });
+            } else {
+                $checkUniqueQuery -> whereHas('reports', function ($q) {
+                   $q -> where('unique_order_id', null);
+                });
+            }
+
+        }
+        if(isset($searchParams['type'])) {
+            if((int) $searchParams['type'] === 0) {
+                $checkUniqueQuery -> whereHas('reports' ,function ($q) {
+                    $q -> where('api_id', '!=', null);
+                });
+            } else {
+                $checkUniqueQuery -> whereHas('reports' ,function ($q) {
+                    $q -> where('api_id',  null);
+                });
+            }
+
+        }
 
         return CheckUniqueResource::collection(
             $checkUniqueQuery-> with(['reports.checkSystem'])

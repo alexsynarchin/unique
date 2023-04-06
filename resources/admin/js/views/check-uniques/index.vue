@@ -1,11 +1,12 @@
 <template>
     <section>
+        {{listQuery}}
         <div class="row mb-4">
             <div class="col-md-6 col-lg-4">
                 <label>
                     Система
                 </label>
-                <el-select style="width: 100%" v-model="system" filterable placeholder=""  @change="getCheckUniques">
+                <el-select style="width: 100%" v-model="listQuery.system" filterable placeholder=""  @change="getList">
                     <el-option
                         v-for="item in systems"
                         :key="item.id"
@@ -19,7 +20,7 @@
                 <label>
                     Статус
                 </label>
-                <el-select style="width: 100%" v-model="priceType" filterable placeholder=""  @change="getCheckUniques">
+                <el-select style="width: 100%" v-model="listQuery.price_type" filterable placeholder=""  @change="getList">
                     <el-option
                         v-for="item in priceTypes"
                         :key="item.value"
@@ -33,7 +34,7 @@
                 <label>
                     Формат
                 </label>
-                <el-select style="width: 100%" v-model="type" filterable placeholder=""  @change="getCheckUniques">
+                <el-select style="width: 100%" v-model="listQuery.type" filterable placeholder=""  @change="getList">
                     <el-option
                         v-for="item in types"
                         :key="item.value"
@@ -132,11 +133,11 @@ export default {
             listQuery: {
                 page: 1,
                 limit: 20,
+                type:null,
+                price_type:null,
+                system: null
             },
             check_uniques: [],
-            type:null,
-            priceType:null,
-            system:null,
             priceTypes: [
                 {
                     label:'Бесплатные',
