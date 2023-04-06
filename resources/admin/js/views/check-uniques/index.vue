@@ -1,6 +1,6 @@
 <template>
     <section>
-        {{listQuery}}
+
         <div class="row mb-4">
             <div class="col-md-6 col-lg-4">
                 <label>
