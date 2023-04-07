@@ -28,7 +28,7 @@ class HomeController extends Controller
         $autoItems = $auto;
         $autoCountToday = $auto;
         $autoItems = $autoItems->get(['id', 'created_at'])->take(5);
-        $autoCountToday = $autoCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
+        $autoCountToday = $autoCountToday-> where('created_at', '>=', Carbon::today())->count();
         $auto_arr = [
             'count' => $autoCount,
             'countToday' => $autoCountToday,
@@ -42,7 +42,7 @@ class HomeController extends Controller
         $freeCount = $free -> count();
         $freeItems = $freeItems->get(['id', 'created_at'])->take(5);
         $freeCountToday = $free;
-        $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
+        $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today())->count();
 
        $free_arr = [
            'count' => $freeCount,
@@ -57,7 +57,7 @@ class HomeController extends Controller
         $manualItems = $manual;
         $manualCountToday = $manual;
         $manualItems = $manualItems-> get(['id','created_at'])->take(5);
-        $manualCountToday = $manualCountToday-> where('created_at', '>=', Carbon::today()->addHours(5))->count();
+        $manualCountToday = $manualCountToday-> where('created_at', '>=', Carbon::today())->count();
         $manual_arr = [
             'count' => $manualCount,
             'countToday' => $manualCountToday,
