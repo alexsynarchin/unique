@@ -6,10 +6,22 @@
         margin-bottom: 10px;
     }
     &__btn-wrap {
-        align-items: flex-start;
-        display: flex;
-    }
+
+
+        @include media-breakpoint-up(sm) {
+            align-items: flex-start;
+            display: flex;
+            flex-wrap: wrap;
+        }
+     }
     &__btn {
         padding: 14px 40px;
+        margin-top: 20px;
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
+        @include media-breakpoint-up(sm) {
+            margin-top: 0;
+        }
     }
 }
