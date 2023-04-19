@@ -13,6 +13,8 @@ class ReportHighLightTextService
            $text = $this->highLightContentWatch($data, $index);
        } else if($type === 'textovod.ru') {
            $text = $this->highLightTextovod($data, $index);
+       } else if ($type === 'advego.com') {
+           $text = $this->highLightAdvego($data, $index);
        }
       return $text;
     }
@@ -94,6 +96,26 @@ class ReportHighLightTextService
             }
 
         }
+        $text = implode(" ", $textArr);
+        return $text;
+    }
+
+    private function highLightAdvego($data, $index)
+    {
+        if($index === -1) {
+            $highlight = $data['position'];
+        } else {
+            $highlight = $data['urls'][$index]['position'];
+        }
+        $textArr = $data['text_fragments'];
+
+        foreach ($highlight as $item) {
+            $item_index = 2 * $item + 1;
+            if(isset($textArr[$item_index])) {
+                $textArr[$item_index] = '<span class="highlight--red">' . $textArr[$item_index] . '</span>';
+            }
+        }
+
         $text = implode(" ", $textArr);
         return $text;
     }

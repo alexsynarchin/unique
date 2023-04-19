@@ -5,6 +5,7 @@ namespace App\Services\CheckUnique;
 use App\Jobs\GenerateReportPdf;
 use App\Models\ApiAccount;
 use App\Models\Report;
+use App\Services\CheckUnique\Advego\AdvegoApi;
 use App\Services\CheckUnique\ContentWatchApi\ContentWatchApi;
 use App\Services\CheckUnique\Textovod\TextovodApiService;
 use App\Services\CheckUnique\TextRuApiService\TextRuApiService;
@@ -19,6 +20,7 @@ class CheckUniqueService
         'text.ru' => TextRuApiService::class,
         'content-watch.ru' => ContentWatchApi::class,
         'textovod.ru' => TextovodApiService::class,
+        'advego.com' => AdvegoApi::class,
     ];
 
     public function __construct($id)
@@ -36,7 +38,7 @@ class CheckUniqueService
         $text = mb_substr($check_unique->plainText, 0, $symbols);
 
         //$account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->exists()
-        if($report->checkSystem->checkApi->id === 1 || $report->checkSystem->checkApi->id ===2 || $report->checkSystem->checkApi->id ===3 ) {
+        if($report->checkSystem->checkApi->id === 1 || $report->checkSystem->checkApi->id ===2 || $report->checkSystem->checkApi->id ===3 || $report->checkSystem->checkApi->id ===4 ) {
             sleep(15);
             $account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->first();
             $apiServiceClass = $this->selectApiServiceClass($report->checkSystem->checkApi->title);
