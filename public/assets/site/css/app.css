@@ -14215,6 +14215,79 @@ img {
   overflow: hidden;
 }
 
+.reviews-list-banner {
+  overflow: hidden;
+  padding: 45px;
+  position: relative;
+  color: #fff;
+  background-color: #366AF3;
+  border-radius: 20px;
+}
+.reviews-list-banner__text {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+@media (min-width: 576px) {
+  .reviews-list-banner__text {
+    width: 80%;
+  }
+}
+@media (min-width: 768px) {
+  .reviews-list-banner__text {
+    margin-bottom: 50px;
+    font-size: 19px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .reviews-list-banner__text {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 1440px) {
+  .reviews-list-banner__text {
+    font-size: 24px;
+  }
+}
+.reviews-list-banner__logo {
+  position: absolute;
+  margin-bottom: 0;
+  bottom: 0;
+  right: 0;
+  width: 35%;
+  text-align: right;
+}
+@media (max-width: 575.98px) {
+  .reviews-list-banner__logo {
+    display: none;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .reviews-list-banner__logo {
+    width: 40%;
+  }
+}
+.reviews-list-banner__btn {
+  font-size: 14px;
+  border-color: #fff;
+}
+@media (max-width: 575.98px) {
+  .reviews-list-banner__btn {
+    padding: 15px 30px;
+  }
+}
+@media (min-width: 768px) {
+  .reviews-list-banner__btn {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .reviews-list-banner__btn {
+    font-size: 14px;
+  }
+}
+
 .contact-block {
   padding: 35px 10px;
   background: #F0F1F6;

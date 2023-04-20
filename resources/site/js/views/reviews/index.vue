@@ -3,8 +3,15 @@
 
         <div class="reviews-list__item col-lg-6" v-for="(item,index) in reviews">
             <review-item :item="item" v-if="!item.banner"></review-item>
-            <figure class="reviews-list__banner" :style="{backgroundImage:'url(' + item.img + ')'}" v-else>
-            </figure>
+            <div class="reviews-list-banner"  v-else>
+                <p class="reviews-list-banner__text">
+                    Проверьте свой текст на уникальность бесплатно по системе <br>Проверить-уникальность.рф
+                </p>
+                <a href="/#check_unique" class="btn button reviews-list-banner__btn">Проверка уникальности</a>
+                <figure class="reviews-list-banner__logo">
+                    <img src="/assets/site/images/reviews/review-banner-logo.png">
+                </figure>
+            </div>
         </div>
     </section>
 </template>

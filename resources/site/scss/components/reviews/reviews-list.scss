@@ -12,3 +12,58 @@
         overflow: hidden;
     }
 }
+.reviews-list-banner {
+    overflow: hidden;
+    padding: 45px;
+    position: relative;
+    color: #fff;
+    background-color: #366AF3;
+    border-radius: 20px;
+    &__text {
+        font-size: 17px;
+        font-weight: bold;
+
+        margin-bottom: 30px;
+        @include media-breakpoint-up(sm) {
+            width: 80%;
+        }
+        @include media-breakpoint-up(md) {
+            margin-bottom: 50px;
+            font-size: 19px;
+        }
+        @include media-breakpoint-only(lg) {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 24px;
+        }
+    }
+    &__logo {
+        position: absolute;
+        margin-bottom: 0;
+        bottom: 0;
+        right:0;
+        width: 35%;
+        text-align: right;
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+        @include media-breakpoint-only(lg) {
+            width: 40%;
+        }
+    }
+    &__btn {
+        font-size: 14px;
+        border-color: #fff;
+        @include media-breakpoint-down(sm) {
+            padding: 15px 30px;
+        }
+        @include media-breakpoint-up(md) {
+            font-size: 17px;
+        }
+        @include media-breakpoint-only(lg) {
+            font-size: 14px;
+        }
+    }
+}

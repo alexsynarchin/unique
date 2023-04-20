@@ -30,8 +30,9 @@
                             size="15"
                             :val="report.data.unique"></progress-bar>
                         <div class="report-progress-bar__text">
-                            <span class="report-progress-bar__precent">{{report.data.unique + '%'}}</span>
-                           {{report.data.unique < 70 ? ' Текст неуникальный' : ' Текст уникальный'}}
+                            <span class="report-progress-bar__precent">Уникальность: {{report.data.unique + '%'}}</span>
+                            <br>
+                          {{report.data.unique < 70 ? ' Текст неуникальный' : ' Текст уникальный'}}
                         </div>
                         <p class="report-progress-bar__descr" v-if="report.data.unique < 50">
                             У вашего текста низкий уровень оригинальности, мы рекомендуем вам воспользоваться услугой рерайта.

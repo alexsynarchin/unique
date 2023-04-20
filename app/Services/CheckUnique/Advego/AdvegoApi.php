@@ -15,10 +15,10 @@ class AdvegoApi
     }
 
 
-    private function getUid($text)
+    private function getUid($text, $id)
     {
         $post_data = [
-            'id' => '2',
+            'id' => ''.$id,
             'jsonrpc' => '2.0',
             'method' => 'unique_text_add',
             'params' => [
@@ -37,10 +37,10 @@ class AdvegoApi
         ];
     }
 
-    public function getResult($uid)
+    public function getResult($uid, $id)
     {
         $post_data = [
-            'id' => '2',
+            'id' => ''.$id,
             'jsonrpc' => '2.0',
             'method' => 'unique_check',
             'params' => [
@@ -111,9 +111,9 @@ class AdvegoApi
       //$result = $this->getResult(24312192);
         //dd($result);
        if(!$report->uid) {
-            $result = $this->getUid($text);
+            $result = $this->getUid($text, $report->id);
         } else {
-            $result = $this->getResult($report->uid);
+            $result = $this->getResult($report->uid, $report->id);
         }
         return $result;
     }
