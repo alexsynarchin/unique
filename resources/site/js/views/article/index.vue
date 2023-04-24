@@ -23,9 +23,11 @@
         },
         methods: {
             getArticles() {
+                this.$root.isLoading = true;
                 axios.get('/api/articles')
                     .then((response) => {
                         this.articles = response.data;
+                        this.$root.isLoading = false;
                     })
             },
         },

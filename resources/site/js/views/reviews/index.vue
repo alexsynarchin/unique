@@ -32,9 +32,11 @@
         },
         methods: {
           getReviews() {
+
               axios.get('/api/reviews')
                   .then((response) => {
                     this.reviews = response.data;
+
                     if(this.reviews.length > 3) {
                         this.reviews[4] = this.banner;
                     } else {

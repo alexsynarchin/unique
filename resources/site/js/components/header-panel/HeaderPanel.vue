@@ -37,9 +37,9 @@
                 </div>
             </div>
             <div class="header-panel__mobile">
-                <button class="btn button button--width-100 header-panel__mobile-btn" v-scroll-to="'#check_unique'">
+                <a href="/#check_unique" class="btn button button--width-100 header-panel__mobile-btn">
                     Проверить уникальность
-                </button>
+                </a>
 
                 <div class="header-panel__contact contact-bl">
                 <span class="contact-bl__phone">

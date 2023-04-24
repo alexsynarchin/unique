@@ -14,9 +14,11 @@ export default {
     },
     methods: {
         getList() {
+            this.$root.isLoading = true;
             axios.get('/api/block-list/faq')
                 .then((response) => {
                     this.faqList = response.data;
+                    this.$root.isLoading = false;
                 })
         }
     },
