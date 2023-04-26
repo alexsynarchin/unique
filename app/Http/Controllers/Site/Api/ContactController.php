@@ -16,7 +16,10 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'nullable|email'
+            'token' => 'required',
+             'email' => 'nullable|email'
+        ], [
+            'token.required' => 'Вы не прошлия проверку. Я не робот.'
         ]);
 
         $order = Order::create($request->all());

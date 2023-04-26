@@ -87,9 +87,16 @@
                             </div>
                             <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('comment')"></div>
                         </div>
-                        <div class="">
-                                <vue-hcaptcha sitekey="8898d184-030d-4c79-a724-6b8a13d44dd0"></vue-hcaptcha>
+                        <div class="u-form-group">
+                            <div class="u-input-group" style="background: none"   :class="{'is-invalid': errors.has('token')}">
+                                <vue-hcaptcha
+                                    @verify="onVerify"
+                                    sitekey="8898d184-030d-4c79-a724-6b8a13d44dd0"></vue-hcaptcha>
+
+                            </div>
+                            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('token')"></div>
                         </div>
+
 
                         <div class="consultation-modal__footer">
                             <button class="btn button consultation-form__btn" @click.prevent="sendMsg">
@@ -115,6 +122,8 @@ import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
                     name: '',
                     phone:'',
                     email:'',
+                    token: '',
+                    eKey: "",
                 },
                 errors: new Errors(),
 
@@ -122,6 +131,11 @@ import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
         },
        components: { VueHcaptcha },
        methods: {
+           onVerify (token, eKey)  {
+              this.form.token = token;
+              this.form.ekey = eKey;
+               console.log('Verified: ', { token, eKey })
+           },
             sendMsg() {
 
                 axios.post('/api/contact/consultation', this.form)
@@ -132,6 +146,7 @@ import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
                         this.errors.record(error.response.data.errors);
                     })
             },
+
 
        },
        mounted() {

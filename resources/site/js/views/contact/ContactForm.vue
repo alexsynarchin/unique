@@ -82,6 +82,15 @@
             </div>
             <div class="invalid-feedback" v-text="errors.get('comment')"></div>
         </div>
+        <div class="u-form-group">
+            <div class="u-input-group" style="background: none"   :class="{'is-invalid': errors.has('token')}">
+                <vue-hcaptcha
+                    @verify="onVerify"
+                    sitekey="8898d184-030d-4c79-a724-6b8a13d44dd0"></vue-hcaptcha>
+
+            </div>
+            <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('token')"></div>
+        </div>
         <div class="contact-form__footer">
             <button class="btn button contact-form__btn" @click.prevent="sendMsg">
                 Получить консультацию
@@ -93,20 +102,29 @@
     </form>
 </template>
 <script>
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 import { Errors } from  '@/common/js/services/errors.js';
     export default {
+        components: { VueHcaptcha },
         data() {
             return {
                 form: {
                     name: '',
                     phone:'',
                     email:'',
-                    comment: ''
+                    comment: '',
+                    token: '',
+                    eKey: "",
                 },
                 errors: new Errors(),
             }
         },
         methods: {
+            onVerify (token, eKey)  {
+                this.form.token = token;
+                this.form.ekey = eKey;
+                console.log('Verified: ', { token, eKey })
+            },
             sendMsg() {
                 axios.post('/api/contact/consultation', this.form)
                     .then((response) => {
