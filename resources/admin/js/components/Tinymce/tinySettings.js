@@ -48,7 +48,7 @@ const tinySettings = {
     language: 'ru',
     content_css:'/assets/admin/css/tinymce.css',
     font_formats:
-        "Georgia=georgia, sans-serif;  Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; " +
+        "Geometria=geometria, sans-serif;  Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; " +
         "Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; " +
         "Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier;" +
         "Helvetica=helvetica; Impact=impact,chicago; " +

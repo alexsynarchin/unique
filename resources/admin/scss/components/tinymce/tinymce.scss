@@ -7,3 +7,6 @@ $orange-color:#FF9902;
 @import "~bootstrap/scss/bootstrap";
 @import "templates/button";
 @import "templates/mp-banner";
+body {
+    font-family: 'Geometria', sans-serif;
+}

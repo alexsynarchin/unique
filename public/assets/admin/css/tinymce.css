@@ -11282,3 +11282,7 @@ textarea.form-control-lg {
 .mp-banner__content {
   margin-right: 60px;
 }
+
+body {
+  font-family: "Geometria", sans-serif;
+}
