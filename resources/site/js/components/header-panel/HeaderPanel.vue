@@ -112,7 +112,7 @@ import { bus } from '@/site/js/services/bus.js';
                     })
             },
             repost() {
-                window.location.href='https://vk.com/share.php?url=https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai'
+                window.location.href='https://vk.com/share.php?url=https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai&title=Проверка-уникальности.рф. Бесплатная проверка уникальности текста. Все системы в одном месте'
             } ,
         },
         mounted() {
