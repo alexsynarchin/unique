@@ -21,11 +21,11 @@
             border-bottom-right-radius: 0;
             background-image: url("../images/unique-modal-cons-bg.png");
             background-repeat: no-repeat;
-            background-position: 140% 50%;
+            background-position: 160% 50%;
             background-size: contain;
         }
         @include media-breakpoint-up(xl) {
-            background-position: 128% 50%;
+            background-position: 148% 50%;
         }
     }
     &__form {

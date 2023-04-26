@@ -87,6 +87,10 @@
                             </div>
                             <div class="invalid-feedback consultation-form__invalid-feedback" v-text="errors.get('comment')"></div>
                         </div>
+                        <div class="">
+                                <vue-hcaptcha sitekey="8898d184-030d-4c79-a724-6b8a13d44dd0"></vue-hcaptcha>
+                        </div>
+
                         <div class="consultation-modal__footer">
                             <button class="btn button consultation-form__btn" @click.prevent="sendMsg">
                                 Получить консультацию
@@ -103,6 +107,7 @@
 </template>
 <script>
 import { Errors } from  '@/common/js/services/errors.js';
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
    export default {
         data() {
             return {
@@ -112,20 +117,27 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email:'',
                 },
                 errors: new Errors(),
+
             }
         },
+       components: { VueHcaptcha },
        methods: {
             sendMsg() {
+
                 axios.post('/api/contact/consultation', this.form)
                     .then((response) => {
                         $('#order-call').modal('hide');
                     })
                     .catch((error) => {
-
+                        this.errors.record(error.response.data.errors);
                     })
             },
+
        },
        mounted() {
+
+       },
+       created() {
 
        }
    }

@@ -50,6 +50,7 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
+        "@hcaptcha/vue-hcaptcha": "^1.2.1",
         "@popperjs/core": "^2.11.4",
         "@tinymce/tinymce-vue": "^3.2.8",
         "bootstrap": "^5.1.3",
