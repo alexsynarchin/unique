@@ -25,7 +25,7 @@ class UniqueOrderController extends Controller
         $description = 'Проверка уникальности';
 
         $netting = !$request->get('russia');
-        $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
+       $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
 
         NeedPayment::dispatch($order, $url)->delay(now()->addMinutes(2));
         return $url;
