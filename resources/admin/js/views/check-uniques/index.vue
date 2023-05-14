@@ -184,7 +184,7 @@ export default {
                 })
         },
         getCheckUniques() {
-            axios.get('/api/admin/check-uniques', {params:{type:this.type, system: this.system, price_type:this.priceType}})
+            axios.get('/api/admin/check-uniques', {params:this.listQuery})
                 .then((response) => {
                     this.check_uniques = response.data;
                 })
@@ -195,6 +195,7 @@ export default {
     },
     mounted() {
         this.getSystems();
+        this.getCheckUniques()
     }
 }
 </script>
