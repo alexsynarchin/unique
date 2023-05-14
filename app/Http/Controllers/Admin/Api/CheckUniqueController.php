@@ -16,6 +16,7 @@ class CheckUniqueController extends Controller
     public function index(Request $request)
     {
         $searchParams = $request->all();
+
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $checkUniqueQuery = CheckUnique::query();
 
@@ -40,9 +41,9 @@ class CheckUniqueController extends Controller
                 $checkUniqueQuery -> whereHas('reports.uniqueOrder' ,function ($q)  {
                     $q -> where('status', 'paid');
                 });
-            } else {
+            } else if((int) $searchParams['price_type'] === 0) {
                 $checkUniqueQuery -> whereHas('reports', function ($q) {
-                   $q -> where('unique_order_id', null);
+                   $q -> where('unique_order_id','=', NULL);
                 });
             }
 
@@ -50,11 +51,11 @@ class CheckUniqueController extends Controller
         if(isset($searchParams['type'])) {
             if((int) $searchParams['type'] === 0) {
                 $checkUniqueQuery -> whereHas('reports' ,function ($q) {
-                    $q -> where('api_id', '!=', null);
+                    $q -> where('api_id', '!=', NULL);
                 });
             } else {
                 $checkUniqueQuery -> whereHas('reports' ,function ($q) {
-                    $q -> where('api_id',  null);
+                    $q -> whereNull('api_id');
                 });
             }
 
