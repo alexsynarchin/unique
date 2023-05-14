@@ -191,11 +191,12 @@ export default {
         },
     },
     created() {
-        this.getList();
+
     },
     mounted() {
         this.getSystems();
-        this.getCheckUniques()
+        this.getList();
+
     }
 }
 </script>
