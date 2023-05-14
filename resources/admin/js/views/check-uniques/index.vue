@@ -186,7 +186,10 @@ export default {
         getCheckUniques() {
             axios.get('/api/admin/check-uniques', {params:this.listQuery})
                 .then((response) => {
-                    this.check_uniques = response.data;
+                    console.log(response.data)
+                    this.list = response.data.data;
+                    this.total = response.data.meta.total
+                    this.listLoading = false;
                 })
         },
     },
@@ -195,8 +198,8 @@ export default {
     },
     mounted() {
         this.getSystems();
-        this.getList();
-
+        //this.getList();
+        this.getCheckUniques()
     }
 }
 </script>
