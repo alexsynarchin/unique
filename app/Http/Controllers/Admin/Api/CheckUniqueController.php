@@ -18,7 +18,7 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
 
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $checkUniqueQuery = CheckUnique::query() ->orderBy('created_at', 'desc')->limit(5000);
+        $checkUniqueQuery = CheckUnique::query()->limit(1000);
 
         $checkUniqueQuery->whereHas('reports', function ($query){
             $query->where('result', 1)
