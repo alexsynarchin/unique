@@ -13,7 +13,55 @@ class CheckUniqueController extends Controller
 {
 
     const ITEM_PER_PAGE = 15;
+
     public function index(Request $request)
+    {
+        $searchParams = $request->all();
+
+        $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
+        $checkUniqueQuery = CheckUnique::query()->whereHas('reports');
+        $checkUniqueQuery -> whereHas('reports.uniqueOrder', function ($q) {
+            $q -> where('status', 'paid');
+        })->orDoesntHave('reports.uniqueOrder')->whereHas('reports', function ($q){
+            $q->where('need_payment', 0);
+        });
+        if(isset($searchParams['system'])) {
+            $checkUniqueQuery -> whereHas('reports.checkSystem' ,function ($q) use ($searchParams) {
+                $q -> where('id', $searchParams['system']);
+            });
+        }
+
+        if(isset($searchParams['price_type'])) {
+            if((int) $searchParams['price_type'] === 1) {
+                $checkUniqueQuery -> whereHas('reports.uniqueOrder' ,function ($q)  {
+                    $q -> where('status', 'paid');
+                });
+            } else if((int) $searchParams['price_type'] === 0) {
+                $checkUniqueQuery -> whereHas('reports', function ($q) {
+                    $q -> where('unique_order_id','=', NULL);
+                });
+            }
+
+        }
+        if(isset($searchParams['type'])) {
+            if((int) $searchParams['type'] === 0) {
+                $checkUniqueQuery -> whereHas('reports' ,function ($q) {
+                    $q -> where('api_id', '!=', NULL);
+                });
+            } else {
+                $checkUniqueQuery -> whereHas('reports' ,function ($q) {
+                    $q -> whereNull('api_id');
+                });
+            }
+
+        }
+
+        return CheckUniqueResource::collection(
+            $checkUniqueQuery-> with(['reports.checkSystem'])
+                ->orderBy('created_at', 'desc')
+                ->paginate($limit) );
+    }
+    public function index2(Request $request)
     {
         $searchParams = $request->all();
 
