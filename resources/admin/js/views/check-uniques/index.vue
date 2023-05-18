@@ -5,7 +5,7 @@
                 <label>
                     Система
                 </label>
-                <el-select style="width: 100%" v-model="listQuery.system" filterable placeholder=""  @change="getList">
+                <el-select style="width: 100%" v-model="listQuery.system" filterable placeholder=""  @change="getCheckUniques">
                     <el-option
                         v-for="item in systems"
                         :key="item.id"
@@ -19,7 +19,7 @@
                 <label>
                     Статус
                 </label>
-                <el-select style="width: 100%" v-model="listQuery.price_type" filterable placeholder=""  @change="getList">
+                <el-select style="width: 100%" v-model="listQuery.price_type" filterable placeholder=""  @change="getCheckUniques">
                     <el-option
                         v-for="item in priceTypes"
                         :key="item.value"
@@ -33,7 +33,7 @@
                 <label>
                     Формат
                 </label>
-                <el-select style="width: 100%" v-model="listQuery.type" filterable placeholder=""  @change="getList">
+                <el-select style="width: 100%" v-model="listQuery.type" filterable placeholder=""  @change="getCheckUniques">
                     <el-option
                         v-for="item in types"
                         :key="item.value"
@@ -184,6 +184,7 @@ export default {
                 })
         },
         getCheckUniques() {
+            this.listLoading = true;
             axios.get('/api/admin/check-uniques', {params:this.listQuery})
                 .then((response) => {
                     console.log(response.data)
