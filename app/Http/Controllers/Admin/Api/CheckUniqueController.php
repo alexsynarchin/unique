@@ -18,7 +18,7 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
 
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $checkUniqueQuery = CheckUnique::query();
+        $checkUniqueQuery = CheckUnique::query()->select('id', 'email','type','created_at','viewed');
 
         if(isset($searchParams['system'])) {
            // dd($searchParams['system']);
