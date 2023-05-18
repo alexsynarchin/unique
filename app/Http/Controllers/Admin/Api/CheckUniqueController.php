@@ -31,9 +31,7 @@ class CheckUniqueController extends Controller
                     $q -> where('status', 'paid');
                 });
             } else if((int) $searchParams['price_type'] === 0) {
-                $checkUniqueQuery -> whereHas('reports', function ($q) {
-                   $q -> where('unique_order_id','=', NULL);
-                });
+                $checkUniqueQuery -> whereDoesntHave('reports.uniqueOrder');
             }
 
         }
