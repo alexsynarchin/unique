@@ -47,20 +47,23 @@ class CheckUniqueController extends Controller
             }
 
         }
-        /*    $checkUniqueQuery ->whereHas('reports', function ($query){
+          $checkUniqueQuery ->whereHas('reports', function ($query){
                 $query->where('result', 1)
                     ->orWhere('api_id', null)
                     ->orWhere('error_code', '!=', 0);
 
             });
-
+/*
           $checkUniqueQuery -> whereHas('reports.uniqueOrder', function ($q) {
               $q -> where('status', 'paid');
           })->orDoesntHave('reports.uniqueOrder')->whereHas('reports', function ($q){
               $q->where('need_payment', 0);
           });*/
         return CheckUniqueResource::collection(
-            $checkUniqueQuery-> with(['reports.checkSystem'])
+            $checkUniqueQuery-> with(['reports' => function($query){
+                $query->select('id', 'system_id');
+                $query->with('checkSystem');
+            }])
                 ->orderBy('created_at', 'desc')
                 ->paginate($limit) );
     }
