@@ -39,6 +39,16 @@ class SettingController extends Controller
         return json_encode($values);
     }
 
+    public function getSmtp(Request $request)
+    {
+        $settings = Setting::where('group','smtp') -> get();
+        $values =[];
+        foreach ($settings as $setting) {
+            $values[$setting->name] = $setting ->value;
+        }
+        return json_encode($values);
+    }
+
     public function uploadFavicon(FaviconUploadRequest $request)
     {
 

@@ -43,6 +43,7 @@ Route::post('/sort', [SortController::class, 'sort'])->name('sorting');
 
 use App\Http\Controllers\Admin\Api\SettingController;
 Route::get('/setting/common/get', [SettingController::class, 'getCommon'])->name('setting.get-common');
+Route::get('/setting/smtp/get', [SettingController::class, 'getSmtp'])->name('setting.get-smtp');
 Route::post('/setting/common-update', [SettingController::class, 'updateCommon'])->name('setting.update-common');
 Route::post('/setting/upload-favicon', [SettingController::class, 'uploadFavicon'])->name('setting.upload-favicon');
 
