@@ -30,7 +30,7 @@ class AdminReportMail extends Mailable
      */
     public function build()
     {
-        $mail = $this->from('report247@mail.ru')
+        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
         -> subject('Новый запрос на проверку уникальности');
         return $mail->view('mails.report-admin');
     }

@@ -34,7 +34,7 @@ class NeedPayment extends Mailable
      */
     public function build()
     {
-        $mail = $this->from('report247@mail.ru')
+        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
             -> subject('Вам выставлен счет за проверку уникальности');
         return $mail->view('mails.need-payment-notification',
             [

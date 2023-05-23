@@ -6,6 +6,9 @@
         <el-tab-pane label="Навигация" name="navigation">
             <navigation></navigation>
         </el-tab-pane>
+        <el-tab-pane label="Настройки smtp" name='smtp'>
+
+        </el-tab-pane>
     </el-tabs>
 </template>
 <script>

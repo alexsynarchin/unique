@@ -30,7 +30,7 @@ class RewriteOrder extends Mailable
      */
     public function build()
     {
-        $mail = $this->from('report247@mail.ru')
+        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
             -> subject('Новая заявка на рерайт');
         if($this->contact->filename) {
             return $mail->view('mails.rewrite-order', ['contact' => $this->contact])
