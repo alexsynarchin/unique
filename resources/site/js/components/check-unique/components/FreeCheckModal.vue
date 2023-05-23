@@ -102,7 +102,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                 }
                 axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
-                        this.$root.isLoading = false;
+
                         window.location.href = response.data.url;
                     })
                     .catch((error) => {
