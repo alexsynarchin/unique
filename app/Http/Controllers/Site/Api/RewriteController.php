@@ -97,9 +97,10 @@ class RewriteController extends Controller
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-        AppHelper::setMailConfig();
+
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
+            AppHelper::setMailConfig();
             Mail::to(trim($recipient))->send(new RewriteOrder($rewrite));
         }
         return $rewrite;
