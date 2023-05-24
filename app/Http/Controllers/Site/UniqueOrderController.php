@@ -27,9 +27,9 @@ class UniqueOrderController extends Controller
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-
+        AppHelper::setMailConfig();
         foreach ($email as $recipient) {
-            AppHelper::setMailConfig();
+
             Mail::to(trim($recipient))->send(new AdminReportMail($order));
         }
         return view('site.order.success', ['url'=> $url]);
