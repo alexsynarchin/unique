@@ -53,8 +53,9 @@ class ProcessSendingEmail implements ShouldQueue
         $form = [
             'link' => $link
         ];
+        AppHelper::setMailConfig();
         foreach ($admin_email as $recipient) {
-            AppHelper::setMailConfig();
+
             Mail::to($recipient)->send(new AdminReportMail($form));
         }
     }
