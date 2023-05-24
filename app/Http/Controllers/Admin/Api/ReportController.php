@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Mail\ReportMail;
 use App\Models\Report;
@@ -34,7 +35,7 @@ class ReportController extends Controller
         $report->filename = $filename;
         $report->save();
         $link = '/storage/reports/' . $report->checkUnique->id . '/' . $report->filename;
-
+        AppHelper::setMailConfig();
         Mail::to($report->checkUnique->email)->send(new ReportMail($link, $report));
 
         return $report;
