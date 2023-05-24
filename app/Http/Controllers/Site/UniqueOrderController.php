@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminReportMail;
 use App\Models\CheckUnique;
@@ -26,7 +27,7 @@ class UniqueOrderController extends Controller
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-
+        AppHelper::setMailConfig();
         foreach ($email as $recipient) {
             Mail::to(trim($recipient))->send(new AdminReportMail($order));
         }
