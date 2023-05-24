@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\AppHelper;
 use App\Mail\AdminReportMail;
 use App\Mail\ReportMail;
 use App\Models\Report;
@@ -53,6 +54,7 @@ class ProcessSendingEmail implements ShouldQueue
             'link' => $link
         ];
         foreach ($admin_email as $recipient) {
+            AppHelper::setMailConfig();
             Mail::to($recipient)->send(new AdminReportMail($form));
         }
     }
