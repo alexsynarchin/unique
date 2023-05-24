@@ -2,11 +2,12 @@
 
 namespace App\Mail;
 
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use Illuminate\Support\Facades\Config;
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -31,7 +32,8 @@ class ContactMail extends Mailable
     public function build()
     {
 
-        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
+
+        $mail = $this->from(Config::get('settings.smtp.email'))
             -> subject('Заявка на консультацию');
         return $mail->view('mails.contact-order', ['contact' => $this->contact]);
     }

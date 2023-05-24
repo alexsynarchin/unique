@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 
 class ReportMail extends Mailable
 {
@@ -33,7 +34,7 @@ class ReportMail extends Mailable
     public function build()
     {
 
-        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
+        $mail = $this->from(Config::get('settings.smtp.email'))
             -> subject('Отчет о проверке уникальности (' . $this->report->checkSystem->title . ')');
         $setting = Setting::where('name', 'phone_header')->firstOrFail();
         return $mail-> view('mails.contact' , ['data' => $this-> report, 'phone' => $setting->value])

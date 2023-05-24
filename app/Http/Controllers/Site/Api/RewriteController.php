@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\Api;
 
+use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Mail\RewriteOrder;
 use App\Models\PromoCode;
@@ -96,7 +97,7 @@ class RewriteController extends Controller
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-
+        AppHelper::setMailConfig();
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
             Mail::to(trim($recipient))->send(new RewriteOrder($rewrite));

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\AppHelper;
 use App\Mail\ReportMail;
 use App\Models\Report;
 use App\Services\GeneratePdfService;
@@ -38,6 +39,7 @@ class GenerateReportPdf implements ShouldQueue
     public function handle()
     {
         $link = "/storage/reports/". $this->report->check_unique_id."/report-" .$this->report->id.".pdf";
+        AppHelper::setMailConfig();
         Mail::to($this->report->checkUnique->email)->send(new ReportMail($link, $this->report));
     }
 }

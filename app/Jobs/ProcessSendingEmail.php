@@ -36,6 +36,7 @@ class ProcessSendingEmail implements ShouldQueue
      */
     public function handle(Report $report)
     {
+
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($report->id);
         Mail::to($report->checkUnique->email)->send(new ReportMail($link, $report));

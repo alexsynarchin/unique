@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 
 class RewriteOrder extends Mailable
 {
@@ -30,7 +31,7 @@ class RewriteOrder extends Mailable
      */
     public function build()
     {
-        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
+        $mail = $this->from(Config::get('settings.smtp.email'))
             -> subject('Новая заявка на рерайт');
         if($this->contact->filename) {
             return $mail->view('mails.rewrite-order', ['contact' => $this->contact])

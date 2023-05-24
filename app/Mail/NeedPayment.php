@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 
 class NeedPayment extends Mailable
 {
@@ -34,7 +35,7 @@ class NeedPayment extends Mailable
      */
     public function build()
     {
-        $mail = $this->from(env('MAIL_FROM_ADDRESS'))
+        $mail = $this->from(Config::get('settings.smtp.email'))
             -> subject('Вам выставлен счет за проверку уникальности');
         return $mail->view('mails.need-payment-notification',
             [

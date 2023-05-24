@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\AppHelper;
 use App\Models\UniqueOrder;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -37,6 +38,7 @@ class NeedPayment implements ShouldQueue
     public function handle()
     {
         if($this->order->status !== 'paid') {
+            AppHelper::setMailConfig();
             Mail::to($this-> order->checkUnique->email)->send(new \App\Mail\NeedPayment($this->order, $this->url));
         }
     }

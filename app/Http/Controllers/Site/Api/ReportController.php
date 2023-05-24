@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\Api;
 
+use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Jobs\GenerateReportPdf;
 use App\Mail\AdminReportMail;
@@ -71,6 +72,7 @@ class ReportController extends Controller
         $generatePdfService = new GeneratePdfService();
         $link = $generatePdfService -> generate($id);
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
+        AppHelper::setMailConfig();
         Mail::to($request->get('email'))->send(new ReportMail($link, $report));
 
     }

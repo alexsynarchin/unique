@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Helpers\AppHelper;
 
 class ContactController extends Controller
 {
@@ -37,6 +38,7 @@ class ContactController extends Controller
         }
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
+            AppHelper::setMailConfig();
             Mail::to(trim($recipient))->send(new ContactMail($request->all()));
         }
         return $request->all();
