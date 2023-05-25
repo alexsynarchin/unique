@@ -11,6 +11,7 @@ use App\Models\CheckApi;
 use App\Models\CheckUnique;
 use App\Models\Report;
 use App\Models\Setting;
+use App\Models\UniqueOrder;
 use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
 use App\Services\ReportHighLightTextService;
@@ -69,12 +70,22 @@ class ReportController extends Controller
 
     public function sendEmail(Request $request, $id)
     {
-        $generatePdfService = new GeneratePdfService();
-        $link = $generatePdfService -> generate($id);
+        $send_status = false;
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
-        AppHelper::setMailConfig();
-        Mail::to($request->get('email'))->send(new ReportMail($link, $report));
+        if($report->unique_order_id) {
+            $unique_order = UniqueOrder::firstOrFail($report->unique_order_id);
+            if($unique_order->status === 'paid') {
+                $send_status = true;
+            }
+        }
+        if($send_status ) {
+            $generatePdfService = new GeneratePdfService();
+            $link = $generatePdfService -> generate($id);
+            AppHelper::setMailConfig();
+            Mail::to($request->get('email'))->send(new ReportMail($link, $report));
+        }
 
+            return $send_status;
     }
 
     public function highlightUrl(Request $request, $id)
