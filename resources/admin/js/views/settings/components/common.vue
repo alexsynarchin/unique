@@ -3,6 +3,7 @@
         <h3 class="block-title">
             Общие Настройки
         </h3>
+        {{form}}
         <el-form ref="form" :model="form" label-position="top">
             <div class="row">
                 <el-form-item class="col-lg-6" prop="phone_header" label="Телефон в шапке сайта">
@@ -33,6 +34,13 @@
                     <el-input v-model="form.vk_link"></el-input>
                 </el-form-item>
             </div>
+            <div class="row">
+                <el-form-item class="col-lg-6" prop="instagram_link" label="Отправлять email при бесплатной проверке">
+                    <el-switch v-model="form.free_email_send">
+                    </el-switch>
+
+                </el-form-item>
+            </div>
             <el-button type="success" @click="submitForm">Сохранить</el-button>
         </el-form>
 
@@ -57,6 +65,7 @@
                   whatsapp_link:"",
                   vk_link:"",
                   favicon: "",
+                  free_email_send: false,
               }
           }
         },
@@ -83,6 +92,13 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
+                                if (key === 'free_email_send') {
+                                    if(this.form[key] === '1') {
+                                        this.form[key] = true;
+                                    }  else {
+                                        this.form[key] = false;
+                                    }
+                                }
                             }
                         }
                     })

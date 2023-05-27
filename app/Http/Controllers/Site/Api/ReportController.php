@@ -71,6 +71,14 @@ class ReportController extends Controller
     public function sendEmail(Request $request, $id)
     {
         $send_status = false;
+        if(Setting::where('group', 'common') -> where('name', 'free_email_send') -> exists()) {
+            $send_setting = Setting::where('group', 'common') -> where('name', 'free_email_send')->first();
+            if( (int) $send_setting === 1) {
+                $send_status = true;
+            }
+        }
+
+
         $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
         if($report->unique_order_id) {
             $unique_order = UniqueOrder::firstOrFail($report->unique_order_id);
