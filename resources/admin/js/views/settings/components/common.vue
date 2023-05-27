@@ -3,7 +3,6 @@
         <h3 class="block-title">
             Общие Настройки
         </h3>
-        {{form}}
         <el-form ref="form" :model="form" label-position="top">
             <div class="row">
                 <el-form-item class="col-lg-6" prop="phone_header" label="Телефон в шапке сайта">
