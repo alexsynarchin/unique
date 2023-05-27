@@ -73,7 +73,7 @@ class ReportController extends Controller
         $send_status = false;
         if(Setting::where('group', 'common') -> where('name', 'free_email_send') -> exists()) {
             $send_setting = Setting::where('group', 'common') -> where('name', 'free_email_send')->first();
-            if( (int) $send_setting === 1) {
+            if( ((int) $send_setting) === 1) {
                 $send_status = true;
             }
         }
