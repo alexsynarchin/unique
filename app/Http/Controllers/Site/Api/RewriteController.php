@@ -9,6 +9,7 @@ use App\Models\PromoCode;
 use App\Models\Rewrite;
 use App\Models\Setting;
 use Carbon\Carbon;
+use Complex\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -101,7 +102,12 @@ class RewriteController extends Controller
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
             AppHelper::setMailConfig();
-            Mail::to(trim($recipient))->send(new RewriteOrder($rewrite));
+            try {
+                Mail::to(trim($recipient))->send(new RewriteOrder($rewrite));
+            } catch (\Exception $e) {
+                return ['error' => 'Произошла ошибка, обратитесь к администратору сайта'];
+            }
+
         }
         return $rewrite;
     }

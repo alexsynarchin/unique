@@ -39,7 +39,12 @@ class ContactController extends Controller
         foreach ($email as $recipient) {
             $recipient = str_replace(" ", '', $recipient);
             AppHelper::setMailConfig();
-            Mail::to(trim($recipient))->send(new ContactMail($request->all()));
+            try {
+                Mail::to(trim($recipient))->send(new ContactMail($request->all()));
+            } catch (\Exception $e) {
+                return  ['error' => 'Произошла ошибка, обратитесь к администратору сайта'];
+            }
+
         }
         return $request->all();
     }

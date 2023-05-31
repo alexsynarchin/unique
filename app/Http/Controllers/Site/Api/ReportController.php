@@ -91,7 +91,12 @@ class ReportController extends Controller
             $generatePdfService = new GeneratePdfService();
             $link = $generatePdfService -> generate($id);
             AppHelper::setMailConfig();
-            Mail::to($request->get('email'))->send(new ReportMail($link, $report));
+            try {
+                Mail::to($request->get('email'))->send(new ReportMail($link, $report));
+            } catch (\Exception $e) {
+
+            }
+
         }
 
             return $send_status;

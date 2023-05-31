@@ -10,7 +10,7 @@
 </template>
 <script>
     export default {
-        props: ['url'],
+        props: ['url','error'],
         methods: {
             goToReport() {
                 window.location.href = this.url;

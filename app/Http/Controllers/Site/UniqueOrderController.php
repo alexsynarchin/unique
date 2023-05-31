@@ -30,9 +30,16 @@ class UniqueOrderController extends Controller
 
         foreach ($email as $recipient) {
             AppHelper::setMailConfig();
-            Mail::to(trim($recipient))->send(new AdminReportMail($order));
+            try {
+                Mail::to(trim($recipient))->send(new AdminReportMail($order));
+                }
+            catch(\Exception $e) { // alternatively use \Exception
+                // dump error
+                return view('site.order.success', ['url' => $url, 'error'=> 'Произошла ошибка обратитесь к администратору']);
+            }
+
         }
-        return view('site.order.success', ['url'=> $url]);
+        return view('site.order.success', ['url'=> $url, 'error'=> '']);
     }
 
     public function fail(Request $request)

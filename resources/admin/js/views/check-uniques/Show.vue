@@ -13,6 +13,10 @@
                         </span>
                 </div>
             </div>
+            <div class="mb-2" v-if="check_unique.filename">
+                <label>Имя файла:</label>
+                <span>{{check_unique.filename}}</span>
+            </div>
             <label>Текст:</label>
             <el-link :href="check_unique.file_link" icon="el-icon-document" v-if="check_unique.filename" download>Скачать файл</el-link>
             <div class="page-block mb-3" v-else>
