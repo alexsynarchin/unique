@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\MainPageController;
 Route::get('/', [MainPageController::class, 'show'])->name('main-page');
 Route::get('/pdf/{id}', [MainPageController::class, 'reviewPdf']) ->name('main-page.pdf');
-
+Route::get('/admin/login')->name('login');
 use App\Http\Controllers\Site\CheckReportController;
 Route::get('/report/{slug}', [CheckReportController::class, 'show'])->name('report');
 
