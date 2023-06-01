@@ -67,7 +67,7 @@ class ReportController extends Controller
         $report = $service->getResult();
         if($report->result === 1) {
             $sendEmailService = new ReportSendEmail();
-            $sendStatus = $sendEmailService->send();
+            $sendStatus = $sendEmailService->send($report->id);
         }
         return $report;
     }
