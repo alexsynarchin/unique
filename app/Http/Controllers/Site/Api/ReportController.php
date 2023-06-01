@@ -14,6 +14,7 @@ use App\Models\Setting;
 use App\Models\UniqueOrder;
 use App\Services\CheckUnique\CheckUniqueService;
 use App\Services\GeneratePdfService;
+use App\Services\Report\ReportSendEmail;
 use App\Services\ReportHighLightTextService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -64,7 +65,10 @@ class ReportController extends Controller
     {
         $service = new CheckUniqueService($id);
         $report = $service->getResult();
-
+        if($report->result === 1) {
+            $sendEmailService = new ReportSendEmail();
+            $sendStatus = $sendEmailService->send();
+        }
         return $report;
     }
 

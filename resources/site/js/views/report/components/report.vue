@@ -40,7 +40,6 @@ import ReportDetail from "./report-detail";
                     await axios.post('/api/report/'+ this.id + '/result')
                         .then((response) => {
                             this.report = response.data;
-                            this.sendMail();
                         })
                 } while (!this.report.result && !this.report.error_code)
 
