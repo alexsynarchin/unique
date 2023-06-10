@@ -26,4 +26,7 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/93111741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-{!!  GoogleReCaptchaV3::init() !!}
+@if((int) Config::get('settings.common.recaptcha') === 1)
+    {!!  GoogleReCaptchaV3::init() !!}
+@endif
+
