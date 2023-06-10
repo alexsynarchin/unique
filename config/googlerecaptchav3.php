@@ -162,5 +162,5 @@ return [
     | Type: string
     | https://developers.google.com/recaptcha/docs/language
     */
-    'language' => 'en',
+    'language' => 'ru',
 ];
