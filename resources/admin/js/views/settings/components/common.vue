@@ -34,8 +34,13 @@
                 </el-form-item>
             </div>
             <div class="row">
-                <el-form-item class="col-lg-6" prop="instagram_link" label="Отправлять email при бесплатной проверке">
+                <el-form-item class="col-lg-6" prop="free_email_send" label="Отправлять email при бесплатной проверке">
                     <el-switch v-model="form.free_email_send">
+                    </el-switch>
+
+                </el-form-item>
+                <el-form-item class="col-lg-6" prop="recaptcha" label="Google recaptcha v3">
+                    <el-switch v-model="form.recaptcha">
                     </el-switch>
 
                 </el-form-item>
@@ -65,6 +70,7 @@
                   vk_link:"",
                   favicon: "",
                   free_email_send: false,
+                  recaptcha: false,
               }
           }
         },
@@ -91,7 +97,7 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
-                                if (key === 'free_email_send') {
+                                if (key === 'free_email_send' || key === 'recaptcha') {
                                     if(this.form[key] === '1') {
                                         this.form[key] = true;
                                     }  else {
