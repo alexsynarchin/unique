@@ -60,7 +60,7 @@ class CheckUniqueController extends Controller
               $q->where('need_payment', 0);
           });*/
         return CheckUniqueResource::collection(
-            $checkUniqueQuery-> select('id', 'email', 'type', 'created_at')-> with(['reports' => function($query){
+            $checkUniqueQuery -> with(['reports' => function($query){
                 $query->select('id', 'system_id');
                 $query->with('checkSystem');
             }])
