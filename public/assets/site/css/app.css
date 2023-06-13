@@ -12894,6 +12894,9 @@ img {
     font-size: 13px;
   }
 }
+.check-system-item__image--disable {
+  opacity: 0.2;
+}
 
 .check-system-item-checkbox {
   height: 16px;

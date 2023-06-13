@@ -138,6 +138,11 @@
             font-size: 13px;
         }
     }
+    &__image {
+        &--disable {
+            opacity: 0.2;
+        }
+    }
 }
 .check-system-item-checkbox {
     height: 16px;
