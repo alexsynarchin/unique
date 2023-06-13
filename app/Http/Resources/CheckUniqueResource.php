@@ -21,8 +21,10 @@ class CheckUniqueResource extends JsonResource
             'formatted_date'=> $this->formatted_date,
             'sum' => $this->sum,
             'type_title' => $this->type_title,
-            'reports' =>  $this->reports()->with('checkSystem')->get(['id', 'system_id','created_at', 'error_code']),
-            'services' => $this->services-> toArray(),
+            'reports' =>  $this->reports()->with(['checkSystem'=>function($query){
+                $query->select('id','title');
+            }])->get(['id', 'system_id','created_at', 'error_code']),
+            'services' => $this->services() ->get(['title']) -> toArray(),
         ];
     }
 }
