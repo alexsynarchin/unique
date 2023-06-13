@@ -65,6 +65,9 @@
             text-decoration: none;
             color: $blue-color;
         }
+        &--disable {
+            opacity: 0;
+        }
     }
     &__logo {
         position: relative;
@@ -109,6 +112,9 @@
                 display: none;
             }
         }
+        &--disable {
+            background-color: #cccccc;
+        }
     }
     &__content {
         @include media-breakpoint-down(md) {
@@ -126,7 +132,7 @@
         z-index: 1;
         border-radius: 10px;
         padding: 8px 8px 0 8px;
-        background-color: rgba(0,0,0,0.45);
+        background-color: rgba(0,0,0,0.15);
     }
     &__disable-text {
         position: absolute;
@@ -140,7 +146,7 @@
     }
     &__image {
         &--disable {
-            opacity: 0.2;
+            opacity: 0.15;
         }
     }
 }

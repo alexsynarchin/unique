@@ -12813,6 +12813,9 @@ img {
   text-decoration: none;
   color: #366AF3;
 }
+.check-system-item__link--disable {
+  opacity: 0;
+}
 .check-system-item__logo {
   position: relative;
   padding-top: 10px;
@@ -12865,6 +12868,9 @@ img {
     display: none;
   }
 }
+.check-system-item__price--disable {
+  background-color: #cccccc;
+}
 @media (max-width: 767.98px) {
   .check-system-item__content {
     display: flex;
@@ -12880,7 +12886,7 @@ img {
   z-index: 1;
   border-radius: 10px;
   padding: 8px 8px 0 8px;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 .check-system-item__disable-text {
   position: absolute;
@@ -12895,7 +12901,7 @@ img {
   }
 }
 .check-system-item__image--disable {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 .check-system-item-checkbox {

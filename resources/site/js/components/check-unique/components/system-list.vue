@@ -16,7 +16,7 @@
                         <h4 class="check-system-item__title">
                             {{item.title}}
                         </h4>
-                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" @click.stop.prevent="showSystemModal(index, item)">
+                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" :class="{'check-system-item__link--disable': !free_check && item.price === 0}" @click.stop.prevent="showSystemModal(index, item)">
                             Подробнее
                         </a>
                         <span class="check-system-item__price check-system-item__price--mobile">
@@ -33,7 +33,7 @@
                     </figure>
                 </div>
 
-                <span class="check-system-item__price check-system-item__price--desc">
+                <span class="check-system-item__price check-system-item__price--desc" :class="{'check-system-item__price--disable': !free_check && item.price === 0}">
                     {{item.price ? item.price + 'руб.' : 'бесплатно'}}
                 </span>
             </section>
