@@ -98,7 +98,12 @@
                 </button>
             </div>
         </div>
-
+        <google-re-captcha-v3
+            v-model="gRecaptchaV3Response"
+            ref="captcha3"
+            id="contact_us_id"
+            action="contact_us"
+        ></google-re-captcha-v3>
         <systems-list @selectSystem="handleSelected" ref="systems_list"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
@@ -111,9 +116,10 @@
     import PayCheckModal from "./components/PayCheckModal";
     import CountrySelectModal from "./components/CountrySelectModal";
     import { bus } from '@/site/js/services/bus.js';
+    import GoogleReCaptchaV3 from '@/js/components/googlerecaptchav3/GoogleReCaptchaV3';
     export default {
         components: {
-            SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal
+            SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal, GoogleReCaptchaV3
         },
         computed: {
             symbolsCountString: function () {
@@ -127,7 +133,7 @@
         },
         data() {
             return {
-
+                gRecaptchaV3Response: null,
                 symbols_count: 0,
                 systems: [],
                 text: "",

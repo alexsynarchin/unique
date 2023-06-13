@@ -3,9 +3,11 @@
     <div class="check-systems">
         <div class="check-systems__item" v-for="(item, index) in CheckSystems" >
             <section class="check-system-item" @click.prevent="selectSystem(index, item)">
+                <div class="check-system-item__disable" v-if="item.price === 0 && !free_check">
+                </div>
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
-                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) != -1">
+                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) != -1" :disabled="!free_check && item.price === 0">
                         <span class="check-system-item-checkbox__checkmark"></span>
                     </label>
                 </div>
@@ -24,6 +26,10 @@
 
                     <figure class="check-system-item__logo">
                         <img :src="item.logo">
+                        <div class="check-system-item__disable-text" v-if="item.price === 0 && !free_check">
+                            В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
+                            Воспользуйтесь одним из платных пакетов.
+                        </div>
                     </figure>
                 </div>
 
@@ -76,26 +82,33 @@
                 systemIndex: [],
                 CheckSystems: [],
                 errors: new Errors(),
+                free_check:false,
             }
         },
         methods: {
             selectSystem(index, item) {
-                let checkIndex = this.systemIndex.indexOf(index);
-                let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
-                    return item.id === object.id
-                })
-                if(selectedSystemIndex !== -1) {
-                    this.selectedSystemsList.splice(selectedSystemIndex,1);
-                }
-                if(checkIndex !== -1) {
-                    this.systemIndex.splice(checkIndex, 1);
-                } else {
-                    this.handleSelected({index:index, item: item})
+                if(item.price !== 0 || this.free_check ) {
+                    let checkIndex = this.systemIndex.indexOf(index);
+                    let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
+                        return item.id === object.id
+                    })
+                    if(selectedSystemIndex !== -1) {
+                        this.selectedSystemsList.splice(selectedSystemIndex,1);
+                    }
+                    if(checkIndex !== -1) {
+                        this.systemIndex.splice(checkIndex, 1);
+                    } else {
+                        this.handleSelected({index:index, item: item})
 
+                    }
                 }
+
             },
             showSystemModal(index, item) {
-                this.$refs.select_system_modal.showSelectSystem(index, item);
+                if(item.price !== 0 || this.free_check ){
+                    this.$refs.select_system_modal.showSelectSystem(index, item);
+                }
+
             },
             handleSelected(data) {
                 console.log(data)
@@ -132,6 +145,18 @@
 
                 this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
             },
+            getSetting(group, name)
+            {
+                axios.get('/api/setting/' + group + '/' + name)
+                    .then((response) => {
+                        console.log(response.data);
+                        if(response.data === 1) {
+                            this.free_check = true;
+                        } else {
+                            this.free_check = false;
+                        }
+                    })
+            },
             getSystemsList() {
                 axios.get('/api/check-systems')
                     .then((response) => {
@@ -157,7 +182,7 @@
         },
         mounted() {
             this.getSystemsList();
-
+            this.getSetting('common', 'free_check');
 
         }
     }

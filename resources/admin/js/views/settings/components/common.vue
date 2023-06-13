@@ -45,6 +45,13 @@
 
                 </el-form-item>
             </div>
+            <div class="row">
+                <el-form-item class="col-lg-6" prop="free_email_send" label="Разрешить бесплатную проверку">
+                    <el-switch v-model="form.free_check">
+                    </el-switch>
+
+                </el-form-item>
+            </div>
             <el-button type="success" @click="submitForm">Сохранить</el-button>
         </el-form>
 
@@ -71,6 +78,7 @@
                   favicon: "",
                   free_email_send: false,
                   recaptcha: false,
+                  free_check:false,
               }
           }
         },
@@ -97,7 +105,7 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
-                                if (key === 'free_email_send' || key === 'recaptcha') {
+                                if (key === 'free_email_send' || key === 'recaptcha' || key === 'free_check') {
                                     if(this.form[key] === '1') {
                                         this.form[key] = true;
                                     }  else {

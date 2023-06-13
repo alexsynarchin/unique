@@ -19,7 +19,7 @@
             siteKey: {
                 type: String,
                 required: false, // set to true if you don't want to store the siteKey in this component
-                default: '' // set siteKey here if you want to store it in this component
+                default: '6LcWYIUmAAAAACj3pRbN6FL2iOTUMIjk9LPZSkMr' // set siteKey here if you want to store it in this component
             },
             inline: {
                 type: Boolean,
