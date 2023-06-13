@@ -60,7 +60,10 @@ class CheckUniqueController extends Controller
               $q->where('need_payment', 0);
           });*/
         return CheckUniqueResource::collection(
-            $checkUniqueQuery
+            $checkUniqueQuery->  with(['reports' => function($query){
+                $query->select('id', 'system_id','created_at', 'error_code');
+                $query->with('checkSystem');
+            }])
                 ->orderBy('created_at', 'desc')
                 ->paginate($limit) );
     }
