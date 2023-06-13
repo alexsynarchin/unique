@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Model;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
         if(config('app.env') === 'production') {
             \URL::forceScheme('https');
         }
-      /*  DB::listen(function ($query) {
+
+        DB::listen(function ($query) {
             $location = collect(debug_backtrace())->filter(function ($trace) {
                 if(isset($trace['file'])) {
                     return !str_contains($trace['file'], 'vendor/');
@@ -46,6 +48,6 @@ class AppServiceProvider extends ServiceProvider
                    Line: ${location['line']}
                    ------------
             ");
-        });*/
+        });
     }
 }
