@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
-        DB::listen(function ($query) {
+       /* DB::listen(function ($query) {
             $location = collect(debug_backtrace())->filter(function ($trace) {
                 if(isset($trace['file'])) {
                     return !str_contains($trace['file'], 'vendor/');
@@ -48,6 +48,6 @@ class AppServiceProvider extends ServiceProvider
                    Line: ${location['line']}
                    ------------
             ");
-        });
+        });*/
     }
 }
