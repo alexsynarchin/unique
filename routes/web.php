@@ -55,17 +55,17 @@ use App\Http\Controllers\Site\UniqueOrderController;
 Route::get('/order/success', [UniqueOrderController::class, 'success'])->name('order.success');
 Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.fail');
 
-use App\Http\Controllers\Site\TestMailController;
-Route::get('/mailable', [TestMailController::class,'testMail']);
-Route::get('/mailable/send', [TestMailController::class, 'sendTestMail']);
-use App\Http\Controllers\Site\ViewNotificationTemplateController;
-Route::get('/payment-mail',[ViewNotificationTemplateController::class, 'needPaymentNotification']);
+//use App\Http\Controllers\Site\TestMailController;
+//Route::get('/mailable', [TestMailController::class,'testMail']);
+//Route::get('/mailable/send', [TestMailController::class, 'sendTestMail']);
+//use App\Http\Controllers\Site\ViewNotificationTemplateController;
+//Route::get('/payment-mail',[ViewNotificationTemplateController::class, 'needPaymentNotification']);
 
-use App\Http\Controllers\Site\VkController;
-Route::get('/vk', [VkController::class, 'index']);
+//use App\Http\Controllers\Site\VkController;
+//Route::get('/vk', [VkController::class, 'index']);
 
-use App\Http\Controllers\Site\CheckUniqueTestController;
-Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
+//use App\Http\Controllers\Site\CheckUniqueTestController;
+//Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
 use App\Http\Controllers\Site\SiteMapController;
 Route::get('/sitemap.xml', [SiteMapController::class, 'index']);
 use App\Http\Controllers\Site\StaticPageController;
