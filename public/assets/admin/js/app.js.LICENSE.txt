@@ -1,6 +1,12 @@
 /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
  * @license MIT */
 
+/*!
+   * perfect-scrollbar v1.5.3
+   * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+   * Licensed under MIT
+   */
+
 /*! js-cookie v3.0.1 | MIT */
 
 /**
