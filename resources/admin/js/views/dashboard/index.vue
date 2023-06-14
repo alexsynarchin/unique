@@ -214,7 +214,7 @@ import { mapGetters } from 'vuex';
             },
         },
         mounted() {
-            this.getData();
+            //this.getData();
         }
     }
 </script>
