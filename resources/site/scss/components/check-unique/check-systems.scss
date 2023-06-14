@@ -135,18 +135,31 @@
         background-color: rgba(0,0,0,0.15);
     }
     &__disable-text {
-        position: absolute;
-        top:0;
-        left: 0;
-        width: 100%;
-        font-size: 12px;
-        @include media-breakpoint-up(xxl) {
-            font-size: 13px;
+        display: none;
+        @include media-breakpoint-up(lg) {
+            display: block;
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            font-size: 12px;
+            @include media-breakpoint-up(xxl) {
+                font-size: 13px;
+            }
         }
+        &--mobile {
+            font-size: 13px;
+            @include media-breakpoint-up(lg) {
+                display: none;
+            }
+        }
+
     }
     &__image {
         &--disable {
-            opacity: 0.15;
+            @include media-breakpoint-up(lg) {
+                opacity: 0.15;
+            }
         }
     }
 }

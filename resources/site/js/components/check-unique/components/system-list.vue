@@ -19,7 +19,12 @@
                         <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" :class="{'check-system-item__link--disable': !free_check && item.price === 0}" @click.stop.prevent="showSystemModal(index, item)">
                             Подробнее
                         </a>
-                        <span class="check-system-item__price check-system-item__price--mobile">
+                        <div class="check-system-item__disable-text--mobile"  v-if="item.price === 0 && !free_check">
+                            В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
+                            Воспользуйтесь одним из платных пакетов.
+                        </div>
+
+                        <span class="check-system-item__price check-system-item__price--mobile" :class="{'check-system-item__price--disable': !free_check && item.price === 0}">
                             {{item.price ? item.price + ' руб.' : 'бесплатно'}}
                         </span>
                     </div>
