@@ -43,6 +43,7 @@
            {{checkUniqueButtonString}}
         </button>
        <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
+
             {{errors.get('text')}}
            {{errors.get('symbols_count')}}
            {{errors.get('length')}}

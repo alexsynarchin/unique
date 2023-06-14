@@ -20,6 +20,10 @@
                           v-model="text"
                           :placeholder="symbolsCountString"></textarea>
             </section>
+            <div class="mt-3 alert alert-danger" v-if="errors.has('file')">
+
+                {{errors.get('file')}}
+            </div>
             <div class="check-unique__actions">
 
                 <div class="check-unique__indicators order-lg-1">
@@ -117,6 +121,7 @@
     import CountrySelectModal from "./components/CountrySelectModal";
     import { bus } from '@/site/js/services/bus.js';
     import GoogleReCaptchaV3 from '@/js/components/googlerecaptchav3/GoogleReCaptchaV3';
+    import { Errors } from  '@/common/js/services/errors.js';
     export default {
         components: {
             SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal, GoogleReCaptchaV3
@@ -147,7 +152,8 @@
                     size:0,
                     pages:0,
                     plainText: "",
-                }
+                },
+                errors: new Errors(),
             }
         },
         watch: {
@@ -183,6 +189,10 @@
                     .then((response) => {
                         this.$root.isLoading = false;
                         this.textParams = response.data;
+                    })
+                    .catch((error) => {
+                        this.$root.isLoading = false;
+                        this.errors.record(error.response.data.errors);
                     })
             },
             checkUniqueText(text) {
