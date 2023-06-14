@@ -63,6 +63,7 @@ class ReportController extends Controller
 
     public function getResult(Request $request, $id)
     {
+        sleep(15);
         $service = new CheckUniqueService($id);
         $report = $service->getResult();
         if($report->result) {
