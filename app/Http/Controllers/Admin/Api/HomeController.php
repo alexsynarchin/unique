@@ -13,13 +13,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $check_uniques = (new CheckUnique) -> newQuery();
+      /*  $check_uniques = (new CheckUnique) -> newQuery();
 
        /* $manual =  $check_uniques -> whereHas('reports', function ($query){
             $query->whereHas('checkSystem', function ($query) {
                 $query->where('manual', 1);
             });
-        });*/
+        });
         $auto =  $check_uniques -> whereHas('reports', function ($query){
           $query->where('api_id', '!=', null);
         })->orderBy('id','desc');
@@ -87,6 +87,6 @@ class HomeController extends Controller
            'rewrites' => $rewrites_arr,
            'sum' => $sum_arr,
            'manual' => $manual_arr
-       ];
+       ];*/
     }
 }
