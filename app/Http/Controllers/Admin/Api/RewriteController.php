@@ -10,7 +10,7 @@ class RewriteController extends Controller
 {
     public function index()
     {
-        $rewrites = Rewrite::orderBy('created_at', 'ASC') ->get();
+        $rewrites = Rewrite::select('id','created_at', 'email','status', 'name', 'date')->orderBy('created_at', 'desc') ->get();
         return $rewrites;
     }
 
