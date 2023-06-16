@@ -66,6 +66,9 @@ Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.f
 
 //use App\Http\Controllers\Site\CheckUniqueTestController;
 //Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
+//use App\Http\Controllers\Site\TestPdfController;
+//Route::get('/test-pdf', [TestPdfController::class, 'index']);
+//Route::get('/test-pdf2', [TestPdfController::class, 'test']);
 use App\Http\Controllers\Site\SiteMapController;
 Route::get('/sitemap.xml', [SiteMapController::class, 'index']);
 use App\Http\Controllers\Site\StaticPageController;

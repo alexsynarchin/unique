@@ -2,7 +2,7 @@
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
-    margin-bottom: 35px;
+
     margin-bottom: 16px;
     &__item {
         display: flex;
@@ -33,6 +33,7 @@
         align-items: center;
     }
     &__url {
+        word-break: break-word;
         margin-left: -10px;
         padding: 4px 7px;
     }

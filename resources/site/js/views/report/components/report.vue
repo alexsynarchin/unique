@@ -28,12 +28,7 @@ import ReportDetail from "./report-detail";
             }
         },
         methods: {
-            sendMail(){
-                axios.post('/api/report/'+this.id + '/send-email', {email:this.check_unique.email})
-                    .then((response) => {
-                        console.log(response.data);
-                    })
-            },
+
             async  getReportData() {
 
                 do {
