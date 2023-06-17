@@ -4,7 +4,7 @@
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
     &--open {
-        max-height: 10000px;
+        max-height: 300000px;
         transition: max-height 1s ease-in-out;
     }
     &__descr {
