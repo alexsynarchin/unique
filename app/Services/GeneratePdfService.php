@@ -11,7 +11,11 @@ class GeneratePdfService
 {
     public function generate($id)
     {
-        $report = Report::with(['checkSystem', 'checkUnique'])->findOrFail($id);
+        $report = Report::with(['checkSystem' => function($query){
+            $query->select('id','title');
+        }, 'checkUnique' => function($query) {
+            $query->select('id', 'slug', 'symbolsCount','wordsCount', 'pages');
+        }])->findOrFail($id);
         $link =  "reports/". $report->check_unique_id."/report-" .$report->id.".pdf";
         Storage::makeDirectory('public/reports/'. $report->check_unique_id);
         $setting = Setting::where('name', 'phone_header')->firstOrFail();
