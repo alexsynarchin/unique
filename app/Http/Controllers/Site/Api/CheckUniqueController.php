@@ -30,6 +30,9 @@ class CheckUniqueController extends Controller
         foreach ($check_unique->reports as $key => $report) {
             if($report->checkSystem -> price > 0) {
                 $paid =false;
+                if($report->need_payment === 0) {
+                    $paid = true;
+                }
                 if($report->uniqueOrder()->exists()) {
                     if($report->uniqueOrder->status === 'paid') {
                         $paid = true;
