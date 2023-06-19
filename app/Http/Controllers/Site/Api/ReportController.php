@@ -19,6 +19,7 @@ use App\Services\ReportHighLightTextService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Services\Report\ReportService;
+use Illuminate\Support\Facades\Storage;
 class ReportController extends Controller
 {
     public function show($id)
@@ -127,9 +128,8 @@ class ReportController extends Controller
     public function downloadPdf($id)
     {
         $report=Report::findOrFail($id);
-        if($report->filename) {
+        if($report->filename && Storage::exists('/public/reports/' . $report->checkUnique->id . '/' . $report->filename)) {
             $link = '/storage/reports/' . $report->checkUnique->id . '/' . $report->filename;
-
         } else {
             $generatePdfService = new GeneratePdfService();
             $link = $generatePdfService -> generate($id);
