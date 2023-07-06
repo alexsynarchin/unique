@@ -198,7 +198,7 @@ class CheckUniqueController extends Controller
                'system_id' => $system->id,
                'api_id' => $system -> api_id,
            ]);
-            if($system->price > 0) {
+            if($system->price > 0 && $data['sum'] > 0) {
                 $report->need_payment = true;
                 $report->save();
             }

@@ -1,5 +1,6 @@
 <template>
     <section v-if="loaded">
+        <div></div>
         <div class="row mb-4">
             <div class="col-md-4">
                 <el-card class="box-card">
