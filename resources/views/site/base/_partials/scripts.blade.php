@@ -1,7 +1,25 @@
 
 
 <script src="/assets/site/js/openapi.js"></script>
+<script type="text/javascript">
 
+    function uncheck()
+
+    {
+
+        forms=document.getElementsByTagName("form");
+
+        for(i=0;i<forms.length;i++){
+            for(x=0;x<forms[i].elements.length;x++){
+                if(forms[i].elements[x].checked == true)
+                    forms[i].elements[x].value == false;
+            }
+        }
+        return true;
+    }
+
+    window.onload=uncheck;
+</script>
 <script type="text/javascript">
     VK.init({
        apiId: 51581291

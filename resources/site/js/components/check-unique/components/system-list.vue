@@ -7,7 +7,7 @@
                 </div>
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
-                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) != -1" :disabled="!free_check && item.price === 0">
+                        <input name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) !== -1" :disabled="!free_check && item.price === 0">
                         <span class="check-system-item-checkbox__checkmark"></span>
                     </label>
                 </div>
@@ -186,8 +186,10 @@
                     }
                 })
             },
+
         },
         mounted() {
+
             this.getSystemsList();
             this.getSetting('common', 'free_check');
 
