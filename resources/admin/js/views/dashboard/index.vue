@@ -52,7 +52,7 @@
                                    Заявка № {{item.id}}
                                </span>
                                <span>
-                                   {{item.formatted_date}}
+                                   {{item.created_at | formatDate}}
                                </span>
                            </li>
                        </ul>
@@ -172,6 +172,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import moment from "moment/moment";
     export default {
         data() {
             return {
@@ -208,6 +209,13 @@ import { mapGetters } from 'vuex';
                     }
                 }
             }
+        },
+        filters: {
+            formatDate: function (value) {
+                if (value) {
+                    return moment(String(value)).format('DD.MM.YYYY hh:mm')
+                }
+            },
         },
         methods: {
             getData(key) {

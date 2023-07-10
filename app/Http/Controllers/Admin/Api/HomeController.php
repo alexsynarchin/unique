@@ -16,11 +16,11 @@ class HomeController extends Controller
         $type = $request->get('type');
         $return = [];
         if($type === 'rewrites') {
-            $rewrites = Rewrite::orderBy('id','desc');
+            $rewrites = Rewrite::query()->select('id', 'created_at')->orderBy('id','desc');
             $rewritesCount = $rewrites-> count();
             $rewritesCountToday = $rewrites;
             $rewritesItems = $rewrites;
-            $rewritesItems = $rewritesItems-> get(['id'])->take(5);
+            $rewritesItems = $rewritesItems->take(5)->get();
             $rewritesCountToday = $rewritesCountToday ->  where('created_at', '>=', Carbon::today()->addHours(5))->count();
 
             $return = [
@@ -44,7 +44,7 @@ class HomeController extends Controller
             $autoCount = $auto -> count();
             $autoItems = $auto;
             $autoCountToday = $auto;
-            $autoItems = $autoItems->take(5);
+            $autoItems = $autoItems->take(5)->get();
             $autoCountToday = $autoCountToday-> where('created_at', '>=', Carbon::today())->count();
             $return = [
                 'count' => $autoCount,
@@ -57,7 +57,7 @@ class HomeController extends Controller
                 $query->where('unique_order_id', NULL);
             })->orderBy('created_at','desc');
             $freeCount = $free -> count();
-            $freeItems = $free->take(5);
+            $freeItems = $free->take(5)->get();
             $freeCountToday = $free;
             $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today())->count();
 
@@ -74,7 +74,7 @@ class HomeController extends Controller
             $manualCount = $manual -> count();
             $manualItems = $manual;
             $manualCountToday = $manual;
-            $manualItems = $manualItems->take(5);
+            $manualItems = $manualItems->take(5)->get();
             $manualCountToday = $manualCountToday-> where('created_at', '>=', Carbon::today())->count();
             $return = [
                 'count' => $manualCount,
