@@ -144,6 +144,12 @@ export default {
         methods: {
             onCloseModal() {
                 this.sum = 0;
+                this.form.email = "";
+                this.form.promocode = "";
+                this.systems = [];
+                this.services = [];
+                this.textParams = {};
+                this.file = null;
             },
             showModal(data, list, file) {
                 this.textParams = data;
