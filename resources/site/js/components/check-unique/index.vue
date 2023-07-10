@@ -108,7 +108,7 @@
             id="contact_us_id"
             action="contact_us"
         ></google-re-captcha-v3>
-        <systems-list @selectSystem="handleSelected" ref="systems_list"></systems-list>
+        <systems-list  @selectSystem="handleSelected" ref="systems_list"></systems-list>
         <free-check-modal ref="free_check_modal"></free-check-modal>
         <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
         <CountrySelectModal></CountrySelectModal>
@@ -228,9 +228,11 @@
                         } else if(data.list.length > 0) {
                             this.$refs.pay_check_nodal.showModal(this.textParams, data.list);
                         }
+                        this.$refs.systems_list.clicked = false;
                     })
                     .catch((error) => {
                         this.$refs.systems_list.errors.record(error.response.data.errors);
+                        this.$refs.systems_list.clicked = false;
                     })
 
 

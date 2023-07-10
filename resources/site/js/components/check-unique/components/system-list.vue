@@ -44,7 +44,7 @@
             </section>
         </div>
     </div>
-        <button class="btn button check-unique-button" @click.prevent = "checkTextUnique">
+        <button class="btn button check-unique-button" :disabled="clicked" @click.prevent = "checkTextUnique">
            {{checkUniqueButtonString}}
         </button>
        <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
@@ -89,6 +89,7 @@
                 CheckSystems: [],
                 errors: new Errors(),
                 free_check:false,
+                clicked:false,
             }
         },
         methods: {
@@ -148,7 +149,7 @@
 
             },
             checkTextUnique() {
-
+                this.clicked = true;
                 this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
             },
             getSetting(group, name)
