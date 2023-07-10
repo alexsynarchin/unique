@@ -1,6 +1,6 @@
 <template>
     <section class="mb-4">
-
+        {{report.need_payment}}
         <report-item v-if="loaded"
                      :report="report"
                     :check_unique="check_unique"
