@@ -57,7 +57,7 @@ class HomeController extends Controller
                 $query->where('unique_order_id', NULL);
             })->orderBy('created_at','desc');
             $freeCount = $free -> count();
-            $freeItems = $free->get(['id', 'created_at'])->take(5);
+            $freeItems = $free->take(5);
             $freeCountToday = $free;
             $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today())->count();
 
@@ -74,7 +74,7 @@ class HomeController extends Controller
             $manualCount = $manual -> count();
             $manualItems = $manual;
             $manualCountToday = $manual;
-            $manualItems = $manualItems-> get(['id','created_at'])->take(5);
+            $manualItems = $manualItems->take(5);
             $manualCountToday = $manualCountToday-> where('created_at', '>=', Carbon::today())->count();
             $return = [
                 'count' => $manualCount,
