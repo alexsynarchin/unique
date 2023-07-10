@@ -58,9 +58,8 @@ class HomeController extends Controller
             $free = $check_uniques -> whereHas('reports', function ($query){
                 $query->where('unique_order_id', NULL);
             })->orderBy('created_at','desc');
-            $freeItems = $free;
             $freeCount = $free -> count();
-            $freeItems ->take(5);
+            $freeItems = $free->get(['id', 'created_at'])->take(5);
             $freeCountToday = $free;
             $freeCountToday = $freeCountToday-> where('created_at', '>=', Carbon::today())->count();
 
