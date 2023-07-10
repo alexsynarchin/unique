@@ -7,6 +7,14 @@
             >
             </el-table-column>
             <el-table-column
+                label="Дата заявки"
+
+            >
+                <template slot-scope="scope">
+                    {{scope.row.created_at | formatDate}}
+                </template>
+            </el-table-column>
+            <el-table-column
                 label="Имя"
                 prop="name"
                 sortable
@@ -25,11 +33,12 @@
             >
             </el-table-column>
             <el-table-column
-                label="Дата"
+                label="Дата сдачи"
                 prop="date"
-                sortable
+
             >
             </el-table-column>
+
             <el-table-column
                 label="Действия"
             >
@@ -54,6 +63,7 @@
 </template>
 <script>
 import Show from "./components/show";
+import moment from 'moment';
 export default {
     components: {Show},
     data() {
@@ -73,6 +83,13 @@ export default {
                 }
             },
         }
+    },
+    filters: {
+        formatDate: function (value) {
+            if (value) {
+                return moment(String(value)).format('DD.MM.YYYY hh:mm')
+            }
+        },
     },
     methods: {
         handleClose() {
