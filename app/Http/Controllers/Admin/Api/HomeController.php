@@ -38,8 +38,7 @@ class HomeController extends Controller
             ];
         }
         if($type === 'auto') {
-            $check_uniques = (new CheckUnique) -> newQuery();
-            $auto =  $check_uniques -> whereHas('reports', function ($query){
+            $auto = CheckUnique::query()->select('id', 'created_at') -> whereHas('reports', function ($query){
                 $query->where('api_id', '!=', null);
             })->orderBy('id','desc');
             $autoCount = $auto -> count();
@@ -54,8 +53,7 @@ class HomeController extends Controller
             ];
         }
         if($type === 'free') {
-            $check_uniques = (new CheckUnique) -> newQuery();
-            $free = $check_uniques -> whereHas('reports', function ($query){
+            $free = CheckUnique::query()->select('id', 'created_at')-> whereHas('reports', function ($query){
                 $query->where('unique_order_id', NULL);
             })->orderBy('created_at','desc');
             $freeCount = $free -> count();
@@ -70,8 +68,7 @@ class HomeController extends Controller
             ];
         }
         if($type === 'manual') {
-            $check_uniques = (new CheckUnique) -> newQuery();
-            $manual = $check_uniques -> whereHas('reports', function ($query){
+            $manual  = CheckUnique::query()->select('id', 'created_at')-> whereHas('reports', function ($query){
                 $query->where('api_id', null);
             })->orderBy('id','desc');
             $manualCount = $manual -> count();
