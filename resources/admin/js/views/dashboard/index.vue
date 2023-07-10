@@ -1,9 +1,9 @@
 <template>
-    <section v-if="loaded">
-        <div></div>
+    <section>
+
         <div class="row mb-4">
             <div class="col-md-4">
-                <el-card class="box-card">
+                <el-card class="box-card" v-loading="data.sum.loading">
                     <div slot="header" class="clearfix">
                         <span>Доход</span>
                     </div>
@@ -24,7 +24,7 @@
         </div>
        <div class="row">
            <div class="col-md-3 mb-3">
-               <el-card class="box-card mb-2">
+               <el-card class="box-card mb-2" v-loading="data.rewrites.loading">
                    <div slot="header" class="clearfix">
                        <span>Заявки на рерайт</span>
                    </div>
@@ -41,7 +41,7 @@
                    </div>
 
                </el-card>
-               <el-card class="box-card">
+               <el-card class="box-card" v-loading="data.rewrites.loading">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
                        <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
@@ -60,7 +60,7 @@
                </el-card>
            </div>
            <div class="col-md-3 mb-3">
-               <el-card class="box-card mb-2">
+               <el-card class="box-card mb-2"  v-loading="data.free.loading">
                    <div slot="header" class="clearfix">
                        <span>Бесплатные заявки</span>
                    </div>
@@ -77,7 +77,7 @@
                    </div>
 
                </el-card>
-               <el-card class="box-card">
+               <el-card class="box-card" v-loading="data.free.loading">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
                        <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
@@ -96,7 +96,7 @@
                </el-card>
            </div>
            <div class="col-md-3 mb-3">
-               <el-card class="box-card mb-2">
+               <el-card class="box-card mb-2" v-loading="data.auto.loading">
                    <div slot="header" class="clearfix">
                        <span>Автоматические заявки</span>
                    </div>
@@ -113,7 +113,7 @@
                    </div>
 
                </el-card>
-               <el-card class="box-card">
+               <el-card class="box-card" v-loading="data.auto.loading">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
                        <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
@@ -132,7 +132,7 @@
                </el-card>
            </div>
            <div class="col-md-3 mb-3">
-               <el-card class="box-card mb-2">
+               <el-card class="box-card mb-2" v-loading="data.manual.loading">
                    <div slot="header" class="clearfix">
                        <span>Ручные заявки</span>
                    </div>
@@ -149,7 +149,7 @@
                    </div>
 
                </el-card>
-               <el-card class="box-card">
+               <el-card class="box-card" v-loading="data.manual.loading">
                    <div slot="header" class="clearfix">
                        <span>Последние</span>
                        <ul class="mt-2"  style="margin-left: 0; padding-left: 0; list-style-type: none ">
@@ -181,41 +181,48 @@ import { mapGetters } from 'vuex';
                         count:0,
                         countToday:0,
                         items:[],
+                        loading:true,
                     },
                     sum: {
                         all:0,
                         sumToday:0,
+                        loading:true,
                     },
                     auto: {
                         count:0,
                         countToday:0,
                         items:[],
+                        loading:true,
                     },
                     free: {
                         count:0,
                         countToday:0,
                         items:[],
+                        loading:true,
                     },
                     manual: {
                         count:0,
                         countToday:0,
                         items:[],
+                        loading:true,
                     }
                 }
             }
         },
         methods: {
-            getData() {
-                axios.get('/api/admin/dashboard')
+            getData(key) {
+                axios.get('/api/admin/dashboard',{params:{type:key}})
                     .then((response) => {
-                        console.log(response.data)
-                      this.data = response.data
-                        this.loaded = true;
+                      this.data[key] = response.data
+                        this.data[key].loading = false;
                     })
             },
         },
         mounted() {
             //this.getData();
+            for (var key in this.data) {
+              this.getData(key);
+            }
         }
     }
 </script>
