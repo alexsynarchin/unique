@@ -56,7 +56,7 @@ class HomeController extends Controller
         if($type === 'free') {
             $check_uniques = (new CheckUnique) -> newQuery();
             $free = $check_uniques -> whereHas('reports', function ($query){
-                $query->whereDoesntHave('uniqueOrder');
+                $query->where('unique_order_id', NULL);
             })->orderBy('id','desc');
             $freeItems = $free;
             $freeCount = $free -> count();
