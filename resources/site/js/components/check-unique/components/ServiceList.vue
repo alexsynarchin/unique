@@ -25,6 +25,7 @@
                     <div class="unique-service-list__checkbox">
                         <label class="unique-service-checkbox" >
                             <input name=""
+                                   autocomplete="off"
                                    type="checkbox"
                                    class="unique-service-checkbox__input"
                                    :checked="selectedServices.map(x => x.id).indexOf(item.id) !== -1">

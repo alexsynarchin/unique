@@ -71,7 +71,7 @@
                 <div class="upload-button__wrap">
 
                     <label for="file" class="btn button upload-button">
-                        <input type="file" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
+                        <input type="file" autocomplete="off" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
                         <svg class="upload-button__icon" viewBox="0 0 20 22">
                             <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
                         </svg>
