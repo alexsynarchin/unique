@@ -44,7 +44,7 @@ class HomeController extends Controller
             $autoCount = $auto -> count();
             $autoItems = $auto;
             $autoCountToday = $auto;
-            $autoItems = $autoItems->get(['id', 'created_at'])->take(5);
+            $autoItems = $autoItems->take(5);
             $autoCountToday = $autoCountToday-> where('created_at', '>=', Carbon::today())->count();
             $return = [
                 'count' => $autoCount,
