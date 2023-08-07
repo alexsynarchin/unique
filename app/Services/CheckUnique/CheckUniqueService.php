@@ -39,7 +39,7 @@ class CheckUniqueService
 
         //$account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->exists()
         if($report->checkSystem->checkApi->id === 1 || $report->checkSystem->checkApi->id ===2 || $report->checkSystem->checkApi->id ===3 || $report->checkSystem->checkApi->id ===4 ) {
-            sleep(15);
+
             $account = ApiAccount::where('api_id', $report->checkSystem->checkApi->id)->first();
             $apiServiceClass = $this->selectApiServiceClass($report->checkSystem->checkApi->title);
             $apiService = new $apiServiceClass($account->key, $account->client_id);
