@@ -14,10 +14,11 @@ class ContactController extends Controller
 {
     public function consultation(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'token' => 'required',
+          //'token' => 'required',
              'email' => 'nullable|email'
         ], [
             'token.required' => 'Вы не прошлия проверку. Я не робот.'

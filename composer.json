@@ -7,7 +7,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/alexsynarchin/laravel-unitpay-netting"
+            "url": "https://github.com/alexsynarchin/laravel-unit   pay-netting"
         }
     ],
     "require": {
