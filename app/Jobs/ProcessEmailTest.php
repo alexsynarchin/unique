@@ -38,6 +38,17 @@ class ProcessEmailTest implements ShouldQueue
     public function handle()
     {
         //AppHelper::setMailConfig();
-        Mail::to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
+        $mail = Setting::where('group', 'smtp')->pluck('value', 'name');
+        $mailConfig = array(
+            'transport' => 'smtp',
+            'host'       => $mail['host'],
+            'port'       => $mail['port'],
+            'encryption' => $mail['encryption'],
+            'username'   => $mail['email'],
+            'password'   => $mail['password']
+
+        );
+        config(['mail.mailers.smtp' => $mailConfig]);
+        Mail::mailer('smtp')->to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
     }
 }
