@@ -49,6 +49,6 @@ class ProcessEmailTest implements ShouldQueue
 
         );
         config(['mail.mailers.smtp' => $mailConfig]);
-        Mail::mailer('smtp')->to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
+        Mail::mailer('smtp')->to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order, $mail['email']));
     }
 }

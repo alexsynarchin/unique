@@ -49,9 +49,19 @@ class SendAdminReport implements ShouldQueue
         }
 
         foreach ($email as $recipient) {
-            AppHelper::setMailConfig();
+            $mail = Setting::where('group', 'smtp')->pluck('value', 'name');
+            $mailConfig = array(
+                'transport' => 'smtp',
+                'host'       => $mail['host'],
+                'port'       => $mail['port'],
+                'encryption' => $mail['encryption'],
+                'username'   => $mail['email'],
+                'password'   => $mail['password']
+
+            );
+            config(['mail.mailers.smtp' => $mailConfig]);
             try {
-                Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
+                Mail::to(trim($recipient))->send(new AdminReportMail($this->order, $mail['email']));
             }
             catch(\Exception $e) { // alternatively use \Exception
                 // dump error

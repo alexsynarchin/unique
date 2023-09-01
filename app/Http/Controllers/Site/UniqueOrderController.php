@@ -19,28 +19,7 @@ class UniqueOrderController extends Controller
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
         $url = $order->url;
-        //SendAdminReport::dispatch($order)->delay(now());
-        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
-
-        if($exists) {
-            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
-            $email = $setting -> value;
-            $email = explode(',', $email);
-        } else {
-            $email = ['alexsynarchin@gmail.com'];
-        }
-
-        foreach ($email as $recipient) {
-            AppHelper::setMailConfig();
-            try {
-                Mail::to(trim($recipient))->send(new AdminReportMail($order));
-                }
-            catch(\Exception $e) { // alternatively use \Exception
-                // dump error
-                return view('site.order.success', ['url' => $url, 'error'=> 'Произошла ошибка обратитесь к администратору']);
-            }
-
-        }
+        SendAdminReport::dispatch($order)->delay(now());
         return view('site.order.success', ['url'=> $url, 'error'=> '']);
     }
 
