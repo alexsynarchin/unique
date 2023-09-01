@@ -16,6 +16,7 @@ class TestMailController extends Controller
     {
         $order = UniqueOrder::findOrFail(122456);
         ProcessEmailTest::dispatch($order)->delay(now());
+        return $order;
     }
 
     public function sendTestMail()
