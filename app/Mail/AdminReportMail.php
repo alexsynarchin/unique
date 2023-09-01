@@ -33,8 +33,8 @@ class AdminReportMail extends Mailable
     public function build()
     {
         //Config::get('settings.smtp.email')
-        $name_from = Setting::where('group', 'smtp')->where('name',' email')->firstOrFail();
-        $mail = $this->from($name_from->value)
+        //$name_from = Setting::where('group', 'smtp')->where('name',' email')->firstOrFail();
+        $mail = $this->from('report@unikaltext.ru')
         -> subject('Новый запрос на проверку уникальности');
         return $mail->view('mails.report-admin');
     }
