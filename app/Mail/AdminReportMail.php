@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -18,13 +19,10 @@ class AdminReportMail extends Mailable
      * @return void
      */
     public $order;
-    public $from;
 
-    public function __construct($order, $from)
+    public function __construct($order)
     {
         $this -> order = $order;
-        $this -> from = $from;
-
     }
 
     /**
@@ -35,7 +33,8 @@ class AdminReportMail extends Mailable
     public function build()
     {
         //Config::get('settings.smtp.email')
-        $mail = $this->from($this->from)
+        $name_from = Setting::where('group', 'smtp')->where('name',' email')->firstOrFail();
+        $mail = $this->from($name_from->value)
         -> subject('Новый запрос на проверку уникальности');
         return $mail->view('mails.report-admin');
     }
