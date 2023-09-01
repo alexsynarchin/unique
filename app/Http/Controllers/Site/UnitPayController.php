@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
-use App\Mail\AdminReportMail;
-use App\Models\Setting;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Mail;
 use UnitPay;
 
 
@@ -49,26 +45,8 @@ class UnitPayController extends Controller
         $order->status = 'paid';
         $order->save();
 
+        //
 
-        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
-
-        if($exists) {
-            $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
-            $email = $setting -> value;
-            $email = explode(',', $email);
-        } else {
-            $email = ['alexsynarchin@gmail.com'];
-        }
-
-        foreach ($email as $recipient) {
-            AppHelper::setMailConfig();
-            try {
-                Mail::to(trim($recipient))->send(new AdminReportMail($order));
-            } catch (\Exception $e) { // alternatively use \Exception
-                // dump error
-
-            }
-        }
         return true;
     }
 
