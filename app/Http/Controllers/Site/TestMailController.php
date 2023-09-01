@@ -17,7 +17,7 @@ class TestMailController extends Controller
     {
         $order = UniqueOrder::findOrFail(10243);
         //ProcessEmailTest::dispatch($order)->delay(now());
-        Mail::to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
+        Mail::to('gwynbleid11@yandex.ru')->send(new AdminReportMail($order));
         return $order;
     }
 
