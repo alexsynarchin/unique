@@ -37,7 +37,7 @@ class ProcessEmailTest implements ShouldQueue
      */
     public function handle()
     {
-        AppHelper::setMailConfig();
+        //AppHelper::setMailConfig();
         Mail::to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
     }
 }
