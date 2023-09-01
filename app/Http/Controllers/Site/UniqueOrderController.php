@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendAdminReport;
 use App\Mail\AdminReportMail;
 use App\Models\CheckUnique;
 use App\Models\Setting;
@@ -18,7 +19,8 @@ class UniqueOrderController extends Controller
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
         $url = $order->url;
-        $exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
+        SendAdminReport::dispatch($order)->delay(now());
+        /*$exists= Setting::where('group', 'common')->where('name','email_admin')->exists();
 
         if($exists) {
             $setting = Setting::where('group', 'common')->where('name','email_admin') ->firstOrFail();
@@ -38,7 +40,7 @@ class UniqueOrderController extends Controller
                 return view('site.order.success', ['url' => $url, 'error'=> 'Произошла ошибка обратитесь к администратору']);
             }
 
-        }
+        }*/
         return view('site.order.success', ['url'=> $url, 'error'=> '']);
     }
 
