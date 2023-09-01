@@ -39,6 +39,7 @@ class ProcessEmailTest implements ShouldQueue
     {
         //AppHelper::setMailConfig();
         $mail = Setting::where('group', 'smtp')->pluck('value', 'name');
+        $from = $mail['email'];
         $mailConfig = array(
             'transport' => 'smtp',
             'host'       => $mail['host'],
@@ -49,6 +50,6 @@ class ProcessEmailTest implements ShouldQueue
 
         );
         config(['mail.mailers.smtp' => $mailConfig]);
-        Mail::mailer('smtp')->to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
+        Mail::mailer('smtp')->to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order, $from));
     }
 }
