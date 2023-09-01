@@ -34,7 +34,7 @@ class AdminReportMail extends Mailable
     {
         //Config::get('settings.smtp.email')
         $name_from = Setting::where('group', 'smtp')->where('name','email')->firstOrFail();
-        $mail = $this->from($name_from)
+        $mail = $this->from($name_from->value)
         -> subject('Новый запрос на проверку уникальности');
         return $mail->view('mails.report-admin');
     }
