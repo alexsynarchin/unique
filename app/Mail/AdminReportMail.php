@@ -18,13 +18,10 @@ class AdminReportMail extends Mailable
      * @return void
      */
     public $order;
-    public $from;
 
-    public function __construct($order, $from)
+    public function __construct($order)
     {
         $this -> order = $order;
-        $this -> from = $from;
-
     }
 
     /**
@@ -34,8 +31,7 @@ class AdminReportMail extends Mailable
      */
     public function build()
     {
-        //Config::get('settings.smtp.email')
-        $mail = $this->from($this->from)
+        $mail = $this->from(Config::get('settings.smtp.email'))
         -> subject('Новый запрос на проверку уникальности');
         return $mail->view('mails.report-admin');
     }
