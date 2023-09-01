@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendAdminReport;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -41,10 +42,10 @@ class UnitPayController extends Controller
      * @return bool
      */
     public function paidOrder(Request $request, $order)
-    {
+    {   
         $order->status = 'paid';
         $order->save();
-
+        SendAdminReport::dispatch($order)->delay(now());
         //
 
         return true;
