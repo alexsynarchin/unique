@@ -60,12 +60,7 @@ class SendAdminReport implements ShouldQueue
 
             );
             config(['mail.mailers.smtp' => $mailConfig]);
-            try {
-                Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
-            }
-            catch(\Exception $e) { // alternatively use \Exception
-                // dump error
-            }
+            Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
 
         }
     }
