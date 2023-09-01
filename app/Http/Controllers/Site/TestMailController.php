@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\ProcessEmailTest;
+use App\Mail\AdminReportMail;
 use App\Mail\ReportMail;
 use App\Models\Report;
 use App\Models\UniqueOrder;
@@ -15,7 +16,8 @@ class TestMailController extends Controller
     public function testMail()
     {
         $order = UniqueOrder::findOrFail(10243);
-        ProcessEmailTest::dispatch($order)->delay(now());
+        //ProcessEmailTest::dispatch($order)->delay(now());
+        Mail::to('gwynbleid11@yandex.ru')->send(new AdminReportMail($this->order));
         return $order;
     }
 

@@ -23,7 +23,7 @@ class ProcessEmailTest implements ShouldQueue
      * @return void
      */
 
-    protected $order;
+    public $order;
 
     public function __construct($order)
     {
