@@ -19,7 +19,7 @@ class UniqueOrderController extends Controller
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
         $url = $order->url;
-        SendAdminReport::dispatch($order)->delay(now());
+       
         return view('site.order.success', ['url'=> $url, 'error'=> '']);
     }
 
