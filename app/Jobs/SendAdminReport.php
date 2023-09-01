@@ -23,6 +23,9 @@ class SendAdminReport implements ShouldQueue
      *
      * @return void
      */
+
+    protected $order;
+
     public function __construct(UniqueOrder $order)
     {
         $this -> order = $order;
