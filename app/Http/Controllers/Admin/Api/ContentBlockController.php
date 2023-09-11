@@ -25,7 +25,10 @@ class ContentBlockController extends Controller
         $content = $request->all();
 
         if(is_array($request->get('image')) && array_key_exists('imageName', $request->get('image'))) {
-            $image = $block -> addMediaFromBase64($request->get('image')['link'])->toMediaCollection('content-blocks');
+            $image = $block
+                -> addMediaFromBase64($request->get('image')['link'])
+                ->usingFileName($request->get('image')['imageName'])
+                ->toMediaCollection('content-blocks');
             $content['image']['link'] = $image->getUrl();
             $content['image']['id'] = $image -> id;
             unset($content['image']['imageName']);
@@ -43,7 +46,10 @@ class ContentBlockController extends Controller
         $content = $request->all();
 
         if(is_array($request->get('image')) && array_key_exists('imageName', $request->get('image'))) {
-            $image = $block -> addMediaFromBase64($request->get('image')['link'])->toMediaCollection('content-blocks');
+
+            $image = $block -> addMediaFromBase64($request->get('image')['link'])
+                ->usingFileName($request->get('image')['imageName'])
+                ->toMediaCollection('content-blocks');
             $content['image']['link'] = $image->getUrl();
             $content['image']['id'] = $image -> id;
             unset($content['image']['imageName']);

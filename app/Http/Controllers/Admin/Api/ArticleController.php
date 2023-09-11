@@ -33,6 +33,7 @@ class ArticleController extends Controller
         $article -> seo() ->create($request -> get('seo'));
         if($request->has('imageName')) {
             $article->addMediaFromBase64($request->get('preview'))
+                ->usingFileName($request->get('imageName'))
                 ->toMediaCollection('articles');
         }
         if($request -> get('content')) {
@@ -63,6 +64,7 @@ class ArticleController extends Controller
         $article -> seo() -> update($seo);
         if($request->has('imageName')) {
             $article->addMediaFromBase64($request->get('preview'))
+                ->usingFileName($request->get('imageName'))
                 ->toMediaCollection('articles');
         }
         if($request -> get('content')) {

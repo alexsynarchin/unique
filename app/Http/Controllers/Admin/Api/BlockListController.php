@@ -42,6 +42,7 @@ class BlockListController extends Controller
         if(array_key_exists('image', $blocks)) {
             if(array_key_exists('imageName', $blocks['image'])) {
                 $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
+                    ->usingFileName($blocks['image']['imageName'])
                     ->toMediaCollection('pages');
                 $blocks['image']['link'] = $image->getUrl();
                 $blocks['image']['id'] = $image -> id;
@@ -64,6 +65,7 @@ class BlockListController extends Controller
         if(array_key_exists('image', $blocks)){
             if(array_key_exists('imageName', $blocks['image'])) {
                 $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
+                    ->usingFileName($blocks['image']['imageName'])
                     ->toMediaCollection('pages');
                 $blocks['image']['link'] = $image->getUrl();
                 $blocks['image']['id'] = $image -> id;
