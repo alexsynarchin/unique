@@ -38,6 +38,7 @@ class BlockListController extends Controller
         $block_list = BlockList::findOrFail($id);
         $list = $block_list->list;
         $blocks = $request->all();
+
         if(array_key_exists('image', $blocks)) {
             if(array_key_exists('imageName', $blocks['image'])) {
                 $image = $block_list ->addMediaFromBase64($blocks['image']['link'])
