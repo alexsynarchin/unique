@@ -1,0 +1,5 @@
+/*!
+ * vue-simple-progress v1.1.1 (https://github.com/dzwillia/vue-simple-progress)
+ * (c) 2019 David Z. Williams
+ * Released under the MIT License.
+ */

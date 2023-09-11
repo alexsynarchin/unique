@@ -52,6 +52,9 @@
 
                 </el-form-item>
             </div>
+            <div class="mb-3">
+                <el-input type="textarea" :rows="12" v-model="form.scripts"></el-input>
+            </div>
             <el-button type="success" @click="submitForm">Сохранить</el-button>
         </el-form>
 
@@ -76,6 +79,7 @@
                   whatsapp_link:"",
                   vk_link:"",
                   favicon: "",
+                  scripts: "",
                   free_email_send: false,
                   recaptcha: false,
                   free_check:false,
