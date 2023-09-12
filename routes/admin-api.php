@@ -38,6 +38,8 @@ use App\Http\Controllers\Admin\Api\StaticPageController;
 use App\Http\Controllers\Admin\Api\ContactOrderController;
 use App\Http\Controllers\Admin\Api\PermissionController;
 use App\Http\Controllers\Admin\Api\PageController;
+use App\Http\Controllers\Admin\Api\RemoveUniqueFilesController;
+
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', function (Request $request) {
@@ -103,6 +105,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/static-page/{id}', [StaticPageController::class, 'destroy'])->name('static.page.destroy');
     Route::get('/contact-order', [ContactOrderController::class, 'index'])->name('contacts');
     Route::get('/contact-order/{id}', [ContactOrderController::class, 'show'])->name('contact.show');
+    Route::post('/remove-unique-files', [RemoveUniqueFilesController::class, 'remove'])->name('remove.unique.files');
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions');
     Route::get('/page', [PageController::class, 'show'])->name('page');
     Route::post('/page/{id}/update', [PageController::class, 'update'])->name('page.update');

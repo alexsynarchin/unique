@@ -9,6 +9,9 @@
         <el-tab-pane label="Настройки smtp" name='smtp'>
             <smtp></smtp>
         </el-tab-pane>
+        <el-tab-pane label="Проверки уникальности" name="uniques">
+            <unique></unique>
+        </el-tab-pane>
     </el-tabs>
 </template>
 <script>
@@ -16,9 +19,10 @@ import smtp from "@/admin/js/views/settings/components/smtp/index.vue";
 import common from "./components/common";
 import navigation from './components/navigation';
 import MainPage from "./components/main-page";
+import Unique from "./components/unique"
 export default {
     components:{
-        common, navigation, MainPage, smtp
+        common, navigation, MainPage, smtp, Unique
     },
     data() {
         return {
