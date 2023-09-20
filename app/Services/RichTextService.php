@@ -47,6 +47,10 @@ class RichTextService
                     //dd($new_src);
                     $img->removeAttribute('src');
                     $img->setAttribute('src', $new_src);
+                } else {
+                    $new_src = '../' .  $src;
+                    $img->removeAttribute('src');
+                    $img->setAttribute('src', $new_src);
                 } // <!--endif
             } // <!--endforeach
             $return =  $dom->saveHTML();
