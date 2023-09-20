@@ -43,7 +43,8 @@ class RichTextService
                         ->encode($mimetype, 100) 	// encode file to the specified mimetype
                         ->save((storage_path('app/public/').$filepath));
 
-                    $new_src = '/storage/' . $content_dir . $filename.'.'.$mimetype;
+                    $new_src = 'storage/' . $content_dir . $filename.'.'.$mimetype;
+                    //dd($new_src);
                     $img->removeAttribute('src');
                     $img->setAttribute('src', $new_src);
                 } // <!--endif
