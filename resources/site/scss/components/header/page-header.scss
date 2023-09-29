@@ -29,6 +29,8 @@
         align-items: center;
     }
     &__logo {
+        display: block;
+        font-weight: 700;
         @include media-breakpoint-up(lg){
             width: 23%;
             flex: 1 23%;
