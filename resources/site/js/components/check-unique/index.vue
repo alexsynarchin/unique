@@ -1,118 +1,110 @@
 <template>
-    <section class="check-unique-bl" id="check_unique">
-
-        <div class="text-center">
-            <h1 class="block-title  check-unique-bl__title">
-                Проверить уникальность текста онлайн бесплатно <span class="block-title__cursor"></span>
-            </h1>
-            <p class="check-unique-bl__text">
-                Все системы проверки в одном месте
-            </p>
-        </div>
-
-        <section class="check-unique">
-            <section class="check-unique__textarea-wrap">
-                <div class="upload-file" v-if="fileName">
-                    <span class="upload-file__file-name">{{fileName}}</span>
-                    <button class="btn-link btn upload-file__delete" @click="handleFileDelete">Удалить</button>
-                </div>
-                <textarea class="check-unique__textarea form-control"
-                          v-model="text"
-                          :placeholder="symbolsCountString"></textarea>
-            </section>
-            <div class="mt-3 alert alert-danger" v-if="errors.has('file')">
-
-                {{errors.get('file')}}
+<div>
+    <section class="check-unique">
+        <section class="check-unique__textarea-wrap">
+            <div class="upload-file" v-if="fileName">
+                <span class="upload-file__file-name">{{fileName}}</span>
+                <button class="btn-link btn upload-file__delete" @click="handleFileDelete">Удалить</button>
             </div>
-            <div class="check-unique__actions">
+            <textarea class="check-unique__textarea form-control"
+                      v-model="text"
+                      :placeholder="symbolsCountString"></textarea>
+        </section>
+        <div class="mt-3 alert alert-danger" v-if="errors.has('file')">
 
-                <div class="check-unique__indicators order-lg-1">
-                    <div class="check-unique-indicator">
-                        <label class="check-unique-indicator__label">
-                            Размер:
-                        </label>
-                        <span class="check-unique-indicator__value">
+            {{errors.get('file')}}
+        </div>
+        <div class="check-unique__actions">
+
+            <div class="check-unique__indicators order-lg-1">
+                <div class="check-unique-indicator">
+                    <label class="check-unique-indicator__label">
+                        Размер:
+                    </label>
+                    <span class="check-unique-indicator__value">
                             {{textParams.size}}
                         </span>
-                    </div>
-                    <div class="check-unique-indicator">
-                        <label class="check-unique-indicator__label">
-                            Cтраниц:
-                        </label>
-                        <span class="check-unique-indicator__value">
+                </div>
+                <div class="check-unique-indicator">
+                    <label class="check-unique-indicator__label">
+                        Cтраниц:
+                    </label>
+                    <span class="check-unique-indicator__value">
                             {{textParams.pages}}
                         </span>
-                    </div>
-                    <div class="check-unique-indicator">
-                        <label class="check-unique-indicator__label">
-                            Предложений:
-                        </label>
-                        <span class="check-unique-indicator__value">
+                </div>
+                <div class="check-unique-indicator">
+                    <label class="check-unique-indicator__label">
+                        Предложений:
+                    </label>
+                    <span class="check-unique-indicator__value">
                             {{ textParams.sentenceCount }}
                         </span>
-                    </div>
-                    <div class="check-unique-indicator">
-                        <label class="check-unique-indicator__label">
-                            Слов:
-                        </label>
-                        <span class="check-unique-indicator__value">
+                </div>
+                <div class="check-unique-indicator">
+                    <label class="check-unique-indicator__label">
+                        Слов:
+                    </label>
+                    <span class="check-unique-indicator__value">
                             {{textParams.wordsCount}}
                         </span>
-                    </div>
-                    <div class="check-unique-indicator">
-                        <label class="check-unique-indicator__label">
-                            Символов:
-                        </label>
-                        <span class="check-unique-indicator__value">
+                </div>
+                <div class="check-unique-indicator">
+                    <label class="check-unique-indicator__label">
+                        Символов:
+                    </label>
+                    <span class="check-unique-indicator__value">
                             {{textParams.symbolsCount}}
                         </span>
-                    </div>
-                </div>
-                <div class="upload-button__wrap">
-
-                    <label for="file" class="btn button upload-button">
-                        <input type="file" autocomplete="off" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
-                        <svg class="upload-button__icon" viewBox="0 0 20 22">
-                            <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
-                        </svg>
-                        <span class="upload-button__text">
-                    Загрузить документ
-                    </span>
-                    </label>
                 </div>
             </div>
+            <div class="upload-button__wrap">
 
-        </section>
-        <div class="check-unique-descr">
-            <figure class="check-unique-descr__icon">
-                <img src="/assets/site/images/chat.png">
-            </figure>
-            <div class="check-unique-descr__content">
-                <div class="check-unique-descr__text">
-                    8 текстов в очереди, вы можете проверить текст без ожидания,
-                    выбрав одну или несколько платных систем
-                </div>
-                <button  class="btn btn-link check-unique-descr__link" data-bs-toggle="modal" data-bs-target="#what_system_check">
+                <label for="file" class="btn button upload-button">
+                    <input type="file" autocomplete="off" id="file" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
+                    <svg class="upload-button__icon" viewBox="0 0 20 22">
+                        <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
+                    </svg>
+                    <span class="upload-button__text">
+                    Загрузить документ
+                    </span>
+                </label>
+            </div>
+        </div>
+
+    </section>
+    <div class="check-unique-descr">
+        <figure class="check-unique-descr__icon">
+            <img src="/assets/site/images/chat.png">
+        </figure>
+        <div class="check-unique-descr__content">
+            <div class="check-unique-descr__text">
+                8 текстов в очереди, вы можете проверить текст без ожидания,
+                выбрав одну или несколько платных систем
+            </div>
+            <button  class="btn btn-link check-unique-descr__link" data-bs-toggle="modal" data-bs-target="#what_system_check">
                         <span>
                             Какую систему выбрать
                         </span>
-                    <svg viewBox="0 0 10 10" class="check-unique-descr__link-icon">
-                        <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
-                    </svg>
-                </button>
-            </div>
+                <svg viewBox="0 0 10 10" class="check-unique-descr__link-icon">
+                    <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
+                </svg>
+            </button>
         </div>
-        <google-re-captcha-v3
-            v-model="gRecaptchaV3Response"
-            ref="captcha3"
-            id="contact_us_id"
-            action="contact_us"
-        ></google-re-captcha-v3>
-        <systems-list  @selectSystem="handleSelected" ref="systems_list"></systems-list>
-        <free-check-modal ref="free_check_modal"></free-check-modal>
-        <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
-        <CountrySelectModal></CountrySelectModal>
-    </section>
+    </div>
+    <google-re-captcha-v3
+        v-model="gRecaptchaV3Response"
+        ref="captcha3"
+        id="contact_us_id"
+        action="contact_us"
+    ></google-re-captcha-v3>
+    <systems-list  @selectSystem="handleSelected" ref="systems_list"></systems-list>
+    <free-check-modal ref="free_check_modal"></free-check-modal>
+    <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
+    <CountrySelectModal></CountrySelectModal>
+</div>
+
+
 </template>
 <script>
     import SystemsList from './components/system-list';
@@ -136,6 +128,7 @@
             },
 
         },
+
         data() {
             return {
                 gRecaptchaV3Response: null,

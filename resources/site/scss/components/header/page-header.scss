@@ -31,6 +31,7 @@
     &__logo {
         display: block;
         font-weight: 700;
+        color: #131313;
         @include media-breakpoint-up(lg){
             width: 23%;
             flex: 1 23%;

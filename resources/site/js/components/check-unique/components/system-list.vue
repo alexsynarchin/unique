@@ -118,6 +118,7 @@
 
             },
             handleSelected(data) {
+
                 console.log(data)
                 let checkIndex = this.systemIndex.indexOf(data.index);
                 let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
@@ -150,7 +151,10 @@
             },
             checkTextUnique() {
                 this.clicked = true;
-                this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free})
+                this.$emit('selectSystem', {list:this.selectedSystemsList, free:this.free});
+                var that = this;
+                setTimeout(function() { that.clicked = false; }, 500);
+
             },
             getSetting(group, name)
             {
