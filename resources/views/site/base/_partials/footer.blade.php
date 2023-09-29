@@ -3,7 +3,7 @@
         <div class="page-footer__main row">
             <div class="col-lg-4 col-xl-3 page-footer__col-1">
                 <a href="/" class="logo-title">
-                    <h1 class="logo-title__title">УНИКАЛЬНОСТЬ</h1> <span class="logo-title__cursor"></span>
+                    <span class="logo-title__title">УНИКАЛЬНОСТЬ</span> <span class="logo-title__cursor"></span>
                 </a>
                 <div class="footer-pay-cards">
                     <img class="footer-pay-cards__img" src="/assets/site/images/card-1.jpg">
