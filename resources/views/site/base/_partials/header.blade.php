@@ -1,7 +1,7 @@
 <header class="page-header">
     <div class="container page-header__inner">
         <a href="/" class="logo-title page-header__logo">
-            <h1 class="logo-title__title">УНИКАЛЬНОСТЬ</h1> <span class="logo-title__cursor"></span>
+            <span class="logo-title__title">УНИКАЛЬНОСТЬ</span> <span class="logo-title__cursor"></span>
         </a>
        <header-panel-btn></header-panel-btn>
         <section class="page-header__right">
