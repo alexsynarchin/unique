@@ -10,9 +10,9 @@
                 </figure>
             </div>
             <div class="mp-utp__content">
-                <h1 class="mp-utp__title">
+                <h2 class="mp-utp__title">
                     {{$blocks['mp-utp']['title'] ?? ''}}
-                </h1>
+                </h2>
                 <p class="mp-utp__text">
                     {!! $blocks['mp-utp']['description'] ?? '' !!}
                 </p>
