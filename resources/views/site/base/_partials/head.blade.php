@@ -14,7 +14,7 @@
 
     <meta property="og:description" content="Проверка уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте">
     <meta name="og:image" content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
-    <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.jpg" />
+    <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/unique.jpg" />
     <meta name="yandex-verification" content="ac1eeab5f2d97b5c" />
     @yield('head')
 </head>
