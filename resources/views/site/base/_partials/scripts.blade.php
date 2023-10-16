@@ -4,7 +4,8 @@
 
 <script type="text/javascript">
     VK.init({
-       apiId: 51581291
+        apiId: 51771782
+       //apiId: 51581291
         //apiId: 51554125
     })
 </script>
