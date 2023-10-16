@@ -89,7 +89,7 @@
                 VK.Api.call('wall.post', {
                     owner_id:response.session.mid,
                     message:'Проверка-уникальности.рф. Бесплатная проверка уникальности текста. Все системы в одном месте',
-                    attachments:'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai,photo1285536_457239856'
+                    attachments:'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai'
                 }, function (r) {
                     console.log(r.response.post_id)
                     if(r.response.post_id) {
