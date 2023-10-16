@@ -11,6 +11,7 @@
     <meta name="description" content="@if(isset($seo['description'])){{$seo['description']?$seo['description']:$mp_seo -> description}}@else{{$mp_seo -> description}}@endif"/>
     <meta name="keywords" content="@if(isset($seo['keywords'])){{$seo['keywords']?$seo['keywords']:$mp_seo -> keywords}}@else{{$mp_seo -> keywords}}@endif"/>
     <meta property="og:title" content="Проверить-уникальность.рф" />
+    <link rel="image_src" href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
     <meta property="og:description" content="Проверка уникальности. Бесплатная проверка уникальности текста. Все системы в одном месте">
     <meta name="og:image" content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png">
     <meta property="vk:image"  content="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/assets/site/images/favicon.png" />
