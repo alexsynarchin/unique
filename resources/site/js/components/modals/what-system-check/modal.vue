@@ -4,7 +4,7 @@
             <div class="unique-modal__content what-system-check-modal__content  modal-content">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                 </button>
                 <div class="what-system-check-modal__inner">

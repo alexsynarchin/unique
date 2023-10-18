@@ -39,7 +39,7 @@
                     <label for="file_rewrite" class="btn button upload-button">
                         <input type="file" id="file_rewrite" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
                         <svg class="upload-button__icon" viewBox="0 0 20 22">
-                            <use xlink:href="assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
+                            <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
                         </svg>
                         <span class="upload-button__text">
                     Загрузить документ
