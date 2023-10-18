@@ -53,18 +53,24 @@
         },
         data() {
             return {
+              message: '',
                 data: {
                     url: 'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai',
                     title: 'Проверка-уникальности.рф. Бесплатная проверка уникальности текста. Все системы в одном месте',
                     media:'/assets/site/images/favicon.png',
                     description: 'Бесплатная проверка уникальности текста. Все системы в одном месте'
                 }
-
             }
         },
         methods: {
+            getMessageText() {
+              axios.get('/api/setting/repost/repost_text')
+                  .then((response) => {
+                    this.message = response.data;
+                  })
+
+            },
             closeRepost(data) {
-                console.log(data);
                 bus.$emit('show-promo-modal');
             },
             sendRepostSec() {
@@ -88,7 +94,7 @@
             wallPost(response) {
                 VK.Api.call('wall.post', {
                     owner_id:response.session.mid,
-                    //message:'Проверка-уникальности.рф. Бесплатная проверка уникальности текста. Все системы в одном месте',
+                    message: this.message,
                     attachments:'https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai'
                 }, function (r) {
                     console.log(r.response.post_id)
@@ -135,10 +141,9 @@
         },
         created() {
 
-
         },
         mounted() {
-
+          this.getMessageText();
         }
 
     }
