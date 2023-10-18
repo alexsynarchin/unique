@@ -38,7 +38,7 @@ export default  {
     methods: {
         submitForm() {
             for(var key in this.form) {
-                axios.post('/api/admin/setting/common-update',{value:this.form[key], group:'smtp',name:key})
+                axios.post('/api/admin/setting/update',{value:this.form[key], group:'smtp',name:key})
                     .then((response) => {
 
                     })
@@ -52,7 +52,7 @@ export default  {
             });
         },
         getData() {
-            axios.get('/api/admin/setting/smtp/get')
+            axios.get('/api/admin/setting/get', {params: {group:'smtp'}})
                 .then((response) => {
                     var data = response.data;
                     for (var key in data) {

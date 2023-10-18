@@ -55,6 +55,12 @@ return [
             'visibility' => 'public'
         ],
 
+        'settings' => [
+            'driver' =>'local',
+            'root' => storage_path('app/public/settings'),
+            'url'  => env('APP_URL') . '/storage/settings',
+            'visibility' => 'public'
+        ],
         'content-block' => [
             'driver' =>'local',
             'root' => storage_path('app/public/content-blocks'),

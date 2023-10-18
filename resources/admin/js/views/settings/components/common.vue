@@ -89,7 +89,7 @@
         methods: {
             submitForm() {
                 for(var key in this.form) {
-                    axios.post('/api/admin/setting/common-update',{value:this.form[key], group:'common',name:key})
+                    axios.post('/api/admin/setting/update',{value:this.form[key], group:'common',name:key})
                         .then((response) => {
 
                         })
@@ -103,7 +103,7 @@
                 });
             },
             getData() {
-                axios.get('/api/admin/setting/common/get')
+                axios.get('/api/admin/setting/get', {params: {group:'common'}})
                     .then((response) => {
                         var data = response.data;
                         for (var key in data) {

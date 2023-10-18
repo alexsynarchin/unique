@@ -12,6 +12,9 @@
         <el-tab-pane label="Проверки уникальности" name="uniques">
             <unique></unique>
         </el-tab-pane>
+        <el-tab-pane label="Настройки для репоста" name="repost">
+            <repost-settings></repost-settings>
+        </el-tab-pane>
     </el-tabs>
 </template>
 <script>
@@ -20,14 +23,15 @@ import common from "./components/common";
 import navigation from './components/navigation';
 import MainPage from "./components/main-page";
 import Unique from "./components/unique"
+import RepostSettings from "./components/repost.vue"
 export default {
     components:{
-        common, navigation, MainPage, smtp, Unique
+        common, navigation, MainPage, smtp, Unique, RepostSettings,
     },
     data() {
         return {
             CanAccess: 'Просмотр "Настройки"',
-            activeTab: 'common'
+            activeTab: 'repost'
         };
     },
     methods: {

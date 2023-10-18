@@ -5,14 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
-class Setting extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Setting extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable =[
         'name', 'value', 'group',
     ];
-
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('settings')
+            ->useDisk('settings');
+    }
     public static function get($group, $name)
     {
         $setting = new self();

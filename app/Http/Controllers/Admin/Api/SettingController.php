@@ -11,48 +11,50 @@ use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
-    public function updateCommon(Request $request)
+    public function update(Request $request)
     {
-        $exists= Setting::where('group',$request->get('group'))->where('name',$request->get('name'))->exists();
-        if(!$exists) {
-            if($request ->get('value')){
-                $setting = Setting::create($request->all());
-                return $setting;
-            } else {
-                return 'null';
+        $settingArr = $request->all();
+
+        if($settingArr['value']){
+            $setting = Setting::firstOrCreate([
+                'group' => $settingArr['group'],
+                'name' => $settingArr['name']
+            ]);
+            if(is_array($settingArr['value'])) {
+                $settingArr['value']  = $this->uploadImage($settingArr['value'], $setting);
             }
+            $setting ->update([
+                'value' => $settingArr['value']]);
+            return $setting;
 
         } else {
-            $setting = Setting::where('group', $request->get('group'))->where('name',$request->get('name')) ->firstOrFail();
-            $setting ->update($request->all());
-            return $setting;
+            return 'null';
         }
     }
 
-    public function getCommon(Request $request)
+
+
+    public function getSettings(Request $request)
     {
-        $settings = Setting::where('group','common') -> get();
+        $settings = Setting::where('group',$request->get('group')) -> get();
         $values =[];
         foreach ($settings as $setting) {
             $values[$setting->name] = $setting ->value;
         }
         return json_encode($values);
     }
-
-    public function getSmtp(Request $request)
-    {
-        $settings = Setting::where('group','smtp') -> get();
-        $values =[];
-        foreach ($settings as $setting) {
-            $values[$setting->name] = $setting ->value;
-        }
-        return json_encode($values);
-    }
-
     public function uploadFavicon(FaviconUploadRequest $request)
     {
 
         $validated = $request->validate();
         Storage::disk('local') ->put('/public/favicons/',$request->file('file'));
+    }
+
+    private function uploadImage($image , $setting)
+    {
+        $media = $setting ->addMediaFromBase64($image['link'])
+            ->usingFileName($image['imageName'])
+            ->toMediaCollection('settings');
+        return $media->getUrl();
     }
 }
