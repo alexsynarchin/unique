@@ -31,7 +31,7 @@ export default {
     data() {
         return {
             CanAccess: 'Просмотр "Настройки"',
-            activeTab: 'repost'
+            activeTab: 'common'
         };
     },
     methods: {
