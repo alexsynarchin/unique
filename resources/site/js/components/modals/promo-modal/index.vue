@@ -4,7 +4,7 @@
             <div class="unique-modal__content modal-content" style="background: #F0F1F6;">
                 <button  class="unique-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                 </button>
                 <h3 class="unique-modal__title">

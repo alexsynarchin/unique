@@ -4,10 +4,10 @@
             <div class="unique-modal__content consultation-modal__content modal-content">
                 <button  class="unique-modal__close consultation-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
                     <svg viewBox="0 0 41 40" class="consultation-modal__close-icon--mobile">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-close-gray"></use>
                     </svg>
                     <svg viewBox="0 0 41 40" class="consultation-modal__close-icon--desctop">
-                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-close-white"></use>
+                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-close-white"></use>
                     </svg>
                 </button>
                 <div class="consultation-modal__form">
@@ -25,7 +25,7 @@
                             <div class="u-input-group"  :class="{'is-invalid': errors.has('name')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--user">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-user"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-user"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -42,7 +42,7 @@
                             <div class="u-input-group"   :class="{'is-invalid': errors.has('phone')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -60,7 +60,7 @@
                             <div class="u-input-group"   :class="{'is-invalid': errors.has('email')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg u-input-group__svg--phone">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-phone"></use>
                                     </svg>
                                 </i>
                                 <input class="u-input-group__input"
@@ -77,7 +77,7 @@
                             <div class="u-input-group u-input-group--dark"  :class="{'is-invalid': errors.has('comment')}">
                                 <i class="u-input-group__icon u-input-group__icon--textarea">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg ">
-                                        <use xlink:href="assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
+                                        <use xlink:href="/assets/site/images/sprites.svg?ver=41#sprite-comment"></use>
                                     </svg>
                                 </i>
                                 <textarea class="u-input-group__input u-input-group__input--textarea"
