@@ -49,7 +49,7 @@ class CheckUniqueController extends Controller
         }
           $checkUniqueQuery ->whereHas('reports', function ($query){
                 $query->where('result', 1)
-                    ->orWhere('api_id', null)
+                    ->orWhere('result', 0)
                     ->when('unique_order_id' !== NULL, function ($query) {
                         $query->whereHas('uniqueOrder',function ($q) {
                             $q -> where('status', 'paid');

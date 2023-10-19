@@ -102,7 +102,7 @@
         </tr>
         <tr>
             <td class="label"  style="color: #ABAFC3; padding-right: 15px; padding-bottom: 20px;">Результат проверки: </td>
-            <td class="value" style="padding-bottom: 20px;">{{json_encode($report->data['unique'])}}</td>
+            <td class="value" style="padding-bottom: 20px;">{{json_encode($report->data['unique'])}}%</td>
         </tr>
     </table>
     <p style="margin-bottom: 25px; font-weight: 500; font-size: 22px;">

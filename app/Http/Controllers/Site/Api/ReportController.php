@@ -67,10 +67,7 @@ class ReportController extends Controller
         sleep(5);
         $service = new CheckUniqueService($id);
         $report = $service->getResult();
-        if($report->result) {
-            $sendEmailService = new ReportSendEmail();
-            $sendStatus = $sendEmailService->send($report->id);
-        }
+
         return $report;
     }
 
