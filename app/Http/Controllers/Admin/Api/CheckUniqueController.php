@@ -67,14 +67,6 @@ class CheckUniqueController extends Controller
           });*/
         return CheckUniqueResource::collection(
             $checkUniqueQuery-> with(['orders', 'services'])->  with(['reports' => function($query){
-                $query->where('result', 1)
-                    ->orWhere('result', 0)
-                    ->when('unique_order_id' !== NULL, function ($query) {
-                        $query->whereHas('uniqueOrder',function ($q) {
-                            $q -> where('status', 'paid');
-                        });
-                    })
-                    ->orWhere('error_code', '!=', 0);
                 $query->select(['id', 'system_id','created_at', 'error_code']);
                 $query->with('checkSystem');
             }])
