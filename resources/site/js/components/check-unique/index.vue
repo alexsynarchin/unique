@@ -1,5 +1,6 @@
 <template>
 <div>
+
     <section class="check-unique">
         <section class="check-unique__textarea-wrap">
             <div class="upload-file" v-if="fileName">
@@ -97,6 +98,7 @@
         ref="captcha3"
         id="contact_us_id"
         action="contact_us"
+        v-if="$root.recaptcha"
     ></google-re-captcha-v3>
     <systems-list  @selectSystem="handleSelected" ref="systems_list"></systems-list>
     <free-check-modal ref="free_check_modal"></free-check-modal>
@@ -173,6 +175,7 @@
                 this.file = this.$refs.file.files[0];
                 this.fileName = this.file.name;
                 const formData = new FormData();
+                formData.append('gRecaptchaV3Response', this.gRecaptchaV3Response);
                 formData.append('file', this.file);
 
                 const config = {
@@ -186,6 +189,7 @@
                     .catch((error) => {
                         this.$root.isLoading = false;
                         this.errors.record(error.response.data.errors);
+                        this.$refs.captcha3.execute();
                     })
             },
             checkUniqueText(text) {
@@ -208,7 +212,6 @@
 
             },
             handleSelected(data) {
-                console.log(data);
                 axios.post('/api/check-unique/validate-modal',
                     {
                             length: data.list.length,

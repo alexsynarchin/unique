@@ -74,15 +74,23 @@ const app = new Vue({
     created(){
         this.loadedApp();
     },
-
+    mounted() {
+        this.getCaptchaSetting();
+    },
     data: {
         isLoading: true,
+        recaptcha:false,
 
     },
     methods:{
         async loadedApp(){
             this.isLoading = false;
         },
-
+        getCaptchaSetting() {
+            axios.get('/api/setting/common/recaptcha')
+                .then((response) => {
+                    this.recaptcha = response.data;
+                })
+        },
     }
 });

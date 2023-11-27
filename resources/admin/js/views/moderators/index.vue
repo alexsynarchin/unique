@@ -100,7 +100,7 @@ export default {
     },
     data() {
         return {
-            CanAccess: 'Просмотр "Модераторы"',
+
             id:null,
             moderatorModal:false,
             moderatorModalStatus:"",

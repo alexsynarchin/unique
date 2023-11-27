@@ -18,6 +18,7 @@ use \TextMedia\FileParser\Parser;
 use Illuminate\Support\Facades\Storage;
 use \TextMedia\FileParser\ParserException;
 use \TextMedia\FileParser\Parser\Pdf;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 class CheckUniqueController extends Controller
 {
@@ -88,11 +89,14 @@ class CheckUniqueController extends Controller
     public function checkFile(Request $request)
     {
         $request->validate([
-            'file' => ['required','file','mimes:doc,docx,txt', 'max:49152'
-        ]],[
+            'file' => ['required','file','mimes:doc,docx,txt', 'max:49152'],
+            'gRecaptchaV3Response' => [new GoogleReCaptchaV3ValidationRule('contact_us')]
+
+            ],[
             'file.required'=> 'Загрузите файл или введите текст для проверки на уникальность',
             'file.mimes' => 'Файл должен быть следующих типов: doc, docx или txt'
         ]);
+        dd($request->all());
         //application/vnd.openxmlformats-officedocument.wordprocessingml.document
         //application/msword
         $file = $request->file('file');

@@ -160,12 +160,7 @@
             {
                 axios.get('/api/setting/' + group + '/' + name)
                     .then((response) => {
-                        console.log(response.data);
-                        if(response.data === 1) {
-                            this.free_check = true;
-                        } else {
-                            this.free_check = false;
-                        }
+                        this.free_check = response.data;
                     })
             },
             getSystemsList() {

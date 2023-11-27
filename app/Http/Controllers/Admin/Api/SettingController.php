@@ -13,8 +13,17 @@ class SettingController extends Controller
 {
     public function update(Request $request)
     {
-        $settingArr = $request->all();
 
+        $settingArr = $request->all();
+            if($settingArr['value'] === false) {
+
+                $settingArr['value'] = 'false';
+
+
+            }
+        if($settingArr['value'] === true) {
+            $settingArr['value'] = 'true';
+        }
         if($settingArr['value']){
             $setting = Setting::firstOrCreate([
                 'group' => $settingArr['group'],
@@ -23,11 +32,14 @@ class SettingController extends Controller
             if(is_array($settingArr['value'])) {
                 $settingArr['value']  = $this->uploadImage($settingArr['value'], $setting);
             }
-            $setting ->update([
-                'value' => $settingArr['value']]);
+
+
+            $setting->value = $settingArr['value'];
+            $setting->save();
             return $setting;
 
         } else {
+
             return 'null';
         }
     }

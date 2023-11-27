@@ -44,7 +44,7 @@ class GenerateReportPdf implements ShouldQueue
         if(Setting::where('group', 'common') -> where('name', 'free_email_send') -> exists()) {
             $send_setting = Setting::where('group', 'common') -> where('name', 'free_email_send')->first();
             $send_setting = $send_setting -> value;
-            if( ((int) $send_setting) === 1) {
+            if( $send_setting === 'true') {
                 $send_status = true;
             }
         }

@@ -3,6 +3,7 @@
         <h3 class="block-title">
             Общие Настройки
         </h3>
+    {{form}}
         <el-form ref="form" :model="form" label-position="top">
             <div class="row">
                 <el-form-item class="col-lg-6" prop="phone_header" label="Телефон в шапке сайта">
@@ -110,7 +111,7 @@
                             if(key in this.form){
                                 this.form[key] = data[key];
                                 if (key === 'free_email_send' || key === 'recaptcha' || key === 'free_check') {
-                                    if(this.form[key] === '1') {
+                                    if(this.form[key] === 'true') {
                                         this.form[key] = true;
                                     }  else {
                                         this.form[key] = false;
