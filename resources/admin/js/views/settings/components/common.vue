@@ -52,6 +52,11 @@
                     </el-switch>
 
                 </el-form-item>
+                <el-form-item class="col-lg-6" prop="free_email_send" label="Отправлять письмо о выставлении счета">
+                    <el-switch v-model="form.need_payment">
+                    </el-switch>
+
+                </el-form-item>
             </div>
             <div class="mb-3">
                 <el-input type="textarea" :rows="12" v-model="form.scripts"></el-input>
@@ -84,6 +89,7 @@
                   free_email_send: false,
                   recaptcha: false,
                   free_check:false,
+                  need_payment:false,
               }
           }
         },
@@ -110,7 +116,7 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
-                                if (key === 'free_email_send' || key === 'recaptcha' || key === 'free_check') {
+                                if (key === 'free_email_send' || key === 'need_payment' || key === 'recaptcha' || key === 'free_check') {
                                     if(this.form[key] === 'true') {
                                         this.form[key] = true;
                                     }  else {
