@@ -76,8 +76,28 @@ class PromoCodeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'discount_type' => 'required',
+            'discount' => 'required|numeric|min:1',
+            'max_count' => 'required',
+            'range' => 'required',
+        ], [
+            'range.required' => 'Выберите срок действия промокода',
+            'discount.min' => 'Введите размер скидки'
+        ]);
+
+        $start_time = date('Y-m-d H:i:s',  strtotime($request ->get('range')[0]));
+        $end_time = date('Y-m-d H:i:s', strtotime($request ->get('range')[1]));
         $promo = PromoCode::findOrFail($id);
-        $promo -> update($request->all());
+        $promo -> update([
+            'name' => $request->get('name'),
+            'discount_type' => $request->get('discount_type'),
+            'discount' => $request->get('discount'),
+            'max_count' => $request->get('max_count'),
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+        ]);
         return $promo;
     }
 

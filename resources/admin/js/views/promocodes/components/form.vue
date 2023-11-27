@@ -46,7 +46,7 @@
             </el-col>
         </el-row>
         <div class="d-flex justify-content-center">
-            <el-button icon="el-icon-plus" type="success" style="margin-right: 1rem" @click.prevent="submitForm('promoForm')">Добавить</el-button>
+            <el-button icon="el-icon-plus" type="success" style="margin-right: 1rem" @click.prevent="submitForm('promoForm')">Сохранить</el-button>
             <el-button @click="closeModal">Отмена</el-button>
         </div>
     </el-form>
