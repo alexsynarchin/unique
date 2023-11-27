@@ -96,7 +96,7 @@ class CheckUniqueController extends Controller
             'file.required'=> 'Загрузите файл или введите текст для проверки на уникальность',
             'file.mimes' => 'Файл должен быть следующих типов: doc, docx или txt'
         ]);
-        dd($request->all());
+
         //application/vnd.openxmlformats-officedocument.wordprocessingml.document
         //application/msword
         $file = $request->file('file');
