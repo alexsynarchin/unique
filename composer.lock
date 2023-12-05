@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c9a5c113e8f07a3a74988db7fc91be0",
+    "content-hash": "12cce6be4a52abbea37be800a09d3490",
     "packages": [
         {
             "name": "ahmedsaoud31/laravel-permission-to-vuejs",
@@ -1543,6 +1543,54 @@
                 }
             ],
             "time": "2022-08-28T14:45:39+00:00"
+        },
+        {
+            "name": "idma/robokassa",
+            "version": "v1.0.0-beta7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/idma/robokassa.git",
+                "reference": "a265a6914f2de1095d409585425aa1a4a64cdfb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/idma/robokassa/zipball/a265a6914f2de1095d409585425aa1a4a64cdfb7",
+                "reference": "a265a6914f2de1095d409585425aa1a4a64cdfb7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Idma\\Robokassa\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "JhaoDa",
+                    "email": "jhaoda@gmail.com",
+                    "homepage": "https://github.com/jhaoda",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library for Robokassa payment system",
+            "homepage": "https://github.com/idma/robokassa",
+            "keywords": [
+                "idma",
+                "payment",
+                "robokassa"
+            ],
+            "support": {
+                "issues": "https://github.com/idma/robokassa/issues",
+                "source": "https://github.com/idma/robokassa"
+            },
+            "time": "2022-03-28T09:19:42+00:00"
         },
         {
             "name": "intervention/image",

@@ -3,7 +3,7 @@
         <h3 class="block-title">
             Общие Настройки
         </h3>
-    {{form}}
+
         <el-form ref="form" :model="form" label-position="top">
             <div class="row">
                 <el-form-item class="col-lg-6" prop="phone_header" label="Телефон в шапке сайта">
@@ -58,6 +58,18 @@
 
                 </el-form-item>
             </div>
+            <div class="row">
+                <el-form-item class="col-lg-6" prop="free_email_send" label="Платежи для не РФ">
+                    <el-select v-model="form.payment_not_ru" placeholder="Выбрать">
+                        <el-option
+                            v-for="item in payments"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </div>
             <div class="mb-3">
                 <el-input type="textarea" :rows="12" v-model="form.scripts"></el-input>
             </div>
@@ -75,7 +87,18 @@
         },
         data() {
           return {
+              payments: [
+                  {
+                      label:'Unitpay',
+                      value:'unitpay'
+                  },
+                  {
+                      label:'Robokassa',
+                      value:'robokassa'
+                  },
+              ],
               form:{
+                  payment_not_ru: "",
                   phone_header: "",
                   phone_footer:"",
                   copyright:"",

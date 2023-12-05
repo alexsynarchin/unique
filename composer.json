@@ -17,6 +17,7 @@
         "doctrine/dbal": "^3.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "idma/robokassa": "^1.0@beta",
         "jaybizzle/doc-to-text": "^2.0",
         "krylov123/textru-api": "^1.0",
         "laravel/framework": "^8.75",
