@@ -13,7 +13,7 @@
             testOrder() {
                 axios.post('/api/check-robokassa-payment')
                     .then((response) => {
-                        console.log(response.data)
+                        document.location.href = response.data;
                     })
             }
         }
