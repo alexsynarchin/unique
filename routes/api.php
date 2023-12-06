@@ -39,7 +39,7 @@ Route::get('/check-systems', [CheckSystemController::class, 'index'])->name('che
 
 use App\Http\Controllers\Site\Api\PaymentController;
 Route::post('check-unique-payment', [PaymentController::class, 'payment'])->name('payment');
-
+Route::post('check-robokassa-payment', [PaymentController::class, 'robokassaPayment'])->name('robokassa-payment');
 use App\Http\Controllers\Site\Api\BlockListController;
 Route::get('/block-list/{type}',[BlockListController::class,'index'])->name('block-list');
 

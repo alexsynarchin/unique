@@ -19,7 +19,7 @@ class UniqueOrderController extends Controller
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
         $url = $order->url;
-       
+
         return view('site.order.success', ['url'=> $url, 'error'=> '']);
     }
 
@@ -31,5 +31,19 @@ class UniqueOrderController extends Controller
         $description = 'Проверка уникальности';
         $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, !$order->russia, $description);
         return view('site.order.fail', ['url' => $url]);
+    }
+
+    public function robokassaSuccess(Request $request)
+    {
+
+    }
+    public function robokassaFail(Request $request)
+    {
+
+    }
+
+    public function test()
+    {
+        return view('site.order.test');
     }
 }

@@ -68,7 +68,8 @@ Vue.component('Articles', require('./views/article/index').default)
 //Order
 Vue.component('OrderFail', require('./components/order/fail').default);
 Vue.component('OrderSuccess', require('./components/order/success').default);
-Vue.component('PromoModal', require('./components/modals/promo-modal/index.vue').default)
+Vue.component('PromoModal', require('./components/modals/promo-modal/index.vue').default);
+Vue.component('OrderTest', require('./components/order/test.vue').default);
 const app = new Vue({
     el: '#app',
     created(){
