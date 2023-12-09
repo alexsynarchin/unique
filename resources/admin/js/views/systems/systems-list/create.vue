@@ -24,6 +24,7 @@
                     api_id:null,
                     logo:"",
                     price:0,
+                    price_2: 0,
                     symbols_count: 100000,
                 },
             }

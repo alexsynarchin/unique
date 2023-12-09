@@ -1,10 +1,13 @@
 <template>
-    <el-form :model="form">
+    <el-form :model="form" label-position="top">
         <el-form-item prop="title" label="Название" :error="errors.get('title')">
             <el-input v-model="form.title"/>
         </el-form-item>
         <el-form-item prop="price" label="Стоимость">
             <el-input-number :min="0" v-model="form.price"/>
+        </el-form-item>
+        <el-form-item prop="price_@" label="Стоимость для не РФ">
+            <el-input-number :min="0" v-model="form.price_2"/>
         </el-form-item>
         <el-form-item prop="description" label="Описание">
             <el-input type="textarea" v-model="form.description" rows="6"></el-input>

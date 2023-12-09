@@ -17,6 +17,7 @@
                     title:"",
                     logo: null,
                     price: 0,
+                    price_2: 0,
                     description: "",
                 },
                 formAction: {

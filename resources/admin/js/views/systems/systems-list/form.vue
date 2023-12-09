@@ -26,6 +26,11 @@
                     </el-form-item>
                 </div>
                 <div class="col-md-6">
+                    <el-form-item label="Стоимость для не РФ" :error="errors.get('price_2')">
+                        <el-input-number :step="100" v-model="form.price_2"  :min="0" ></el-input-number>
+                    </el-form-item>
+                </div>
+                <div class="col-md-6">
                     <el-form-item
                         :error="errors.get('api_id')"
                         label="Сервис проверки">
