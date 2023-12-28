@@ -143,6 +143,7 @@
                             {id:this.CheckSystems[element].id,
                                 logo: this.CheckSystems[element].logo,
                                 price:this.CheckSystems[element].price,
+                                price_2:this.CheckSystems[element].price_2,
                                 title:this.CheckSystems[element].title
                             });
                     })

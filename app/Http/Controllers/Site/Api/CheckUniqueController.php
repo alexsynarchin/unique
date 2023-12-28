@@ -8,6 +8,7 @@ use App\Models\CheckSystem;
 use App\Models\CheckUnique;
 use App\Models\PromoCode;
 use App\Models\Report;
+use App\Models\Setting;
 use App\Models\UniqueText;
 use App\Services\Report\ReportService;
 use Carbon\Carbon;
@@ -150,24 +151,40 @@ class CheckUniqueController extends Controller
 
     public function makeReport(CheckUniqueRequest  $request)
     {
-
         $data = [];
         if($request->has('sum')) {
             $data['sum'] = $request->get('sum');
         }
-        if($request->has('promocode') && $request->get('promocode') && $request->has('sum') && $request->get('sum')) {
+        if($request->has('sum_2')) {
+            $data['sum_2'] = $request->get('sum_2');
+        }
+
+        if($request->has('promocode') && $request->get('promocode')) {
             $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
             $promo_code -> max_count = $promo_code -> max_count-1;
             $promo_code -> save();
-            if($promo_code->discount_type === 'rubles') {
-                $data['sum'] = $data['sum'] - $promo_code->discount;
-                if($data['sum'] < 0) {
-                    $data['sum'] = 0;
+            if($request->has('sum') && $request->get('sum')) {
+                if($promo_code->discount_type === 'rubles') {
+                    $data['sum'] = $data['sum'] - $promo_code->discount;
+                    if($data['sum'] < 0) {
+                        $data['sum'] = 0;
+                    }
+                } else {
+                    $data['sum'] = $data['sum'] - ($data['sum'] * ($promo_code->discount/100));
                 }
-            } else {
-                $data['sum'] = $data['sum'] - ($data['sum'] * ($promo_code->discount/100));
+            }
+            if($request->has('sum_2') && $request->get('sum_2')) {
+                if($promo_code->discount_type === 'rubles') {
+                    $data['sum_2'] = $data['sum_2'] - $promo_code->discount;
+                    if($data['sum_2'] < 0) {
+                        $data['sum_2'] = 0;
+                    }
+                } else {
+                    $data['sum_2'] = $data['sum_2'] - ($data['sum_2'] * ($promo_code->discount/100));
+                }
             }
         }
+
         if($request->has('id')) {
             $check_unique = CheckUnique::findOrFail($request->get('id'));
         } else {
@@ -241,6 +258,19 @@ class CheckUniqueController extends Controller
         $data['url'] = $url;
         $data['check_unique_id'] = $check_unique->id;
         $data['reports'] = $reports;
+        $data['currency'] = 'руб';
+        $data['robokassa'] = false;
+        if(Setting::where('group','common')->where('name','payment_not_ru')->exists()) {
+            $payment_not_ru =  Setting::where('group','common')->where('name','payment_not_ru')->first();
+            if($payment_not_ru -> value === 'robokassa') {
+                $data['currency'] = 'тенге';
+                $data['robokassa'] = true;
+            } else {
+                $data['sum_2'] =$data['sum'];
+            }
+        } else {
+            $data['sum_2'] =$data['sum'];
+        }
         return $data;
     }
 }

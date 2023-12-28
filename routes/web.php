@@ -54,8 +54,8 @@ Route::get('/unitpay/result-netting', [UnitPayController::class, 'handlePaymentN
 use App\Http\Controllers\Site\UniqueOrderController;
 Route::get('/order/success', [UniqueOrderController::class, 'success'])->name('order.success');
 Route::get('/order/fail', [UniqueOrderController::class, 'fail'])->name('order.fail');
-Route::get('/order/robokassa-success', [UniqueOrderController::class, 'robokassaSuccess']);
-Route::get('/order/robokassa-fail', [UniqueOrderController::class, 'robokassaFail']);
+Route::get('/robokassa-success', [UniqueOrderController::class, 'robokassaSuccess']);
+Route::get('/robokassa-fail', [UniqueOrderController::class, 'robokassaFail']);
 Route::get('/order/test', [UniqueOrderController::class, 'test']);
 
 

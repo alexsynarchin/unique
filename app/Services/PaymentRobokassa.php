@@ -1,30 +1,67 @@
 <?php
 
 namespace App\Services;
-
+use App\Jobs\SendAdminReport;
+use App\Models\UniqueOrder;
 class PaymentRobokassa
 {
-    private function createPayment($order)
+
+    private $robokassa_user =  'ProveritUniq';
+    private $pass_1 = 'e513phF4jILjBYXbj3wW';
+    private $pass_2 = 's3RCljNJ67YGIlk9hJ2V';
+    private  $test_mode = false;
+
+    public function createPayment($order)
     {
-        //test passwords
-        // pass 1 Ka4e1x1jwQIU4enhHA8Y
-        // pass 2 bIG09xvJo3BtGdZ2w6hI
-
-        //passwords
-
-        // pass 1 DSqzfD7deaz1RQb530Ij
-        // pass 2 nV2qFGc5X55BLIbJcY9f
 
         $payment = new \Idma\Robokassa\Payment(
-            'ProveritUniq', 'qBy89c5N4pnPnaT9yPPq', 'HSpq9X8Dn5sC0LM0SDrq', true
+            $this->robokassa_user, $this->pass_1,
+            $this->pass_2, $this->test_mode
         );
 
         $payment
-            ->setInvoiceId($order->id)
-            ->setSum($order->sum)
+            ->setInvoiceId($order -> id)
+            ->setSum($order -> sum)
             ->setDescription('Проверка уникальности текста');
+        $url = $payment->getPaymentUrl();
 
-// redirect to payment url
-        return $payment->getPaymentUrl();
+        return $url;
+    }
+
+    public function success($data)
+    {
+        $payment = new \Idma\Robokassa\Payment(
+            $this->robokassa_user, $this->pass_1,
+            $this->pass_2, $this->test_mode
+        );
+        $return = [
+            'status' => false,
+        ];
+        if ($payment->validateSuccess($data)) {
+            $order = UniqueOrder::findOrFail($payment->getInvoiceId());
+            if ($payment->getSum() == $order->sum) {
+               $return['status'] = true;
+               $return['order'] = $order;
+            }
+        }
+
+        return $return;
+    }
+
+    public function paymentResult($data)
+    {
+        $payment = new \Idma\Robokassa\Payment(
+            $this->robokassa_user, $this->pass_1,
+            $this->pass_2, $this->test_mode
+        );
+        if ($payment->validateSuccess($data)) {
+            $order = UniqueOrder::findOrFail($payment->getInvoiceId());
+            if ($payment->getSum() == $order->sum) {
+                $order->status = 'paid';
+                $order->save();
+                SendAdminReport::dispatch($order)->delay(now());
+            }
+            echo $payment->getSuccessAnswer(); // "OK1254487\n"
+        }
     }
 }

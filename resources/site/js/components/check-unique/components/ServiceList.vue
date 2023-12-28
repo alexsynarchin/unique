@@ -2,7 +2,7 @@
     <ul class="unique-service-list">
         <li class="unique-service-list__item"
             v-for="(item, index) in serviceList"
-            @click.prevent="selectService({id:item.id, price:item.price})"
+            @click.prevent="selectService({id:item.id, price:item.price, price_2:item.price_2})"
         >
             <figure class="unique-service-list__logo-wrap">
                 <img v-if="item.logo"

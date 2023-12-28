@@ -10,6 +10,7 @@
                 <h3 class="unique-modal__title">
                     Выберите способ оплаты
                 </h3>
+
                 <div class="row">
                     <div class="col-md-6">
                         <section class="card" style="height: 100%">
@@ -28,7 +29,8 @@
                                             <span>{{paymentData.sum}} руб.</span>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn button" @click.prevent="makePayment(true)">Оплатить</button>
+                                            <button class="btn button"
+                                                    @click.prevent="makePayment(true)">Оплатить</button>
                                         </div>
                                     </div>
                                 </div>
@@ -49,10 +51,11 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label>Ваш счет:</label>
-                                            <span>{{paymentData.sum}} руб.</span>
+                                            <span>{{paymentData.sum_2}} {{paymentData.currency}}.</span>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn button " @click.prevent="makePayment(false)">Оплатить</button>
+                                            <button class="btn button "
+                                                    @click.prevent="makePayment(false)">Оплатить</button>
                                         </div>
                                     </div>
                                 </div>
@@ -71,6 +74,9 @@ export default {
         return {
             paymentData: {
                 sum:0,
+                sum_2:0,
+                currency:'руб',
+                robokassa: false,
                 url:"",
                 check_unique_id:null,
                 russia:null,
@@ -81,10 +87,13 @@ export default {
     },
     methods: {
         showModal(data) {
-            console.log('show-select-payment-country')
             console.log(data);
+            console.log('show-select-payment-country')
             this.$root.isLoading = false;
+            this.paymentData.currency = data.currency;
+            this.paymentData.robokassa = data.robokassa;
             this.paymentData.sum = data.sum;
+            this.paymentData.sum_2 = data.sum_2;
             this.paymentData.url = data.url;
             this.paymentData.check_unique_id = data.check_unique_id;
             this.paymentData.reports = data.reports;

@@ -132,6 +132,7 @@ export default {
                 file:null,
                 url: '',
                 sum: 0,
+                sum_2:0,
                 systems:[],
                 services:[],
                 textParams: {},
@@ -144,6 +145,7 @@ export default {
         methods: {
             onCloseModal() {
                 this.sum = 0;
+                this.sum_2 = 0;
                 this.form.email = "";
                 this.form.promocode = "";
                 this.systems = [];
@@ -160,6 +162,7 @@ export default {
                 this.systems.forEach((system) => {
                     console.log(system)
                     this.sum = this.sum + system.price;
+                    this.sum_2 = this.sum_2 + system.price_2;
                 })
                 $('#pay_check').modal('show');
             },
@@ -189,23 +192,18 @@ export default {
                     formData.append(key, data);
                 }
                 formData.append('sum', this.sum);
+                formData.append('sum_2', this.sum_2);
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
                 axios.post('/api/check-unique-make-report', formData, config)
                     .then((response) => {
-                        console.log(response.data);
-
-                        console.log(response.data);
-                       // window.location.href = response.data;
                         let data = response.data;
                         if(data.sum > 0) {
-
                             this.selectPaymentCountry(data);
                         } else {
                             window.location.href = response.data.url;
                         }
-
                     })
                     .catch((error) => {
                         this.$root.isLoading = false;
@@ -215,12 +213,15 @@ export default {
              selectService(data) {
 
                 if( this.services.map(x => x.id).indexOf(data.id) === -1) {
+
                     this.services.push(data);
                     this.sum = this.sum + data.price;
+                    this.sum_2 = this.sum_2 + data.price_2;
                 } else {
                     let index =  this.services.map(x => x.id).indexOf(data.id);
                     this.services.splice(index, 1);
                     this.sum = this.sum - data.price;
+                    this.sum_2 = this.sum_2 - data.price_2;
                 }
 
              }

@@ -9,12 +9,18 @@ use App\Mail\AdminReportMail;
 use App\Models\CheckUnique;
 use App\Models\Setting;
 use App\Models\UniqueOrder;
+use App\Services\PaymentRobokassa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use UnitPay;
 
 class UniqueOrderController extends Controller
 {
+    protected $paymentRobokassa;
+    public function __construct(PaymentRobokassa $paymentRobokassa)
+    {
+        $this -> paymentRobokassa = $paymentRobokassa;
+    }
     public function success(Request $request)
     {
         $order = UniqueOrder::findOrFail($request->get('account'));
@@ -35,11 +41,24 @@ class UniqueOrderController extends Controller
 
     public function robokassaSuccess(Request $request)
     {
-
+       $payment_data =  $this -> paymentRobokassa->success($request->all());
+       if($payment_data['status']) {
+           $order = $payment_data['order'];
+           $url = $order->url;
+           $order -> status = 'paid';
+           $order -> save();
+           return view('site.order.success', ['url'=> $url, 'error'=> '']);
+       } else {
+           abort(404);
+       }
     }
     public function robokassaFail(Request $request)
     {
-
+        $order = UniqueOrder::findOrFail($request->get('InvId'));
+        $check_unique = CheckUnique::findOrFail($order->check_unique_id);
+        $description = 'Проверка уникальности';
+        $url =  $this -> paymentRobokassa -> createPayment($order);
+        return view('site.order.fail', ['url' => $url]);
     }
 
     public function test()
