@@ -40,6 +40,7 @@ class PaymentRobokassa
         if ($payment->validateSuccess($data)) {
             $order = UniqueOrder::findOrFail($payment->getInvoiceId());
             if ($payment->getSum() == $order->sum) {
+                SendAdminReport::dispatch($order)->delay(now());
                $return['status'] = true;
                $return['order'] = $order;
             }
