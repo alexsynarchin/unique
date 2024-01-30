@@ -66,7 +66,8 @@ class CheckSystemController extends Controller
 
         $system = CheckSystem::findOrFail($id);
         $system->update($request->except(['logo', 'logoName', 'file', 'api_id']));
-        if($request->get('api_id')) {
+
+        if($request->get('api_id') != 'null') {
             $system->api_id = $request->get('api_id');
             $system -> save();
         }
