@@ -50,7 +50,9 @@
             <el-form-item label="Описание системы проверки">
                 <el-input  :rows="5" type="textarea" v-model="form.description"></el-input>
             </el-form-item>
-            <upload-file   :value="form.report_file" @fileUpload="fileUpload"></upload-file>
+            <el-form-item label="Пример отчета">
+                <upload-file   :value="form.report_file" @fileUpload="fileUpload"></upload-file>
+            </el-form-item>
             <h6>Настройки системы проверки</h6>
             <el-form-item label="Ограничение по количеству символов">
                 <el-input-number :step="100" v-model="form.symbols_count"  :min="0" ></el-input-number>
