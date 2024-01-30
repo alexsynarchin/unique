@@ -31,15 +31,18 @@ class CheckSystemController extends Controller
         ]);
 
 
-        $system = CheckSystem::create($request->except(['logo', 'logoName', 'report_file']));
-
+        $system = CheckSystem::create($request->except(['logo', 'logoName', 'report_file', 'api_id']));
+        if($request->get('api_id')) {
+            $system->api_id = $request->get('api_id');
+            $system -> save();
+        }
         if($request->hasFile('file')) {
             $file = $request->file('file');
             $upload_folder = 'public/check-systems/files/' . $system->id;
             $filename = $file->getClientOriginalName(); // image.jpg
             Storage::putFileAs($upload_folder, $file, $filename);
         }
-        
+
         if($request -> has('logoName')) {
             $system  ->addMediaFromBase64($request->get('logo'))
                 ->toMediaCollection('check-systems');
@@ -62,8 +65,11 @@ class CheckSystemController extends Controller
         ]);
 
         $system = CheckSystem::findOrFail($id);
-        $system->update($request->except(['logo', 'logoName', 'file']));
-
+        $system->update($request->except(['logo', 'logoName', 'file', 'api_id']));
+        if($request->get('api_id')) {
+            $system->api_id = $request->get('api_id');
+            $system -> save();
+        }
         if($request->hasFile('file')) {
             $file = $request->file('file');
             $upload_folder = 'public/check-systems/files/' . $system->id;
