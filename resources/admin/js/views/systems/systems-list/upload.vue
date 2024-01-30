@@ -1,7 +1,7 @@
 <template>
 
-    <section class="import-tasks row align-items-center mb-4">
-        <div class=" col-12 ">
+    <section class="import-tasks justify-content-between row align-items-center mb-4">
+        <div class=" col">
             <label class="upload-file" :class="{'upload-file--error':  fileErrors}">
                 <input class="upload-file__input"
                        @change="uploadFile"
@@ -14,12 +14,18 @@
                     </span>
                 </span>
                 <span class="upload-file__text">
-                    <template v-if="!fileName">
-                    {{value ? value : 'Файл не выбран'}}
+                        <template v-if="!fileName">
+                            {{value ? value : 'Файл не выбран'}}
+                        </template>
+                        <template v-else>
+                             {{fileName}}
+                        </template>
+                    <template v-if="(fileName && this.file) || value">
+                      <el-button icon="el-icon-close" @click.stop.prevent="clearUploadFile">
+                        Очистить
+                      </el-button>
                     </template>
-                    <template v-else>
-                         {{fileName}}
-                    </template>
+
                 </span>
                 <span class="upload-file__error" v-if="fileErrors">
                     {{fileErrors}}
@@ -46,6 +52,7 @@
             }
         },
         methods: {
+
            changeFileName() {
                let name = "Файл не выбран";
                if(this.file && this.file.name) {
@@ -79,7 +86,8 @@
             clearUploadFile() {
                 this.file = "";
                 this.$refs.file.value=null;
-                this.errors.clear();
+                this.fileErrors = '';
+                this.$emit('clearFile');
             }
         },
 

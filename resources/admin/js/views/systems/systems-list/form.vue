@@ -51,7 +51,7 @@
                 <el-input  :rows="5" type="textarea" v-model="form.description"></el-input>
             </el-form-item>
             <el-form-item label="Пример отчета">
-                <upload-file   :value="form.report_file" @fileUpload="fileUpload"></upload-file>
+                <upload-file @clearFile="clearFile"  :value="form.report_file" @fileUpload="fileUpload"></upload-file>
             </el-form-item>
             <h6>Настройки системы проверки</h6>
             <el-form-item label="Ограничение по количеству символов">
@@ -94,6 +94,10 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         methods: {
+            clearFile() {
+                this.form.file = null;
+                this.form.report_file = '';
+            },
           fileUpload(file) {
               console.log(file)
               this.form.file = file;

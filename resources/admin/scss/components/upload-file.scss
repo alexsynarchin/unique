@@ -6,6 +6,8 @@
     border-radius: 4px;
     border: 1px solid #DCDFE6;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    display: flex;
+    column-gap: 10px;
     &:hover {
         border-color: #409EFF;
     }
@@ -23,9 +25,12 @@
     }
 
     &__btn {
-        margin-right: 10px;
+      min-width: 155px;
     }
     &__text {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
         font-size: 14px;
         color: #606266;
     }
