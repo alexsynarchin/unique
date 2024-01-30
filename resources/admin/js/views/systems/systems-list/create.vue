@@ -25,6 +25,7 @@
                     logo:"",
                     price:0,
                     price_2: 0,
+                    report_file: '',
                     symbols_count: 100000,
                 },
             }

@@ -2,6 +2,7 @@
 @section('head')
     <link rel="stylesheet" href="{{asset('assets/site/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/css/owl.theme.default.min.css')}}">
+
 @endsection
 @section('content')
     <div class="container">

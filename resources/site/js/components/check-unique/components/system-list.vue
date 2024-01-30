@@ -16,8 +16,18 @@
                         <h4 class="check-system-item__title">
                             {{item.title}}
                         </h4>
-                        <a style="display: block; z-index: 4; position: relative" href="" class="check-system-item__link" :class="{'check-system-item__link--disable': !free_check && item.price === 0}" @click.stop.prevent="showSystemModal(index, item)">
+                        <a style="display: block; z-index: 4; position: relative" href=""
+                           class="check-system-item__link"
+                           :class="{'check-system-item__link--disable': !free_check && item.price === 0}"
+                           @click.stop.prevent="showSystemModal(index, item)">
                             Подробнее
+                        </a>
+                        <a style="display: block; z-index: 4; position: relative"
+                           v-if="item.report_file"
+                           href=""
+                           @click.stop.prevent="openReportPdf('/storage/check-systems/files/' + item.id + '/' + item.report_file)"
+                           class="check-system-item__link">
+                            Пример отчета
                         </a>
                         <div class="check-system-item__disable-text--mobile"  v-if="item.price === 0 && !free_check">
                             В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
@@ -57,6 +67,7 @@
     </section>
 </template>
 <script>
+import $ from "jquery";
     import selectSystemModal from "./SelectSystemModal";
     import { Errors } from  '@/common/js/services/errors.js';
     import { bus } from '@/site/js/services/bus.js';
@@ -93,6 +104,16 @@
             }
         },
         methods: {
+            openReportPdf(url) {
+                console.log(url)
+                Fancybox.show([
+                    {
+                        src: url,
+
+                    },
+                ]);
+
+            },
             selectSystem(index, item) {
                 if(item.price !== 0 || this.free_check ) {
                     let checkIndex = this.systemIndex.indexOf(index);
@@ -189,7 +210,12 @@
 
         },
         mounted() {
+            window.onload = function(){
+                Fancybox.bind("[data-fancybox]", {
+                    // Your custom options
+                });
 
+            }
             this.getSystemsList();
             this.getSetting('common', 'free_check');
 

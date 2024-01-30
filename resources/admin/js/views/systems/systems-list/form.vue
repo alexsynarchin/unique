@@ -50,10 +50,12 @@
             <el-form-item label="Описание системы проверки">
                 <el-input  :rows="5" type="textarea" v-model="form.description"></el-input>
             </el-form-item>
+            <upload-file   :value="form.report_file" @fileUpload="fileUpload"></upload-file>
             <h6>Настройки системы проверки</h6>
             <el-form-item label="Ограничение по количеству символов">
                 <el-input-number :step="100" v-model="form.symbols_count"  :min="0" ></el-input-number>
             </el-form-item>
+
             <div class="mt-3">
                 <el-button type="success" @click.prevent="saveSystem">
                     Сохранить
@@ -68,8 +70,10 @@
     </el-form>
 </template>
 <script>
+import uploadFile from './upload.vue';
 import { Errors } from  '@/common/js/services/errors.js';
     export default {
+        components: {uploadFile},
         props:{
 
             actionUrl: {
@@ -88,12 +92,22 @@ import { Errors } from  '@/common/js/services/errors.js';
             }
         },
         methods: {
+          fileUpload(file) {
+              console.log(file)
+              this.form.file = file;
+              this.form.report_file = file.name;
+            },
             canselEdit() {
                 this.$emit('cancel');
             },
             saveSystem() {
                 this.$root.isLoading =  true;
-                axios.post(this.actionUrl, this.form)
+                const formData = new FormData();
+                const headers = { 'Content-Type': 'multipart/form-data' };
+                Object.keys(this.form).forEach((key) => {
+                    formData.append(key, this.form[key]);
+                })
+                axios.post(this.actionUrl, formData, headers)
                     .then((response) => {
                         this.$root.isLoading = false;
                         this.$emit('save');
@@ -142,6 +156,10 @@ import { Errors } from  '@/common/js/services/errors.js';
         },
         mounted() {
             this.getApiList();
-        }
+
+
+
+        },
+
     }
 </script>
