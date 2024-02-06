@@ -1,5 +1,6 @@
 <template>
     <section class="mb-4">
+
         <report-item v-if="loaded"
                      :report="report"
                     :check_unique="check_unique"
@@ -46,16 +47,25 @@ import ReportDetail from "./report-detail";
                         //console.log(response.data)
                         this.report = response.data;
                         this.loaded = true;
+                        this.ymGoal();
                         if(!this.report.check_system.manual && !this.report.result && !this.report.error_code) {
                             this.$root.isLoading = false;
                             this.getReportData();
                         } else {
                             this.$root.isLoading = false;
+
                         }
 
-
-
                     })
+
+            },
+            ymGoal() {
+
+                if(this.report.unique_order_id) {
+                    ym(93111741, 'reachGoal', 'plat');
+                } else {
+                    ym(93111741, 'reachGoal', 'bespl');
+                }
             },
             async getUid() {
                 await axios.post('/api/report/'+ this.id + '/uid')
@@ -69,6 +79,7 @@ import ReportDetail from "./report-detail";
             },
         },
         mounted() {
+
             this.$root.isLoading = true;
             this.getReport();
         }
