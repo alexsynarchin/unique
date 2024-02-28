@@ -67,15 +67,7 @@ class CheckUniqueController extends Controller
               $q->where('need_payment', 0);
           });*/
         return CheckUniqueResource::collection(
-            $checkUniqueQuery-> with(['services'=> function($query){
-                $query->pluck( 'title');
-            }])->  with(['reports' => function($query){
-
-                $query->select(['id', 'system_id','created_at', 'error_code']);
-                $query->with(['checkSystem' => function($query){
-                    $query->pluck( 'title');
-                }]);
-            }])
+            $checkUniqueQuery
                 ->orderBy('id', 'desc')
                 ->fastPaginate($limit));
     }
