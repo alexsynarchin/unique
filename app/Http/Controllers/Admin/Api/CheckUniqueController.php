@@ -77,7 +77,7 @@ class CheckUniqueController extends Controller
                 }]);
             }])
                 ->orderBy('id', 'desc')
-                ->paginate($limit) );
+                ->fastPaginate($limit));
     }
 
     public function show($id)
