@@ -18,7 +18,7 @@ class CheckUniqueController extends Controller
         $searchParams = $request->all();
 
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $checkUniqueQuery = CheckUnique::query()->select('id', 'email','type','created_at','viewed');
+        $checkUniqueQuery = CheckUnique::query();
 
 
         if(isset($searchParams['system'])) {
@@ -66,10 +66,31 @@ class CheckUniqueController extends Controller
           })->orDoesntHave('reports.uniqueOrder')->whereHas('reports', function ($q){
               $q->where('need_payment', 0);
           });*/
-        return CheckUniqueResource::collection(
-            $checkUniqueQuery
+      /*  return CheckUniqueResource::collection(
+            $checkUniqueQuery-> with(['services'=> function($query){
+                $query->pluck( 'title');
+            }])->  with(['reports' => function($query){
+
+                $query->select(['id', 'system_id','created_at', 'error_code']);
+                $query->with(['checkSystem' => function($query){
+                    $query->pluck( 'title');
+                }]);
+            }])
                 ->orderBy('id', 'desc')
-                ->fastPaginate($limit));
+                ->fastPaginate($limit));*/
+
+        return  $checkUniqueQuery->select('id', 'email','type','created_at','viewed')
+            -> with(['services'=> function($query){
+            $query->pluck( 'title');
+        }]) ->with(['reports' => function($query){
+
+            $query->select('id','check_unique_id', 'system_id','created_at', 'error_code');
+            $query->with(['checkSystem' => function($query){
+                $query->pluck( 'title');
+            }]);
+        }])
+            ->orderBy('id', 'desc')
+            ->fastPaginate($limit);
     }
 
     public function show($id)

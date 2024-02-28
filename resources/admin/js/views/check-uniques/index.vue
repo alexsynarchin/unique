@@ -116,7 +116,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+        <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getCheckUniques" />
     </section>
 </template>
 <script>
@@ -173,9 +173,9 @@ export default {
         },
         async getList() {
             this.listLoading = true;
-            const { data, meta } = await checkUniqueResource.list(this.listQuery);
+            const { data, total } = await checkUniqueResource.list(this.listQuery);
             this.list = data;
-            this.total = meta.total;
+            this.total = total;
             this.listLoading = false;
         },
         getSystems() {
@@ -189,7 +189,7 @@ export default {
             axios.get('/api/admin/check-uniques', {params:this.listQuery})
                 .then((response) => {
                     this.list = response.data.data;
-                    this.total = response.data.meta.total
+                    this.total = response.data.total
                     this.listLoading = false;
                 })
         },
