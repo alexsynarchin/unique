@@ -15,7 +15,7 @@ class Report extends Model
         'uid', 'data', 'check_unique_id', 'system_id', 'error', 'error_code', 'api_id'
     ];
     protected $appends = [
-        'formatted_date', 'symbols_count'
+        'formatted_date',
     ];
     protected $casts = [
         'result' => 'boolean',
