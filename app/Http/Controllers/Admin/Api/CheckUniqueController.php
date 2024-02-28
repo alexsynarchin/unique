@@ -76,7 +76,7 @@ class CheckUniqueController extends Controller
                     $query->pluck( 'title');
                 }]);
             }])
-                ->orderBy('created_at', 'desc')
+                ->orderBy('id', 'desc')
                 ->paginate($limit) );
     }
 
