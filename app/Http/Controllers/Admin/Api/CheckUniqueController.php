@@ -86,7 +86,7 @@ class CheckUniqueController extends Controller
 
             $query->select('id','check_unique_id', 'system_id','created_at', 'error_code');
             $query->with(['checkSystem' => function($query){
-                $query->pluck( 'title');
+                $query->select('id', 'title');
             }]);
         }])
             ->orderBy('id', 'desc')

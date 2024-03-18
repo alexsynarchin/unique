@@ -7,7 +7,8 @@
             <navigation></navigation>
         </el-tab-pane>
         <el-tab-pane label="Настройки smtp" name='smtp'>
-            <smtp></smtp>
+            <smtp settings_group="smtp" smtp_title="Настройки основного smtp"></smtp>
+            <smtp settings_group="smtp_reserve" smtp_title="Настройки резервного smtp"></smtp>
         </el-tab-pane>
         <el-tab-pane label="Проверки уникальности" name="uniques">
             <unique></unique>
