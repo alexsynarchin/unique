@@ -6,10 +6,10 @@ use App\Models\Setting;
 
 class mailConfigService
 {
-    public function generateConfig($name)
+    public function generateConfig($name): array
     {
         $mail = Setting::where('group', $name)->pluck('value', 'name');
-        $mailConfig = array(
+        return array(
             'transport' => 'smtp',
             'host'       => $mail['host'],
             'port'       => $mail['port'],
@@ -18,7 +18,5 @@ class mailConfigService
             'password'   => $mail['password']
 
         );
-
-        return $mailConfig;
     }
 }
