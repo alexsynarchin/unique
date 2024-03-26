@@ -63,6 +63,9 @@ class SendAdminReport implements ShouldQueue
 
     public function failed(Throwable $exception)
     {
-        SendAdminReport::dispatch($this -> order, 'smtp_reserve')->delay(now());
+        if($this->name !== 'smtp_reserve') {
+            SendAdminReport::dispatch($this -> order, 'smtp_reserve')->delay(now());
+        }
+
     }
 }

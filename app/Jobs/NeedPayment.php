@@ -60,6 +60,9 @@ class NeedPayment implements ShouldQueue
     }
     public function failed(Throwable $exception)
     {
-        NeedPayment::dispatch($this->order, $this->url, 'smtp_reserve')->delay(now()); //->addMinutes(2)
+        if($this->name !== 'smtp_reserve') {
+            NeedPayment::dispatch($this->order, $this->url, 'smtp_reserve')->delay(now()); //->addMinutes(2)
+        }
+
     }
 }
