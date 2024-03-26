@@ -45,7 +45,7 @@ class UniqueOrderController extends Controller
         }
 
         //SendAdminReport::dispatch($order, 'smtp')->delay(now());
-        NeedPayment::dispatch($order, $url, 'smtp')->delay(now()->addMinutes(2)); //
+        NeedPayment::dispatch($order, $url, 'smtp')->delay(now()->addMinutes(2)); //->addMinutes(2)
         return $url;
     }
 

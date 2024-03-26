@@ -31,6 +31,7 @@ class SendAdminReport implements ShouldQueue
     public function __construct(UniqueOrder $order, $name)
     {
         $this -> order = $order;
+
         $this -> name = $name;
     }
 

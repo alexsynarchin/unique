@@ -29,7 +29,7 @@ class NeedPayment implements ShouldQueue
     private $url;
 
     private $name;
-    public function __construct(UniqueOrder $order, $url, $name)
+    public function __construct(UniqueOrder $order, $url, $name = 'smtp')
     {
         $this->order = $order;
         $this->url = $url;
