@@ -40,7 +40,7 @@ class PaymentRobokassa
         if ($payment->validateSuccess($data)) {
             $order = UniqueOrder::findOrFail($payment->getInvoiceId());
             if ($payment->getSum() == $order->sum) {
-                SendAdminReport::dispatch($order)->delay(now());
+                SendAdminReport::dispatch($order, 'smtp')->delay(now());
                $return['status'] = true;
                $return['order'] = $order;
             }
@@ -60,7 +60,7 @@ class PaymentRobokassa
             if ($payment->getSum() == $order->sum) {
                 $order->status = 'paid';
                 $order->save();
-                SendAdminReport::dispatch($order)->delay(now());
+                SendAdminReport::dispatch($order, 'smtp')->delay(now());
             }
             echo $payment->getSuccessAnswer(); // "OK1254487\n"
         }

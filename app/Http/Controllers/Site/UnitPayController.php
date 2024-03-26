@@ -42,10 +42,10 @@ class UnitPayController extends Controller
      * @return bool
      */
     public function paidOrder(Request $request, $order)
-    {   
+    {
         $order->status = 'paid';
         $order->save();
-        SendAdminReport::dispatch($order)->delay(now());
+        SendAdminReport::dispatch($order, 'smtp')->delay(now());
         //
 
         return true;

@@ -6,6 +6,7 @@ use App\Helpers\AppHelper;
 use App\Mail\AdminReportMail;
 use App\Models\Setting;
 use App\Models\UniqueOrder;
+use App\Services\mailConfigService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class SendAdminReport implements ShouldQueue
 {
@@ -25,10 +27,11 @@ class SendAdminReport implements ShouldQueue
      */
 
     protected $order;
-
-    public function __construct(UniqueOrder $order)
+    protected $name;
+    public function __construct(UniqueOrder $order, $name)
     {
         $this -> order = $order;
+        $this -> name = $name;
     }
 
     /**
@@ -47,21 +50,18 @@ class SendAdminReport implements ShouldQueue
         } else {
             $email = ['alexsynarchin@gmail.com'];
         }
-
+        $mailConfigService = new mailConfigService();
+        $mailConfig = $mailConfigService -> generateConfig($this -> name);
         foreach ($email as $recipient) {
-            $mail = Setting::where('group', 'smtp')->pluck('value', 'name');
-            $mailConfig = array(
-                'transport' => 'smtp',
-                'host'       => $mail['host'],
-                'port'       => $mail['port'],
-                'encryption' => $mail['encryption'],
-                'username'   => $mail['email'],
-                'password'   => $mail['password']
 
-            );
             config(['mail.mailers.smtp' => $mailConfig]);
             Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
 
         }
+    }
+
+    public function failed(Throwable $exception)
+    {
+        SendAdminReport::dispatch($this -> order, 'smtp_reserve')->delay(now());
     }
 }
