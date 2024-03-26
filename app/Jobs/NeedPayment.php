@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Helpers\AppHelper;
 use App\Models\Setting;
 use App\Models\UniqueOrder;
+use App\Services\mailConfigService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class NeedPayment implements ShouldQueue
 {
@@ -25,10 +27,13 @@ class NeedPayment implements ShouldQueue
 
     private $order;
     private $url;
-    public function __construct(UniqueOrder $order, $url)
+
+    private $name;
+    public function __construct(UniqueOrder $order, $url, $name)
     {
         $this->order = $order;
         $this->url = $url;
+        $this -> name = $name;
     }
 
     /**
@@ -47,8 +52,14 @@ class NeedPayment implements ShouldQueue
             }
         }
         if($this->order->status !== 'paid' && $send_status) {
-            AppHelper::setMailConfig();
+            $mailConfigService = new mailConfigService();
+            $mailConfig = $mailConfigService -> generateConfig($this -> name);
+            config(['mail.mailers.smtp' => $mailConfig]);
             Mail::to($this-> order->checkUnique->email)->send(new \App\Mail\NeedPayment($this->order, $this->url));
         }
+    }
+    public function failed(Throwable $exception)
+    {
+        NeedPayment::dispatch($this->order, $this->url, 'smtp_reserve')->delay(now()); //->addMinutes(2)
     }
 }

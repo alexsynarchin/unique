@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\UniqueOrder;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,7 +36,8 @@ class NeedPayment extends Mailable
      */
     public function build()
     {
-        $mail = $this->from(Config::get('settings.smtp.email'))
+        $name_from = Setting::where('group', 'smtp')->where('name','email')->firstOrFail();
+        $mail = $this->from($name_from->value)
             -> subject('Вам выставлен счет за проверку уникальности');
         return $mail->view('mails.need-payment-notification',
             [

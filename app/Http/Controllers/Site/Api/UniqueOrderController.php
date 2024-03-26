@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendAdminReport;
 use App\Models\CheckUnique;
 use App\Models\Report;
+use App\Models\Setting;
 use App\Models\UniqueOrder;
 use App\Services\PaymentRobokassa;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class UniqueOrderController extends Controller
         }
 
         //SendAdminReport::dispatch($order, 'smtp')->delay(now());
-        NeedPayment::dispatch($order, $url)->delay(now()->addMinutes(2));
+        NeedPayment::dispatch($order, $url, 'smtp')->delay(now()->addMinutes(2)); //
         return $url;
     }
 
