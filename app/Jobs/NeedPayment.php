@@ -52,17 +52,11 @@ class NeedPayment implements ShouldQueue
             }
         }
         if($this->order->status !== 'paid' && $send_status) {
-            $mailConfigService = new mailConfigService();
-            $mailConfig = $mailConfigService -> generateConfig($this -> name);
-            config(['mail.mailers.smtp' => $mailConfig]);
+          //  $mailConfigService = new mailConfigService();
+            //$mailConfig = $mailConfigService -> generateConfig($this -> name);
+            //config(['mail.mailers.smtp' => $mailConfig]);
             Mail::to($this-> order->checkUnique->email)->send(new \App\Mail\NeedPayment($this->order, $this->url));
         }
     }
-    public function failed(Throwable $exception)
-    {
-        if($this->name !== 'smtp_reserve') {
-            NeedPayment::dispatch($this->order, $this->url, 'smtp_reserve')->delay(now()); //->addMinutes(2)
-        }
 
-    }
 }
