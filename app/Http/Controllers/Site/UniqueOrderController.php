@@ -9,6 +9,7 @@ use App\Mail\AdminReportMail;
 use App\Models\CheckUnique;
 use App\Models\Setting;
 use App\Models\UniqueOrder;
+use App\Services\mailConfigService;
 use App\Services\PaymentRobokassa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -63,6 +64,9 @@ class UniqueOrderController extends Controller
 
     public function test()
     {
+        $mailConfigService = new mailConfigService();
+        $mailConfig = $mailConfigService -> generateConfig('smtp');
+        dd($mailConfig);
         return view('site.order.test');
     }
 }
