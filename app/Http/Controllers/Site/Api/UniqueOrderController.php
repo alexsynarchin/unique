@@ -43,7 +43,7 @@ class UniqueOrderController extends Controller
             $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
         }
 
-        SendAdminReport::dispatch($order, 'smtp')->delay(now());
+        //SendAdminReport::dispatch($order, 'smtp')->delay(now());
         NeedPayment::dispatch($order, $url)->delay(now()->addMinutes(2));
         return $url;
     }
