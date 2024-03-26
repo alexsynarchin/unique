@@ -64,9 +64,9 @@ class UniqueOrderController extends Controller
 
     public function test()
     {
-        $mailConfigService = new mailConfigService();
-        $mailConfig = $mailConfigService -> generateConfig('smtp');
-        dd($mailConfig);
+        //$mailConfigService = new mailConfigService();
+        //$mailConfig = $mailConfigService -> generateConfig('smtp');
+        //dd($mailConfig);
         return view('site.order.test');
     }
 }
