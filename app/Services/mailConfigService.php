@@ -6,7 +6,7 @@ use App\Models\Setting;
 
 class mailConfigService
 {
-    public function generateConfig($name): array
+    public function generateConfig($name = 'smtp'): array
     {
         $mail = Setting::where('group', $name)->pluck('value', 'name');
         return array(
