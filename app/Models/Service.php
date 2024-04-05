@@ -14,7 +14,7 @@ class Service extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'title', 'description', 'price', 'price_2'
+        'title', 'description', 'price', 'price_2', 'menuindex'
     ];
 
     protected $appends = ['logo'];

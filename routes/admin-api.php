@@ -92,6 +92,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
     Route::put('/service/{id}', [ServiceController::class,'update'])->name('service.update');
     Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+    Route::post('/service/{id}/delete-logo', [ServiceController::class, 'deleteLogo'])->name('service.delete-logo');
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
     Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article.show');
     Route::post('/article', [ArticleController::class,'store'])->name('article.store');

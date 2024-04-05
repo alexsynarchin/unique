@@ -4,11 +4,17 @@
         <div class="mb-3">
             <el-button type="success" icon="el-icon-plus" @click="serviceModalOpen('create')">Добавить</el-button>
         </div>
+        <el-table-draggable  @drop="endSort">
         <data-tables :data="services">
             <el-table-column
                 type="index"
                 label="№"
             >
+            </el-table-column>
+            <el-table-column style="width:30px">
+                <template>
+                    <i class="el-icon-rank items-list-handle" style="cursor: pointer"></i>
+                </template>
             </el-table-column>
             <el-table-column
                 label="Логотип"
@@ -46,6 +52,7 @@
                 </template>
             </el-table-column>
         </data-tables>
+        </el-table-draggable>
         <el-dialog
             :before-close="closeModal"
             :visible.sync="showModal"
@@ -67,9 +74,10 @@
 <script>
     import create from "./create";
     import edit from "./edit";
+    import ElTableDraggable from 'element-ui-el-table-draggable';
     export default {
         components: {
-            create, edit,
+            create, edit,  'ElTableDraggable': ElTableDraggable,
         },
         computed: {
             serviceModalTitle:function () {
@@ -91,6 +99,18 @@
             }
         },
         methods: {
+            endSort(e) {
+              //  console.log(e);
+                let valuesSort = this.services.map(function (item, i) {
+                    let sortItem = {};
+                    sortItem.menuindex = i;
+                    sortItem.id = item.id;
+                    sortItem.title = item.title;
+                    return sortItem;
+                });
+                axios.post('/api/admin/sort', {model: 'Service', sort:valuesSort})
+                //console.log(valuesSort)
+            },
             getServices() {
                 axios.get('/api/admin/services')
                     .then((response) => {

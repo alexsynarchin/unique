@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::orderBy('updated_at', 'DESC')->get();
+        $services = Service::orderBy('menuindex')->get();
         return $services;
     }
 }

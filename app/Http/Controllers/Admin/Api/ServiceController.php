@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::orderBy('updated_at', 'DESC')->get();
+        $services = Service::orderBy('menuindex')->get();
         return $services;
     }
 
@@ -22,6 +22,7 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
         ], [
@@ -59,5 +60,15 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->delete();
         return $id;
+    }
+    public function deleteLogo($id)
+    {
+
+        $service = Service::findOrFail($id);
+        $logos =  $service  ->getMedia('services');
+        foreach ($logos as $logo) {
+            $logo -> delete();
+        }
+        return 'success';
     }
 }

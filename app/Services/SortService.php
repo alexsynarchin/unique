@@ -8,6 +8,7 @@ class SortService
         'CheckSystem' => \App\Models\CheckSystem::class,
         'ContentBlock' => \App\Models\ContentBlock::class,
         'BlockList' => \App\Models\BlockList::class,
+        'Service' => \App\Models\Service::class
     ];
 
     public function sort($modelName, $sort)
