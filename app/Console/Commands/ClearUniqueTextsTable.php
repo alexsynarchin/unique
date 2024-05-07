@@ -20,7 +20,7 @@ class ClearUniqueTextsTable extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Delete unique-texts records';
 
     /**
      * Create a new command instance.
@@ -41,7 +41,7 @@ class ClearUniqueTextsTable extends Command
     {
 
         do {
-            $deleted = UniqueText::whereDate('created_at', '<', date('2024-05-01'))->limit(1000)->delete();
+            $deleted = UniqueText::whereDate('created_at', '<', date('2024-05-01'))->limit(200)->delete();
             sleep(1);
         } while ($deleted > 0);
     }
