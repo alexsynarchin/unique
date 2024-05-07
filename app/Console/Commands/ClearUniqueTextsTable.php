@@ -39,9 +39,11 @@ class ClearUniqueTextsTable extends Command
      */
     public function handle()
     {
-
+        $count = 0;
         do {
             $deleted = UniqueText::whereDate('created_at', '<', date('2024-05-01'))->limit(200)->delete();
+
+            $this->line('Unique texts deleted: Итерация ' . ++$count);
             sleep(1);
         } while ($deleted > 0);
     }
