@@ -51,6 +51,7 @@ class Article extends Model implements HasMedia
 
     public function getDescriptionAttribute()
     {
+        if(!$this->content) return '';
         $text = html_entity_decode($this->content->text);
         $text = strip_tags($text);
         $text = substr($text, 0, 300);

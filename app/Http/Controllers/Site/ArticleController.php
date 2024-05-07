@@ -5,10 +5,19 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Page;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
+    public function index()
+    {
+        $page = \App\Models\Page::where('slug', 'articles')->firstOrFail();
+        $seo = $page->seo;
+        $articles = Article::orderBy('date', 'DESC')->paginate(5);
+        return view('site.articles.index', ['seo' => $seo, 'articles' => $articles]);
+    }
     public function show($slug)
     {
         $article = Article::where('slug', $slug) -> with('content', 'seo')->firstOrFail();

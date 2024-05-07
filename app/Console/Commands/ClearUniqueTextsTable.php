@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\UniqueText;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class ClearUniqueTextsTable extends Command
 {
@@ -11,7 +13,7 @@ class ClearUniqueTextsTable extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'delete:unique-texts';
 
     /**
      * The console command description.
@@ -37,6 +39,10 @@ class ClearUniqueTextsTable extends Command
      */
     public function handle()
     {
-        return 0;
+
+        do {
+            $deleted = UniqueText::whereDate('created_at', '<', date('2024-05-01'))->limit(1000)->delete();
+            sleep(1);
+        } while ($deleted > 0);
     }
 }

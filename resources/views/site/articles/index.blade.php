@@ -16,6 +16,10 @@
         </h1>
         <div class="row">
             <div class="col-lg-9">
+                @foreach($articles as $article)
+                    {{$article -> title}}
+                @endforeach
+              {{$articles->links()}}
                 <articles></articles>
             </div>
             <div class="col-lg-3">
