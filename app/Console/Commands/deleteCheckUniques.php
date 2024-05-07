@@ -40,7 +40,7 @@ class deleteCheckUniques extends Command
     {
         $count = 0;
         do {
-            $deleted = CheckUnique::whereDate('created_at', '<', date('2022-12-30'))->limit(500)->delete();
+            $deleted = CheckUnique::whereDate('created_at', '<', date('2023-02-25'))->limit(500)->delete();
 
             $this->line('Unique texts deleted: Итерация ' . ++$count);
             sleep(1);
