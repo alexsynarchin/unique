@@ -34,7 +34,7 @@
                         </section>
                         <div class="article-item__footer">
                             <span class="article-item__date">
-                                {{$article -> date}}
+                                {{date('d.m.Y', strtotime($article -> date))}}
                             </span>
                             <span class="article-item__views">
 
