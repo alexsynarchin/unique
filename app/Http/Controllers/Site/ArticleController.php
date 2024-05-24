@@ -15,7 +15,7 @@ class ArticleController extends Controller
     {
         $page = \App\Models\Page::where('slug', 'articles')->firstOrFail();
         $seo = $page->seo;
-        $articles = Article::orderBy('date', 'DESC')->paginate(5);
+        $articles = Article::orderBy('date', 'DESC')->paginate(6);
         return view('site.articles.index', ['seo' => $seo, 'articles' => $articles]);
     }
     public function show($slug)

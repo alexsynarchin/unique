@@ -16,8 +16,36 @@
         </h1>
         <div class="row">
             <div class="col-lg-9">
+                <div class="article-list">
+                    @foreach ($articles as $article)
+                        <div class="article-list__item">
+                        <a href="/articles/'{{$article -> slug}}" class="article-item">
+                            <section class="article-item__content">
+                            <figure class="article-item__preview">
+                                <img src="{{$article -> preview}}">
+                            </figure>
+                            <h3 class="article-item__title">
+                                {{$article -> title}}
+                            </h3>
+                            <div class="article-item__description" >
+                                {!! $article -> description !!}}
+                            </div>
 
-                <articles></articles>
+                        </section>
+                        <div class="article-item__footer">
+                            <span class="article-item__date">
+                                {{$article -> date}}
+                            </span>
+                            <span class="article-item__views">
+
+                            </span>
+                        </div>
+                    </a>
+            </div>
+
+                    @endforeach
+                </div>
+                {{ $articles->links('site.components.pagination') }}
             </div>
             <div class="col-lg-3">
                 <sidebar-banner></sidebar-banner>
