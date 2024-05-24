@@ -5,6 +5,7 @@
         </h1>
         <el-tabs type="card" v-model="activeTab">
             <el-tab-pane label="Основная информация" name="main">
+                <H1Title class="mb-4"></H1Title>
                 <utp class="mb-5"></utp>
                 <ratings class="mb-5"></ratings>
                 <why class="mb-5"></why>
@@ -29,11 +30,12 @@
     import process from "./components/process/process";
     import about from "./components/about/about";
     import reviews from "./components/reviews/reviews";
-    import faq from "./components/faq/faq"
-    import Seo from '@/admin/js/components/seo/seo.vue'
+    import faq from "./components/faq/faq";
+    import Seo from '@/admin/js/components/seo/seo.vue';
+    import H1Title from "@/admin/js/views/main-page/components/h1-title.vue";
 export default {
     components: {
-        utp, ratings, why, process, about, reviews, faq, Seo,
+        utp, ratings, why, process, about, reviews, faq, Seo, H1Title
     },
     data() {
      return {

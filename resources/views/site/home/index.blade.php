@@ -9,10 +9,10 @@
         <section class="check-unique-bl" id="check_unique">
             <div class="text-center">
                 <h1 class="block-title  check-unique-bl__title">
-                    Проверить уникальность текста онлайн бесплатно <span class="block-title__cursor"></span>
+                    {{Config::get('settings.main-page.h1')}} <span class="block-title__cursor"></span>
                 </h1>
                 <p class="check-unique-bl__text">
-                    Все системы проверки в одном месте
+                    {{Config::get('settings.main-page.h1_description')}}
                 </p>
             </div>
             <check-unique></check-unique>
