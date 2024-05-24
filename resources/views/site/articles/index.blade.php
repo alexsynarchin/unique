@@ -19,7 +19,7 @@
                 <div class="article-list">
                     @foreach ($articles as $article)
                         <div class="article-list__item">
-                        <a href="/articles/'{{$article -> slug}}" class="article-item">
+                        <a href="/articles/{{$article -> slug}}" class="article-item">
                             <section class="article-item__content">
                             <figure class="article-item__preview">
                                 <img src="{{$article -> preview}}">
