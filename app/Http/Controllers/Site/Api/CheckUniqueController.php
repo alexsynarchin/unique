@@ -91,12 +91,18 @@ class CheckUniqueController extends Controller
     {
         $request->validate([
             'file' => ['required','file','mimes:doc,docx,txt', 'max:49152'],
-            'gRecaptchaV3Response' => [new GoogleReCaptchaV3ValidationRule('contact_us')]
+
 
             ],[
             'file.required'=> 'Загрузите файл или введите текст для проверки на уникальность',
             'file.mimes' => 'Файл должен быть следующих типов: doc, docx или txt'
         ]);
+        $recaptcha = Setting::where('group', 'common') -> where('name', 'recaptcha')->first();
+        if($recaptcha && $recaptcha->value === 'true') {
+            $request->validate([
+                'gRecaptchaV3Response' => [new GoogleReCaptchaV3ValidationRule('contact_us')]
+            ]);
+        }
 
         //application/vnd.openxmlformats-officedocument.wordprocessingml.document
         //application/msword
