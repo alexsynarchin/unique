@@ -71,7 +71,9 @@ class RewriteController extends Controller
             'name' => 'Введите ваше имя',
             'phone.required' => 'Введите ваш телефон'
         ]);
-        $rewrite = Rewrite::create($request->all());
+        $rewrite = Rewrite::create($request->except('date'));
+        $rewrite ->date = date('Y-m-d H:i:s', strtotime($request->get('date')));
+        $rewrite->save();
         if($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
             $path = $request->file('file')->storeAs(
