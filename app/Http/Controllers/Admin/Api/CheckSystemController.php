@@ -70,6 +70,11 @@ class CheckSystemController extends Controller
         if($request->get('api_id') != 'null') {
             $system->api_id = $request->get('api_id');
             $system -> save();
+        } else {
+
+            $system->checkApi()-> dissociate();
+            //$user->account()->dissociate()
+            $system -> save();
         }
         if($request->hasFile('file')) {
             $file = $request->file('file');
