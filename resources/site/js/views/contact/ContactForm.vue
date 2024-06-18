@@ -119,7 +119,11 @@ import { Errors } from  '@/common/js/services/errors.js';
             sendMsg() {
                 axios.post('/api/contact/consultation', this.form)
                     .then((response) => {
-
+                        this.$toast("Ваша заявка отправлена. Наш менеджер свяжется с вами в близжайшее время.", {
+                            timeout: 2000,
+                            type: 'success',
+                            hideProgressBar: true,
+                        });
                     })
                     .catch((error) => {
                         this.errors.record(error.response.data.errors);
