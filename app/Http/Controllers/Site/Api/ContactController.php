@@ -41,7 +41,7 @@ class ContactController extends Controller
             $recipient = str_replace(" ", '', $recipient);
             AppHelper::setMailConfig();
             try {
-                Mail::to(trim($recipient))->send(new ContactMail($request->all()));
+                Mail::to(trim($recipient))->send(new ContactMail($order));
             } catch (\Exception $e) {
                 return  ['error' => 'Произошла ошибка, обратитесь к администратору сайта'];
             }

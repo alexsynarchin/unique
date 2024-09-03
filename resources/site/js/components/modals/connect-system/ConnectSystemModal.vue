@@ -1,5 +1,5 @@
 <template>
-   <div class="modal fade unique-modal" id="order-call"  tabindex="-1" role="dialog"  aria-hidden="true">
+   <div class="modal fade unique-modal" id="connect-system"  tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered unique-modal__dialog" role="document">
             <div class="unique-modal__content consultation-modal__content modal-content">
                 <button  class="unique-modal__close consultation-modal__close" type="button"  data-bs-dismiss="modal" aria-label="Close">
@@ -12,10 +12,11 @@
                 </button>
                 <div class="consultation-modal__form">
                     <h3 class="unique-modal__title">
-                        Бесплатная консультация
+                        Заявка на подключение к системе
                     </h3>
                     <p class="unique-modal__descr">
-                        Оставьте заявку для связи со специалистом
+                        Если вам нужно регулярно проверять работы, и вы хотите собственный доступ к системе. <br>
+                        Оставьте заявку для связи со специалистом.
                     </p>
                     <form class="consultation-form">
                         <div class="u-form-group">
@@ -119,7 +120,7 @@ import { Errors } from  '@/common/js/services/errors.js';
                     email:'',
                     token: '',
                     eKey: "",
-                    type: 1,
+                    type: 2,
                 },
                 errors: new Errors(),
 
@@ -132,7 +133,7 @@ import { Errors } from  '@/common/js/services/errors.js';
 
                 axios.post('/api/contact/consultation', this.form)
                     .then((response) => {
-                        $('#order-call').modal('hide');
+                        $('#connect-system').modal('hide');
                     })
                     .catch((error) => {
                         this.errors.record(error.response.data.errors);

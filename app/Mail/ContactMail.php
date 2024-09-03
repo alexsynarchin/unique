@@ -34,7 +34,7 @@ class ContactMail extends Mailable
 
 
         $mail = $this->from(Config::get('settings.smtp.email'))
-            -> subject('Заявка на консультацию');
-        return $mail->view('mails.contact-order', ['contact' => $this->contact]);
+            -> subject($this->contact->order_type);
+        return $mail->view('mails.contact-order', ['contact' => ($this->contact)->toArray()]);
     }
 }

@@ -33,8 +33,9 @@ Vue.directive('phone', {
 })
 Vue.component('HeaderPanelBtn', require('./components/header-panel/HeaderPanelBtn').default);
 Vue.component('HeaderPanel', require('./components/header-panel/HeaderPanel').default);
-Vue.component('ConsultationModal',require('./components/modals/consultation/ConsultationModal').default)
-Vue.component('WhatSystemCheckModal', require('./components/modals/what-system-check/modal').default)
+Vue.component('ConsultationModal',require('./components/modals/consultation/ConsultationModal').default);
+Vue.component('ConnectSystemModal', require('./components/modals/connect-system/ConnectSystemModal.vue').default);
+Vue.component('WhatSystemCheckModal', require('./components/modals/what-system-check/modal').default);
 Vue.component('VideoModal', require('./components/modals/video-modal/modal').default);
 Vue.component('RewriteModal',require('./components/modals/rewrite/modal').default);
 Vue.component('CheckUnique', require('./components/check-unique').default);

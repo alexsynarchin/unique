@@ -7,6 +7,11 @@
             >
             </el-table-column>
             <el-table-column
+                prop="order_type"
+                label="Тип заявки"
+            >
+            </el-table-column>
+            <el-table-column
                 label="Имя"
                 prop="name"
                 sortable

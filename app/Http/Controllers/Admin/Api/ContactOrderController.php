@@ -10,7 +10,7 @@ class ContactOrderController extends Controller
 {
     public function index()
     {
-        $contacts = Order::orderBy('created_at', 'ASC') ->get();
+        $contacts = Order::orderBy('created_at', 'DESC') ->get();
         return $contacts;
     }
 

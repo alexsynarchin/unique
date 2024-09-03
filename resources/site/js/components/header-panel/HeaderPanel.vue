@@ -10,13 +10,18 @@
                     <a href="/#check_unique" class="btn button button--width-100 mb-4">
                         Проверить уникальность
                     </a>
-                    <button class="btn button button--width-100 button--transparent" data-bs-toggle="modal" data-bs-target="#video_modal">
+                    <button class="btn button button--width-100 button--transparent mb-4" data-bs-toggle="modal" data-bs-target="#video_modal">
                         <span class="button__text">
                             Смотреть видео о сервисе
                         </span>
                         <svg viewBox="0 0 10 10" class="button__icon">
                             <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-arrow-dig-top"></use>
                         </svg>
+                    </button>
+                    <button class="btn button button--width-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#connect-system">
+                        Подключиться к системе
                     </button>
                 </div>
                 <div class="header-panel__nav col-lg-4">
