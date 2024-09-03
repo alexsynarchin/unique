@@ -1,4 +1,7 @@
 @extends('site.base.base')
+@section('head')
+    <link rel="canonical" href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/articles"/>
+@endsection
 @section('content')
     <div class="container">
         <ul class="breadcrumb-list">

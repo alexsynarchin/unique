@@ -21,6 +21,12 @@
                 <el-form-item class="col-lg-6" prop="faq_link" label="Копирайт в подвале сайта">
                     <el-input v-model="form.copyright"></el-input>
                 </el-form-item>
+                <el-form-item class="col-lg-6" prop="show_rewrite_btn_in_header"
+                              label="Показывать кнопку «Заказать рерайт» в шапке">
+                    <el-switch v-model="form.show_rewrite_btn_in_header">
+                    </el-switch>
+
+                </el-form-item>
             </div>
             <h4>Социальные сети</h4>
             <div class="row">
@@ -113,6 +119,7 @@
                   recaptcha: false,
                   free_check:false,
                   need_payment:false,
+                  show_rewrite_btn_in_header:false,
               }
           }
         },
@@ -139,7 +146,7 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
-                                if (key === 'free_email_send' || key === 'need_payment' || key === 'recaptcha' || key === 'free_check') {
+                                if (key === 'free_email_send' || key === 'need_payment' || key === 'recaptcha' || key === 'free_check' || key === 'show_rewrite_btn_in_header') {
                                     if(this.form[key] === 'true') {
                                         this.form[key] = true;
                                     }  else {

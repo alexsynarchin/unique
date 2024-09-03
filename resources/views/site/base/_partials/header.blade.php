@@ -5,9 +5,15 @@
         </a>
        <header-panel-btn></header-panel-btn>
         <section class="page-header__right">
-
-
-            <a href="/#check_unique" class="btn button"  @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
+            @if(Config::get('settings.common.show_rewrite_btn_in_header') === 'true')
+            <button class="btn button page-header__btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#rewrite_modal">
+                Заказать рерайт
+            </button>
+            @endif
+            <a href="/#check_unique" class="btn button page-header__btn"
+               @if(Route::current()->getName() == 'main-page') v-scroll-to="'#check_unique'"@endif>
                 Проверить уникальность
             </a>
             <ul class="social-list social-list--header">

@@ -67,7 +67,7 @@ class CheckUniqueController extends Controller
     {
         $words_count = count(preg_split('/\s+/', $request->get('text')));
         $symbols_count = strip_tags($request->get('text'));
-        $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
+        //$symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
         $sentenceCount = substr_count($request->get('text'),'.')
             + substr_count($request->get('text'),'!')
@@ -122,7 +122,7 @@ class CheckUniqueController extends Controller
        // echo mb_convert_encoding( $text, 'UTF-8', 'UTF-16LE' );;
        // $extracted_plaintext = mb_convert_encoding( $extracted_plaintext, 'UTF-8', 'UTF-16LE' );
         $symbols_count = strip_tags($text);
-        $symbols_count = preg_replace('/\s+/', '',  $symbols_count);
+        //$symbols_count = preg_replace('/\s+/', '',  $symbols_count);
         $symbols_count = iconv_strlen($symbols_count);
         $words_count = preg_split('/\s+/',$text);
         $words_count = sizeof($words_count);

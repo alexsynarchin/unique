@@ -56,6 +56,21 @@
             align-items: center;
             justify-content: space-between;
             margin-left: auto;
+            gap: 10px;
+        }
+    }
+    &__btn {
+        @include media-breakpoint-up(lg) {
+            padding: 13px 15px;
+            font-size: 13px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding: 15px 25px;
+            font-size: 15px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding: 17px 35px;
+            font-size: 16px;
         }
     }
 }
