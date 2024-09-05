@@ -232,6 +232,8 @@ class CheckUniqueController extends Controller
             if(($system->price > 0 || $system->price_2 > 0) && $data['sum'] > 0) {
                 $report->need_payment = true;
                 $report->payment_free = false;
+            } else {
+                $report->payment_free = true;
             }
 
             $report->save();

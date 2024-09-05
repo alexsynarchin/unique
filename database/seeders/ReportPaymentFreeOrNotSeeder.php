@@ -20,8 +20,10 @@ class ReportPaymentFreeOrNotSeeder extends Seeder
                 foreach ($reports as $report) {
                     if($report->checkSystem -> price > 0 || $report->checkSystem -> price_2 > 0){
                         $report -> payment_free = false;
-                        $report -> save();
+                    } else {
+                        $report -> payment_free = true;
                     }
+                    $report -> save();
                 }
                 ++$i;
                 echo 'done '. $i . PHP_EOL;
