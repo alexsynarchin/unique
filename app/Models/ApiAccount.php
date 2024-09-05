@@ -17,4 +17,9 @@ class ApiAccount extends Model
         'menuindex',
         'api_id'
     ];
+
+    public function checkApi()
+    {
+        return $this->belongsTo(CheckApi::class, 'api_id');
+    }
 }

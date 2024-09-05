@@ -225,10 +225,15 @@ class CheckUniqueController extends Controller
                'system_id' => $system->id,
                'api_id' => $system -> api_id,
            ]);
-            if($system->price > 0 && $data['sum'] > 0) {
+            if(($system->price > 0 || $system->price_2 > 0) && $data['sum'] > 0) {
                 $report->need_payment = true;
-                $report->save();
+                $report->payment_free = false;
             }
+            $report ->symbols_count = $check_unique -> symbols_count;
+            if($check_unique -> symbolsCount > $system-> symbols_count) {
+                $report->symbols_count = $system->symbols_count;
+            }
+            $report->save();
             $reports[] = $report->id;
 
            if($system['manual'] === 1) {

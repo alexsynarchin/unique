@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\Api\ContactOrderController;
 use App\Http\Controllers\Admin\Api\PermissionController;
 use App\Http\Controllers\Admin\Api\PageController;
 use App\Http\Controllers\Admin\Api\RemoveUniqueFilesController;
+use App\Http\Controllers\Admin\Api\CheckUniqueServiceStatisticController;
 
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -109,6 +110,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions');
     Route::get('/page', [PageController::class, 'show'])->name('page');
     Route::post('/page/{id}/update', [PageController::class, 'update'])->name('page.update');
+    Route::get('/check-unique-service-statistic/services', [CheckUniqueServiceStatisticController::class, 'services'])
+        ->name('check-unique-service-statistic.services');
+    Route::get('/check-unique-service-statistic/symbols', [CheckUniqueServiceStatisticController::class, 'symbolsStatistic'])
+        ->name('check-unique-service-statistic');
 });
 
 

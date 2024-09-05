@@ -1,7 +1,9 @@
 <template>
     <section>
-
         <div class="row mb-4">
+            <div class="col-md-8">
+                <symbols-statistic></symbols-statistic>
+            </div>
             <div class="col-md-4">
                 <el-card class="box-card" v-loading="data.sum.loading">
                     <div slot="header" class="clearfix">
@@ -172,12 +174,17 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import symbolsStatistic from "@/admin/js/components/symbols-statistic/index.vue";
 import moment from "moment/moment";
     export default {
+        components: {
+            symbolsStatistic,
+        },
         data() {
             return {
                 loaded:false,
                 data: {
+
                     rewrites: {
                         count:0,
                         countToday:0,

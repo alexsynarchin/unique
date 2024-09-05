@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class CheckApi extends Model
 {
     use HasFactory;
@@ -14,4 +15,9 @@ class CheckApi extends Model
     protected $casts = [
         'accounts' => 'array'
     ];
+
+    public function accounts()
+    {
+        return $this->hasMany(ApiAccount::class, 'api_id', 'id');
+    }
 }
