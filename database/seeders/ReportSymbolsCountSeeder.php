@@ -29,6 +29,7 @@ class ReportSymbolsCountSeeder extends Seeder
                     }
                     $report ->save();
                 }
+                echo 'done'.PHP_EOL;
             });
 
     }
