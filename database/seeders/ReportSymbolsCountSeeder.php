@@ -14,6 +14,7 @@ class ReportSymbolsCountSeeder extends Seeder
      */
     public function run()
     {
+        $i = 0;
          Report::select('id', 'system_id', 'api_id', 'check_unique_id', 'symbols_count')
             ->with('checkSystem', function ($q){
                 $q->select('id','symbols_count', 'created_at');
@@ -21,7 +22,7 @@ class ReportSymbolsCountSeeder extends Seeder
             ->with('checkUnique', function ($q){
                 $q->select('id','symbolsCount', 'created_at');
             })
-            ->chunk(1000, function($reports){
+            ->chunk(1000, function($reports) use (&$i){
                 foreach($reports as $report){
                     $report ->symbols_count = $report ->checkUnique -> symbolsCount;
                     if($report -> checkUnique -> symbolsCount > $report -> checkSystem -> symbols_count) {
@@ -29,7 +30,8 @@ class ReportSymbolsCountSeeder extends Seeder
                     }
                     $report ->save();
                 }
-                echo 'done'.PHP_EOL;
+                ++$i;
+                echo 'done '. $i .PHP_EOL;
             });
 
     }
