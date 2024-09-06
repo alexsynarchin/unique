@@ -15,8 +15,12 @@
 <script src="{{mix('js/app.js','assets/site')}}" defer></script>
 @if(stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false && stripos(@$_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false)
 <!-- Yandex.Metrika counter -->
+
 <script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(function(){
+
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
@@ -28,6 +32,9 @@
         accurateTrackBounce:true,
         webvisor:true
     });
+        }, 500); // время указано в мс = 0,001 секунды, изменить по вкусу
+    });
+
 </script>
 @endif
 <noscript><div><img src="https://mc.yandex.ru/watch/93111741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
