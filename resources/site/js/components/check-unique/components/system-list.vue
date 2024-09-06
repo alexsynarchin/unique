@@ -25,7 +25,9 @@
                         <a style="display: block; z-index: 4; position: relative"
                            v-if="item.report_file"
                            href=""
-                           @click.stop.prevent="openReportPdf('/storage/check-systems/files/' + item.id + '/' + item.report_file)"
+                           data-bs-toggle="modal"
+                           data-bs-target="#report_example"
+                           @click="openReportPdf('/storage/check-systems/files/' + item.id + '/' + item.report_file)"
                            class="check-system-item__link">
                             Пример отчета
                         </a>
@@ -57,17 +59,20 @@
         <button class="btn button check-unique-button" :disabled="clicked" @click.prevent = "checkTextUnique">
            {{checkUniqueButtonString}}
         </button>
-       <div class="mt-3 alert alert-danger" v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
+       <div class="mt-3 alert alert-danger"
+            v-if="errors.has('text') || errors.has('length') || errors.has('symbols_count')">
 
             {{errors.get('text')}}
            {{errors.get('symbols_count')}}
            {{errors.get('length')}}
        </div>
         <select-system-modal ref="select_system_modal" @selectSystem="handleSelected"></select-system-modal>
+        <report-example :url="example_report_link"></report-example>
     </section>
 </template>
 <script>
-import $ from "jquery";
+    import $ from "jquery";
+    import reportExample from "@/site/js/components/check-unique/components/ReportExample.vue";
     import selectSystemModal from "./SelectSystemModal";
     import { Errors } from  '@/common/js/services/errors.js';
     import { bus } from '@/site/js/services/bus.js';
@@ -81,6 +86,7 @@ import $ from "jquery";
             }
         },
         components: {
+            reportExample,
             selectSystemModal
         },
         computed: {
@@ -94,6 +100,7 @@ import $ from "jquery";
         },
         data() {
             return {
+                example_report_link: "",
                 free:false,
                 selectedSystemsList:[],
                 systemIndex: [],
@@ -105,14 +112,7 @@ import $ from "jquery";
         },
         methods: {
             openReportPdf(url) {
-                console.log(url)
-                Fancybox.show([
-                    {
-                        src: url,
-
-                    },
-                ]);
-
+              this.example_report_link = url;
             },
             selectSystem(index, item) {
                 if(item.price !== 0 || this.free_check ) {

@@ -56,6 +56,7 @@ require('dayjs/locale/ru');
     export  default {
         data() {
             return {
+
                 symbols:0,
                 checkUniqueServiceId:1,
                 checkUniqueServices: [],

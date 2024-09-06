@@ -11,7 +11,7 @@
                 <h3 class="unique-modal__title">
                     Пример отчета
                 </h3>
-
+                <embed :src="url" frameborder="0" width="100%" height="400px">
 
             </div>
         </div>
@@ -19,7 +19,11 @@
 </template>
 <script>
     export default {
-        props: {},
+        props: {
+            url: {
+                type:String
+            }
+        },
         data() {
             return {
 
