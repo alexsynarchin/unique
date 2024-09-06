@@ -30,5 +30,5 @@
 
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/site/js/main-page.js?ver=36')}}"></script>
+    <script src="{{asset('assets/site/js/main-page.js?ver=36')}}" defer></script>
 @endsection
