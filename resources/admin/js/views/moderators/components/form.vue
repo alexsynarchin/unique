@@ -38,11 +38,36 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
+                <el-row type="flex" :gutter="10" v-else>
+                    <el-col :span="12">
+                        <el-button icon="el-icon-unlock" type="primary" @click="showPasswordModal = true">Сменить пароль</el-button>
+                    </el-col>
+                </el-row>
                 <div class="text-center">
                     <el-button type="success" @click.prevent="save">Сохранить</el-button>
                     <el-button type="" @click.prevent="closeModal">Отменить</el-button>
                 </div>
             </el-form>
+            <el-dialog
+                append-to-body
+                :visible.sync="showPasswordModal"
+                title="Сменить пароль"
+            >
+                <el-form :model="passwordForm" label-position="top">
+                    <div class="row">
+                        <el-form-item class="col-md-6" label="Новый пароль" :error="errors.get('password')">
+                            <el-input v-model="passwordForm.password" show-password></el-input>
+                        </el-form-item>
+                        <el-form-item class="col-md-6" label="Подтверждение пароля">
+                            <el-input v-model="passwordForm.password_confirmation" show-password></el-input>
+                        </el-form-item>
+                    </div>
+                </el-form>
+                <span slot="footer" class="dialog-footer">
+            <el-button @click="showPasswordModal = false">Отмена</el-button>
+            <el-button type="success" @click="changePassword">Сохранить</el-button>
+          </span>
+            </el-dialog>
         </el-tab-pane>
         <el-tab-pane label="Права доступа">
             <el-checkbox-group v-model="form.permissions_arr" @change="">
@@ -73,11 +98,31 @@ export default {
     },
     data() {
         return {
+            showPasswordModal:false,
+            passwordForm: {
+                password: '',
+                password_confirmation: ''
+            },
             permissions: [],
             errors: new Errors(),
         }
     },
     methods: {
+        changePassword() {
+            axios.post('/api/admin/user/' + this.form.id + '/change-password', this.passwordForm)
+                .then((response) => {
+                    this.$message({
+                        message: response.data,
+                        type: 'success'
+                    });
+                    this.showPasswordModal = false;
+                    this.passwordForm.password = '';
+                    this.passwordForm.password_confirmation= '';
+                })
+                .catch((error) => {
+                    this.errors.record(error.response.data.errors);
+                })
+        },
         getPermissions() {
             axios.get('/api/admin/permissions')
                 .then((response) => {

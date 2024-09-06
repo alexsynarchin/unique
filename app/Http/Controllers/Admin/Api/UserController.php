@@ -24,4 +24,19 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($id);
     }
+    public function changePassword($id, Request $request)
+    {
+
+        $request->validate([
+            'password' => 'required|confirmed|min:6'
+        ]);
+        $user = User::findOrFail($id);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $user -> update([
+            'password' => $input['password']
+        ]);
+        return 'Пароль изменен';
+    }
 }

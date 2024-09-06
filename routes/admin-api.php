@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/user/{id}/profile', [UserController::class, 'show']);
+    Route::post('/user/{id}/change-password', [UserController::class,'changePassword']);
     Route::post('/user/{id}/update', [UserController::class,'update']);
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::apiResource('/moderators', ModeratorController::class);

@@ -13,10 +13,31 @@
                 <el-form-item label="E-mail" :error="errors.get('email')">
                     <el-input v-model="form.email"></el-input>
                 </el-form-item>
+                <div class="col-md-6" style="margin-bottom: 22px;">
+                    <el-button icon="el-icon-unlock" type="primary" @click="showPasswordModal = true">Сменить пароль</el-button>
+                </div>
                 <el-button type="primary" @click="onSubmit">Сохранить</el-button>
             </el-form>
         </el-card>
-
+        <el-dialog
+            :visible.sync="showPasswordModal"
+            title="Сменить пароль"
+        >
+            <el-form :model="passwordForm" label-position="top">
+                <div class="row">
+                    <el-form-item class="col-md-6" label="Новый пароль" :error="errors.get('password')">
+                        <el-input v-model="passwordForm.password" show-password></el-input>
+                    </el-form-item>
+                    <el-form-item class="col-md-6" label="Подтверждение пароля">
+                        <el-input v-model="passwordForm.password_confirmation" show-password></el-input>
+                    </el-form-item>
+                </div>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+            <el-button @click="showPasswordModal = false">Отмена</el-button>
+            <el-button type="success" @click="changePassword">Сохранить</el-button>
+          </span>
+        </el-dialog>
     </section>
 </template>
 <script>
@@ -25,6 +46,11 @@ import { Errors } from  '@/common/js/services/errors.js';
     export default {
         data() {
             return {
+                showPasswordModal:false,
+                passwordForm: {
+                    password: '',
+                    password_confirmation: ''
+                },
                 form: {
                     name: "",
                     email: ""
@@ -38,6 +64,21 @@ import { Errors } from  '@/common/js/services/errors.js';
             ]),
         },
         methods: {
+            changePassword() {
+                axios.post('/api/admin/user/' + this.userId + '/change-password', this.passwordForm)
+                    .then((response) => {
+                        this.$message({
+                            message: response.data,
+                            type: 'success'
+                        });
+                        this.showPasswordModal = false;
+                        this.passwordForm.password = '';
+                        this.passwordForm.password_confirmation= '';
+                    })
+                    .catch((error) => {
+                        this.errors.record(error.response.data.errors);
+                    })
+            },
             onSubmit() {
                 axios.post('/api/admin/user/' + this.userId + '/update', this.form)
                     .then((response) => {
