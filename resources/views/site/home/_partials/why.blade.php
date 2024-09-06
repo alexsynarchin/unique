@@ -2,12 +2,12 @@
     <div class="mp-why__inner container">
         <div class="mp-why__image-wrap order-lg-1">
             <figure class="mp-why__image ">
-                <img src="/assets/site/images/mp/mp-why.png">
+                <img src="/assets/site/images/mp/mp-why.png" loading="lazy">
                 <div class="mp-why__dec-1">
-                    <img src="/assets/site/images/mp/mp-why-dec-1.png">
+                    <img src="/assets/site/images/mp/mp-why-dec-1.png" loading="lazy">
                 </div>
                 <div class="mp-why__dec-2">
-                    <img src="/assets/site/images/mp/mp-why-dec-2.png">
+                    <img src="/assets/site/images/mp/mp-why-dec-2.png" loading="lazy">
                 </div>
             </figure>
         </div>
@@ -22,12 +22,12 @@
             </div>
             <div class="mp-why__image-wrap mp-why__image-wrap--mobile">
                 <figure class="mp-why__image ">
-                    <img src="/assets/site/images/mp/mp-why.png">
+                    <img src="/assets/site/images/mp/mp-why.png" loading="lazy">
                     <div class="mp-why__dec-1">
-                        <img src="/assets/site/images/mp/mp-why-dec-1.png">
+                        <img src="/assets/site/images/mp/mp-why-dec-1.png" loading="lazy">
                     </div>
                     <div class="mp-why__dec-2">
-                        <img src="/assets/site/images/mp/mp-why-dec-2.png">
+                        <img src="/assets/site/images/mp/mp-why-dec-2.png" loading="lazy">
                     </div>
                 </figure>
             </div>

@@ -8,7 +8,7 @@
             @endforeach
         @endif
         <figure class="mp-about__gallery-item">
-            <img src="/assets/site/images/orange-circle.png">
+            <img src="/assets/site/images/orange-circle.png" loading="lazy">
         </figure>
     </div>
     <div class="mp-about__content">

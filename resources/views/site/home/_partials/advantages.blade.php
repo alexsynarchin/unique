@@ -5,7 +5,7 @@
             <li class="mp-advantages__item col-md-3">
                 <section class="mp-advantages__icon-wrap">
                     <figure class="mp-advantages__icon">
-                      <img src="{{$item['image']['link']}}">
+                      <img src="{{$item['image']['link']}}" loading="lazy">
                     </figure>
                 </section>
                 <h4 class="mp-advantages__title">

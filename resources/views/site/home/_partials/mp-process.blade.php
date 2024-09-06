@@ -15,7 +15,7 @@
                                 0{{$key + 1}}
                             </span>
                             <figure class="mp-process-item__img">
-                                <img src="{{$item['image']['link'] ?? null}}">
+                                <img src="{{$item['image']['link'] ?? null}}" loading="lazy">
                             </figure>
                             <h3 class="mp-process-item__title">
                                 {{$item['title'] ?? null}}

@@ -3,7 +3,7 @@
         <div class="mp-utp__row">
             <div class="mp-utp__img order-md-1">
                 <figure class="mp-utp__fig mp-utp__fig--img">
-                    <img src="{{$blocks['mp-utp']['image']['link'] ?? null}}">
+                    <img src="{{$blocks['mp-utp']['image']['link'] ?? null}}" loading="lazy">
                 </figure>
                 <figure class="mp-utp__fig mp-utp__link" data-bs-toggle="modal" data-bs-target="#video_modal">
                     Cмотреть видео

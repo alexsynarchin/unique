@@ -1,7 +1,7 @@
 <div class="container">
    <section class="mp-banner">
        <figure class="mp-banner__mobile-img">
-           <img src="/assets/site/images/mp/mp-banner-mobile.png">
+           <img src="/assets/site/images/mp/mp-banner-mobile.png" loading="lazy">
        </figure>
        <div class="mp-banner__content">
            <h3 class="mp-banner__title">

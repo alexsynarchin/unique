@@ -11,12 +11,12 @@
             </div>
             <div class="col-lg-5">
                 <figure class="mp-faq__img">
-                    <img src="/assets/site/images/mp/mp-faq.png">
+                    <img src="/assets/site/images/mp/mp-faq.png" loading="lazy">
                     <div class="mp-faq__smile-1">
-                        <img src="/assets/site/images/mp/mp-faq-smile-1.png">
+                        <img src="/assets/site/images/mp/mp-faq-smile-1.png" loading="lazy">
                     </div>
                     <div class="mp-faq__smile-2">
-                        <img src="/assets/site/images/mp/mp-faq-smile-2.png">
+                        <img src="/assets/site/images/mp/mp-faq-smile-2.png" loading="lazy">
                     </div>
                 </figure>
             </div>
