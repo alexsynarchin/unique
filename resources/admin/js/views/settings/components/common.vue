@@ -23,9 +23,10 @@
                 </el-form-item>
                 <el-form-item class="col-lg-6" prop="show_rewrite_btn_in_header"
                               label="Показывать кнопку «Заказать рерайт» в шапке">
-                    <el-switch v-model="form.show_rewrite_btn_in_header">
-                    </el-switch>
-
+                    <el-switch v-model="form.show_rewrite_btn_in_header"></el-switch>
+                </el-form-item>
+                <el-form-item class="col-lg-6" prop="error_404_text" label="Текст страницы 404">
+                    <el-input type="textarea" v-model="form.error_404_text"></el-input>
                 </el-form-item>
             </div>
             <h4>Социальные сети</h4>
@@ -120,6 +121,7 @@
                   free_check:false,
                   need_payment:false,
                   show_rewrite_btn_in_header:false,
+                  error_404_text: ""
               }
           }
         },
