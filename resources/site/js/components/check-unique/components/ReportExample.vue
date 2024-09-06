@@ -11,7 +11,10 @@
                 <h3 class="unique-modal__title">
                     Пример отчета
                 </h3>
-                <embed :src="url" frameborder="0" width="100%" height="400px">
+                <object :data="url" type="application/pdf" width="100%" height="500px">
+                    <p><b>Упс! Кажется, PDF-файл не отобразился.</b> Попробуйте скачать его <a href="url">отсюда</a>.</p>
+                </object>
+
 
             </div>
         </div>
