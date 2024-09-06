@@ -15,7 +15,7 @@ class AddPaymentFreeFieldInReportsTable extends Migration
     {
         Schema::table('reports', function (Blueprint $table) {
 
-            $table->boolean('payment_free')->default(true);
+            $table->boolean('payment_free')->default(false);
         });
     }
 
