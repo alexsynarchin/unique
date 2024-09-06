@@ -13,6 +13,7 @@
 <script src="{{mix('js/manifest.js', 'assets/site')}}" defer></script>
 <script src="{{mix('js/vendor.js','assets/site')}}" defer></script>
 <script src="{{mix('js/app.js','assets/site')}}" defer></script>
+@if(stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false && stripos(@$_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false)
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -28,6 +29,7 @@
         webvisor:true
     });
 </script>
+@endif
 <noscript><div><img src="https://mc.yandex.ru/watch/93111741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 @if((int) Config::get('settings.common.recaptcha') === 1)
