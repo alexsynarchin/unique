@@ -1,6 +1,7 @@
 
 
-<script src="/assets/site/js/openapi.js"></script>
+
+<script src="/assets/site/js/openapi.js" defer></script>
 
 <script type="text/javascript">
     VK.init({
@@ -9,7 +10,9 @@
         //apiId: 51554125
     })
 </script>
-<script src="{{mix('js/app.js','assets/site')}}"></script>
+<script src="{{mix('js/manifest.js', 'assets/site')}}" defer></script>
+<script src="{{mix('js/vendor.js','assets/site')}}" defer></script>
+<script src="{{mix('js/app.js','assets/site')}}" defer></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};

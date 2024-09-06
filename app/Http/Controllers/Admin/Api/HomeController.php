@@ -55,7 +55,7 @@ class HomeController extends Controller
         if($type === 'free') {
             $free = CheckUnique::query()->select('id', 'created_at')-> whereHas('reports', function ($query){
                 $query->where('unique_order_id', NULL);
-            })->orderBy('created_at','desc');
+            })->orderBy('id','desc');
             $freeCount = $free -> count();
             $freeItems = $free->take(5)->get();
             $freeCountToday = $free;
