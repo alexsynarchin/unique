@@ -9,6 +9,7 @@
     border-radius: 500px;
     &:hover, &:focus {
         color: #fff;
+        background-color: $blue-color;
         text-decoration: none;
     }
     @include media-breakpoint-only(lg) {
