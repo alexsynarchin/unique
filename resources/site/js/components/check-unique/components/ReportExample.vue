@@ -11,19 +11,17 @@
                 <h3 class="unique-modal__title">
                     Пример отчета
                 </h3>
-                <object :data="url" type="application/pdf" frameborder="0" width="100%" height="600px" style="padding: 20px;">
-                    <embed :src="url" width="100%" height="600px"/>
-                </object>
-
-
-
-
+                <vue-pdf-embed :source="url" />
             </div>
         </div>
     </div>
 </template>
 <script>
+import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed'
     export default {
+    components: {
+        VuePdfEmbed
+    },
         props: {
             url: {
                 type:String

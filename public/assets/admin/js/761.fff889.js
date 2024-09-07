@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkunique=self.webpackChunkunique||[]).push([[761],{87761:(e,n,u)=>{u.r(n),u.d(n,{default:()=>t});const o={name:"AuthRedirect",created:function(){var e=window.location.search.slice(1);window.localStorage&&(window.localStorage.setItem("x-admin-oauth-code",e),window.close())},render:function(e){return e()}};const t=(0,u(14486).A)(o,undefined,undefined,!1,null,null,null).exports}}]);
+//# sourceMappingURL=761.fff889.js.map

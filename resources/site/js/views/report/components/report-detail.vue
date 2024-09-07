@@ -30,7 +30,7 @@
                         </span>
                         <span class="report-item-links__url">
                             {{item.url}}
-                            <input type="hidden" :value="item.url" :id="'report_item_link_' + index"></input>
+                            <input type="hidden" :value="item.url" :id="'report_item_link_' + index">
                         </span>
 
                     </section>
