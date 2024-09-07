@@ -11,7 +11,11 @@
                 <h3 class="unique-modal__title">
                     Пример отчета
                 </h3>
-                <vue-pdf-embed :source="url" />
+                <vue-pdf-embed
+                    ref="pdfRef"
+                    :page="page"
+                    @rendered="handleDocumentRender"
+                    :source="url" />
             </div>
         </div>
     </div>
@@ -22,6 +26,11 @@ import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed'
     components: {
         VuePdfEmbed
     },
+        watch: {
+            showAllPages() {
+                this.page = this.showAllPages ? null : 1
+            },
+        },
         props: {
             url: {
                 type:String
@@ -29,8 +38,18 @@ import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed'
         },
         data() {
             return {
-
+                isLoading: true,
+                page: null,
+                pageCount: 1,
+                showAllPages: true,
             }
+        },
+        methods: {
+            handleDocumentRender() {
+                this.isLoading = false
+                this.pageCount = this.$refs.pdfRef.pageCount
+            },
         }
+
     }
 </script>
