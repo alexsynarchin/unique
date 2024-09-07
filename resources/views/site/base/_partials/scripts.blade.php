@@ -16,7 +16,7 @@
 @if(stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false && stripos(@$_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false)
 <!-- Yandex.Metrika counter -->
 
-<script type="text/javascript" >
+<script type="text/javascript" defer>
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
