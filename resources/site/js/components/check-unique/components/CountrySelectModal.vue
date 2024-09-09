@@ -26,7 +26,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label>Ваш счет:</label>
-                                            <span>{{paymentData.sum}} руб.</span>
+                                            <span>{{paymentData.sum}} {{paymentData.currency_ru}}</span>
                                         </div>
                                         <div class="text-center">
                                             <button class="btn button"
@@ -51,7 +51,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label>Ваш счет:</label>
-                                            <span>{{paymentData.sum_2}} {{paymentData.currency}}.</span>
+                                            <span>{{paymentData.sum_not_ru}} {{paymentData.currency_not_ru}}.</span>
                                         </div>
                                         <div class="text-center">
                                             <button class="btn button "
@@ -73,10 +73,10 @@ export default {
     data() {
         return {
             paymentData: {
-                sum:0,
-                sum_2:0,
-                currency:'руб',
-                robokassa: false,
+                sum: 0,
+                sum_not_ru: 0,
+                currency_ru:'',
+                currency_not_ru: '',
                 url:"",
                 check_unique_id:null,
                 russia:null,
@@ -88,15 +88,8 @@ export default {
     methods: {
         showModal(data) {
             console.log(data);
-            console.log('show-select-payment-country')
             this.$root.isLoading = false;
-            this.paymentData.currency = data.currency;
-            this.paymentData.robokassa = data.robokassa;
-            this.paymentData.sum = data.sum;
-            this.paymentData.sum_2 = data.sum_2;
-            this.paymentData.url = data.url;
-            this.paymentData.check_unique_id = data.check_unique_id;
-            this.paymentData.reports = data.reports;
+            this.paymentData = data;
             $('#payment_country_select').modal('show');
         },
         makePayment(type) {
@@ -104,7 +97,7 @@ export default {
             this. paymentData.russia = type;
             axios.post('/api/unique-order/payment', this.paymentData)
                 .then((response) => {
-                    window.location.href = response.data;
+                  window.location.href = response.data;
                 })
                 .catch((error) => {
 

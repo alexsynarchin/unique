@@ -3,6 +3,9 @@
         <el-tab-pane label="Общие" name="common">
             <common></common>
         </el-tab-pane>
+        <el-tab-pane label="Настройки платежей" name="payment">
+            <payment-gateway></payment-gateway>
+        </el-tab-pane>
         <el-tab-pane label="Навигация" name="navigation">
             <navigation></navigation>
         </el-tab-pane>
@@ -24,10 +27,11 @@ import common from "./components/common";
 import navigation from './components/navigation';
 import MainPage from "./components/main-page";
 import Unique from "./components/unique"
-import RepostSettings from "./components/repost.vue"
+import RepostSettings from "./components/repost.vue";
+import PaymentGateway from "@/admin/js/views/settings/components/PaymentGateway.vue";
 export default {
     components:{
-        common, navigation, MainPage, smtp, Unique, RepostSettings,
+        common, navigation, MainPage, smtp, Unique, RepostSettings, PaymentGateway
     },
     data() {
         return {

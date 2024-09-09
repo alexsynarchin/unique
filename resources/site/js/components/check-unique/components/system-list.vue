@@ -3,11 +3,13 @@
     <div class="check-systems">
         <div class="check-systems__item" v-for="(item, index) in CheckSystems" >
             <section class="check-system-item" @click.prevent="selectSystem(index, item)">
-                <div class="check-system-item__disable" v-if="item.price === 0 && !free_check">
+                <div class="check-system-item__disable" v-if="item.price_ru === 0 && !free_check">
                 </div>
                 <div class="check-system-item__checkbox">
                     <label class="check-system-item-checkbox">
-                        <input autocomplete="off" name="" type="checkbox" class="check-system-item-checkbox__input" :checked="systemIndex.indexOf(index) !== -1" :disabled="!free_check && item.price === 0">
+                        <input autocomplete="off" name="" type="checkbox"
+                               class="check-system-item-checkbox__input"
+                               :checked="systemIndex.indexOf(index) !== -1" :disabled="!free_check && item.price_ru === 0">
                         <span class="check-system-item-checkbox__checkmark"></span>
                     </label>
                 </div>
@@ -18,7 +20,7 @@
                         </h4>
                         <a style="display: block; z-index: 4; position: relative" href=""
                            class="check-system-item__link"
-                           :class="{'check-system-item__link--disable': !free_check && item.price === 0}"
+                           :class="{'check-system-item__link--disable': !free_check && item.price_ru === 0}"
                            @click.stop.prevent="showSystemModal(index, item)">
                             Подробнее
                         </a>
@@ -31,18 +33,18 @@
                            class="check-system-item__link">
                             Пример отчета
                         </a>
-                        <div class="check-system-item__disable-text--mobile"  v-if="item.price === 0 && !free_check">
+                        <div class="check-system-item__disable-text--mobile"  v-if="item.price_ru === 0 && !free_check">
                             В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
                             Воспользуйтесь одним из платных пакетов.
                         </div>
 
                         <span class="check-system-item__price check-system-item__price--mobile" :class="{'check-system-item__price--disable': !free_check && item.price === 0}">
-                            {{item.price ? item.price + ' руб.' : 'бесплатно'}}
+                            {{item.price_ru ? item.price_ru + ' руб.' : 'бесплатно'}}
                         </span>
                     </div>
 
                     <figure class="check-system-item__logo">
-                        <img :src="item.logo" :class="{'check-system-item__image--disable': !free_check && item.price === 0}">
+                        <img :src="item.logo" :class="{'check-system-item__image--disable': !free_check && item.price_ru === 0}">
                         <div class="check-system-item__disable-text" v-if="item.price === 0 && !free_check">
                             В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
                             Воспользуйтесь одним из платных пакетов.
@@ -51,7 +53,7 @@
                 </div>
 
                 <span class="check-system-item__price check-system-item__price--desc" :class="{'check-system-item__price--disable': !free_check && item.price === 0}">
-                    {{item.price ? item.price + 'руб.' : 'бесплатно'}}
+                    {{item.price_ru ? item.price_ru + 'руб.' : 'бесплатно'}}
                 </span>
             </section>
         </div>
@@ -115,7 +117,7 @@
               this.example_report_link = url;
             },
             selectSystem(index, item) {
-                if(item.price !== 0 || this.free_check ) {
+                if(item.price_ru !== 0 || this.free_check ) {
                     let checkIndex = this.systemIndex.indexOf(index);
                     let selectedSystemIndex = this.selectedSystemsList.findIndex(object => {
                         return item.id === object.id
@@ -133,7 +135,7 @@
 
             },
             showSystemModal(index, item) {
-                if(item.price !== 0 || this.free_check ){
+                if(item.price_ru !== 0 || this.free_check ){
                     this.$refs.select_system_modal.showSelectSystem(index, item);
                 }
 
@@ -146,13 +148,13 @@
                     return data.item.id === object.id
                 })
                 if(checkIndex === -1 && selectedSystemIndex === -1) {
-                    if(this.CheckSystems[data.index].price === 0) {
+                    if(this.CheckSystems[data.index].price_ru === 0) {
                         this.systemIndex = [];
                         this.free = true;
                     } else {
                         this.free = false;
                         this.systemIndex.forEach((element, i) =>  {
-                            if(this.CheckSystems[element].price === 0) {
+                            if(this.CheckSystems[element].price_ru === 0) {
                                 this.systemIndex.splice(i, 1);
                             }
                         })
@@ -163,8 +165,8 @@
                         this.selectedSystemsList.push(
                             {id:this.CheckSystems[element].id,
                                 logo: this.CheckSystems[element].logo,
-                                price:this.CheckSystems[element].price,
-                                price_2:this.CheckSystems[element].price_2,
+                                price_ru:this.CheckSystems[element].price_ru,
+                                price_not_ru:this.CheckSystems[element].price_not_ru,
                                 title:this.CheckSystems[element].title
                             });
                     })
@@ -189,7 +191,7 @@
                 axios.get('/api/check-systems')
                     .then((response) => {
                         this.CheckSystems = response.data;
-                        const searchIndex = response.data.findIndex((system) => system.price===0);
+                        const searchIndex = response.data.findIndex((system) => system.price_ru===0);
                         bus.$emit('change-symbols-count', response.data[searchIndex].symbols_count);
                         if(this.stateSelectedSystems.length > 0) {
                             this.preSelectSystems();
@@ -210,12 +212,7 @@
 
         },
         mounted() {
-            window.onload = function(){
-                Fancybox.bind("[data-fancybox]", {
-                    // Your custom options
-                });
 
-            }
             this.getSystemsList();
             this.getSetting('common', 'free_check');
 

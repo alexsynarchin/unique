@@ -2,7 +2,7 @@
     <ul class="unique-service-list">
         <li class="unique-service-list__item"
             v-for="(item, index) in serviceList"
-            @click.prevent="selectService({id:item.id, price:item.price, price_2:item.price_2})"
+            @click.prevent="selectService({id:item.id, price_ru:item.price_ru, price_not_ru:item.price_not_ru})"
         >
             <figure class="unique-service-list__logo-wrap">
                 <img v-if="item.logo"
@@ -11,7 +11,7 @@
                     <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-magnifying-glass"></use>
                 </svg>
                 <span class="unique-service-list__price">
-                    {{item.price}} руб
+                    {{item.price_ru}} руб
                 </span>
             </figure>
             <div class="unique-service-list__content">

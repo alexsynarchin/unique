@@ -21,11 +21,11 @@
                 <el-form-item prop="title" label="Название" :error="errors.get('title')">
                     <el-input v-model="form.title"/>
                 </el-form-item>
-                <el-form-item prop="price" label="Стоимость">
-                    <el-input-number :min="0" v-model="form.price"/>
+                <el-form-item prop="price_ru" label="Стоимость">
+                    <el-input-number :min="0" v-model="form.price_ru"/>
                 </el-form-item>
-                <el-form-item prop="price_@" label="Стоимость для не РФ">
-                    <el-input-number :min="0" v-model="form.price_2"/>
+                <el-form-item prop="price_not_ru" label="Стоимость для не РФ">
+                    <el-input-number :min="0" v-model="form.price_not_ru"/>
                 </el-form-item>
                 <el-form-item prop="description" label="Описание">
                     <el-input type="textarea" v-model="form.description" rows="6"></el-input>

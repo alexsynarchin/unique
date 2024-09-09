@@ -132,7 +132,7 @@ export default {
                 file:null,
                 url: '',
                 sum: 0,
-                sum_2:0,
+                sum_not_ru:0,
                 systems:[],
                 services:[],
                 textParams: {},
@@ -145,7 +145,7 @@ export default {
         methods: {
             onCloseModal() {
                 this.sum = 0;
-                this.sum_2 = 0;
+                this.sum_not_ru = 0;
                 this.form.email = "";
                 this.form.promocode = "";
                 this.systems = [];
@@ -161,8 +161,8 @@ export default {
                 }
                 this.systems.forEach((system) => {
                     console.log(system)
-                    this.sum = this.sum + system.price;
-                    this.sum_2 = this.sum_2 + system.price_2;
+                    this.sum = this.sum + system.price_ru;
+                    this.sum_not_ru = this.sum_not_ru + system.price_not_ru;
                 })
                 $('#pay_check').modal('show');
             },
@@ -192,7 +192,7 @@ export default {
                     formData.append(key, data);
                 }
                 formData.append('sum', this.sum);
-                formData.append('sum_2', this.sum_2);
+                formData.append('sum_not_ru', this.sum_not_ru);
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
@@ -202,7 +202,7 @@ export default {
                         if(data.sum > 0) {
                             this.selectPaymentCountry(data);
                         } else {
-                            window.location.href = response.data.url;
+                           window.location.href = response.data.url;
                         }
                     })
                     .catch((error) => {
@@ -215,13 +215,13 @@ export default {
                 if( this.services.map(x => x.id).indexOf(data.id) === -1) {
 
                     this.services.push(data);
-                    this.sum = this.sum + data.price;
-                    this.sum_2 = this.sum_2 + data.price_2;
+                    this.sum = this.sum + data.price_ru;
+                    this.sum_not_ru = this.sum_not_ru + data.price_not_ru;
                 } else {
                     let index =  this.services.map(x => x.id).indexOf(data.id);
                     this.services.splice(index, 1);
-                    this.sum = this.sum - data.price;
-                    this.sum_2 = this.sum_2 - data.price_2;
+                    this.sum = this.sum - data.price_ru;
+                    this.sum_not_ru = this.sum_not_ru - data.price_not_ru;
                 }
 
              }

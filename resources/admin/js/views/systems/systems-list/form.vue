@@ -21,13 +21,13 @@
                     <el-input v-model="form.title"></el-input>
                 </el-form-item>
                 <div class="col-md-6">
-                    <el-form-item label="Стоимость" :error="errors.get('price')">
-                        <el-input-number :step="100" v-model="form.price"  :min="0" ></el-input-number>
+                    <el-form-item label="Стоимость" :error="errors.get('price_ru')">
+                        <el-input-number :step="100" v-model="form.price_ru"  :min="0" ></el-input-number>
                     </el-form-item>
                 </div>
                 <div class="col-md-6">
-                    <el-form-item label="Стоимость для не РФ" :error="errors.get('price_2')">
-                        <el-input-number :step="100" v-model="form.price_2"  :min="0" ></el-input-number>
+                    <el-form-item label="Стоимость для не РФ" :error="errors.get('price_not_ru')">
+                        <el-input-number :step="100" v-model="form.price_not_ru"  :min="0" ></el-input-number>
                     </el-form-item>
                 </div>
                 <div class="col-md-6">

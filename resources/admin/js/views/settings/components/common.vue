@@ -65,18 +65,7 @@
 
                 </el-form-item>
             </div>
-            <div class="row">
-                <el-form-item class="col-lg-6" prop="free_email_send" label="Платежи для не РФ">
-                    <el-select v-model="form.payment_not_ru" placeholder="Выбрать">
-                        <el-option
-                            v-for="item in payments"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-            </div>
+
             <div class="mb-3">
                 <el-input type="textarea" :rows="12" v-model="form.scripts"></el-input>
             </div>

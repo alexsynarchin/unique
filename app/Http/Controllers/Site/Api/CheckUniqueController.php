@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckUniqueRequest;
 use App\Models\CheckSystem;
 use App\Models\CheckUnique;
-use App\Models\PromoCode;
 use App\Models\Report;
 use App\Models\Setting;
 use App\Models\UniqueText;
@@ -20,9 +19,19 @@ use Illuminate\Support\Facades\Storage;
 use \TextMedia\FileParser\ParserException;
 use \TextMedia\FileParser\Parser\Pdf;
 use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
+use App\Services\PromoCodeDiscountService;
+
+
 
 class CheckUniqueController extends Controller
 {
+    protected PromoCodeDiscountService $promoCodeDiscountService;
+
+    public function __construct(PromoCodeDiscountService $promoCodeDiscountService)
+    {
+        $this->promoCodeDiscountService = $promoCodeDiscountService;
+    }
+
     public function show($id)
     {
         $check_unique = CheckUnique::with(['reports' => function ($query){
@@ -157,38 +166,11 @@ class CheckUniqueController extends Controller
 
     public function makeReport(CheckUniqueRequest  $request)
     {
-        $data = [];
-        if($request->has('sum')) {
-            $data['sum'] = $request->get('sum');
-        }
-        if($request->has('sum_2')) {
-            $data['sum_2'] = $request->get('sum_2');
-        }
-
+        $data = $request->only('sum', 'sum_not_ru');
         if($request->has('promocode') && $request->get('promocode')) {
-            $promo_code = PromoCode::where('name', $request->get('promocode'))->firstOrFail();
-            $promo_code -> max_count = $promo_code -> max_count-1;
-            $promo_code -> save();
-            if($request->has('sum') && $request->get('sum')) {
-                if($promo_code->discount_type === 'rubles') {
-                    $data['sum'] = $data['sum'] - $promo_code->discount;
-                    if($data['sum'] < 0) {
-                        $data['sum'] = 0;
-                    }
-                } else {
-                    $data['sum'] = $data['sum'] - ($data['sum'] * ($promo_code->discount/100));
-                }
-            }
-            if($request->has('sum_2') && $request->get('sum_2')) {
-                if($promo_code->discount_type === 'rubles') {
-                    $data['sum_2'] = $data['sum_2'] - $promo_code->discount;
-                    if($data['sum_2'] < 0) {
-                        $data['sum_2'] = 0;
-                    }
-                } else {
-                    $data['sum_2'] = $data['sum_2'] - ($data['sum_2'] * ($promo_code->discount/100));
-                }
-            }
+            $discount_sums = $this->promoCodeDiscountService
+                -> apply($request->get('promocode'), $data);
+            $data = array_replace($data, $discount_sums);
         }
 
         if($request->has('id')) {
@@ -272,19 +254,19 @@ class CheckUniqueController extends Controller
         $data['url'] = $url;
         $data['check_unique_id'] = $check_unique->id;
         $data['reports'] = $reports;
-        $data['currency'] = 'руб';
-        $data['robokassa'] = false;
-        if(Setting::where('group','common')->where('name','payment_not_ru')->exists()) {
-            $payment_not_ru =  Setting::where('group','common')->where('name','payment_not_ru')->first();
-            if($payment_not_ru -> value === 'robokassa') {
-                $data['currency'] = 'тенге';
-                $data['robokassa'] = true;
-            } else {
-                $data['sum_2'] =$data['sum'];
-            }
+        if(Setting::where('group', 'payment') -> where('name', 'currency_ru')->exists()) {
+            $currency_ru = Setting::where('group', 'payment') -> where('name', 'currency_ru')->first();
+            $data['currency_ru'] = $currency_ru->value;
         } else {
-            $data['sum_2'] =$data['sum'];
+            $data['currency_ru'] = 'руб';
         }
+        if(Setting::where('group', 'payment') -> where('name', 'currency_not_ru')->exists()) {
+            $currency_not_ru = Setting::where('group', 'payment') -> where('name', 'currency_not_ru')->first();
+            $data['currency_not_ru'] = $currency_not_ru->value;
+        } else {
+            $data['currency_not_ru'] = 'тенге';
+        }
+
         return $data;
     }
 }

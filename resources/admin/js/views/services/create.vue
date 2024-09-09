@@ -16,8 +16,8 @@
                 form: {
                     title:"",
                     logo: null,
-                    price: 0,
-                    price_2: 0,
+                    price_ru: 0,
+                    price_not_ru: 0,
                     description: "",
                 },
                 formAction: {

@@ -23,9 +23,26 @@ class UniqueOrderController extends Controller
     public function store(Request $request)
     {
         $order_data = $request->all();
-        if(!$order_data['russia'] && $order_data['robokassa']) {
-            $order_data['sum'] = $order_data['sum_2'];
+
+        if(!$order_data['russia'])  {
+            $order_data['sum'] = $order_data['sum_not_ru'];
+            $order_data['currency'] = $order_data['currency_not_ru'];
+            if(Setting::where('group', 'payment') -> where('name', 'payment_not_ru')->exists()) {
+                $payment_not_ru = Setting::where('group', 'payment') -> where('name', 'payment_not_ru')->first();
+                $order_data['paymentType'] = $payment_not_ru -> value;
+            } else {
+                $order_data['paymentType'] =  'robokassa';
+            }
+        } else {
+            if(Setting::where('group', 'payment') -> where('name', 'payment_ru')->exists()) {
+                $payment_ru = Setting::where('group', 'payment') -> where('name', 'payment_ru')->first();
+                $order_data['paymentType'] = $payment_ru -> value;
+            } else {
+                $order_data['paymentType'] =  'unitpay';
+            }
+            $order_data['currency'] = $order_data['currency_ru'];
         }
+
         $order = UniqueOrder::create($order_data);
         foreach ($request->get('reports') as $report_id) {
             $report = Report::findOrFail($report_id);
@@ -35,11 +52,10 @@ class UniqueOrderController extends Controller
 
         $check_unique = CheckUnique::findOrFail($order->check_unique_id);
         $description = 'Проверка уникальности';
-        if(!$order_data['russia'] && $order_data['robokassa']) {
+
+        if(!$order_data['russia'] && $order->paymentType === 'robokassa') {
           $url =  $this -> paymentRobokassa -> createPayment($order);
-
         } else {
-
             $netting = !$request->get('russia');
             $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
         }

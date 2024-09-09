@@ -15,3 +15,5 @@
 <a href="https://xn----8sbempbojoebkbodzijk2phe.xn--p1ai/admin/check-uniques/show/{{$order->checkUnique->id}}">
     Перейти
 </a>
+<br>
+Оплачен через: {{$order->paymentType}}
