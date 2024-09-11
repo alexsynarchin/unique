@@ -52,7 +52,7 @@ class GenerateReportPdf implements ShouldQueue
 
 
         if($this->report->unique_order_id) {
-            $unique_order = UniqueOrder::firstOrFail($this->report->unique_order_id);
+            $unique_order = UniqueOrder::findOrFail($this->report->unique_order_id);
             if($unique_order->status === 'paid') {
                 $send_status = true;
             }
