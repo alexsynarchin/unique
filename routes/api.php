@@ -69,5 +69,8 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 use App\Http\Controllers\Site\Api\UniqueOrderController;
 Route::post('/unique-order/payment', [UniqueOrderController::class, 'store'])->name('unique-order.store');
 
+use App\Http\Controllers\Site\Api\CloudPaymentsController;
+Route::post('/cloud-payment/success', [CloudPaymentsController::class, 'success'])
+    ->name('cloud-payment.success');
 use App\Http\Controllers\Site\Api\VkontakteController;
 Route::post('/vk-post', [VkontakteController::class, 'wallPost']);

@@ -64,11 +64,16 @@ Route::get('/mailable', [TestMailController::class,'testMail']);
 //use App\Http\Controllers\Site\VkController;
 //Route::get('/vk', [VkController::class, 'index']);
 
-//use App\Http\Controllers\Site\CheckUniqueTestController;
-//Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
+use App\Http\Controllers\Site\CheckUniqueTestController;
+Route::get('/check-test', [CheckUniqueTestController::class, 'checkTest']);
 //use App\Http\Controllers\Site\TestPdfController;
 //Route::get('/test-pdf', [TestPdfController::class, 'index']);
 //Route::get('/test-pdf2', [TestPdfController::class, 'test']);
+
+use App\Http\Controllers\Site\CloudPaymentsController;
+Route::get('/cloud-payments/pay', [CloudPaymentsController::class, 'showPaymentPage'])
+    ->name('cloud-payments.show-payment-page');
+
 use App\Http\Controllers\Site\SiteMapController;
 Route::get('/sitemap.xml', [SiteMapController::class, 'index']);
 use App\Http\Controllers\Site\StaticPageController;

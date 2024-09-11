@@ -11,18 +11,20 @@ use App\Services\CheckUnique\Textovod\TextovodApiService;
 use App\Services\CheckUnique\Advego\AdvegoApi;
 use App\Services\CheckUnique\TextRuApiService\TextRuApiService;
 use Illuminate\Http\Request;
+use App\Services\CloudPaymentsService;
 
 class CheckUniqueTestController extends Controller
 {
+    protected CloudPaymentsService $cloudPaymentsService;
+    public function __construct(CloudPaymentsService $cloudPaymentsService)
+    {
+        $this->cloudPaymentsService = $cloudPaymentsService;
+    }
     public function checkTest()
     {
-        $system = CheckApi::findOrfail(4);
-        $account = ApiAccount::where('api_id', $system->id)->first();
-
-        $api = new AdvegoApi($account->key, null);
-        $text= 'После выбора площадки для торговли селлеру предстоит юридически правильно оформить правоотношения с маркетплейсом. Для этого нужно заключить договор — принять оферту или «предложение» о сотрудничестве с вытекающими последствиями.
-
-Для принятия оферты необязательно ставить на бумаге свою подпись. Принятием оферты считаются даже действия в личном кабинете. Подписанный бумажный вариант договора маркетплейсы требуют редко. Такое условие встречается только на Aliexpress, где контракт сначала подписывают электронной подписью, а потом обмениваются бумажными вариантами.';
-        dd($api->add($text));
+        $order = [
+            'test' => 'test',
+        ];
+        $this->cloudPaymentsService->createPayment($order);
     }
 }

@@ -55,7 +55,10 @@ class UniqueOrderController extends Controller
 
         if(!$order_data['russia'] && $order->paymentType === 'robokassa') {
           $url =  $this -> paymentRobokassa -> createPayment($order);
-        } else {
+        } elseif ($order->paymentType === 'cloudpayments') {
+            $url = route('cloud-payments.show-payment-page',['order_id'=>$order->id]);
+        }
+        else {
             $netting = !$request->get('russia');
             $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
         }
