@@ -24,7 +24,7 @@ class SettingController extends Controller
         if($settingArr['value'] === true) {
             $settingArr['value'] = 'true';
         }
-        if($settingArr['value']){
+        if($settingArr['name'] && $settingArr['group']) {
             $setting = Setting::firstOrCreate([
                 'group' => $settingArr['group'],
                 'name' => $settingArr['name']
@@ -32,14 +32,11 @@ class SettingController extends Controller
             if(is_array($settingArr['value'])) {
                 $settingArr['value']  = $this->uploadImage($settingArr['value'], $setting);
             }
-
-
             $setting->value = $settingArr['value'];
             $setting->save();
             return $setting;
 
         } else {
-
             return 'null';
         }
     }
