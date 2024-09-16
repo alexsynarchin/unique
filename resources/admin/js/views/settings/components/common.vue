@@ -110,7 +110,8 @@
                   free_check:false,
                   need_payment:false,
                   show_rewrite_btn_in_header:false,
-                  error_404_text: ""
+                  error_404_text: "",
+                  refund_page_url: "",
               }
           }
         },
