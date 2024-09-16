@@ -111,7 +111,7 @@ export default {
                 sortItem.title = item.title;
                 return sortItem;
             });
-            axios.post('/api/admin/menu/' + this.menu.id + '/sort',{sort:valuesSort})
+            axios.post('/api/admin/menu/' + this.menu.position + '/sort',{sort:valuesSort})
                 .then((response) => {
                     console.log(response.data);
                 })

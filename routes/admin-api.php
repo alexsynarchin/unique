@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/menu/{id}/update', [MenuController::class, 'update'])->name('menu.update');
     Route::post('/menu/{id}/remove',[MenuController::class, 'remove'])->name('menu.remove');
     Route::get('/menu/get/{position}',[MenuController::class, 'list'])->name('menu.list');
+    Route::post('/menu/{position}/sort',[MenuController::class, 'sort'])->name('menu.sort');
     Route::get('/check-api/list',[CheckApiController::class, 'index'])->name('check-api.list');
     Route::post('/check-api/{id}/update', [CheckApiController::class, 'update'])->name('check-api.update');
     Route::get('/check-systems',[CheckSystemController::class, 'index'])->name('check-systems.index');

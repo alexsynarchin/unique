@@ -31,7 +31,13 @@ class MenuController extends Controller
         return 'success';
     }
 
-    public function sort() {
-
+    public function sort(Request $request)
+    {
+        foreach ($request->get('sort') as $sortItem)
+        {
+            $menuItem = Menu::findOrFail($sortItem['id']);
+            $menuItem->menuindex = $sortItem['menuindex'];
+            $menuItem->save();
+        }
     }
 }
