@@ -15,6 +15,8 @@
             {{$page->name}}
         </h1>
         {!! $page->content -> text !!}
-        @include('site.home._partials.mp-banner')
+        @if($page->banner)
+            @include('site.home._partials.mp-banner')
+        @endif
     </div>
 @endsection

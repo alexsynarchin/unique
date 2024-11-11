@@ -11,11 +11,12 @@ class StaticPage extends Model
     use HasFactory, HasSlug;
 
     protected $fillable =[
-        'name', 'published', 'slug',
+        'name', 'published', 'slug', 'banner'
     ];
 
     protected $casts = [
         'published' => 'boolean',
+        'banner' => 'boolean'
     ];
 
     public function getSlugOptions() : SlugOptions

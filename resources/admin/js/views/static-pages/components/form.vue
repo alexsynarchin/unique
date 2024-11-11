@@ -12,6 +12,9 @@
                         </el-form-item>
                     </div>
                     <div class="row">
+                        <el-form-item label="Баннер" class="col-md-5"  prop="banner" >
+                            <el-checkbox v-model="form.banner">Показывать баннер</el-checkbox>
+                        </el-form-item>
                         <el-form-item prop="slug" label="URL"  class="col-md-7" :error="errors.get('slug')">
                             <el-input v-model="form.slug"></el-input>
                         </el-form-item>

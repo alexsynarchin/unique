@@ -16,6 +16,7 @@ export default {
             form:{
                 title:'',
                 slug:'',
+                banner:false,
                 published:true,
                 content:{},
                 seo:{},

@@ -12,6 +12,8 @@ use App\Services\CheckUnique\Advego\AdvegoApi;
 use App\Services\CheckUnique\TextRuApiService\TextRuApiService;
 use Illuminate\Http\Request;
 use App\Services\CloudPaymentsService;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class CheckUniqueTestController extends Controller
 {
@@ -22,9 +24,45 @@ class CheckUniqueTestController extends Controller
     }
     public function checkTest()
     {
-        $order = [
-            'test' => 'test',
+
+        $client = new Client([
+        'auth' => ['pk_2180f0785984f6b018ba6da1fe0bd', 'b4c496a661750edaca8942434d6189e0']
+]);;
+        $data = [
+            'Inn' => "021400653471",
+            "Type" => "Income",
+            "InvoiceId" => "22123",
+            "CustomerReceipt" => [
+                "Amounts" => [
+                    "Electronic" => 1
+                ],
+                "Email" => "gwynbleid11@yandex.ru",
+                "items" => [
+                    [
+                        "Label" => "Проверка уникальности текста",
+                        "Price" =>  "1",
+                        "Quantity" => 1,
+                        "Vat" => 0,
+                        "Amount" => 1
+                    ]
+
+                ]
+            ]
         ];
-        $this->cloudPaymentsService->createPayment($order);
+        $data = json_encode($data);
+        //22123
+        $res = $client->request(
+            'POST',
+            'https://api.cloudpayments.ru/kkt/receipt',
+            [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'body' => $data
+            ]
+
+        );
+        dd($res->getBody()->getContents());
+       // $this->cloudPaymentsService->createPayment($order);
     }
 }
