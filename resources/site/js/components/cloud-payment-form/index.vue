@@ -31,7 +31,7 @@
                 invoiceId: this.order.id,
                // debug:true,
                 email: "",
-                requireEmail: true,
+                requireEmail: false,
                 language: "ru-RU",
                 applePaySupport: false,
                 googlePaySupport: false,
