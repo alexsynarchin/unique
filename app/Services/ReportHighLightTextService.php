@@ -15,10 +15,31 @@ class ReportHighLightTextService
            $text = $this->highLightTextovod($data, $index);
        } else if ($type === 'advego.com') {
            $text = $this->highLightAdvego($data, $index);
+       } else if($type === 'Retainer(Парсер Go (Google))') {
+            $text = $this->highLightRetainer($data, $index);
+       } else if ($type === 'Retainer(Парсер Go (Yahoo))') {
+           $text = $this->highLightRetainer($data, $index);
+       } else if($type === 'Retainer(Режим «Word файлы»)') {
+           $text = $this->highLightRetainer($data, $index);
+       } else if($type === 'Retainer(Режим «Диплом»)') {
+           $text = $this->highLightRetainer($data, $index);
        }
       return $text;
     }
 
+
+    public function highLightRetainer($data, $index)
+    {
+        if(count($data['urls']) === 0) {
+            return $data['clear_text'];
+        }
+        if($index === -1) {
+
+            return json_decode($data['clear_text']);
+        } else {
+            return $data['urls'][$index]['text'];
+        }
+    }
     private function highLightContentWatch($data, $index)
     {
 
