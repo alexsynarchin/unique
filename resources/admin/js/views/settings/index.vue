@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             CanAccess: 'Просмотр "Настройки"',
-            activeTab: 'smtp'
+            activeTab: 'common'
         };
     },
     methods: {
