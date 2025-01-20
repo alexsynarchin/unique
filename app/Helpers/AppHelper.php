@@ -3,12 +3,15 @@
 namespace App\Helpers;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Config;
 
 class AppHelper
 {
     public static function setMailConfig()
     {
-        $mail = Setting::where('group', 'smtp')->pluck('value', 'name');
+        $smtp_group = Setting::where('name', 'smtp_main')->first();
+        $mail = Setting::where('group', $smtp_group->value)->pluck('value', 'name');
+
         $mailConfig = array(
             'transport' => 'smtp',
             'host'       => $mail['host'],
@@ -19,5 +22,6 @@ class AppHelper
 
         );
         config(['mail.mailers.smtp' => $mailConfig]);
+
     }
 }

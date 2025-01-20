@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('/api-accounts', ApiAccountController::class);
     Route::post('/sort', [SortController::class, 'sort'])->name('sorting');
     Route::get('/setting/get', [SettingController::class, 'getSettings'])->name('setting.index');
+    Route::get('/setting/get-smtp', [SettingController::class, 'getSmtp'])->name('setting.list');
     Route::post('/setting/update', [SettingController::class, 'update'])->name('setting.update');
     Route::post('/setting/upload-favicon', [SettingController::class, 'uploadFavicon'])->name('setting.upload-favicon');
     Route::post('/menu/store',[MenuController::class, 'store'])->name('menu.store');

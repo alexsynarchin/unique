@@ -66,4 +66,23 @@ class SettingController extends Controller
             ->toMediaCollection('settings');
         return $media->getUrl();
     }
+
+    public function getSmtp(Request $request)
+    {
+        $isMain = Setting::where('name','smtp_main') -> first();
+        $isMain = $isMain->value;
+        $result = [];
+        foreach ($request->get('groups') as $group) {
+            $item = [
+                'group' => $group,
+                'isMain' => false,
+            ];
+            if($isMain == $group) {
+                $item['isMain'] = true;
+            }
+
+            $result[] = $item;
+        }
+        return $result;
+    }
 }

@@ -8,7 +8,8 @@ class mailConfigService
 {
     public function generateConfig($name = 'smtp'): array
     {
-        $mail = Setting::where('group', $name)->pluck('value', 'name');
+        $smtp_group = Setting::where('name', 'smtp_main')->first();
+        $mail = Setting::where('group', $smtp_group->value)->pluck('value', 'name');
         return array(
             'transport' => 'smtp',
             'host'       => $mail['host'],

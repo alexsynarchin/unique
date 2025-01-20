@@ -32,8 +32,7 @@ class ContactMail extends Mailable
     public function build()
     {
 
-
-        $mail = $this->from(Config::get('settings.smtp.email'))
+        $mail = $this->from(Config::get('mail.mailers.smtp.username'))
             -> subject($this->contact->order_type);
         return $mail->view('mails.contact-order', ['contact' => ($this->contact)->toArray()]);
     }
