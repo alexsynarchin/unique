@@ -57,7 +57,7 @@
         },
         data() {
             return {
-                showDetail: false,
+                showDetail: true,
                 textArray:[],
                 resultText: "",
             }
