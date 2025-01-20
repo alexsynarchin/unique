@@ -31,7 +31,7 @@ class RewriteOrder extends Mailable
      */
     public function build()
     {
-        $mail = $this->from(Config::get('settings.smtp.email'))
+        $mail = $this->from(Config::get('mail.mailers.smtp.username'))
             -> subject('Новая заявка на рерайт');
         if($this->contact->filename) {
             return $mail->view('mails.rewrite-order', ['contact' => $this->contact])

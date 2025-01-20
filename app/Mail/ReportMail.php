@@ -33,8 +33,7 @@ class ReportMail extends Mailable
      */
     public function build()
     {
-        $name_from = Setting::where('group', 'smtp')->where('name','email')->firstOrFail();
-        $mail = $this->from($name_from->value)
+        $mail = $this->from(Config::get('mail.mailers.smtp.username'))
             -> subject('Отчет о проверке уникальности (' . $this->report->checkSystem->title . ')');
         $setting = Setting::where('name', 'phone_header')->firstOrFail();
         return $mail-> view('mails.contact' , ['data' => $this-> report, 'phone' => $setting->value])

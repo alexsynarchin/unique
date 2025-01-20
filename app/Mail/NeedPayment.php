@@ -36,8 +36,8 @@ class NeedPayment extends Mailable
      */
     public function build()
     {
-        $name_from = Setting::where('group', 'smtp')->where('name','email')->firstOrFail();
-        $mail = $this->from($name_from->value)
+
+        $mail = $this->from(Config::get('mail.mailers.smtp.username'))
             -> subject('Вам выставлен счет за проверку уникальности');
         return $mail->view('mails.need-payment-notification',
             [
