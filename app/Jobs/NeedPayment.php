@@ -52,9 +52,9 @@ class NeedPayment implements ShouldQueue
             }
         }
         if($this->order->status !== 'paid' && $send_status) {
-          //  $mailConfigService = new mailConfigService();
-            //$mailConfig = $mailConfigService -> generateConfig($this -> name);
-            //config(['mail.mailers.smtp' => $mailConfig]);
+           $mailConfigService = new mailConfigService();
+            $mailConfig = $mailConfigService -> generateConfig($this -> name);
+            config(['mail.mailers.smtp' => $mailConfig]);
             Mail::to($this-> order->checkUnique->email)->send(new \App\Mail\NeedPayment($this->order, $this->url));
         }
     }
