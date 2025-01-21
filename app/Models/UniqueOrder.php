@@ -9,7 +9,7 @@ class UniqueOrder extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'check_unique_id', 'russia', 'sum', 'paymentType', 'status', 'url','currency'
+        'check_unique_id', 'russia', 'sum', 'paymentType', 'status', 'url','currency', 'type', 'description', 'email',
     ];
 
     protected $casts = [

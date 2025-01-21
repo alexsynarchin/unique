@@ -68,5 +68,47 @@ class UniqueOrderController extends Controller
         return $url;
     }
 
+    public function storeFree(Request  $request)
+    {
+        $order_data = $request->all();
 
+        if(!$order_data['russia'])  {
+            $order_data['sum'] = $order_data['sum_not_ru'];
+            $order_data['currency'] = $order_data['currency_not_ru'];
+            if(Setting::where('group', 'payment') -> where('name', 'payment_not_ru')->exists()) {
+                $payment_not_ru = Setting::where('group', 'payment') -> where('name', 'payment_not_ru')->first();
+                $order_data['paymentType'] = $payment_not_ru -> value;
+            } else {
+                $order_data['paymentType'] =  'robokassa';
+            }
+        } else {
+            if(Setting::where('group', 'payment') -> where('name', 'payment_ru')->exists()) {
+                $order_data['sum'] = $order_data['sum_ru'];
+                $payment_ru = Setting::where('group', 'payment') -> where('name', 'payment_ru')->first();
+                $order_data['paymentType'] = $payment_ru -> value;
+            } else {
+                $order_data['paymentType'] =  'unitpay';
+            }
+            $order_data['currency'] = $order_data['currency_ru'];
+        }
+        $description = $order_data['service'];
+        $order_data['description'] = $description;
+        $order_data['type'] = 2;
+        $order_data['check_unique_id'] = 0;
+        $order = UniqueOrder::create($order_data);
+
+
+        if(!$order_data['russia'] && $order->paymentType === 'robokassa') {
+            $url =  $this -> paymentRobokassa -> createPayment($order);
+        } elseif ($order->paymentType === 'cloudpayments') {
+            $url = route('cloud-payments.show-payment-page',['order_id'=>$order->id]);
+        }
+        else {
+            $netting = !$request->get('russia');
+            $url = UnitPay::getPayUrl($order->sum, $order->id, $order_data['email'], $netting, $description);
+        }
+
+        //SendAdminReport::dispatch($order, 'smtp')->delay(now());
+        return $url;
+    }
 }

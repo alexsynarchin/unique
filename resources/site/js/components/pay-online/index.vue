@@ -1,6 +1,6 @@
 <template>
     <section>
-        <form class="consultation-form payment-form mb-4">
+        <form class="consultation-form payment-form mb-4" style="margin-left: auto; margin-right: auto">
             <div class="u-form-group">
                 <label class="u-form-group__label">
                     E-mail
@@ -71,7 +71,7 @@
 
             </div>
         </form>
-        <country-select-modal v-if="isCountryModal"></country-select-modal>
+        <country-select-modal v-if="isCountryModal" :paymentData="paymentData"></country-select-modal>
     </section>
 
 </template>
@@ -100,6 +100,7 @@ export default {
             axios.post('/api/validate-payment-form', this.form)
                 .then((response) => {
                     this.paymentData = response.data;
+                    this.isCountryModal = true;
                 })
                 .catch((error)=> {
                     this.errors.record(error.response.data.errors);

@@ -27,7 +27,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label>Ваш счет:</label>
-                                            <span>{{paymentData.sum}} {{paymentData.currency_ru}}</span>
+                                            <span>{{paymentData.sum_ru}} {{paymentData.currency_ru}}</span>
                                         </div>
                                         <div class="text-center">
                                             <button class="btn button"
@@ -71,32 +71,26 @@
 <script>
 import { bus } from '@/site/js/services/bus.js';
 export default {
+    props: {
+        paymentData: {
+            type: Object
+        }
+    },
     data() {
         return {
-            paymentData: {
-                sum: 0,
-                sum_not_ru: 0,
-                currency_ru:'',
-                currency_not_ru: '',
-                url:"",
-                check_unique_id:null,
-                russia:null,
-                reports:[],
-            },
+
 
         }
     },
     methods: {
-        showModal(data) {
-            console.log(data);
-            this.$root.isLoading = false;
-            this.paymentData = data;
+        showModal() {
+
             $('#payment_country_select').modal('show');
         },
         makePayment(type) {
             console.log(type);
             this. paymentData.russia = type;
-            axios.post('/api/unique-order/payment', this.paymentData)
+            axios.post('/api/unique-order/payment-free', this.paymentData)
                 .then((response) => {
                   window.location.href = response.data;
                 })
@@ -106,7 +100,10 @@ export default {
         },
     },
     created() {
-        this.showModal();
+
+    },
+    mounted() {
+        this.showModal()
     }
 
 }
