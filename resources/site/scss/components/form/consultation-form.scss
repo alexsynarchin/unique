@@ -16,7 +16,7 @@
     }
     &__invalid-feedback {
         @include media-breakpoint-up(lg) {
-            position: absolute;
+
             font-size: 0.75em;
         }
     }

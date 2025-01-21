@@ -65,6 +65,12 @@
 
                 </el-form-item>
             </div>
+            <div class="row">
+                <el-form-item class="col-lg-6" prop="sequential_check" label="Включить последовательный режим проверки">
+                    <el-switch v-model="form.sequential_check">
+                    </el-switch>
+                </el-form-item>
+            </div>
 
             <div class="mb-3">
                 <el-input type="textarea" :rows="12" v-model="form.scripts"></el-input>
@@ -112,6 +118,7 @@
                   show_rewrite_btn_in_header:false,
                   error_404_text: "",
                   refund_page_url: "",
+                  sequential_check: false
               }
           }
         },
@@ -138,7 +145,12 @@
                         for (var key in data) {
                             if(key in this.form){
                                 this.form[key] = data[key];
-                                if (key === 'free_email_send' || key === 'need_payment' || key === 'recaptcha' || key === 'free_check' || key === 'show_rewrite_btn_in_header') {
+                                if (key === 'free_email_send' ||
+                                    key === 'need_payment' ||
+                                    key === 'recaptcha' ||
+                                    key === 'free_check' ||
+                                    key === 'show_rewrite_btn_in_header' ||
+                                    key === 'sequential_check') {
                                     if(this.form[key] === 'true') {
                                         this.form[key] = true;
                                     }  else {

@@ -54,6 +54,8 @@ Route::get('/robokassa-success', [UniqueOrderController::class, 'robokassaSucces
 Route::get('/robokassa-fail', [UniqueOrderController::class, 'robokassaFail']);
 Route::get('/order/test', [UniqueOrderController::class, 'test']);
 
+use App\Http\Controllers\Site\PayOnlineController;
+Route::get('/payonline', [PayOnlineController::class, 'index'])->name('payonline');
 
 use App\Http\Controllers\Site\TestMailController;
 Route::get('/mailable', [TestMailController::class,'testMail']);

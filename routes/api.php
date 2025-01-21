@@ -69,6 +69,9 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 use App\Http\Controllers\Site\Api\UniqueOrderController;
 Route::post('/unique-order/payment', [UniqueOrderController::class, 'store'])->name('unique-order.store');
 
+use App\Http\Controllers\Site\Api\PayOnlineController;
+Route::post('/validate-payment-form', [PayOnlineController::class, 'validatePaymentForm'])->name('validate-payment-form');
+
 use App\Http\Controllers\Site\Api\CloudPaymentsController;
 Route::post('/cloud-payment/success', [CloudPaymentsController::class, 'success'])
     ->name('cloud-payment.success');
