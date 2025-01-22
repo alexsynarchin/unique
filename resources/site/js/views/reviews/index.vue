@@ -16,6 +16,7 @@
     </section>
 </template>
 <script>
+import { bus } from '@/site/js/services/bus.js';
     import ReviewItem from "../../components/reviews/ReviewItem";
     export default {
         components: {
@@ -23,6 +24,10 @@
         },
         data() {
             return {
+                filters: {
+                    sort:'desc',
+                    filter:"all",
+                },
                 banner: {
                     img: "/assets/site/images/reviews/review-banner.png",
                     banner:true,
@@ -31,12 +36,15 @@
             }
         },
         methods: {
+            applyFilters(data) {
+                this.filters[data.type] = data.value;
+                this.getReviews();
+            },
           getReviews() {
 
-              axios.get('/api/reviews')
+              axios.get('/api/reviews', {params: this.filters})
                   .then((response) => {
                     this.reviews = response.data;
-
                     if(this.reviews.length > 3) {
                         this.reviews[4] = this.banner;
                     } else {
@@ -48,6 +56,9 @@
         mounted() {
 
             this.getReviews();
+        },
+        created() {
+            bus.$on('reviews-filters', this.applyFilters)
         }
     }
 </script>

@@ -9,7 +9,7 @@
             :class="{open: open}"
             @click="open = !open"
         >
-            {{ selected }}
+            {{ selected.label }}
             <svg viewBox="0 0 16 17" class="selected__icon" :class="{'selected__icon--open': open}">
                 <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-select-arrow"></use>
             </svg>
@@ -22,9 +22,9 @@
                 class="item"
                 v-for="(option, i) of options"
                 :key="i"
-                @click="selected=option; open=false; $emit('input', option)"
+                @click="selected=option; open=false; $emit('input', {type:type, value:option.value});"
             >
-                {{ option }}
+                {{ option.label }}
             </div>
         </div>
     </div>
@@ -35,6 +35,9 @@ export default {
         options:{
             type: Array,
             required: true
+        },
+        type: {
+            type:String
         },
         tabindex:{
             type: Number,
@@ -49,7 +52,7 @@ export default {
         };
     },
     mounted(){
-        this.$emit('input', this.selected);
+        //this.$emit('input', {type:this.type, value:this.selected.value});
     }
 };
 </script>
