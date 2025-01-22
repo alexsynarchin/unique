@@ -1,5 +1,5 @@
 @if($lists['about-ratings'] ?? null)
-    <ul class="mp-advantages">
+    <ul class="mp-advantages row">
         @foreach($lists['about-ratings'] as $item)
             <li class="mp-advantages__item col-md-3">
                 <section class="mp-advantages__icon-wrap">
