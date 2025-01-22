@@ -3,7 +3,9 @@
 namespace App\Jobs;
 
 use App\Helpers\AppHelper;
+use App\Mail\AdminFreeReportMail;
 use App\Mail\AdminReportMail;
+use App\Mail\PaymentFreeMail;
 use App\Models\Setting;
 use App\Models\UniqueOrder;
 use App\Services\mailConfigService;
@@ -56,8 +58,15 @@ class SendAdminReport implements ShouldQueue
         foreach ($email as $recipient) {
 
             config(['mail.mailers.smtp' => $mailConfig]);
-            Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
-
+            if($this->order->type === 2) {
+                Mail::to(trim($recipient))->send(new AdminFreeReportMail($this->order));
+            } else {
+                Mail::to(trim($recipient))->send(new AdminReportMail($this->order));
+            }
+        }
+        if($this->order->type === 2) {
+            config(['mail.mailers.smtp' => $mailConfig]);
+            Mail::to($this->order->email) -> send(new PaymentFreeMail($this -> order));
         }
     }
 
