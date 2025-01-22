@@ -32,7 +32,7 @@ class PaymentFreeMail extends Mailable
     public function build()
     {
         $mail = $this->from(Config::get('mail.mailers.smtp.username'))
-            -> subject('Новый запрос на проверку уникальности');
+            -> subject('Вы произвели оплату с произвольной формы на сайте Проверить-уникальность.рф');
         return $mail->view('mails.report-free');
     }
 }
