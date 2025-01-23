@@ -31,7 +31,7 @@ class PayOnlineController extends Controller
         }
     $data = [
         'sum_ru' => (int) $request->get('sum'),
-        'sum_not_ru' =>  (int) ceil((int) $request->get('sum') * ($rateSetting->value / 100)),
+        'sum_not_ru' =>  (int) ceil((int) $request->get('sum') / ($rateSetting->value / 100)),
         'service' => $request->get('service'),
         'email' => $request->get('email')
 
