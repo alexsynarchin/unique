@@ -15,6 +15,7 @@
                         Оставьте заявку на расчет стоимости рерайта текста
                     </p>
                     <text-block
+                        ref="textBlock"
                         @inputFile="inputFile"
                         @inputText="inputText"></text-block>
                     <repost ref="repost"></repost>
@@ -24,7 +25,7 @@
                                 Имя
                             </label>
                             <div class="u-input-group"
-                                 :class="{'is-invalid': errors.has('name')|| errors.has('plain_text')  || errors.has('symbolsCount')}">
+                                 :class="{'is-invalid': errors.has('name')}">
                                 <i class="u-input-group__icon">
                                     <svg viewBox="0 0 24 24" class="u-input-group__svg">
                                         <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-user"></use>
@@ -33,12 +34,10 @@
                                 <input class="u-input-group__input"
                                        placeholder=""
                                        v-model="form.name"
-                                       :class="{'is-invalid':  errors.has('name') || errors.has('plain_text')  || errors.has('symbolsCount')}">
+                                       :class="{'is-invalid':  errors.has('name') }">
 
                             </div>
                             <div class="invalid-feedback" v-text="errors.get('name')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('plain_text')" v-text="errors.get('plain_text')"></div>
-                            <div class="invalid-feedback" v-if="errors.has('symbolsCount')" v-text="errors.get('symbolsCount')"></div>
                         </div>
                         <div class="u-form-group col-md-6">
                             <label class="u-form-group__label">
@@ -217,15 +216,24 @@
                             type: 'success',
                             hideProgressBar: true,
                         });
-                        console.log(response.data)
+                        this.$refs.textBlock.handleFileDelete();
+                        Object.keys(this.form).forEach((key) => {
+                            if(key === 'file') {
+                                this.form[key] = null;
+                            }
+                            this.form[key] = "";
+                        })
                     })
                     .catch((error) => {
                         this.$root.isLoading = false;
                         this.errors.record(error.response.data.errors);
+                        this.$refs.textBlock.createErrors(error.response.data.errors)
+
                     })
             },
             inputText(data) {
                 this.form.plain_text = data.plainText;
+                console.log(data)
                 delete data['plainText'];
                 this.form.text_params = data;
             },

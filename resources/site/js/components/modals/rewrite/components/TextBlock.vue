@@ -1,10 +1,22 @@
 <template>
-    <section >
+    <section>
         <section class="check-unique">
             <section class="check-unique__textarea-wrap">
+                <div class="upload-file" v-if="fileName">
+                    <span class="upload-file__file-name">{{fileName}}</span>
+                    <button class="btn-link btn upload-file__delete" @click="handleFileDelete">Удалить</button>
+                </div>
                 <textarea class="check-unique__textarea rewrite-text form-control"
                           v-model="text"
                           placeholder="Вставьте ваш текст"></textarea>
+                <div class="mt-3 alert alert-danger"
+                     v-if="errors.has('file') ||
+                           errors.has('plain_text')||
+                           errors.has('symbolsCount')">
+                    {{errors.get('file')}}
+                    {{errors.get('plain_text')}}
+                    {{errors.get('symbolsCount')}}
+                </div>
             </section>
             <div class="check-unique__actions">
 
@@ -37,7 +49,8 @@
                 <div class="upload-button__wrap">
 
                     <label for="file_rewrite" class="btn button upload-button">
-                        <input type="file" id="file_rewrite" ref="file" class="upload-button__input" v-on:change="handleFileUpload()">
+                        <input type="file" id="file_rewrite" ref="file" class="upload-button__input"
+                               v-on:change="handleFileUpload()">
                         <svg class="upload-button__icon" viewBox="0 0 20 22">
                             <use xlink:href="/assets/site/images/sprites.svg?ver=15#sprite-add-file-icon"></use>
                         </svg>
@@ -45,17 +58,18 @@
                     Загрузить документ
                     </span>
                     </label>
-                    <div class="upload-button__actions" v-if="fileName">
-                        <span class="upload-button__file-name">{{fileName}}</span>
-                        <button class="btn-link btn upload-button__delete" @click="handleFileDelete">Удалить</button>
-                    </div>
+
                 </div>
             </div>
         </section>
     </section>
 </template>
 <script>
+import { Errors } from  '@/common/js/services/errors.js';
 export default {
+    props: {
+
+    },
     data() {
         return {
             text: "",
@@ -66,7 +80,8 @@ export default {
                 wordsCount:0,
                 pages:0,
                 plainText: "",
-            }
+            },
+            errors: new Errors(),
         }
     },
     watch: {
@@ -84,11 +99,14 @@ export default {
                 pages:0,
                 plainText: "",
             };
-           Array.from(this.$refs.file.files).splice(0, 1);
+            this.$refs.file.value = null;
 
         },
+        createErrors(data) {
+            this.errors.record(data);
+        },
         handleFileUpload() {
-            console.log('test');
+            this.$root.isLoading = true;
             this.file = this.$refs.file.files[0];
             this.fileName = this.file.name;
             const formData = new FormData();
@@ -99,9 +117,15 @@ export default {
             }
             axios.post('/api/check-unique-file', formData, config)
                 .then((response) => {
+                    this.$root.isLoading = false;
                     this.textParams = response.data;
                     this.$emit('inputText', response.data);
                     this.$emit('inputFile', this.file);
+                })
+                .catch((error) => {
+                    this.$root.isLoading = false;
+                    this.errors.record(error.response.data.errors);
+
                 })
         },
         checkUniqueText(text) {

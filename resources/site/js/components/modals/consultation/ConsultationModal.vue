@@ -133,6 +133,19 @@ import { Errors } from  '@/common/js/services/errors.js';
                 axios.post('/api/contact/consultation', this.form)
                     .then((response) => {
                         $('#order-call').modal('hide');
+                        this.$toast("Ваша заявка отправлена. Наш менеджер свяжется с вами в близжайшее время.", {
+                            timeout: 2000,
+                            type: 'success',
+                            hideProgressBar: true,
+                        });
+                       Object.keys(this.form).forEach((key) => {
+                           if(this.form[key] === 'type') {
+                               this.form[key] = 1;
+                           } else {
+                               this.form[key] = '';
+                           }
+
+                       })
                     })
                     .catch((error) => {
                         this.errors.record(error.response.data.errors);
