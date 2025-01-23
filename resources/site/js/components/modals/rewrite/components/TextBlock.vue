@@ -91,7 +91,9 @@ export default {
     },
     methods: {
         handleFileDelete() {
+            console.log('delete files');
             this.file = null;
+            this.text = '';
             this.fileName= '';
             this.textParams = {
                 symbolsCount: 0,
