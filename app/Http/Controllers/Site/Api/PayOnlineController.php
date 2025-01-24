@@ -17,7 +17,8 @@ class PayOnlineController extends Controller
             'sum' => 'numeric|min:1'
         ], [
             'service.required' => 'Заполните поле услуга',
-            'sum.min' => 'Сумма должна быть не менне 1 руб.'
+            'sum.min' => 'Сумма должна быть не менне 1 руб.',
+            'sum.numeric' => 'Введите сумму заказа',
         ]);
         $rateSetting = Setting::where('group', 'rates')->where('name', 'kzt')->firstOrFail();
         $now = Carbon::now()->format('Y-m-d');

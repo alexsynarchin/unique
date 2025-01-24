@@ -71,7 +71,9 @@
 
             </div>
         </form>
-        <country-select-modal v-if="isCountryModal" :paymentData="paymentData"></country-select-modal>
+        <country-select-modal
+            ref="countrySelectModal"
+             :paymentData="paymentData"></country-select-modal>
     </section>
 
 </template>
@@ -90,7 +92,7 @@ export default {
             form: {
                 service: "",
                 email: "",
-                sum: 100,
+                sum: 0,
             },
             errors: new Errors(),
         }
@@ -100,7 +102,7 @@ export default {
             axios.post('/api/validate-payment-form', this.form)
                 .then((response) => {
                     this.paymentData = response.data;
-                    this.isCountryModal = true;
+                    this.$refs.countrySelectModal.showModal();
                 })
                 .catch((error)=> {
                     this.errors.record(error.response.data.errors);

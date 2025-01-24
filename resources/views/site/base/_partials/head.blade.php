@@ -13,6 +13,6 @@
     <meta name="og:image" content="{!! Config::get('settings.repost.image') !!}">
     <meta property="vk:image"  content="{!! Config::get('settings.repost.image') !!}" />
     <meta name="yandex-verification" content="ac1eeab5f2d97b5c" />
-
+    <script src="https://widget.cloudpayments.ru/bundles/cloudpayments.js"></script>
     @yield('head')
 </head>
