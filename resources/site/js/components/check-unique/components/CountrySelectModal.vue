@@ -97,7 +97,7 @@ export default {
             this. paymentData.russia = type;
             axios.post('/api/unique-order/payment', this.paymentData)
                 .then((response) => {
-                 // window.location.href = response.data;
+                  window.location.href = response.data;
                 })
                 .catch((error) => {
 
