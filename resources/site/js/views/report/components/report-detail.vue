@@ -23,6 +23,11 @@
                 Нажмите на ссылку для подсвечивания заимствованного текста
             </p>
             <ul class="report-item-links">
+                <li class="report-item-links__item" v-if="report.api_id === 8">
+                    <span class="report-item-links__url">
+                          Закрытая база документов (кольцо вузов)
+                    </span>
+                </li>
                 <li class="report-item-links__item" v-for="(item, index) in report.data.urls">
                     <section class="report-item-links__text" @click.prevent="selectUrl(index)">
                         <span class="report-item-links__percent">
