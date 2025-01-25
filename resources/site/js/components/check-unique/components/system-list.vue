@@ -45,7 +45,10 @@
 
                     <figure class="check-system-item__logo">
                         <img :src="item.logo" :class="{'check-system-item__image--disable': !free_check && item.price_ru === 0}">
-                        <div class="check-system-item__disable-text" v-if="item.price === 0 && !free_check">
+                        <div class="check-system-item__disable-text"
+                             v-if="item.price_ru === 0
+                            && item.price_not_ru === 0
+                            && !free_check">
                             В период пиковой нагрузки мы вынужденно отключаем бесплатную проверку.
                             Воспользуйтесь одним из платных пакетов.
                         </div>
