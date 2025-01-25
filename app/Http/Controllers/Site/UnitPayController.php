@@ -28,7 +28,7 @@ class UnitPayController extends Controller
 
             // Else your field doesn` has value like 'paid', you can change this value
             $order['status'] = ('1' == $order['status']) ? 'paid' : false;
-            ReportHandleNeedPayment::dispatch($order)->delay(now());
+
             return $order;
         }
 
@@ -46,6 +46,7 @@ class UnitPayController extends Controller
     {
         $order->status = 'paid';
         $order->save();
+        ReportHandleNeedPayment::dispatch($order)->delay(now());
         SendAdminReport::dispatch($order, 'smtp')->delay(now());
         //
 

@@ -68,19 +68,15 @@
                 </div>
             </div>
         </div>
-        <cloudpayments
 
-            ref="cloutpayments"></cloudpayments>
     </section>
 
 </template>
 <script>
-import cloudpayments from "@/site/js/components/cloudpayments/index.vue";
+
 import { bus } from '@/site/js/services/bus.js';
 export default {
-    components: {
-        cloudpayments,
-    },
+
     props: {
         paymentData: {
             type: Object
@@ -103,11 +99,12 @@ export default {
             axios.post('/api/unique-order/payment-free', this.paymentData)
                 .then((response) => {
                     if(response.data.cloudpayments) {
+
                        $('#payment_country_select').modal('hide');
-                       this.$refs.cloutpayments.payment(response.data.order);
+                        bus.$emit('make-cloudpayments', response.data.order);
                     } else {
                         window.location.href = response.data;
-                        console.log(response.data)
+
                     }
 
                 })

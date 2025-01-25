@@ -73,6 +73,7 @@ Vue.component('PromoModal', require('./components/modals/promo-modal/index.vue')
 Vue.component('OrderTest', require('./components/order/test.vue').default);
 Vue.component('CloudPaymentForm', require('./components/cloud-payment-form/index.vue').default)
 Vue.component('PayOnline', require('./components/pay-online/index.vue').default)
+Vue.component('CloudPayment', require('./components/cloudpayments/index.vue').default)
 const app = new Vue({
     el: '#app',
     created(){

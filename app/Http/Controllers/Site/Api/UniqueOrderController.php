@@ -23,7 +23,8 @@ class UniqueOrderController extends Controller
     public function store(Request $request)
     {
         $order_data = $request->all();
-
+        $description = 'Проверка уникальности';
+        $order_data['description'] = $description;
         if(!$order_data['russia'])  {
             $order_data['sum'] = $order_data['sum_not_ru'];
             $order_data['currency'] = $order_data['currency_not_ru'];
@@ -51,20 +52,28 @@ class UniqueOrderController extends Controller
         }
 
         $check_unique = CheckUnique::findOrFail($order->check_unique_id);
-        $description = 'Проверка уникальности';
+
 
         if(!$order_data['russia'] && $order->paymentType === 'robokassa') {
           $url =  $this -> paymentRobokassa -> createPayment($order);
         } elseif ($order->paymentType === 'cloudpayments') {
-            $url = route('cloud-payments.show-payment-page',['order_id'=>$order->id]);
+
+            $url = [
+                'cloudpayments' => true,
+                'order' => $order
+            ];
         }
         else {
             $netting = !$request->get('russia');
             $url = UnitPay::getPayUrl($order->sum, $order->id, $check_unique->email, $netting, $description);
         }
+        $link = $url;
+        if($order->paymentType === 'cloudpayments') {
+            $link = route('cloud-payments.show-payment-page',['order_id'=>$order->id]);
+        }
 
         //SendAdminReport::dispatch($order, 'smtp')->delay(now());
-        NeedPayment::dispatch($order, $url, 'smtp')->delay(now()->addMinutes(2)); //->addMinutes(2)
+        NeedPayment::dispatch($order, $link, 'smtp')->delay(now()->addMinutes(2)); //->addMinutes(2)
         return $url;
     }
 

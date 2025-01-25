@@ -73,8 +73,6 @@ class RetainerApiService
             if(!isset($result['error_code'])) {
                 $checked = true;
             }
-
-
         }
 
         $reportData['checked'] = $checked;

@@ -4,9 +4,17 @@
     </section>
 </template>
 <script>
+    import { bus } from '@/site/js/services/bus.js';
     export default {
+        data() {
+           return {
+               order: {}
+           }
+        },
         methods: {
             payment(order) {
+                console.log(order)
+                this.order = order;
                 var payments = new cp.CloudPayments({
                     language: "ru-RU",
                     email: "",
@@ -18,9 +26,11 @@
                     sbpSupport: false
                 })
                 payments.pay("charge", {
+                    //test_api_00000000000000000000002
+                    //pk_2180f0785984f6b018ba6da1fe0bd
                     publicId: "pk_2180f0785984f6b018ba6da1fe0bd",
                     description: order.description ? order.description : 'Проверка уникальности',
-                    amount: order.sum,
+                    amount: Number(order.sum),
                     currency: "RUB",
                     invoiceId: order.id,
                     email: "",
@@ -32,9 +42,9 @@
                             "Items": [
                                 {
                                     "label": order.description ? order.description : 'Проверка уникальности', //наименование товара
-                                    "price": order.sum, //цена
+                                    "price": Number(order.sum), //цена
                                     "quantity": 1.00, //количество
-                                    "amount": order.sum, //сумма
+                                    "amount": Number(order.sum), //сумма
                                     "vat": 0, //ставка НДС
                                     "method": 0, // тег-1214 признак способа расчета - признак способа расчета
                                     "object": 0, // тег-1212 признак предмета расчета - признак предмета товара, работы, услуги, платежа, выплаты, иного предмета расчета
@@ -51,7 +61,7 @@
                             "AgentSign": null, //признак агента, тег ОФД 1057
                             "amounts":
                                 {
-                                    "electronic": order.sum, // Сумма оплаты электронными деньгами
+                                    "electronic": Number(order.sum), // Сумма оплаты электронными деньгами
                                     "advancePayment": 0.00, // Сумма из предоплаты (зачетом аванса) (2 знака после запятой)
                                     "credit": 0.00, // Сумма постоплатой(в кредит) (2 знака после запятой)
                                     "provision": 0.00 // Сумма оплаты встречным предоставлением (сертификаты, др. мат.ценности) (2 знака после запятой)
@@ -65,27 +75,32 @@
 
                             axios.post('/api/cloud-payment/success', {order_id:options.invoiceId})
                                 .then((response)=> {
-                                    this.$toast("Оплата прошла успешно." +
-                                        "Наш менеджер свяжется с вами в близжайшее время.", {
-                                        timeout: 2000,
-                                        type: 'success',
-                                        hideProgressBar: true,
-                                    });
+                                    if(response.data) {
+                                        window.location.href = response.data;
+                                    } else {
+                                        this.$toast("Оплата прошла успешно." +
+                                            "Наш менеджер свяжется с вами в близжайшее время.", {
+                                            timeout: 2000,
+                                            type: 'success',
+                                            hideProgressBar: true,
+                                        });
+                                    }
+
                                 })
                         },
                         onFail: (reason, options) =>  { // fail
                             //действие при неуспешной оплате
                         },
                         onComplete:  (paymentResult, options) =>  { //Вызывается как только виджет получает от api.cloudpayments ответ с результатом транзакции.
-                           console.log(paymentResult)
-                            console.log(options);
+                          // console.log(paymentResult)
+                           // console.log(options);
                         }
                     })
 
             },
         },
-        mounted() {
-
+        created() {
+            bus.$on('make-cloudpayments', this.payment)
         }
     }
 </script>

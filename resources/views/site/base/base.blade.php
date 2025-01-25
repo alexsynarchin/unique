@@ -8,6 +8,7 @@
         @yield('content')
     </div>
     @include('site.base._partials.footer')
+    <cloud-payment></cloud-payment>
     @include('site.base._partials.modals')
     @yield('modals')
     <div class="overlay" v-if="isLoading">

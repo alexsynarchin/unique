@@ -104,6 +104,7 @@
     <free-check-modal ref="free_check_modal"></free-check-modal>
     <PayCheckModal ref="pay_check_nodal"></PayCheckModal>
     <CountrySelectModal></CountrySelectModal>
+
 </div>
 
 
@@ -118,7 +119,7 @@
     import { Errors } from  '@/common/js/services/errors.js';
     export default {
         components: {
-            SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal, GoogleReCaptchaV3
+            SystemsList, FreeCheckModal, PayCheckModal, CountrySelectModal, GoogleReCaptchaV3,
         },
         computed: {
             symbolsCountString: function () {

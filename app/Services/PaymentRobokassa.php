@@ -61,8 +61,9 @@ class PaymentRobokassa
             if ($payment->getSum() == $order->sum) {
                 $order->status = 'paid';
                 $order->save();
-                SendAdminReport::dispatch($order, 'smtp')->delay(now());
                 ReportHandleNeedPayment::dispatch($order)->delay(now());
+                SendAdminReport::dispatch($order, 'smtp')->delay(now());
+
             }
             echo $payment->getSuccessAnswer(); // "OK1254487\n"
         }
