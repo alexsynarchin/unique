@@ -21,8 +21,8 @@
                         Идет формирование отчета
                     </div>
                 </div>
-                <div class="mt-3 alert alert-danger" v-if="report.need_payment && !report.result">
-                    Отчет должен быть оплачен
+                <div class="mt-3 alert alert-warning" v-if="report.need_payment && !report.result">
+                    Ждем подтверждения оплаты за отчет от платежной системы...
                 </div>
                 <div v-if="report.result">
                     <div class="report-progress-bar">
