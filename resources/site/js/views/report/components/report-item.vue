@@ -3,7 +3,6 @@
         <h3 class="report-item__title">
             Проверка {{report.formatted_date}}
         </h3>
-
         <div class="report-item__content"  >
             <div class="report-item-system">
                 <h4 class="report-item-system__title">

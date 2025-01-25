@@ -1,8 +1,10 @@
 <template>
     <section class="mb-4">
 
-        <report-item v-if="loaded"
-                     :report="report"
+        <report-item
+
+                    v-if="loaded"
+                    :report="report"
                     :check_unique="check_unique"
                      @reportRestart="restartReport"
         ></report-item>
@@ -31,8 +33,7 @@ import ReportDetail from "./report-detail";
         },
         methods: {
             async restartReport() {
-              this.report.error_code = 0;
-              this.report.error = '';
+
               this.getReportData();
             },
             async  getReportData() {
@@ -41,6 +42,7 @@ import ReportDetail from "./report-detail";
                     await axios.post('/api/report/'+ this.id + '/result')
                         .then((response) => {
                             this.report = response.data;
+                            console.log(this.report.result)
                         })
                         .catch((error) => {
                             console.log(error.errors)
@@ -56,7 +58,7 @@ import ReportDetail from "./report-detail";
                         this.report = response.data;
                         this.loaded = true;
                         this.ymGoal();
-                        if(!this.report.check_system.manual && !this.report.result && !this.report.error_code) {
+                        if(!this.report.result && !this.report.error_code) {
                             this.$root.isLoading = false;
                             this.getReportData();
                         } else {

@@ -37,8 +37,9 @@ class CheckUniqueService
 
     public function getResult()
     {
-        $report = Report::findOrFail($this->id);
-        if($report->need_payment) {
+        $report = Report::with('checkSystem') ->findOrFail($this->id);
+        if($report->need_payment || $report->result || $report->checkSystem->manual) {
+
             return $report;
         }
         $check_unique = $report->checkUnique()->first();
