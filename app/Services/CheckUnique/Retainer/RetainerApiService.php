@@ -51,10 +51,13 @@ class RetainerApiService
             'uid' => $uid,
             'type' => $this->client_id
         ];
+        $reportData = [];
         $result = $this->sendCurl('http://retainer-api.rp-demo.ru/v1/post/check', $post_data);
 
-        if(isset($result['error_code']) && $result['error_code']  == 181) {
+        if(isset($result['error_code'])) {
             $checked = false;
+            $reportData['error_code'] = $result['error_code'] ?? 0;
+            $reportData['error'] = $result['error_desc'] ?? null;
             $data = [];
         } else {
             $data = [
@@ -63,15 +66,18 @@ class RetainerApiService
                 'urls' => $result['result_json']['urls'] ?? [],
             ];
 
+
+            $data['clear_text'] = str_replace('light-word', 'highlight--red', $data['clear_text']);
+            foreach ($data['urls'] as $key => $url) {
+                $data['urls'][$key]['text'] = str_replace('light-word', 'highlight--red', $url['text']);
+            }
             $checked = true;
 
         }
 
-
-        return  [
-            'checked' => $checked,
-            'data' =>$data,
-        ];
+        $reportData['checked'] = $checked;
+        $reportData['data'] = $data;
+        return $reportData;
     }
 
     private function sendCurl($url, $post_data)

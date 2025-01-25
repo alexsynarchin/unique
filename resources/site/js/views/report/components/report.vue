@@ -4,6 +4,7 @@
         <report-item v-if="loaded"
                      :report="report"
                     :check_unique="check_unique"
+                     @reportRestart="restartReport"
         ></report-item>
         <report-detail
             v-if="report.result && report.check_system.api_id"
@@ -29,7 +30,11 @@ import ReportDetail from "./report-detail";
             }
         },
         methods: {
-
+            async restartReport() {
+              this.report.error_code = 0;
+              this.report.error = '';
+              this.getReportData();
+            },
             async  getReportData() {
 
                 do {
@@ -56,9 +61,7 @@ import ReportDetail from "./report-detail";
                             this.getReportData();
                         } else {
                             this.$root.isLoading = false;
-
                         }
-
                     })
 
             },

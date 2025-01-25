@@ -14,12 +14,21 @@
                 </figure>
             </div>
             <section class="report-item__center">
-                <div class="report-progress-bar" v-if="!report.result && !report.need_payment">
+                <div class="report-progress-bar" v-if="!report.result && !report.need_payment && !report.error_code">
                     <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15"  :val="increasing_pct"></progress-bar>
                     <div class="report-progress-bar__text">
                         <span class="report-progress-bar__precent">{{increasing_pct + '%'}}</span>
                         Идет формирование отчета
                     </div>
+                </div>
+                <div class="mb-3" v-if="!report.result && report.error_code">
+                    <div class="mt-3 alert alert-danger">
+                        Ошибка сервива при формировании отчета.<br>
+                        Попробуйте перезапустить проверку или свяжитесь с менеджером
+                    </div>
+                    <button class="btn button" @click.prevent="$emit('reportRestart')">
+                        Перезапустить проверку
+                    </button>
                 </div>
                 <div class="mt-3 alert alert-warning" v-if="report.need_payment && !report.result">
                     Ждем подтверждения оплаты за отчет от платежной системы...
