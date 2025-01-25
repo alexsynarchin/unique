@@ -29,9 +29,10 @@
                         <el-tag type="warning" v-else>
                             Отчет не сформирован
                         </el-tag>
+                        <el-tag type="warning" v-if="report.need_payment">Отчет не оплачен</el-tag>
                         <el-tag type="primary">{{checkUniqueTypeString}}</el-tag>
                     </div>
-                    <el-button type="primary" v-if="!report.check_system.api_id || report.error_code" @click.prevent="$refs.reportSend.openModal()">{{reportBtnString}}</el-button>
+                    <el-button type="primary" v-if="(!report.check_system.api_id || report.error_code) && !report.need_payment" @click.prevent="$refs.reportSend.openModal()">{{reportBtnString}}</el-button>
                 </div>
 
 
