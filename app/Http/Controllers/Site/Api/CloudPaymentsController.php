@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ReportHandleNeedPayment;
 use App\Jobs\SendAdminReport;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class CloudPaymentsController extends Controller
         $order->status = 'paid';
         $order->save();
         SendAdminReport::dispatch($order, 'smtp')->delay(now());
+        ReportHandleNeedPayment::dispatch($order)->delay(now());
         return $order->url;
     }
 }

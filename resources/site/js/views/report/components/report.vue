@@ -37,6 +37,9 @@ import ReportDetail from "./report-detail";
                         .then((response) => {
                             this.report = response.data;
                         })
+                        .catch((error) => {
+                            console.log(error.errors)
+                        })
                 } while (!this.report.result && !this.report.error_code)
 
             },

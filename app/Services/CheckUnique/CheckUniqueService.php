@@ -38,6 +38,9 @@ class CheckUniqueService
     public function getResult()
     {
         $report = Report::findOrFail($this->id);
+        if($report->need_payment) {
+            return $report;
+        }
         $check_unique = $report->checkUnique()->first();
         $symbols = $report->checkSystem -> symbols_count;
         $text = mb_substr($check_unique->plainText, 0, $symbols);

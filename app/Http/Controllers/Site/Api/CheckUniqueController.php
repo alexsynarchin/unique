@@ -167,6 +167,7 @@ class CheckUniqueController extends Controller
     public function makeReport(CheckUniqueRequest  $request)
     {
         $data = $request->only('sum', 'sum_not_ru');
+
         if($request->has('promocode') && $request->get('promocode')) {
             $discount_sums = $this->promoCodeDiscountService
                 -> apply($request->get('promocode'), $data);
@@ -211,7 +212,9 @@ class CheckUniqueController extends Controller
             if($check_unique -> symbolsCount > $system-> symbols_count) {
                 $report->symbols_count = $system->symbols_count;
             }
-            if(($system->price > 0 || $system->price_2 > 0) && $data['sum'] > 0) {
+
+            if(($system->price_ru > 0 || $system->price_not_ru > 0) && ($data['sum'] > 0 || $data['sum_not_ru'] > 0)) {
+
                 $report->need_payment = true;
                 $report->payment_free = false;
             } else {

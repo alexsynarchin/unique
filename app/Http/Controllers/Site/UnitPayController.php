@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ReportHandleNeedPayment;
 use App\Jobs\SendAdminReport;
 use App\Models\UniqueOrder;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class UnitPayController extends Controller
 
             // Else your field doesn` has value like 'paid', you can change this value
             $order['status'] = ('1' == $order['status']) ? 'paid' : false;
-
+            ReportHandleNeedPayment::dispatch($order)->delay(now());
             return $order;
         }
 

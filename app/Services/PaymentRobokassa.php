@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use App\Jobs\ReportHandleNeedPayment;
 use App\Jobs\SendAdminReport;
 use App\Models\UniqueOrder;
 class PaymentRobokassa
@@ -61,6 +62,7 @@ class PaymentRobokassa
                 $order->status = 'paid';
                 $order->save();
                 SendAdminReport::dispatch($order, 'smtp')->delay(now());
+                ReportHandleNeedPayment::dispatch($order)->delay(now());
             }
             echo $payment->getSuccessAnswer(); // "OK1254487\n"
         }

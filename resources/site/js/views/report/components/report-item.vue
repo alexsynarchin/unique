@@ -14,14 +14,17 @@
                 </figure>
             </div>
             <section class="report-item__center">
-                <div class="report-progress-bar" v-if="!report.result">
+                <div class="report-progress-bar" v-if="!report.result && !report.need_payment">
                     <progress-bar  bg-color="#E3E5ED" bar-color="#366AF3" :bar-border-radius="30" size="15"  :val="increasing_pct"></progress-bar>
                     <div class="report-progress-bar__text">
                         <span class="report-progress-bar__precent">{{increasing_pct + '%'}}</span>
                         Идет формирование отчета
                     </div>
                 </div>
-                <div v-else>
+                <div class="mt-3 alert alert-danger" v-if="report.need_payment && !report.result">
+                    Отчет должен быть оплачен
+                </div>
+                <div v-if="report.result">
                     <div class="report-progress-bar">
                         <progress-bar
                             bg-color="#E3E5ED"
