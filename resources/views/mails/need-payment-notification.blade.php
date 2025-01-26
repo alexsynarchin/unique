@@ -118,7 +118,7 @@
                 </a>
             </td>
             <td style="padding-left: 12px; width: 50%; font-size: 52px; font-weight: bold">
-                {{$order->sum}} руб
+                {{$order->sum}} {{$order->currency}}
             </td>
         </tr>
     </table>
