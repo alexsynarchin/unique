@@ -20,14 +20,17 @@ class TextRuApiService
         $result = $TextRuApi->add($text);
 
         $uid = $result["text_uid"];
+        $reportData = [
+            'uid' => $uid,
+            'checked' => false,
+            'data' => [],
+        ];
 
-        return [
-                    'uid' => $uid,
-                    'checked' => false,
-                    'data' => [],
-                    'error_code' => $result['error']['code'] ?: 0,
-                    'error' =>$result['error']['desc']
-                ];
+        if($result['error']['code'] !== 181 && $result['error']['code'] !== 183 && $result['error']['code'] !== 429) {
+           $reportData['error_code'] = $result['error']['code'] ?? 0;
+            $reportData['error'] = $result['error']['desc'] ?? null;
+        }
+        return  $reportData;
     }
 
     private function getResult($uid)
@@ -38,7 +41,7 @@ class TextRuApiService
         $TextRuApi= new \TextRuApi\TextRuApi($this->userkey);
         $result = $TextRuApi->get($uid, $jsonvisible);
 
-        if($result['error']['code'] !== 181){
+        if($result['error']['code'] !== 181 && $result['error']['code'] !== 183 && $result['error']['code'] !== 429) {
 
             return [
                 'checked' => true,

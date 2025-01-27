@@ -94,19 +94,15 @@ export default {
             $('#payment_country_select').modal('show');
         },
         makePayment(type) {
-
             this. paymentData.russia = type;
             axios.post('/api/unique-order/payment-free', this.paymentData)
                 .then((response) => {
                     if(response.data.cloudpayments) {
-
                        $('#payment_country_select').modal('hide');
-                        bus.$emit('make-cloudpayments', response.data.order);
+                            bus.$emit('make-cloudpayments', response.data.order);
                     } else {
                         window.location.href = response.data;
-
                     }
-
                 })
                 .catch((error) => {
 
