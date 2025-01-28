@@ -1,9 +1,9 @@
 {
     "/js/spritemap.js": "/js/spritemap.js?id=d41d8cd98f00b204e9800998ecf8427e",
     "/images/sprites.svg": "/images/sprites.svg?id=bc7195b394009a9e98bed10dd3bf709e",
-    "/js/app.js": "/js/app.js?id=1d60e8afa780cadb4e07074e64c0cfa4",
-    "/js/manifest.js": "/js/manifest.js?id=f74beb361c5778b5b7520aded541065d",
-    "/css/pdf-catalog.css": "/css/pdf-catalog.css?id=f5c0d6aec0a9ee457bbb14b4bf871d80",
-    "/css/app.css": "/css/app.css?id=40e2f6926ab2990f199f9b9932206d64",
-    "/js/vendor.js": "/js/vendor.js?id=0bf70f57243ee5155de516e2dfab004f"
+    "/js/app.js": "/js/app.js?id=023246d42db25a152ae914c8d0ce3736",
+    "/js/manifest.js": "/js/manifest.js?id=a51d35e16ffe1a1ded2194bab6ae581b",
+    "/css/pdf-catalog.css": "/css/pdf-catalog.css?id=c6f5f9181c66641f8046cfc2e44b4d42",
+    "/css/app.css": "/css/app.css?id=08e8415b7cf0c88b4c6770a43c3c6c5c",
+    "/js/vendor.js": "/js/vendor.js?id=433ae381d8923deac6abcd5e033cdea2"
 }

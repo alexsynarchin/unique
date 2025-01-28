@@ -1,7 +1,7 @@
 <template>
     <section class="report-item">
         <h3 class="report-item__title">
-            Проверка {{report.formatted_date}}
+            Проверка
         </h3>
         <div class="report-item__content"  >
             <div class="report-item-system">
