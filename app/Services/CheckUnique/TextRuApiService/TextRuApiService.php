@@ -42,7 +42,7 @@ class TextRuApiService
         $result = $TextRuApi->get($uid, $jsonvisible);
 
         if($result['error']['code'] !== 181 && $result['error']['code'] !== 183 && $result['error']['code'] !== 429) {
-
+            //print_r(json_decode($result['result_json']));
             return [
                 'checked' => true,
                 'data' => json_decode($result['result_json']),

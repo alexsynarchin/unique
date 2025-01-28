@@ -87,6 +87,7 @@ class ReportHighLightTextService
         }
 
         $textArr  = $this->textToArray($data['clear_text']);
+
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
 
         foreach ($wordsIndexesArr as $item) {
@@ -95,6 +96,7 @@ class ReportHighLightTextService
             }
 
         }
+
         $text = implode(" ", $textArr);
         return $text;
     }
@@ -142,13 +144,18 @@ class ReportHighLightTextService
     }
     private function textToArray($string)
     {
-        $separator = " \t\n";
         $array_words = [];
+        /*
+        $separator = " \t\n";
+
         $tok = strtok($string, $separator);
         while($tok) {
             $array_words[] = $tok;
             $tok = strtok(" \t\n");
-        }
+        }*/
+
+        $array_words = preg_split('/\s+/', $string);
+
         return $array_words;
     }
 }
