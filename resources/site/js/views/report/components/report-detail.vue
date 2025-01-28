@@ -1,6 +1,6 @@
 <template>
     <section class="report-item-detail">
-        {{report.highlight_text}}
+
         <div class="report-item-detail__heading">
             <h3 class="report-item-detail__title">
                 Заимствования
