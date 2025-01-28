@@ -34,6 +34,7 @@ class PromoCodeDiscountService
             }
         } else {
             $sum = $sum - ($sum * ($this -> promoCode -> discount / 100));
+            $sum = ceil($sum);
         }
 
         return $sum;
