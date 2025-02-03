@@ -4,5 +4,5 @@
 @endsection
 @section('content')
 <cloud-payment-form :order="{{$order}}"></cloud-payment-form>
-
+<cloud-payment></cloud-payment>
 @endsection
