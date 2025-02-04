@@ -1,6 +1,6 @@
 <?php
 
-namespace TextRuApi\Exception;
+namespace App\Services\TextRuApi\Exception;
 
 class CurlRequestException extends \Exception
 {

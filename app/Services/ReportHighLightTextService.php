@@ -85,10 +85,13 @@ class ReportHighLightTextService
         if($index === -1) {
             $index = array_keys($plagiats_arr, max($plagiats_arr))[0];
         }
-
-        $textArr  = $this->textToArray($data['clear_text']);
-
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
+        if(isset($data['words_pos'])) {
+            $textArr = $this->textToArrayTextRu($data['clear_text'], $data['words_pos']);
+        } else {
+            $textArr  = $this->textToArray($data['clear_text']);
+
+        }
 
         foreach ($wordsIndexesArr as $item) {
             if(isset($textArr[$item])) {
@@ -158,4 +161,18 @@ class ReportHighLightTextService
 
         return $array_words;
     }
+    protected function textToArrayTextRu($text, $word_pos)
+    {
+
+
+        $textArr = [];
+        foreach ($word_pos as $item) {
+            $string = mb_substr($text, (int) $item[0], (int) $item[1] - (int) $item[0] + 2);
+
+            $textArr[] = $string;
+        }
+
+        return $textArr;
+    }
+
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace TextRuApi;
+namespace App\Services\TextRuApi;
 
-use TextRuApi\Exception\WrongParameterException;
-use TextRuApi\Exception\CurlRequestException;
-use TextRuApi\Exception\UnknownMethodException;
+use App\Services\TextRuApi\Exception\WrongParameterException;
+use App\Services\TextRuApi\Exception\CurlRequestException;
+use App\Services\TextRuApi\Exception\UnknownMethodException;
 
 class TextRuApi
 {
@@ -108,12 +108,12 @@ class TextRuApi
      * @return array
      * @throws WrongParameterException
      */
-    private static function get_from_textru($userkey, $uid, $jsonvisible = null)
+    private static function get_from_textru($userkey, $uid, $jsonvisible = 'detail_view')
     {
         if ((empty($userkey)) || (empty($uid))) throw WrongParameterException::wrongParameter("Required params is empty", 400131);
 
         $post_options = ["userkey" => $userkey, "uid" => $uid];
-        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail";
+        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail_view";
 
         $answer_decoded = self::sendCurl($post_options);
 
@@ -123,6 +123,8 @@ class TextRuApi
             "result_json" => null,
             "spell_check" => null,
             "seo_check"   => null,
+            "text_view"   => null,
+            "words_pos"   => null
         ];
 
         if (isset($answer_decoded->error_code)) $result["error"]["code"] = $answer_decoded->error_code;
@@ -132,7 +134,8 @@ class TextRuApi
         if (isset($answer_decoded->result_json)) $result["result_json"] = $answer_decoded->result_json;
         if (isset($answer_decoded->spell_check)) $result["spell_check"] = $answer_decoded->spell_check;
         if (isset($answer_decoded->seo_check)) $result["seo_check"] = $answer_decoded->seo_check;
-
+        if (isset($answer_decoded->text_view)) $result["text_view"] = $answer_decoded->text_view;
+        if (isset($answer_decoded->words_pos)) $result["words_pos"] = $answer_decoded->words_pos;
         return $result;
     }
 
@@ -176,6 +179,7 @@ class TextRuApi
         }
 
         if ($name === 'get') {
+
             return call_user_func_array([$this, 'get_from_textru'], array_merge([$this->userkey], $arguments));
         }
 

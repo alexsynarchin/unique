@@ -67,6 +67,10 @@ class UniqueOrderController extends Controller
         //$mailConfigService = new mailConfigService();
         //$mailConfig = $mailConfigService -> generateConfig('smtp');
         //dd($mailConfig);
-        return view('site.order.test');
+        $str = "Hello,world!";
+        $start = 8;
+        $end = 12;
+        $substring = substr($str, $start, $end - $start);
+        echo $substring;
     }
 }
