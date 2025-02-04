@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3" v-if="!report.result && report.error_code">
                     <div class="mt-3 alert alert-danger">
-                        Ошибка сервива при формировании отчета.<br>
+                        Ошибка сервиcа при формировании отчета.<br>
                         Попробуйте перезапустить проверку или свяжитесь с менеджером
                     </div>
                     <button class="btn button" @click.prevent="$emit('reportRestart')">
@@ -30,7 +30,8 @@
                     </button>
                 </div>
                 <div class="mt-3 alert alert-warning" v-if="report.need_payment && !report.result">
-                    Ждем подтверждения оплаты за отчет от платежной системы...
+                    <span>Ждем подтверждения оплаты за отчет от платежной системы...</span>
+                   <svg width="30px" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><radialGradient id='a6' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='#366AF3'></stop><stop offset='.3' stop-color='#366AF3' stop-opacity='.9'></stop><stop offset='.6' stop-color='#366AF3' stop-opacity='.6'></stop><stop offset='.8' stop-color='#366AF3' stop-opacity='.3'></stop><stop offset='1' stop-color='#366AF3' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a6)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='#366AF3' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>
                 </div>
                 <div v-if="report.result">
                     <div class="report-progress-bar">
