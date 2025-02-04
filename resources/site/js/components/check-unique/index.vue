@@ -1,9 +1,9 @@
 <template>
 <div>
-
     <section class="check-unique">
         <section class="check-unique__textarea-wrap">
-            <div class="upload-file" v-if="fileName">
+
+            <div class="upload-file" v-if="file && fileName">
                 <span class="upload-file__file-name">{{fileName}}</span>
                 <button class="btn-link btn upload-file__delete" @click="handleFileDelete">Удалить</button>
             </div>
@@ -213,12 +213,17 @@
 
             },
             handleSelected(data) {
+
+                let postData = {
+                    length: data.list.length,
+                    text:this.textParams.plainText,
+                    symbols_count:this.textParams.symbolsCount
+                }
+                if(this.textParams.text_id) {
+                    postData.text_id = this.textParams.text_id
+                }
                 axios.post('/api/check-unique/validate-modal',
-                    {
-                            length: data.list.length,
-                            text:this.textParams.plainText,
-                            symbols_count:this.textParams.symbolsCount
-                    })
+                    postData)
                     .then((response) => {
                         if(data.free && data.list.length > 0) {
                             this.$refs.free_check_modal.showModal(this.textParams, data.list);

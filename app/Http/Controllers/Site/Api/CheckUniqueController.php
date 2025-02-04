@@ -60,6 +60,16 @@ class CheckUniqueController extends Controller
 
     public function validateCheckUniqueModal(Request $request)
     {
+        if($request->has('text_id') && $request->get('text_id')) {
+            $request->validate([
+                'symbols_count' => 'numeric|min:100',
+                'length' => 'numeric|min:1'
+            ],[
+                'symbols_count.min' => 'Длина текста не может быть меньше 100 символов',
+                'length.min' => 'Выберите систему проверки уникальности'
+            ]);
+            return $request->all();
+        }
         $request->validate([
             'text' => 'required',
             'symbols_count' => 'numeric|min:100',
