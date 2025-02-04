@@ -28,7 +28,7 @@
                 payments.pay("charge", {
                     //test_api_00000000000000000000002
                     //pk_2180f0785984f6b018ba6da1fe0bd
-                    publicId: "test_api_00000000000000000000002",
+                    publicId: "pk_2180f0785984f6b018ba6da1fe0bd",
                     description: order.description ? order.description : 'Проверка уникальности',
                     amount: Number(order.sum),
                     currency: "RUB",
