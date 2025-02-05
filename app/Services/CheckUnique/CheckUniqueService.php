@@ -38,13 +38,17 @@ class CheckUniqueService
     public function getResult()
     {
         $report = Report::with('checkSystem') ->findOrFail($this->id);
-        $uniqueOrder = $report->uniqueOrder();
-        if($uniqueOrder) {
-            if($uniqueOrder->sum === 0) {
-                $report->need_payment = false;
-                $report->save();
+
+
+            if($report->uniqueOrder()->exists()) {
+                $uniqueOrder = $report->uniqueOrder()->first();
+                if($uniqueOrder->sum === 0) {
+                    $report->need_payment = false;
+                    $report->save();
+                }
+
             }
-        }
+
         if($report->need_payment || $report->result || $report->checkSystem->manual) {
             return $report;
         }
