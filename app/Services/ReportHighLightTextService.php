@@ -166,8 +166,13 @@ class ReportHighLightTextService
 
 
         $textArr = [];
+        $textLength = mb_strlen($text, 'UTF-8');
+
         foreach ($word_pos as $item) {
-            $string = mb_substr($text, (int) $item[0], (int) $item[1] - (int) $item[0] + 2);
+            $start = (int) $item[0];
+            $length = min((int) $item[1] - $start + 2, $textLength - $start); // Избегаем выхода за границы текста
+
+            $string = mb_substr($text, $start, $length, 'UTF-8');
 
             $textArr[] = $string;
         }
