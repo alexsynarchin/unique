@@ -1,8 +1,9 @@
-@extends('site.base.cloudpayments-payment-page-base')
+@extends('site.base.base')
+
 @section('head')
     <script src="https://widget.cloudpayments.ru/bundles/paymentblocks.js"></script>
 @endsection
 @section('content')
 <cloud-payment-form :order="{{$order}}"></cloud-payment-form>
-<cloud-payment></cloud-payment>
+
 @endsection
