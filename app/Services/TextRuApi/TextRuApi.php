@@ -113,7 +113,7 @@ class TextRuApi
         if ((empty($userkey)) || (empty($uid))) throw WrongParameterException::wrongParameter("Required params is empty", 400131);
 
         $post_options = ["userkey" => $userkey, "uid" => $uid];
-        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail";
+        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail_view";
 
         $answer_decoded = self::sendCurl($post_options);
 

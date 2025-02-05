@@ -39,7 +39,7 @@ class TextRuApiService
     {
         //sleep(15);
         //Получаете результат проверки
-        $jsonvisible = 'detail'; //Необязательный параметр. Укажите "detail" чтобы получить расширенные данные по тексту
+        $jsonvisible = 'detail_view'; //Необязательный параметр. Укажите "detail" чтобы получить расширенные данные по тексту
         $TextRuApi= new TextRuApi($this->userkey);
         $result = $TextRuApi->get($uid, $jsonvisible);
 
