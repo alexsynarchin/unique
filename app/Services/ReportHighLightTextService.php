@@ -163,14 +163,19 @@ class ReportHighLightTextService
     }
     protected function textToArrayTextRu($text, $word_pos)
     {
-
-
         $textArr = [];
         $textLength = mb_strlen($text, 'UTF-8');
 
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
-            $length = min((int) $item[1] - $start + 2, $textLength - $start); // Избегаем выхода за границы текста
+            $end = (int) $item[1] + 2; // Используем конец слова напрямую
+
+            // Предварительная проверка границ текста
+            if ($start >= $textLength || $end > $textLength || $start >= $end) {
+                continue;
+            }
+
+            $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
             $string = mb_substr($text, $start, $length, 'UTF-8');
 
