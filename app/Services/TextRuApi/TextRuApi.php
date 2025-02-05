@@ -108,12 +108,12 @@ class TextRuApi
      * @return array
      * @throws WrongParameterException
      */
-    private static function get_from_textru($userkey, $uid, $jsonvisible = 'detail_view')
+    private static function get_from_textru($userkey, $uid, $jsonvisible = null)
     {
         if ((empty($userkey)) || (empty($uid))) throw WrongParameterException::wrongParameter("Required params is empty", 400131);
 
         $post_options = ["userkey" => $userkey, "uid" => $uid];
-        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail_view";
+        if (!is_null($jsonvisible)) $post_options["jsonvisible"] = "detail";
 
         $answer_decoded = self::sendCurl($post_options);
 
