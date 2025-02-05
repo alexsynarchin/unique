@@ -39,16 +39,6 @@ class CheckUniqueService
     {
         $report = Report::with('checkSystem') ->findOrFail($this->id);
 
-
-            if($report->uniqueOrder()->exists()) {
-                $uniqueOrder = $report->uniqueOrder()->first();
-                if($uniqueOrder->sum === 0) {
-                    $report->need_payment = false;
-                    $report->save();
-                }
-
-            }
-
         if($report->need_payment || $report->result || $report->checkSystem->manual) {
             return $report;
         }
