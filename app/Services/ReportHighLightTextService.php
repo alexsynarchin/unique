@@ -170,12 +170,10 @@ class ReportHighLightTextService
 
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
-            $end = (int) $item[1] + 2; // Используем конец слова напрямую
+            $end = (int) $item[1]+2; // Используем конец слова напрямую
 
             // Предварительная проверка границ текста
-            if ($start >= $textLength || $end > $textLength || $start >= $end) {
-                continue;
-            }
+
 
             $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
