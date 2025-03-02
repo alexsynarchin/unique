@@ -165,22 +165,16 @@ class ReportHighLightTextService
     }
     protected function textToArrayTextRu($text, $word_pos)
     {
-        $textArr = [];
         $textLength = mb_strlen($text);
 
-        foreach ($word_pos as $item) {
+        $textArr = array_map(function($item) use ($text, $textLength) {
             $start = (int) $item[0];
-            $end = (int) $item[1]+2; // Используем конец слова напрямую
-
-            // Предварительная проверка границ текста
-
+            $end = (int) $item[1] + 2; // Используем конец слова напрямую
 
             $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
-            $string = mb_substr($text, $start, $length);
-
-            $textArr[] = $string;
-        }
+            return mb_substr($text, $start, $length);
+        }, $word_pos);
 
         return $textArr;
     }
