@@ -89,7 +89,7 @@ class ReportHighLightTextService
         if(isset($data['words_pos'])) {
             $text = mb_convert_encoding($data['clear_text'], "UTF-8", mb_detect_encoding($data['clear_text']));
 
-            $textArr = $this->textToArrayTextRu($text, $data['words_pos']);
+            $textArr = $this->textToArrayTextRu($text, $data['words_pos'], 200);
         } else {
             $textArr  = $this->textToArray($data['clear_text']);
 
@@ -163,20 +163,35 @@ class ReportHighLightTextService
 
         return $array_words;
     }
-    protected function textToArrayTextRu($text, $word_pos)
+    protected function textToArrayTextRu($text, $word_pos, $chunkSize)
     {
         $textLength = mb_strlen($text);
+        $textArr = [];
 
-        $textArr = array_map(function($item) use ($text, $textLength) {
-            $start = (int) $item[0];
-            $end = (int) $item[1] + 2; // Используем конец слова напрямую
+        if ($chunkSize >= count($word_pos)) {
+            foreach ($word_pos as $item) {
+                $textArr[] = $this->processTextRuArrayItem($item, $text, $textLength);
+            }
+        } else {
+            $chunks = array_chunk($word_pos, $chunkSize);
 
-            $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
-
-            return mb_substr($text, $start, $length);
-        }, $word_pos);
+            foreach ($chunks as $chunk) {
+                foreach ($chunk as $item) {
+                    $textArr[] = $this->processTextRuArrayItem($item, $text, $textLength);
+                }
+            }
+        }
 
         return $textArr;
+    }
+
+    protected function processTextRuArrayItem($item, $text, $textLength)
+    {
+        $start = (int) $item[0];
+        $end = (int) $item[1] + 2; // Используем конец слова напрямую
+
+        $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
+        return mb_substr($text, $start, $length);
     }
 
 }
