@@ -164,7 +164,7 @@ class ReportHighLightTextService
     protected function textToArrayTextRu($text, $word_pos)
     {
         $textArr = [];
-        $textLength = mb_strlen($text, 'UTF-8');
+        $textLength = strlen($text);
 
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
@@ -177,7 +177,7 @@ class ReportHighLightTextService
 
             $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
-            $string = mb_substr($text, $start, $length, 'UTF-8');
+            $string = substr($text, $start, $length);
 
             $textArr[] = $string;
         }
