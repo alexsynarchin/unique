@@ -183,7 +183,7 @@ class ReportHighLightTextService
 
             $textArr[] = $string;
         }
-        dd($textArr);
+
         return $textArr;
     }
 
