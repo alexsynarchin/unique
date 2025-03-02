@@ -87,8 +87,8 @@ class ReportHighLightTextService
         }
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
         if(isset($data['words_pos'])) {
-            dd($data);
             $text = mb_convert_encoding($data['clear_text'], "UTF-8", mb_detect_encoding($data['clear_text']));
+            dd($text);
             $textArr = $this->textToArrayTextRu($text, $data['words_pos']);
         } else {
             $textArr  = $this->textToArray($data['clear_text']);
