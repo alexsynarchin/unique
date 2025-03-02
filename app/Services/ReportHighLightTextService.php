@@ -181,7 +181,7 @@ class ReportHighLightTextService
                 }
             }
         }
-
+        dd($textArr);
         return $textArr;
     }
 
