@@ -223,7 +223,7 @@ class CheckUniqueController extends Controller
                 $report->symbols_count = $system->symbols_count;
             }
 
-            if(($system->price_ru > 0 || $system->price_not_ru > 0) && ($data['sum'] > 0 || $data['sum_not_ru'] > 0)) {
+            if(($system->price_ru > 0 || $system->price_not_ru > 0) && ($data['sum'] > 0 )) {
 
                 $report->need_payment = true;
                 $report->payment_free = false;
