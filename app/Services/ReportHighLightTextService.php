@@ -87,12 +87,13 @@ class ReportHighLightTextService
         }
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
         if(isset($data['words_pos'])) {
-            $textArr = $this->textToArrayTextRu($data['clear_text'], $data['words_pos']);
+            $text = mb_convert_encoding($data['clear_text'], "UTF-8", mb_detect_encoding($data['clear_text']));
+            $textArr = $this->textToArrayTextRu($text, $data['words_pos']);
         } else {
             $textArr  = $this->textToArray($data['clear_text']);
 
         }
-
+       dd($textArr);
         foreach ($wordsIndexesArr as $item) {
             if(isset($textArr[$item])) {
                 $textArr[$item] = '<span class="highlight--red">' . $textArr[$item] . '</span>';
@@ -164,7 +165,7 @@ class ReportHighLightTextService
     protected function textToArrayTextRu($text, $word_pos)
     {
         $textArr = [];
-        $textLength = strlen($text);
+        $textLength = mb_strlen($text);
 
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
@@ -177,7 +178,7 @@ class ReportHighLightTextService
 
             $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
-            $string = substr($text, $start, $length);
+            $string = mb_substr($text, $start, $length);
 
             $textArr[] = $string;
         }
