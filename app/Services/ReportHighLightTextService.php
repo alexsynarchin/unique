@@ -88,7 +88,7 @@ class ReportHighLightTextService
         $wordsIndexesArr = explode(' ', $data['urls'][$index]['words']);
         if(isset($data['words_pos'])) {
             $text = mb_convert_encoding($data['clear_text'], "UTF-8", mb_detect_encoding($data['clear_text']));
-            dd($text);
+
             $textArr = $this->textToArrayTextRu($text, $data['words_pos']);
         } else {
             $textArr  = $this->textToArray($data['clear_text']);
@@ -167,7 +167,7 @@ class ReportHighLightTextService
     {
         $textArr = [];
         $textLength = mb_strlen($text);
-
+        dd($text);
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
             $end = (int) $item[1] + 2; // Используем конец слова напрямую
