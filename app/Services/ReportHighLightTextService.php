@@ -167,7 +167,7 @@ class ReportHighLightTextService
     {
         $textArr = [];
         $textLength = mb_strlen($text);
-        dd($text);
+
         foreach ($word_pos as $item) {
             $start = (int) $item[0];
             $end = (int) $item[1] + 2; // Используем конец слова напрямую
@@ -183,7 +183,7 @@ class ReportHighLightTextService
 
             $textArr[] = $string;
         }
-
+        dd($textArr);
         return $textArr;
     }
 
