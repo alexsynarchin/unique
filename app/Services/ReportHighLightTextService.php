@@ -178,7 +178,7 @@ class ReportHighLightTextService
             $length = min($end - $start, $textLength - $start); // Уменьшение длины, если за границами текста
 
             $string = mb_substr($text, $start, $length);
-            dd($string);
+
             $textArr[] = $string;
         }
 
