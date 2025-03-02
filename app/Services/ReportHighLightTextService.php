@@ -93,7 +93,7 @@ class ReportHighLightTextService
             $textArr  = $this->textToArray($data['clear_text']);
 
         }
-       dd($textArr);
+
         foreach ($wordsIndexesArr as $item) {
             if(isset($textArr[$item])) {
                 $textArr[$item] = '<span class="highlight--red">' . $textArr[$item] . '</span>';
