@@ -38,15 +38,18 @@ class HighLightText implements ShouldQueue
      */
     public function handle()
     {
-        $check_api = CheckApi::findOrFail($this->report->api_id);
+        if(!$this->report->highlight_text) {
+            $check_api = CheckApi::findOrFail($this->report->api_id);
 
-        $this->report->highlight_text = $this->highLightTextService
-            ->highLightText($this -> report['data'], $check_api-> title);
-        $this->report->result = true;
-        if(!$this->report->filename) {
-            GenerateReportPdf::dispatch($this->report);
+            $this->report->highlight_text = $this->highLightTextService
+                ->highLightText($this -> report['data'], $check_api-> title);
+            $this->report->result = true;
+            if(!$this->report->filename) {
+                GenerateReportPdf::dispatch($this->report);
+            }
+
+            $this -> report->save();
         }
 
-        $this -> report->save();
     }
 }

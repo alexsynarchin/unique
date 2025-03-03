@@ -3,7 +3,6 @@
 namespace App\Services\CheckUnique;
 
 use App\Jobs\GenerateReportPdf;
-use App\Jobs\HighLightText;
 use App\Models\ApiAccount;
 use App\Models\Report;
 use App\Services\CheckUnique\Advego\AdvegoApi;
@@ -64,9 +63,16 @@ class CheckUniqueService
             $result = $apiService->add($report, $text);
             $report->update($result);
             if($result['checked']) {
-                HighLightText::dispatch($report);
+                $report->result = true;
+                $highLightService = new ReportHighLightTextService();
+                $report->highlight_text = $highLightService
+                    ->highLightText($report['data'], $report->checkSystem->checkApi -> title);
                 $report->save();
-
+                if(!$report->filename) {
+                    $generatePdfService = new GeneratePdfService();
+                    $link = $generatePdfService -> generate($report->id);
+                    GenerateReportPdf::dispatch($report);
+                }
         }
 
         } else {
