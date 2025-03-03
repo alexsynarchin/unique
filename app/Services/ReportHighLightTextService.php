@@ -89,7 +89,7 @@ class ReportHighLightTextService
         if(isset($data['words_pos'])) {
             $text = mb_convert_encoding($data['clear_text'], "UTF-8", mb_detect_encoding($data['clear_text']));
 
-            $textArr = $this->textToArrayTextRu($text, $data['words_pos'], 200);
+            $textArr = $this->textToArrayTextRu($text, $data['words_pos'], 50);
         } else {
             $textArr  = $this->textToArray($data['clear_text']);
 

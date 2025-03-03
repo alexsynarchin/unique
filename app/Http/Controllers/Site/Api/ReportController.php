@@ -43,6 +43,7 @@ class ReportController extends Controller
         }
 
         if(!$report->highlight_text && $report->result && $report-> api_id && !$report->error_code) {
+
             $highLightService = new ReportHighLightTextService();
             $check_api = CheckApi::findOrFail($report->api_id);
             $report->highlight_text = $highLightService->highLightText($report['data'], $check_api-> title);
@@ -103,6 +104,12 @@ class ReportController extends Controller
         }
 
             return $send_status;
+    }
+
+
+    public function highlightText($id)
+    {
+        $report = Report::findOrFail($id);
     }
 
     public function highlightUrl(Request $request, $id)
