@@ -26,7 +26,7 @@
     @include('site.home._partials.mp-about')
     @include('site.home._partials.reviews')
     @include('site.home._partials.faq')
-
+    <cloud-payment-form></cloud-payment-form>
 
 @endsection
 @section('scripts')

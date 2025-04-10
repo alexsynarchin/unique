@@ -33,7 +33,7 @@ class RetainerApiService
             'type' => $this->client_id
         ];
 
-        $result = $this->sendCurl('http://retainer-api.rp-demo.ru/v1/post/index', $post_data);
+        $result = $this->sendCurl('https://api.ап-вуз.рф/v1/post/index', $post_data);
 
         return [
             'uid' => $result['text_uid'] ?? null,
@@ -52,7 +52,7 @@ class RetainerApiService
             'type' => $this->client_id
         ];
         $reportData = [];
-        $result = $this->sendCurl('http://retainer-api.rp-demo.ru/v1/post/check', $post_data);
+        $result = $this->sendCurl('https://api.ап-вуз.рф/v1/post/check', $post_data);
         $checked = false;
         if(isset($result['error_code']) && $result['error_code'] != 181) {
             $reportData['error_code'] = $result['error_code'] ?? 0;

@@ -68,7 +68,10 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 
 use App\Http\Controllers\Site\Api\UniqueOrderController;
 Route::post('/unique-order/payment', [UniqueOrderController::class, 'store'])->name('unique-order.store');
-Route::post('/unique-order/payment-free', [UniqueOrderController::class, 'storeFree'])->name('unique-order.store-free');
+Route::post('/unique-order/payment-free', [UniqueOrderController::class, 'storeFree'])
+    ->name('unique-order.store-free');
+Route::get('/unique-order/show/{id}', [UniqueOrderController::class, 'show'])
+    ->name('unique-order.show');
 use App\Http\Controllers\Site\Api\PayOnlineController;
 Route::post('/validate-payment-form', [PayOnlineController::class, 'validatePaymentForm'])->name('validate-payment-form');
 

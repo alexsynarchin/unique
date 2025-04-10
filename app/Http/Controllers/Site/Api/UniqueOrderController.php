@@ -69,7 +69,7 @@ class UniqueOrderController extends Controller
         }
         $link = $url;
         if($order->paymentType === 'cloudpayments') {
-            $link = route('cloud-payments.show-payment-page',['order_id'=>$order->id]);
+            $link = route('main-page',['order_id'=>$order->id]);
         }
 
         //SendAdminReport::dispatch($order, 'smtp')->delay(now());
@@ -122,5 +122,11 @@ class UniqueOrderController extends Controller
 
         //SendAdminReport::dispatch($order, 'smtp')->delay(now());
         return $url;
+    }
+
+    public function show($id)
+    {
+
+        return UniqueOrder::findOrFail($id);
     }
 }
