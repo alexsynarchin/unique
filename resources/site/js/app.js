@@ -1,5 +1,7 @@
 require('./bootstrap');
 require('owl.carousel/dist/owl.carousel');
+
+require('bootstrap-cookie-alert/cookiealert.js');
 import Vue from 'vue';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";

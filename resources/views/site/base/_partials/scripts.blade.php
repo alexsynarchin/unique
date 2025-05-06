@@ -13,6 +13,7 @@
 <script src="{{mix('js/manifest.js', 'assets/site')}}" defer></script>
 <script src="{{mix('js/vendor.js','assets/site')}}" defer></script>
 <script src="{{mix('js/app.js','assets/site')}}" defer></script>
+
 @if(stripos(@$_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false && stripos(@$_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false)
 <!-- Yandex.Metrika counter -->
 
